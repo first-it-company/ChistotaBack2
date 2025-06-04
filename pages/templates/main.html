@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>На главном экране видео</h1>
+{% for video in videos %}
+    <video width="640" height="360" controls>
+      <source src="{{ video.video.url }}" type="video/mp4">
+    </video>
+{% endfor %}
+<h1>На главном экране карточи</h1>
+<p>{{ about_main.cnt_people }} чел. в команде</p>
+<p>{{ about_main.cnt_year }} лет в этой сфере</p>
+<p>{{ about_main.cnt_square }} м2 вычищаем/мес</p>
+<h1>Наши услуги</h1>
+{% for service in services %}
+<p>Заголовок: {{ service.scope.name }}</p>
+<p>Описание: {{ service.desc }}</p>
+<p>Цена: {{ service.price }}</p>
+<p>Часы работы: {{ service.time_work }}</p>
+<p>Площадь работы: {{ service.square }}</p>
+<img src="{{ service.photo.url }}" height="200">
+<hr>
+{% endfor %}
+<h1>А также...</h1>
+{% for scope in scope_services %}
+<p>{{ scope.name }}</p>
+{% endfor %}
+<h1>Мы выполнили >{{ order_info.cnt_order }} заказов</h1>
+<select name="select" id="scope-select">
+    <option value="">Все</option>
+    {% for scope in scope_services %}
+  <option value="{{ scope.name }}">{{ scope.name }}</option>
+    {% endfor %}
+</select>
+{% for order in orders %}
+<div class="order-item" data-scope="{{ order.scope.name }}">
+    <p><span>Заголовок: </span><span>{{ order.scope.name }}</span></p>
+    <p><span>Лицо: </span><span>{{ order.entity }}</span></p>
+    <p><span>Площадь работы: </span><span>{{ order.square }}</span></p>
+    <img src="{{ order.photo.url }}" height="200">
+    <hr>
+</div>
+{% endfor %}
+
+<h1>Отзывы</h1>
+<p>Средний рейтинг компании в 2ГИС: {{ gis_data.average_rating }}</p>
+<h3>Сами отзывы</h3>
+{% for review in gis_reviews %}
+<p>Рейтинг: {{ review.rating }}</p>
+<p>Автор: {{ review.author_name }}</p>
+<p>Текст отзывы: {{ review.review_text }}</p>
+{% for photo_review in review.photos %}
+<img src="{{ photo_review }}" height="200" style="margin-right: 10px;">
+{% endfor %}
+<hr>
+{% endfor %}
+
+<h1>Вопросы</h1>
+{% for quest in questions %}
+<p>Вопрос: {{ quest.question }}</p>
+<p>Ответ: {{ quest.answer }}</p>
+<hr>
+{% endfor %}
+
+<h1>Контакты</h1>
+<p>Телефон: {{ contact.phone }}</p>
+<p>Адрес: {{ contact.address }}</p>
+
+<h1>Форма обратной связи</h1>
+<form method="post" id="form-feedback">
+    {% csrf_token %}
+    <input type="text" placeholder="Имя" required name="name">
+    <select name="square-select-form" id="square-select-form" required>
+        {% for square in list_square %}
+            <option value="{{ square }}">{{ square }}</option>
+        {% endfor %}
+    </select>
+    <select name="select-form" id="scope-select-form" required>
+        <option value="">Услуга</option>
+        {% for scope in scope_services %}
+            <option value="{{ scope.name }}">{{ scope.name }}</option>
+        {% endfor %}
+    </select>
+    <input type="tel" placeholder="Телефон" required name="phone">
+    <textarea placeholder="Введите свой вопрос" name="message"></textarea>
+    <button class="submit">Отправить</button>
+    <div style="margin-top: 10px;">
+        <span>Итого: </span><span id="total-price">0</span><span>₽</span>
+    </div>
+</form>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const select = document.getElementById('scope-select');
+    const orderItems = document.querySelectorAll('.order-item');
+
+    select.addEventListener('change', function() {
+        const selectedScope = this.value;
+
+        orderItems.forEach(item => {
+            if (selectedScope === '' || item.dataset.scope === selectedScope) {
+                item.style.display = 'block';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    });
+});
+</script>
+
+<script>
+document.getElementById('form-feedback').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const form = document.getElementById('form-feedback');
+    const formData = new FormData(form);
+
+    fetch('{% url "post_feedback" %}', {
+        method: 'POST',
+        body: formData,
+        headers: {
+            'X-CSRFToken': '{{ csrf_token }}'
+        }
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Ошибка сети');
+        }
+        return response.json();
+    })
+    .then(data => {
+        alert('Форма успешно отправлена!');
+        form.reset();
+    })
+    .catch(error => {
+        alert('Произошла ошибка при отправке формы');
+    });
+});
+</script>
+
+<script>
+    const squareSelect = document.getElementById('square-select-form');
+const serviceSelect = document.getElementById('scope-select-form');
+const totalPriceSpan = document.getElementById('total-price');
+const form = document.getElementById('form-feedback');
+const submitBtn = document.getElementById('submit-btn');
+
+function calculatePrice() {
+    const square = squareSelect.value;
+    const service = serviceSelect.value;
+
+    if (!square || !service) {
+        totalPriceSpan.textContent = '0';
+        return;
+    }
+
+    fetch('{% url "calculate-price" %}', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': '{{ csrf_token }}'
+        },
+        body: JSON.stringify({
+            square: square,
+            service: service
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        totalPriceSpan.textContent = data.price;
+    })
+    .catch(error => {
+        console.error('Ошибка расчета цены:', error);
+    });
+}
+
+// Слушаем изменения в select
+squareSelect.addEventListener('change', calculatePrice);
+serviceSelect.addEventListener('change', calculatePrice);
+</script>
+
+</body>
+</html>
