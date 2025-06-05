@@ -19,10 +19,34 @@ def gis_data_company():
     return data
 
 
+def vl_data_company():
+    response = requests.get(
+        'http://195.133.27.193/api/vl-data/',
+        params={'company': 'Чистота Дв'}
+    )
+    response.raise_for_status()
+
+    data = response.json()
+
+    return data
+
+
+def yandex_data_company():
+    response = requests.get(
+        'http://195.133.27.193/api/yandex-data/',
+        params={'company': 'Чистота Дв'}
+    )
+    response.raise_for_status()
+
+    data = response.json()
+
+    return data
+
+
 def gis_reviews_data():
     response = requests.get(
         'http://195.133.27.193/api/twoGis-reviews/',
-        params={'company': 'Чистота Дв', 'cnt': 50}
+        params={'company': 'Чистота Дв', 'cnt': 20, 'min_rating': 5}
     )
     response.raise_for_status()
 
@@ -39,6 +63,8 @@ def home(request):
     orders = Order.objects.all()
     gis_data = gis_data_company()
     gis_reviews = gis_reviews_data()
+    vl_data = vl_data_company()
+    yandex_data = yandex_data_company()
     questions = QuestionAnswer.objects.all()
     contact = Contact.objects.first()
     list_square = PriceServices.objects.values_list('square', flat=True).distinct()
@@ -55,7 +81,9 @@ def home(request):
         'questions': questions,
         'contact': contact,
         'list_square': list_square,
-        'videos': videos
+        'videos': videos,
+        'vl_data': vl_data,
+        'yandex_data': yandex_data
     })
 
 

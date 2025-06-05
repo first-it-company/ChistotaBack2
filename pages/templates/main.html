@@ -48,7 +48,9 @@
 
 <h1>Отзывы</h1>
 <p>Средний рейтинг компании в 2ГИС: {{ gis_data.average_rating }}</p>
-<h3>Сами отзывы</h3>
+<p>Средний рейтинг компании в VL: {{ vl_data.average_rating }}</p>
+<p>Средний рейтинг компании в Яндекс: {% if yandex_data.average_rating %}{{ yandex_data.average_rating }}{% else %} 5{% endif %}</p>
+<h3>Сами отзывы c 2ГИС</h3>
 {% for review in gis_reviews %}
 <p>Рейтинг: {{ review.rating }}</p>
 <p>Автор: {{ review.author_name }}</p>
