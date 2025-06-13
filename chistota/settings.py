@@ -49,21 +49,13 @@ STATIC_ROOT = BASE_DIR / 'static'
 
 STATIC_URL = '/static/'
 
-# Настройка django-vite
 DJANGO_VITE = {
     'default': {
-        'dev_mode': False,  # Всегда используем собранные файлы
+        'dev_mode': False, 
         'manifest_path': BASE_DIR / 'pages/static/pages/.vite/manifest.json/',
         'static_url_prefix': '/pages/',
     }
 }
-
-
-
-
-
-
-
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
