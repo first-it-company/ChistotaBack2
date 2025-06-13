@@ -1,0 +1,167 @@
+@use "../helpers" as *;
+
+.about{
+  padding: rem(50) rem(16);
+
+  @include tablet{
+    padding: 0;
+  }
+
+  &__inner{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    border-radius: rem(20);
+    overflow: hidden;
+    padding: rem(72) rem(16);
+    background-color: var(--color-black) ;
+
+    @include tablet{
+      padding-block: rem(60);
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url('images/about/background.png') 0 0 / cover no-repeat;
+      z-index: 100;
+      pointer-events: none;
+
+
+      @include tablet{
+        background: url('images/about/background-m.png') 0 0 / cover no-repeat;
+      }
+    }
+  }
+
+  &__header{
+    font-size: rem(140);
+    font-weight: 500;
+    text-transform: uppercase;
+    background: linear-gradient(143deg, #16437f 0%, #fff 26.44%, #fff 65.38%, #243040 100%);
+    background-clip: text;
+    margin-bottom: rem(32);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    z-index: 101;
+
+    @include laptop{
+      font-size: rem(96);
+      margin-bottom: rem(10);
+    }
+
+    @include tablet{
+      font-size: rem(76);
+    }
+
+    @include mobile{
+      font-size: rem(58);
+      line-height: normal;
+      margin-bottom: rem(50);
+    }
+
+    &-inner{
+      position: relative;
+    }
+  }
+
+  &__subheader{
+    font-size: rem(24);
+    font-family: var(--font-family-accent);
+    width: rem(658);
+    color: var(--color-white);
+    margin-bottom: rem(100);
+    line-height: normal;
+
+    @include laptop{
+      margin-bottom: rem(80);
+    }
+
+    @include tablet{
+      font-size: rem(20);
+    }
+
+    @include mobile{
+      max-width: rem(348);
+    }
+
+    span{
+      color: var(--color-baby-blue);
+    }
+  }
+
+  &__button{
+    width: rem(425);
+    z-index: 100;
+
+    @include mobile{
+      width: rem(238);
+    }
+  }
+
+  &__inst{
+    position:absolute ;
+    top: 48%;
+    left: 13%;
+
+    @include laptop{
+      top: 54%
+    }
+
+    @include tablet{
+      width: rem(81);
+    }
+
+    @include mobile{
+      top: auto;
+      left: auto;
+      bottom: 20%;
+      right: 4%;
+    }
+  }
+
+  &__tg{
+    position:absolute;
+    left: 41%;
+    top: 0;
+
+    @include laptop{
+      top: -15%
+    }
+
+    @include tablet{
+      width: rem(68);
+    }
+
+    @include mobile{
+      top: -6%;
+      left: 49%;
+    }
+  }
+
+  &__vk{
+    position: absolute;
+    right: 6%;
+    top: 9%;
+
+    @include laptop{
+      right: 2%;
+      top: -5%;
+    }
+
+    @include tablet{
+      width: rem(65);
+    }
+
+    @include mobile{
+      top: auto;
+      left: 6%;
+      bottom: 47%;
+      right: auto;
+    }
+  }
+
+}

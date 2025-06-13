@@ -25,3 +25,5 @@ gunicorn_error.log
 
 .idea/
 ssl/
+
+/frontend/node_modules/

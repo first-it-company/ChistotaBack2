@@ -24,12 +24,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-go9w%!m)9&61rp3r)wd0-u^d6*^9mn_+qa4lnglxmhg=_2t*99'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['85.209.9.241']
+ALLOWED_HOSTS = ['127.0.0.1', '85.209.9.241']
 
-
-# Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -38,8 +36,34 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'pages'
+    'django_vite',
+    'pages',
+    'corsheaders'
 ]
+
+STATICFILES_DIRS = [
+    BASE_DIR / 'pages/static',
+]
+
+STATIC_ROOT = BASE_DIR / 'static'
+
+STATIC_URL = '/static/'
+
+# Настройка django-vite
+DJANGO_VITE = {
+    'default': {
+        'dev_mode': False,  # Всегда используем собранные файлы
+        'manifest_path': BASE_DIR / 'pages/static/pages/.vite/manifest.json/',
+        'static_url_prefix': '/pages/',
+    }
+}
+
+
+
+
+
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -113,13 +137,6 @@ USE_I18N = True
 
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.1/howto/static-files/
-
-STATIC_URL = 'static/'
-# STATICFILES_DIRS = [BASE_DIR / 'static']
-STATIC_ROOT = BASE_DIR / 'static'
 
 
 MEDIA_URL = '/media/'

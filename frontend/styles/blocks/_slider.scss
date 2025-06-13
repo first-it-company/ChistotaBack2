@@ -1,0 +1,47 @@
+@use "../helpers" as *;
+
+.slider {
+  &__title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: rem(24);
+
+    @include tablet{
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(16);
+      margin-bottom: rem(16);
+      line-height: rem(23);
+    }
+  }
+
+  &__header{
+    font-weight: 500;
+    font-size: rem(24);
+    text-transform: uppercase;
+    color: var(--color-black);
+
+    @include mobile{
+      font-size: rem(18);
+    }
+  }
+
+  &__features{
+    padding: rem(8) rem(16);
+    color: var(--color-orange);
+    font-size: rem(16);
+
+    &-wrapper{
+      display: flex;
+      align-items: center;
+      column-gap: rem(16);
+    }
+  }
+
+  &__image{
+    object-fit: cover;
+    border-radius: rem(20);
+    aspect-ratio: 636 / 370;
+  }
+}

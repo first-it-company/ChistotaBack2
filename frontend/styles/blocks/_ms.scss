@@ -1,0 +1,86 @@
+@use "../helpers" as *;
+.reviews {
+  .ms{
+    &-track{
+      display: flex;
+    }
+
+    &-slides{
+      position: relative;
+      overflow: hidden;
+      left: calc(50% - 680px + 40px);
+
+      @include container{
+        left: 20px;
+      }
+    }
+
+    &-slide{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      &__card{
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+      }
+
+      &__controls{
+        display: flex;
+        gap: rem(38);
+        align-items: center;
+        &-button{
+          border: 1px solid var(--color-blue);
+          border-radius: rem(70);
+          padding: rem(16) rem(32);
+          background-color: var(--color-blue);
+
+          img{
+            filter: brightness(0) invert(1);
+          }
+
+          &.is-disabled {
+            background-color: var(--color-white);
+            pointer-events: none;
+            cursor: default;
+
+            img{
+              filter: none;
+            }
+          }
+        }
+
+        &-current{
+          font-weight: 600;
+          font-size: rem(16);
+          line-height: 1.8;
+          color: var(--color-black);
+
+          span{
+            color: var(--color-gray-200);
+          }
+        }
+      }
+
+      &__container{
+        margin-bottom: rem(30);
+
+        @include tablet{
+          margin-bottom: 0;
+          order: 3;
+        }
+
+      }
+    }
+
+    &-container{
+      &--horizontal{
+        width: 100%;
+        max-width: 100%;
+      }
+    }
+  }
+
+}
