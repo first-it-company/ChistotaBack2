@@ -1,0 +1,36 @@
+@use "../helpers" as *;
+
+.carousel {
+  &__wrapper {
+    margin-bottom: rem(36);
+    width: 100%;
+    overflow: hidden;
+
+    @include tablet{
+      bottom: rem(60);
+    }
+    @include mobile{
+      bottom: rem(75);
+    }
+  }
+
+  &__track {
+    display: flex;
+    gap: rem(20);
+    width: max-content;
+  }
+
+  &__slide {
+    img {
+      width: rem(63);
+      height: rem(63);
+      object-fit: cover;
+
+      @include mobile{
+        width: rem(40);
+        height: rem(40);
+      }
+
+    }
+  }
+}

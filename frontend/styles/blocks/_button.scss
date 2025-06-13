@@ -1,0 +1,67 @@
+@use "../helpers" as *;
+
+.button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-blue);
+  color: var(--color-white);
+  border-radius: rem(14);
+  padding: 16px 50px;
+  font-weight: 500;
+  font-size: rem(24);
+  text-transform: uppercase;
+  border: none;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  text-align: center;
+
+  @include mobile{
+    font-size: rem(20);
+    line-height: rem(14);
+    padding: rem(28) rem(24);
+
+  }
+
+  @include hover{
+    transition-duration: var(--transition-duration);
+    background-color: var(--color-white);
+    color: var(--color-blue);
+  }
+
+  &--arrow {
+    border-radius: 14px;
+    padding: 16px;
+    background-color: var(--color-blue);
+    color: var(--color-white);
+    border: none;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+
+    @include hover{
+      background-color: var(--color-white);
+      transition-duration: var(--transition-duration);
+
+      svg path {
+        stroke: var(--color-blue);
+      }
+    }
+  }
+
+  &--white{
+    @extend .button;
+    background-color: var(--color-white);
+    color: var(--color-blue);
+
+    @include hover{
+      transition-duration: var(--transition-duration);
+      background-color: var(--color-gray-100);
+      color: var(--color-blue);
+    }
+  }
+
+  &__wrapper{
+    display: flex;
+    column-gap: rem(16);
+    align-items: stretch;
+  }
+
+}

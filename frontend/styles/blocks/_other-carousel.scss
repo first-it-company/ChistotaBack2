@@ -1,0 +1,72 @@
+@use "../helpers" as *;
+
+.other-carousel{
+  padding-top: rem(50);
+  padding-bottom: rem(70);
+
+  @include tablet{
+    padding-block: rem(60)
+  }
+
+  &__title{
+    font-weight: 500;
+    font-size: rem(50);
+    text-transform: uppercase;
+    color: var(--color-black);
+    text-align: center;
+    margin-bottom: rem(40);
+    line-height: rem(35);
+
+    @include tablet{
+      font-weight: 600;
+      font-size: rem(36);
+      line-height: rem(25);
+      margin-bottom: rem(32);
+    }
+  }
+
+  &__wrapper{
+    overflow: hidden;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    row-gap: rem(8);
+    position: relative;
+    margin: auto;
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url("images/carousel/white-background.png") 0 0 / cover no-repeat;
+      z-index: 100;
+
+      @include tablet{
+        background: url("images/carousel/white-background-m.png") 0 0 / 100% 100% no-repeat;
+      }
+    }
+  }
+
+  &__track {
+    display: flex;
+    gap: rem(8);
+    width: 100%;
+  }
+
+  &__slide {
+    flex-shrink: 0;
+    font-weight: 400;
+    font-size: rem(24);
+    line-height: rem(30);
+    font-family: var(--font-family-accent);
+    border: 1px solid var(--color-gray-100);
+    border-radius: rem(20);
+    padding: rem(22) rem(26);
+
+    @include tablet{
+      font-size: rem(20);
+      padding: rem(16) rem(18);
+      line-height: rem(25);
+    }
+  }
+}

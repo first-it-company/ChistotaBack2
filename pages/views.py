@@ -5,6 +5,7 @@ from .models import (AboutMain, Services, ScopeServices, OrderInfo,
                      VideoMain)
 from django.http.response import JsonResponse
 import json
+from django.core.serializers.json import DjangoJSONEncoder
 
 
 def gis_data_company():
@@ -70,7 +71,25 @@ def home(request):
     list_square = PriceServices.objects.values_list('square', flat=True).distinct()
     videos = VideoMain.objects.all()
 
-    return render(request, 'main.html', {
+    reviews_for_slider = []
+    for review in gis_reviews:
+        slider_review = {
+            'author_name': review.get('author_name', 'Аноним'),
+            'rating': review.get('rating', 4),
+            'review_text': review.get('review_text', ''),
+            'photo': review.get('author_avatar_url', '/static/images/reviews/user1.png'),
+            'service': 'Уборка',
+            'link': {
+                'url': 'https://2gis.ru/',
+                'text': 'Читать на 2GIS',
+                'icon': 'static/pages/icons/2gis.png',
+            }
+        }
+        reviews_for_slider.append(slider_review)
+ 
+    gis_reviews_json = json.dumps(reviews_for_slider, cls=DjangoJSONEncoder, ensure_ascii=False)
+
+    return render(request, 'index.html', {
         'about_main': about_main,
         'services': services,
         'scope_services': scope_services,
@@ -78,6 +97,7 @@ def home(request):
         'orders': orders,
         'gis_data': gis_data,
         'gis_reviews': gis_reviews,
+        'gis_reviews_json': gis_reviews_json,
         'questions': questions,
         'contact': contact,
         'list_square': list_square,
@@ -90,12 +110,10 @@ def home(request):
 def post_feedback(request):
     if request.method == 'POST':
         name = request.POST.get('name')
-        square = request.POST.get('square-select-form')
-        scope = request.POST.get('select-form')
         phone = request.POST.get('phone')
         message = request.POST.get('message')
 
-        Feedback.objects.create(name=name, scope=scope, square=square, phone=phone, message=message)
+        Feedback.objects.create(name=name, phone=phone, message=message)
 
         return JsonResponse({'status': 'success'})
 

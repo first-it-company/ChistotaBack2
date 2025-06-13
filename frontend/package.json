@@ -1,0 +1,38 @@
+{
+  "name": "chistota-dv",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/Kurennu/chistota-dv#readme",
+  "bugs": {
+    "url": "https://github.com/Kurennu/chistota-dv/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kurennu/chistota-dv.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass-watch": "sass --watch .",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "django-vite-plugin": "^4.1.0",
+    "sass": "^1.88.0",
+    "vite": "^6.3.5"
+  },
+  "dependencies": {
+    "@splidejs/splide": "^4.1.4",
+    "@splidejs/splide-extension-video": "^0.8.0",
+    "gsap": "^3.13.0",
+    "imask": "^7.6.1",
+    "momentum-slider": "^0.0.8",
+    "splitting": "^1.1.0",
+    "typewriter-effect": "^2.22.0"
+  }
+}

@@ -1,0 +1,32 @@
+@use "../helpers" as *;
+
+.review-button{
+  display: flex;
+  align-items: center;
+  column-gap: rem(8);
+  padding: rem(8);
+  border-radius: rem(14);
+  border: 1px solid var(--color-gray-50);
+  background-color: var(--color-white);
+  font-size: rem(20);
+  font-weight: 500;
+  line-height: rem(14);
+  position: relative;
+
+  &:not(:last-child){
+    &::after{
+      content: "";
+      right: -10px;
+      position: absolute;
+      height: rem(32);
+      border-radius: 50%;
+      width: 1px;
+      background-color: var(--color-gray-50);
+    }
+  }
+
+
+  @include hover{
+    background-color: var(--color-gray-50);
+  }
+}

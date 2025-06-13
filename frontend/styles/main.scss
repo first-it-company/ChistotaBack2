@@ -1,0 +1,31 @@
+@use 'normalize';
+@use 'fonts';
+@use 'variables';
+@use 'utils';
+@use 'globals';
+
+@use './blocks/header';
+@use './blocks/hero';
+@use './blocks/button';
+@use './blocks/ms';
+@use './blocks/about';
+@use './blocks/carousel';
+@use 'blocks/service';
+@use './blocks/other-carousel';
+@use './blocks/cta';
+@use './blocks/cases';
+@use './blocks/slider';
+@use './blocks/card-features';
+@use './blocks/review-button';
+@use './blocks/reviews';
+@use './blocks/cta-request';
+@use './blocks/dropdown';
+@use './blocks/faq';
+@use './blocks/policy';
+@use './blocks/footer';
+@use './blocks/word';
+@use './blocks/burger-button';
+@use './blocks/controls';
+@use './blocks/team';
+
+@use './blocks/modal';

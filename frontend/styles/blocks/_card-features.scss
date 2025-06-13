@@ -1,0 +1,13 @@
+@use "../helpers" as *;
+
+.card-features {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--color-gray-100);
+  font-family: var(--font-family-accent);
+  font-size: rem(16);
+  line-height: normal;
+  border-radius: rem(150);
+  gap: rem(6);
+  padding: rem(4) rem(8);
+}

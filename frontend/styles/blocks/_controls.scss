@@ -1,0 +1,39 @@
+@use "../helpers" as *;
+
+
+.controls{
+  display: flex;
+  gap: rem(38);
+  align-items: center;
+  &__button{
+    border: 1px solid var(--color-blue);
+    border-radius: rem(70);
+    padding: rem(16) rem(32);
+    background-color: var(--color-blue);
+
+    img{
+      filter: brightness(0) invert(1);
+    }
+
+    &.is-disabled {
+      background-color: var(--color-white);
+      pointer-events: none;
+      cursor: default;
+
+      img{
+        filter: none;
+      }
+    }
+  }
+
+  &__current{
+    font-weight: 600;
+    font-size: rem(16);
+    line-height: 1.8;
+    color: var(--color-black);
+
+    span{
+      color: var(--color-gray-200);
+    }
+  }
+}

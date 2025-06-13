@@ -1,0 +1,46 @@
+@use "../helpers" as *;
+
+.policy{
+  display: flex;
+  align-items: center;
+  gap: rem(12);
+  width: 100%;
+
+  &__label{
+    font-weight: 400;
+    font-size: rem(16);
+    color: var(--color-gray-200);
+    font-family: var(--font-family-accent);
+
+    a{
+      color: var(--color-blue);
+      text-decoration: none;
+    }
+  }
+
+  &__checkbox{
+    position: relative;
+    min-width: rem(19);
+    aspect-ratio: 1;
+    appearance: none;
+    border: 1px solid var(--color-blue);
+    border-radius: rem(6);
+    cursor: pointer;
+    &::after {
+      content: "";
+      position: absolute;
+      display: none;
+      left: rem(6);
+      top: rem(2);
+      width: rem(5);
+      height: rem(10);
+      border: solid var(--color-blue);
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+
+    &:checked::after {
+      display: block;
+    }
+  }
+}

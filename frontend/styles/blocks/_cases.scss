@@ -1,0 +1,127 @@
+@use "../helpers" as *;
+
+.cases{
+  &__inner{
+    padding-top: rem(70);
+    padding-bottom: rem(62);
+    display: flex;
+    flex-direction: column;
+    row-gap: rem(40);
+
+    @include tablet{
+      padding-block: rem(60);
+      row-gap: rem(32);
+    }
+  }
+
+  &__title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+
+    @include mobile{
+      order: 1;
+      flex-wrap: wrap;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(24);
+    }
+  }
+
+  &__subtitle{
+    max-width: 50%;
+
+    @include tablet{
+      max-width: 45%;
+      font-size: rem(20);
+    }
+
+    @include mobile{
+      max-width: 100%;
+    }
+  }
+
+  &__action{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include mobile{
+      display: contents;
+      flex-direction: column;
+      order: 2;
+    }
+  }
+
+  &__dropdown{
+    padding: rem(16) rem(32);
+    border: 1px solid var(--color-gray-100);
+    border-radius: rem(14);
+    font-weight: 400;
+    font-size: rem(18);
+    color: var(--color-black);
+    width: 279px;
+    font-family: var(--font-family-accent);
+
+    @include hover{
+      border: 1px solid var(--color-blue);
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &:focus-visible {
+      outline: 1px solid var(--color-blue);
+    }
+
+    @include mobile{
+      order: 1;
+      width: 100%;
+
+      .dropdown__toggle{
+        justify-content: center;
+      }
+    }
+
+    @include tablet{
+      padding-bottom: -8px;
+    }
+  }
+
+  &__splide {
+    @include mobile{
+      order: 2;
+    }
+
+    &-slide{
+      display: flex;
+      flex-direction: column;
+
+      @include mobile{
+        &:not(.is-active){
+          opacity: 0.5 !important;
+        }
+      }
+    }
+  }
+
+  &__button{
+    height: rem(55);
+
+    @include mobile{
+      width: 100%;
+    }
+
+    &--arrow{
+      min-width: rem(55);
+      aspect-ratio: 1;
+    }
+    &-wrapper{
+      @include mobile{
+        order: 3;
+      }
+    }
+  }
+}
