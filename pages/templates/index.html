@@ -483,27 +483,16 @@
                                 <div class="service__splide splide">
                                 <div class="service__splide-track splide__track">
                                     <ul class="service__splide-list splide__list">
+                                        {% for serv_photo in service.photos.all %}
                                         <li class="service__splide-slide splide__slide">
                                                 <img
-                                                        src="{{ service.photo.url }}"
+                                                        src="{{ serv_photo.photo.url }}"
                                                         alt=""
                                                         class="service__card-img"
                                                 >
                                         </li>
-                                        <li class="service__splide-slide splide__slide">
-                                                <img
-                                                        src="{{ service.photo.url }}"
-                                                        alt=""
-                                                        class="service__card-img"
-                                                >
-                                        </li>
-                                        <li class="service__splide-slide splide__slide">
-                                                <img
-                                                        src="{{ service.photo.url }}"
-                                                        alt=""
-                                                        class="service__card-img"
-                                                    >
-                                        </li>
+                                        {% endfor %}
+
                                     </ul>
                                 </div>
                                 <div class="service__progress-wrapper">
