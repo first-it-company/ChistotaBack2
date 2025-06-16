@@ -26,17 +26,28 @@ class ScopeServices(models.Model):
         return self.name
 
 
+class ServicePhoto(models.Model):
+    photo = ProcessedImageField(
+        upload_to='services',
+        format='WEBP',
+        options={'quality': 80},
+        verbose_name='Фото'
+    )
+
+    class Meta:
+        verbose_name = 'Фотография услуги'
+        verbose_name_plural = 'Фотографии услуг'
+
+
 class Services(models.Model):
     scope = models.ForeignKey(ScopeServices, on_delete=models.CASCADE, verbose_name='Сфера')
     desc = models.TextField(verbose_name='Описание')
     price = models.DecimalField(max_digits=12, decimal_places=2, verbose_name='Цена')
     time_work = models.CharField(max_length=150, verbose_name='Часы работы')
     square = models.CharField(max_length=150, verbose_name='Площадь работы')
-    photo = ProcessedImageField(
-        upload_to='services',
-        format='WEBP',
-        options={'quality': 80},
-        verbose_name='Фото'
+    photos = models.ManyToManyField(
+        ServicePhoto,
+        verbose_name='Фотографии'
     )
 
     class Meta:
@@ -137,3 +148,23 @@ class PriceServices(models.Model):
 
     def __str__(self):
         return f'{self.scope.name} - {self.price}'
+
+
+class Employee(models.Model):
+    photo = ProcessedImageField(
+        upload_to='employee',
+        format='WEBP',
+        options={'quality': 80},
+        verbose_name='Фото'
+    )
+    name = models.TextField(verbose_name='ФИО')
+    position = models.CharField(max_length=500, verbose_name='Должность')
+
+    class Meta:
+        verbose_name = 'Сотрудник компании'
+        verbose_name_plural = 'Сотрудники компании'
+
+    def __str__(self):
+        return self.name
+
+

@@ -22,7 +22,9 @@
 <p>Цена: {{ service.price }}</p>
 <p>Часы работы: {{ service.time_work }}</p>
 <p>Площадь работы: {{ service.square }}</p>
-<img src="{{ service.photo.url }}" height="200">
+{% for serv_photo in service.photos.all %} <!-- Изменил: теперь несколько фото может быть -->
+<img src="{{ serv_photo.photo.url }}" height="200">
+{% endfor %}
 <hr>
 {% endfor %}
 <h1>А также...</h1>
@@ -32,7 +34,7 @@
 <h1>Мы выполнили >{{ order_info.cnt_order }} заказов</h1>
 <select name="select" id="scope-select">
     <option value="">Все</option>
-    {% for scope in scope_services %}
+    {% for scope in scope_services_for_orders %} <!-- Изменил для фильтрации сфер услуг -->
   <option value="{{ scope.name }}">{{ scope.name }}</option>
     {% endfor %}
 </select>
@@ -94,6 +96,14 @@
         <span>Итого: </span><span id="total-price">0</span><span>₽</span>
     </div>
 </form>
+
+<!-- Добавил блок Сотрудники -->
+<h1>Сотрудники</h1>
+{% for emp in employee %}
+<img src="{{ emp.photo }}">
+<p>ФИО: {{ emp.name }}</p>
+<p>Должность: {{ emp.position }}</p>
+{% endfor %}
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {

@@ -2,7 +2,7 @@ from django.shortcuts import render
 import requests
 from .models import (AboutMain, Services, ScopeServices, OrderInfo,
                      Order, QuestionAnswer, Contact, Feedback, PriceServices,
-                     VideoMain)
+                     VideoMain, Employee)
 from django.http.response import JsonResponse
 import json
 from django.core.serializers.json import DjangoJSONEncoder
@@ -60,6 +60,10 @@ def home(request):
     about_main = AboutMain.objects.first()
     services = Services.objects.all()
     scope_services = ScopeServices.objects.all()
+
+    used_orders_scope_ids = Order.objects.values_list('scope', flat=True).distinct()
+    scope_services_for_orders = ScopeServices.objects.filter(id__in=used_orders_scope_ids)
+
     order_info = OrderInfo.objects.first()
     orders = Order.objects.all()
     gis_data = gis_data_company()
@@ -70,6 +74,7 @@ def home(request):
     contact = Contact.objects.first()
     list_square = PriceServices.objects.values_list('square', flat=True).distinct()
     videos = VideoMain.objects.all()
+    employee = Employee.objects.all()
 
     reviews_for_slider = []
     for review in gis_reviews:
@@ -103,7 +108,9 @@ def home(request):
         'list_square': list_square,
         'videos': videos,
         'vl_data': vl_data,
-        'yandex_data': yandex_data
+        'yandex_data': yandex_data,
+        'employee': employee,
+        'scope_services_for_orders': scope_services_for_orders
     })
 
 
