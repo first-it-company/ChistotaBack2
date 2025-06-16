@@ -104,8 +104,6 @@ class Contact(models.Model):
 class Feedback(models.Model):
     name = models.CharField(max_length=250, verbose_name='Имя')
     phone = models.CharField(max_length=50, verbose_name='Телефон')
-    square = models.CharField(max_length=250, verbose_name='Квадратура', null=True, blank=True)
-    scope = models.CharField(max_length=250, verbose_name='Сфера услуг')
     message = models.TextField(verbose_name='Сообщение/вопрос', null=True, blank=True)
 
     class Meta:
