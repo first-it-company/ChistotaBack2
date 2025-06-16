@@ -702,7 +702,7 @@
                         data-dropdown-config='{
                             "options": [
                             {"value": "", "label": "Все"},
-                            {% for scope in scope_services %}
+                            {% for scope in scope_services_for_orders %}
                                 {"value": "{{ scope.name }}", "label": "{{ scope.name }}"}{% if not forloop.last %},{% endif %}
                             {% endfor %}
                             ]
