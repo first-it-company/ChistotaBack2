@@ -31,7 +31,10 @@
     &-name{
       font-size: rem(20);
       color: var(--color-black);
-      line-height: rem(14);
+
+      @include tablet-above{
+        line-height: rem(14);
+      }
     }
 
     &-post{

@@ -2,14 +2,23 @@ import { gsap } from "gsap";
 
 export function initServiceCarouselL() {
     const track = document.querySelector('.other-carousel__track--bottom');
-    let slides = Array.from(track.querySelectorAll('.other-carousel__slide'));
+    if (!track) return;
+
+    const slides = Array.from(track.querySelectorAll('.other-carousel__slide'));
+
+    if (slides.length === 0) {
+        console.warn('no slides found');
+        return;
+    }
 
     slides.forEach(slide => track.appendChild(slide.cloneNode(true)));
 
     while (track.scrollWidth < window.innerWidth * 2) {
         slides.forEach(slide => track.appendChild(slide.cloneNode(true)));
     }
+
     gsap.set(track, { x: -track.scrollWidth / 2 });
+
     gsap.to(track, {
         x: `+=${track.scrollWidth / 2}`,
         duration: 50,

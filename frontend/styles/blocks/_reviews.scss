@@ -7,7 +7,8 @@
     padding-block: rem(70);
 
     @include tablet{
-      padding-block: rem(60);
+      padding-top: rem(60);
+      padding-bottom: rem(10);
     }
 
     @include tablet{
@@ -26,10 +27,8 @@
       flex-direction: column;
       gap: rem(24);
       margin-bottom: rem(24);
-    }
-
-    @include tablet{
       order: 1;
+      width: 100%;
     }
   }
 
@@ -80,6 +79,7 @@
       @include tablet{
         width: rem(320);
         height: fit-content;
+        min-height: rem(320);
       }
 
       &-inner{

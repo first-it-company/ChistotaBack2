@@ -11,13 +11,38 @@ export function initHeader() {
         navUp: 'nav-up',
     }
 
-    const onBurgerButtonClick = () => {
-        burgerButton.classList.toggle(STATE_CLASSES.isActive)
-        overlay.classList.toggle(STATE_CLASSES.isActive)
-        document.documentElement.classList.toggle(STATE_CLASSES.isLock)
+    const openOverlay = () => {
+        burgerButton.classList.add(STATE_CLASSES.isActive)
+        overlay.classList.add(STATE_CLASSES.isActive)
+        document.documentElement.classList.add(STATE_CLASSES.isLock)
+        root.classList.remove(STATE_CLASSES.navUp)
     }
 
-    burgerButton.addEventListener('click', onBurgerButtonClick)
+    const closeOverlay = () => {
+        burgerButton.classList.remove(STATE_CLASSES.isActive)
+        overlay.classList.remove(STATE_CLASSES.isActive)
+        document.documentElement.classList.remove(STATE_CLASSES.isLock)
+        root.classList.remove(STATE_CLASSES.navUp)
+    }
+
+    burgerButton.addEventListener('click', () => {
+        if (overlay.classList.contains(STATE_CLASSES.isActive)) {
+            closeOverlay()
+        } else {
+            openOverlay()
+        }
+    })
+
+    document.addEventListener('click', (event) => {
+        const target = event.target
+        if (
+            overlay.classList.contains(STATE_CLASSES.isActive) &&
+            !overlay.contains(target) &&
+            !burgerButton.contains(target)
+        ) {
+            closeOverlay()
+        }
+    })
 
     let lastScroll = 0
     const scrollThreshold = 100
@@ -27,6 +52,10 @@ export function initHeader() {
 
         if (currentScroll > lastScroll && currentScroll > scrollThreshold) {
             root.classList.add(STATE_CLASSES.navUp)
+
+            if (overlay.classList.contains(STATE_CLASSES.isActive)) {
+                closeOverlay()
+            }
         } else {
             root.classList.remove(STATE_CLASSES.navUp)
         }
@@ -34,3 +63,4 @@ export function initHeader() {
         lastScroll = currentScroll
     })
 }
+

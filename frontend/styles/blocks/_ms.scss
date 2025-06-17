@@ -3,6 +3,7 @@
   .ms{
     &-track{
       display: flex;
+      align-items: center;
     }
 
     &-slides{
@@ -19,6 +20,7 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      height: fit-content;
 
       &__card{
         width: 100%;
