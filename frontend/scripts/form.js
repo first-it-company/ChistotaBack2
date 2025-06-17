@@ -1,4 +1,6 @@
 import IMask from 'imask';
+import { closeModal } from './modal.js';
+
 
 export function initFormFeedback() {
     const forms = document.querySelectorAll('[data-feedback-form]');
@@ -73,16 +75,21 @@ export function initFormFeedback() {
             }
 
             if (phoneMask && phoneMask.unmaskedValue.length !== 11) {
-                alert('Введите корректный номер телефона');
                 setError(phoneInput, true);
+                setTimeout(() => phoneInput.focus(), 3000);
                 return;
             }
 
             if (checkbox && !checkbox.checked) {
-                checkbox.style.outline = '2px solid #dc3545';
-                setTimeout(() => {
-                    checkbox.style.outline = '';
-                }, 3000);
+                setError(checkbox, true);
+
+                checkbox.addEventListener('change', () => {
+                    if (checkbox.checked) {
+                        setError(checkbox, false);
+                    }
+                }, { once: true });
+
+                setTimeout(() => checkbox.focus(), 3000);
                 return;
             }
 
@@ -99,7 +106,15 @@ export function initFormFeedback() {
                 return res.json();
             })
             .then(() => {
-                alert('Форма успешно отправлена!');
+                const successModal = document.getElementById('success');
+                if (successModal) {
+                    successModal.classList.add('is-active');
+                } else {
+                    alert('Форма успешно отправлена!');
+                }
+
+                closeModal();
+
                 form.reset();
                 if (phoneMask) phoneMask.updateValue();
                 
@@ -114,5 +129,6 @@ export function initFormFeedback() {
                 alert('Произошла ошибка при отправке формы');
             });
         });
+        
     });
 }

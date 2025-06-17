@@ -15,8 +15,9 @@ import { initHeroSlider } from "./heroSplide";
 import { initMobileHeroSlider } from "./mobileHeroSlider";
 import { initTeamSlider } from "./teamSlider";
 import { initServiceSliders } from "./serviceSlider";
-import { initModal } from "./modal.js"
-import { initFormFeedback } from "./form.js"
+import { initModal } from "./modal.js";
+import { initFormFeedback } from "./form.js";
+import { initModalSuccess } from "./modalSuccess.js";
 
 document.addEventListener('DOMContentLoaded', () => {
     initTypewriterHero();
@@ -35,7 +36,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initServiceSliders();
     initModal();
     initFormFeedback();
-
+    initModalSuccess();
+    
     document.querySelectorAll('[data-dropdown-config]').forEach(element => {
         try {
             const config = JSON.parse(element.dataset.dropdownConfig);

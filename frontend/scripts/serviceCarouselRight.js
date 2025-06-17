@@ -2,7 +2,14 @@ import { gsap } from "gsap";
 
 export function initServiceCarouselR() {
     const track = document.querySelector('.other-carousel__track--top');
-    let slides = Array.from(track.querySelectorAll('.other-carousel__slide'));
+    if (!track) return;
+
+    const slides = Array.from(track.querySelectorAll('.other-carousel__slide'));
+
+    if (slides.length === 0) {
+        console.warn('no slides found');
+        return;
+    }
 
     slides.forEach(slide => track.appendChild(slide.cloneNode(true)));
 

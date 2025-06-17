@@ -16,21 +16,8 @@
 
   &__track {
     display: flex;
+    align-items: center;
     gap: rem(20);
     width: max-content;
-  }
-
-  &__slide {
-    img {
-      width: rem(63);
-      height: rem(63);
-      object-fit: cover;
-
-      @include mobile{
-        width: rem(40);
-        height: rem(40);
-      }
-
-    }
   }
 }

@@ -4,7 +4,12 @@ export function initBrandsCarousel() {
     const track = document.querySelector('.carousel__track');
     if (!track) return;
 
-    let logos = Array.from(track.querySelectorAll('.carousel__slide'));
+    const logos = Array.from(track.querySelectorAll('.carousel__slide'));
+    
+    if (logos.length === 0) {
+        console.warn('no slides found');
+        return;
+    }
 
     logos.forEach(logo => track.appendChild(logo.cloneNode(true)));
 

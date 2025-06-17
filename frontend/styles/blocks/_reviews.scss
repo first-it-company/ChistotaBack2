@@ -7,7 +7,8 @@
     padding-block: rem(70);
 
     @include tablet{
-      padding-block: rem(60);
+      padding-top: rem(60);
+      padding-bottom: rem(10);
     }
 
     @include tablet{

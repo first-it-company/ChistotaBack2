@@ -6,40 +6,39 @@
   inset: 0;
   z-index: 1000;
 
-  &__close{
-    @include reset-button;
-    position: absolute;
-    right: rem(5);
-    top: rem(5);
-    padding: rem(20);
-    border-radius: 25%;
-
-    @include hover{
-      background-color: var(--color-gray-50);
-    }
-
-    &::before,
-    &::after {
-      content: '';
+  &__close-button{
+      @include reset-button;
       position: absolute;
-      left: 50%;
-      top: 50%;
-      width: rem(20);
-      height: rem(2);
-      background-color: #000;
-      transform-origin: center;
-      border-radius: 100%;
-    }
+      right: rem(10);
+      top: rem(10);
+      padding: rem(20);
+      border-radius: rem(8);
+      background-color: var(--color-gray-50);
 
-    &::before {
-      transform: translate(-50%, -50%) rotate(45deg);
-    }
+      @include hover{
+          background-color: var(--color-gray-100);
+      }
 
-    &::after {
-      transform: translate(-50%, -50%) rotate(-45deg);
-    }
+      &::before,
+      &::after {
+          content: '';
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          width: rem(20);
+          height: rem(2);
+          background-color: var(--color-blue);
+          transform-origin: center;
+          border-radius: 100%;
+      }
 
+      &::before {
+          transform: translate(-50%, -50%) rotate(45deg);
+      }
 
+      &::after {
+          transform: translate(-50%, -50%) rotate(-45deg);
+      }
   }
 
   &.is-active {
@@ -70,6 +69,7 @@
     @include tablet{
       max-width: 100%;
       width: 90%;
+      padding: rem(32) rem(20);
     }
   }
 
@@ -157,6 +157,8 @@
   &__button {
     width: 100%;
     line-height: rem(17);
+    max-height: rem(55);
+
   }
 
   &__policy{
