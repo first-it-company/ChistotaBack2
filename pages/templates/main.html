@@ -105,6 +105,11 @@
 <p>Должность: {{ emp.position }}</p>
 {% endfor %}
 
+<!-- Лого для блока Нас Выбирают -->
+{% for log in logo %}
+<img src="{{ log.photo.url }}">
+{% endfor %}
+
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const select = document.getElementById('scope-select');
