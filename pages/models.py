@@ -168,3 +168,14 @@ class Employee(models.Model):
         return self.name
 
 
+class Logo(models.Model):
+    photo = ProcessedImageField(
+        upload_to='logo',
+        format='WEBP',
+        options={'quality': 80},
+        verbose_name='Лого'
+    )
+
+    class Meta:
+        verbose_name = 'Лого для блока Нас Выбирают'
+        verbose_name_plural = 'Лого для блока Нас Выбирают'

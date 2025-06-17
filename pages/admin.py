@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import (AboutMain, ScopeServices, Services, OrderInfo, Order,
                      QuestionAnswer, Contact, Feedback, VideoMain,
-                     PriceServices, Employee, ServicePhoto)
+                     PriceServices, Employee, ServicePhoto, Logo)
 
 admin.site.register(AboutMain)
 admin.site.register(ScopeServices)
@@ -15,4 +15,5 @@ admin.site.register(VideoMain)
 admin.site.register(PriceServices)
 admin.site.register(Employee)
 admin.site.register(ServicePhoto)
+admin.site.register(Logo)
 
