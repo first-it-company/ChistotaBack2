@@ -14,10 +14,18 @@ body{
   color: var(--color-gray-300);
   background-color: var(--color-white);
   font-weight: 400;
-  overflow-x: hidden;
+
 }
 main{
   flex-grow: 1;
+
+  &:first-child{
+    overflow-x: hidden;
+  }
+}
+
+.overflow-wrapper {
+  overflow-x: hidden;
 }
 
 h1,

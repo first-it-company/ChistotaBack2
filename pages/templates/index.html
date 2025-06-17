@@ -36,8 +36,9 @@
     <script>
         window.gisReviewsData = {{ gis_reviews_json|safe }};
     </script>
-
+    {% vite_hmr_client %}
     {% vite_asset 'scripts/main.js' %}
+
 </head>
 <body>
     <header class="header">
@@ -116,232 +117,69 @@
         </div>
     </header>
     <main>
-        <section class="hero">
-            <div class="hero__main hidden-tablet">
-                    <div class="hero__body">
-                        <div class="hero__header-inner">
-                            <h3 class="hero__header splitting-text" data-splitting>
-                                С нами у вас всегда <br>
-                                <span class="hero__header-print"></span>
-                            </h3>
-                            <p class="hero__subheader">
-                                Профессиональный клининг для дома и офиса с гарантией качества.
-                            </p>
+        <div class="overflow-wrapper">
+            <section class="hero">
+                <div class="hero__main hidden-tablet">
+                        <div class="hero__body">
+                            <div class="hero__header-inner">
+                                <h3 class="hero__header splitting-text" data-splitting>
+                                    С нами у вас всегда <br>
+                                    <span class="hero__header-print"></span>
+                                </h3>
+                                <p class="hero__subheader">
+                                    Профессиональный клининг для дома и офиса с гарантией качества.
+                                </p>
 
-                            <div class="hero__review">
-                                <button class="review-button">
-                                    <img
-                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAOLSURBVHgBzVdNaBNBFP5mdjdNqiFJa8WDYosHEQX/LiKICt5b0Zug+IPoQfAggierBxFEqAdRBFFvXgTx76JoqzfRWhHEg9hUemlpm9W0sSa7M7633YRtmzbbJC1+sPmZnZnv/c2b9wRCInkvk3QLboeAsVsAW2iolYf91zY9aQ30adftMaLGY/toyg6zr6g0IXkr06oMdVZAHgkQVgQJc1+6uGSfTqVRjQCsscrjohA4ixqgNbpkhASZwyJlBWCttYE3mDJz7dBIC4W95awhZ5HfzGypKzlDoFVLvOG9Z78Kktdb85koY4mSAOxzXcCnRSMPChHB1mJMlFzAAbfo5Axyh8/l/0XJ9P1YQggXbewKzwJKqk4sMTi3eIL4vs+gzsg7Gn9zmvMAmpYJNC+XyNLYhFMKPFtYaDNB6RUwUCt4U5fIshkX61eZuLArhgPrIhicUHjwLY+XPx2M5ZWXmXwJvNRuKi32iIoJuQI5rbdHXJzcEcW1nQk0kD5n3uZw/Mk4RFQgRo/0SYJcfK+YQsjNwc30DK0qEedIw00tJt6dS6DRFLj8/g8uvsohvkIi3mR4Cs+5ni41E4GjxyZcGRPY3mIgm9foHXQwPK7REJvSIriXQavHSOu77ctxbEMDFL1cc9vGKG2SXDlFPB+5j1Y+BcngpkMUON0DDkwp8PxgHPp8E552xLG6QeCXrciUPvmwi94TCRwl8hwFl3F1BBOkTiQiwhAXkRSJO5my09m8kzmFQh54dCCO9jYLP3672Pcwi/4hB72nktjUbHrzrCujaF5lwFFYMFiADOa556Xv540pAx8PJ7yxD8MONq8wYZH9Gq+PIpY04FZBTrDZBen5ZrBvo40S3yc1kY15Y9tapsjbn2Uh6XxXSc5IS63V5zAz2dTRhESiK+NZ5cuoi6dfCyRI9WeYSzgphe4Ou4CtoWPAidc5HHoxjlSTRPh4KyOAi55iKuaLKHS9N0lRbxl8GmrLYJSKU5LvZQ31YCELo5RwaiXnopW5vdtQurILSwyumL1v/uB7maxwA0sE0v5GsSwrVUTSkp2ocCTrxJ6WFjpLvMUf7A+qUvYuqhDFojTQI0wry9ksooD9iyIEkzvYP7M3+P8aE4ZnCQtb6xGYHHBeGT5HjxiuOaWilQqXIwgPL7fw8a66OZ0lCGVMFNChtKISTlCLJdZiWnuuB7TWfVLIblgI3Z7/A9REe8uT8RSyAAAAAElFTkSuQmCC"
-                                            alt="VL.ru"
-                                            class="hero__review-logo"
-                                            width="32" height="32"
-                                    >
-                                    <span>{% if vl_data.average_rating %}{{ vl_data.average_rating }}{% else %} 5{% endif %}</span>
-                                    <img
-                                            src="data:image/svg+xml,%3csvg%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M11.4416%202.9252L12.9083%205.85853C13.1083%206.26686%2013.6416%206.65853%2014.0916%206.73353L16.7499%207.1752C18.4499%207.45853%2018.8499%208.69186%2017.6249%209.90853L15.5583%2011.9752C15.2083%2012.3252%2015.0166%2013.0002%2015.1249%2013.4835L15.7166%2016.0419C16.1833%2018.0669%2015.1083%2018.8502%2013.3166%2017.7919L10.8249%2016.3169C10.3749%2016.0502%209.63326%2016.0502%209.17492%2016.3169L6.68326%2017.7919C4.89992%2018.8502%203.81659%2018.0585%204.28326%2016.0419L4.87492%2013.4835C4.98326%2013.0002%204.79159%2012.3252%204.44159%2011.9752L2.37492%209.90853C1.15826%208.69186%201.54992%207.45853%203.24992%207.1752L5.90826%206.73353C6.34992%206.65853%206.88326%206.26686%207.08326%205.85853L8.54992%202.9252C9.34992%201.33353%2010.6499%201.33353%2011.4416%202.9252Z'%20fill='%23F9CB2D'/%3e%3c/svg%3e"
-                                            alt=""
-                                            class=""
-                                            width="20" height="20"
-                                    >
-                                </button>
-                                <button class="review-button">
-                                    <img
-                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAI6SURBVHgB7ZexbhNBEIb/2dhFpIBSunAk0yPFJUiWODeQAgmK0CPxAMAT4PACgEQJEj0uUkY0uQIJSjd0SDiQwqUF6Y67YWbB512T892R87nhl07y3u7q/2Z2dqwjLCjqtQMY3DVEdxjooAIReMSgUUTRwWY4Gftzf8TB9naSXHrChEdYoYjx3JgfBxROpymANeetY6HsogZpRgyd9RXC6AsbeU3mKvVSTwvDQasTc/ML1iAm7ps4aQ6wLiW22Hk3a56617ARfk0fuv8YeaK9e/6eVjt7rdw0s+zsefRRng/p2Ow/ALYuYymAA2n3T06XLe8Y5IjfPJsPxJwUIsu8d9OLmIevkKd8gIUs0N5+5loPbvIN/P4dLgxgIZwsUGvH1sZfksipez0dJm7mLgwgWYBzlucVo/dOoz8aojIAVTJ8PTeTSL0sSPRGqt8DLqjCAHz0Fjj7PodwIqbeLX9twfSXAlDzrCy4xaegOVfPUwMlxArg9gJJu/03E8OZaZnoVfTzxg6X2iCpN07649tXvaMpq+JHMJPWggu0pDGtBEBT7TaYIu25UgAL4bZYbc8Lt2D1ANqeP39Kx+d2xlUCWLmFJ+25foCK9B9AAPgEaxLJx0qDGYdEeIiS4pdPwbP7/4+dkOU+URS0A2I6xhoU0cYV0wxPQ2Z+gZqlnpvheGyLsGEaAz0P1CR79uKpvy0AheOpIdOvIxPqoV7q+RtmcUHQ6cRJPJCv5K5M7qIS8YkWu4R7qEfuzvwC6o3pQznqsqgAAAAASUVORK5CYII="
-                                            alt="Яндекс"
-                                            class="hero__review-logo"
-                                            width="32" height="32"
-                                    >
-                                    <span>{% if yandex_data.average_rating %}{{ yandex_data.average_rating }}{% else %} 5{% endif %}</span>
-                                    <img
-                                            src="data:image/svg+xml,%3csvg%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M11.4416%202.9252L12.9083%205.85853C13.1083%206.26686%2013.6416%206.65853%2014.0916%206.73353L16.7499%207.1752C18.4499%207.45853%2018.8499%208.69186%2017.6249%209.90853L15.5583%2011.9752C15.2083%2012.3252%2015.0166%2013.0002%2015.1249%2013.4835L15.7166%2016.0419C16.1833%2018.0669%2015.1083%2018.8502%2013.3166%2017.7919L10.8249%2016.3169C10.3749%2016.0502%209.63326%2016.0502%209.17492%2016.3169L6.68326%2017.7919C4.89992%2018.8502%203.81659%2018.0585%204.28326%2016.0419L4.87492%2013.4835C4.98326%2013.0002%204.79159%2012.3252%204.44159%2011.9752L2.37492%209.90853C1.15826%208.69186%201.54992%207.45853%203.24992%207.1752L5.90826%206.73353C6.34992%206.65853%206.88326%206.26686%207.08326%205.85853L8.54992%202.9252C9.34992%201.33353%2010.6499%201.33353%2011.4416%202.9252Z'%20fill='%23F9CB2D'/%3e%3c/svg%3e"
-                                            alt=""
-                                            class=""
-                                            width="20" height="20"
-                                    >
-                                </button>
-                                <button class="review-button">
-                                    <img
-                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAATkSURBVHgBrVddTBxVFP7u7GIWijCYYAjLzyBpKz+GIdFUNKYQk9L6oEtsbHyiRH0wMRGqL76UXd9r6YPxoY1tnyq2ZumDKfICTaStNhFMoU1jWoa/CiXCsFhYWJjbcy8sy8LOsAt8yWTv7D33fN89995z7jAkCR5UVXg8PjAcBmM6PRo4V2UnYya1DXr6wXET4XAHazDNZPyybYlv5AmiZrhdjeuESSnml0hMgB2bMLATAXLGGemt1GzGrsD9rH4igFQEyFkrrJuaGvYGBixelygayhbyLq++x+SQvsgn/zVX39wRFwHOuYZH33VjulfDwigQHtvqyp0FeE8AmeVAeuHqf8sh4GknMH0r8ZgYtkQiTsAvw8Ghg1kHtAq1POZ4fmTV6dzgKnnxZzDDwPV7FowZLs30fIYqrwIth17G24GHratj7UTML1RHT8m6gLyrRa2Mwx99ryQRBRkFKNxXgHpvPd7KfZMIgaafltHziCf0fPINBa1HXNA8FL27HzpEw2pj9ZMt6wLyruRpzPXCUCJTIeBabTv+MwtQ98MyzAUOJ6jpQPfnbug5RD5yIT6CcRp4iVgKt3xR0vx2Dr8qb8HKYnLkAuYCpG3fqUJoBwMIRULISsta7QwNxMQsheh4f9vMtKCmLkasGdjM/o/3eqVDu7DbobaUyUi82vEaskmA8FWxtqyVORUoV8vM7LTsEnc4vOJjrsT56Gj+EbnuqZILiDHDtEk/0o7jwj8/YnR+DLem7mw0UTm4T6FMUGvnpCa3BtcHLOwUQkRFdrmDBTusKAqrsuvOSnsxqXW3gzHNUZRZaNtPcddFJtTsDEKROdrV29ar3UBTOIdqL2AW2R7sGHq+goGZQScTVXHqvU2bxlfpaOKIqnxg0LzvaKMwBtuLw43xLplYxJFKFWKM9hLbvPM3wxSJyKBHT9QrkohwcPHEIbmj/35ioWOAy6OZCKpHpGOqCxR6UR/ajasYm3cuTq59x7NrKAq6nYUIYYRNofTl//F+RTpOv5uDWcp2d0biT0fzOwqCTS68/sq/mEAX+ue6cJ7Ov5iEHZiCTjcY76Fmo5OAjev46f5PcPaD0+h/wtcTlK+C0X8unLnfhjODZ5EsLIvflKl4adkacjoNmxHQW7FfOUkpekW+951y4+HSNbTc/RqpYOFZKEcxGgyTyC+nMrBz/DfaZKL+M3kHEOst0m0qoPBfMptMuQnBV5Q25rK+THbw7bWdrXtF9Vs9IU7HTRQgUYiKqCBF7xj9Uw8C36AFUsDEx4bh/bnoHGX9pEWI3a168uQxHX02JktutOIVZhTESCkVR8uxGRnF8PzvKE4vCxwrOGrISEQdrpXlPmxzGRXOhOOLb5/HX8OZMlXr3lieWLRCRDSCifA9TC4OStJJaotfAQ5mtJZNlUTt4zJM3hWNbkaWvBFvDFs5VbREs5lcJMdLo5hYHMBTekQ7bM3aihfkHK46f5nNpVQgOBTUfZovKERsnI0gFM/IfC/CKyFHIltyFxr8B6b6N/6f+MOEruffPz7UPb30WMMeINHMo0hYaRhjxhelf5ZQmglgt+Scn+PhSHUicsm1nQP/A7ox8xU/Y7wRyYIKHF/ml7krrc2OOGaaJPx9qqp40nyUtGpJDH2eoxjR7CkqKl0Babb9jCk9VjjS4a9O7vP8OSFAKqa8USIUAAAAAElFTkSuQmCC"
-                                            alt="2gis"
-                                            class="hero__review-logo"
-                                            width="32" height="32"
-                                    >
-                                    <span>{% if gis_data.average_rating %}{{ gis_data.average_rating }}{% else %} 5{% endif %}</span>
-                                    <img
-                                            src="data:image/svg+xml,%3csvg%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M11.4416%202.9252L12.9083%205.85853C13.1083%206.26686%2013.6416%206.65853%2014.0916%206.73353L16.7499%207.1752C18.4499%207.45853%2018.8499%208.69186%2017.6249%209.90853L15.5583%2011.9752C15.2083%2012.3252%2015.0166%2013.0002%2015.1249%2013.4835L15.7166%2016.0419C16.1833%2018.0669%2015.1083%2018.8502%2013.3166%2017.7919L10.8249%2016.3169C10.3749%2016.0502%209.63326%2016.0502%209.17492%2016.3169L6.68326%2017.7919C4.89992%2018.8502%203.81659%2018.0585%204.28326%2016.0419L4.87492%2013.4835C4.98326%2013.0002%204.79159%2012.3252%204.44159%2011.9752L2.37492%209.90853C1.15826%208.69186%201.54992%207.45853%203.24992%207.1752L5.90826%206.73353C6.34992%206.65853%206.88326%206.26686%207.08326%205.85853L8.54992%202.9252C9.34992%201.33353%2010.6499%201.33353%2011.4416%202.9252Z'%20fill='%23F9CB2D'/%3e%3c/svg%3e"
-                                            alt=""
-                                            class=""
-                                            width="20" height="20"
-                                    >
-                                </button>
-                            </div>
-                        </div>
-                        <div class="hero__button-wrapper button__wrapper">
-                            <button class="button hero__button modal-open">Заказать уборку</button>
-                            <button class="hero__button--arrow button--arrow modal-open">
-                                <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M15.5713 8.5H1.42915" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
-                                    <path d="M8.50022 15.5711L15.5713 8.5L8.50022 1.42893" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            <div class="hero__splide splide">
-                <div class="hero__advantages">
-                    <div class="hero__advantages-item">
-                        <p class="hero__advantages-title">Успех гарантирован</p>
-                        <div class="hero__advantages-info">
-                            <p class="hero__advantages-value"><span>+{{ about_main.cnt_people }}</span> чел</p>
-                            <p class="hero__advantages-label">в команде</p>
-                        </div>
-                    </div>
-                    <div class="hero__advantages-item">
-                        <p class="hero__advantages-title">Работаем с 2019 г</p>
-                        <div class="hero__advantages-info">
-                            <p class="hero__advantages-value"><span>+{{ about_main.cnt_year }}</span> лет</p>
-                            <p class="hero__advantages-label">В этой сфере</p>
-                        </div>
-                    </div>
-                    <div class="hero__advantages-item">
-                        <p class="hero__advantages-title">В надежных руках</p>
-                        <div class="hero__advantages-info">
-                            <p class="hero__advantages-value"><span>+{{ about_main.cnt_square }}к</span> м2</p>
-                            <p class="hero__advantages-label">Вычищаем/мес</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="hero__splide-track splide__track">
-                    {% if videos %}
-                        <ul class="splide__list">
-                            {% for video in videos %}
-                            <li class="hero__splide-slide splide__slide">
-                                <div class="hero__splide-slide-inner">
-                                    <video
-                                            src="{{ video.video.url }}"
-                                            preload="metadata"
-                                            muted
-                                            playsinline
-                                    ></video>
-                                </div>
-                            </li>
-                            {% endfor %}
-                        </ul>
-                    {% endif %}
-                </div>
-            </div>
-            <div class="hero__main-mobile hero__main splide visible-tablet">
-                <div class="hero__main-track splide__track">
-                    <ul class="splide__list">
-                        <li class="hero__main-slide splide__slide visible-tablet">
-                            {% if videos %}
-                                <video autoplay muted loop playsinline class="hero__mobile-video ">
-                                    <source src="{{ videos.0.video.url }}" type="video/mp4">
-                                </video>
-                            {% endif %}
-                            <div class="hero__overlay visible-tablet"></div>
-                            <div class="hero__body">
-                                <div class="hero__header-inner">
-                                    <h3 class="hero__header splitting-text" data-splitting>
-                                        С нами у вас всегда <br class="visible-tablet">
-                                        <span class="hero__header-print"></span>
-                                    </h3>
-                                    <p class="hero__subheader">
-                                        Профессиональный клининг для дома и офиса с гарантией качества.
-                                    </p>
-
-
-                                </div>
-                                <div class="hero__mobile-extra">
-                                    <div class="hero__review">
-                                        <button class="review-button">
-                                            <img
-                                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAOLSURBVHgBzVdNaBNBFP5mdjdNqiFJa8WDYosHEQX/LiKICt5b0Zug+IPoQfAggierBxFEqAdRBFFvXgTx76JoqzfRWhHEg9hUemlpm9W0sSa7M7633YRtmzbbJC1+sPmZnZnv/c2b9wRCInkvk3QLboeAsVsAW2iolYf91zY9aQ30adftMaLGY/toyg6zr6g0IXkr06oMdVZAHgkQVgQJc1+6uGSfTqVRjQCsscrjohA4ixqgNbpkhASZwyJlBWCttYE3mDJz7dBIC4W95awhZ5HfzGypKzlDoFVLvOG9Z78Kktdb85koY4mSAOxzXcCnRSMPChHB1mJMlFzAAbfo5Axyh8/l/0XJ9P1YQggXbewKzwJKqk4sMTi3eIL4vs+gzsg7Gn9zmvMAmpYJNC+XyNLYhFMKPFtYaDNB6RUwUCt4U5fIshkX61eZuLArhgPrIhicUHjwLY+XPx2M5ZWXmXwJvNRuKi32iIoJuQI5rbdHXJzcEcW1nQk0kD5n3uZw/Mk4RFQgRo/0SYJcfK+YQsjNwc30DK0qEedIw00tJt6dS6DRFLj8/g8uvsohvkIi3mR4Cs+5ni41E4GjxyZcGRPY3mIgm9foHXQwPK7REJvSIriXQavHSOu77ctxbEMDFL1cc9vGKG2SXDlFPB+5j1Y+BcngpkMUON0DDkwp8PxgHPp8E552xLG6QeCXrciUPvmwi94TCRwl8hwFl3F1BBOkTiQiwhAXkRSJO5my09m8kzmFQh54dCCO9jYLP3672Pcwi/4hB72nktjUbHrzrCujaF5lwFFYMFiADOa556Xv540pAx8PJ7yxD8MONq8wYZH9Gq+PIpY04FZBTrDZBen5ZrBvo40S3yc1kY15Y9tapsjbn2Uh6XxXSc5IS63V5zAz2dTRhESiK+NZ5cuoi6dfCyRI9WeYSzgphe4Ou4CtoWPAidc5HHoxjlSTRPh4KyOAi55iKuaLKHS9N0lRbxl8GmrLYJSKU5LvZQ31YCELo5RwaiXnopW5vdtQurILSwyumL1v/uB7maxwA0sE0v5GsSwrVUTSkp2ocCTrxJ6WFjpLvMUf7A+qUvYuqhDFojTQI0wry9ksooD9iyIEkzvYP7M3+P8aE4ZnCQtb6xGYHHBeGT5HjxiuOaWilQqXIwgPL7fw8a66OZ0lCGVMFNChtKISTlCLJdZiWnuuB7TWfVLIblgI3Z7/A9REe8uT8RSyAAAAAElFTkSuQmCC"
-                                                    alt="VL.ru"
-                                                    class="hero__review-logo"
-                                                    width="32" height="32"
-                                            >
-                                            <span>{% if vl_data.average_rating %}{{ vl_data.average_rating }}{% else %} 5{% endif %}</span>
-                                            <img
-                                                    src="data:image/svg+xml,%3csvg%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M11.4416%202.9252L12.9083%205.85853C13.1083%206.26686%2013.6416%206.65853%2014.0916%206.73353L16.7499%207.1752C18.4499%207.45853%2018.8499%208.69186%2017.6249%209.90853L15.5583%2011.9752C15.2083%2012.3252%2015.0166%2013.0002%2015.1249%2013.4835L15.7166%2016.0419C16.1833%2018.0669%2015.1083%2018.8502%2013.3166%2017.7919L10.8249%2016.3169C10.3749%2016.0502%209.63326%2016.0502%209.17492%2016.3169L6.68326%2017.7919C4.89992%2018.8502%203.81659%2018.0585%204.28326%2016.0419L4.87492%2013.4835C4.98326%2013.0002%204.79159%2012.3252%204.44159%2011.9752L2.37492%209.90853C1.15826%208.69186%201.54992%207.45853%203.24992%207.1752L5.90826%206.73353C6.34992%206.65853%206.88326%206.26686%207.08326%205.85853L8.54992%202.9252C9.34992%201.33353%2010.6499%201.33353%2011.4416%202.9252Z'%20fill='%23F9CB2D'/%3e%3c/svg%3e"
-                                                    alt=""
-                                                    class="hidden-tablet"
-                                                    width="20" height="20"
-                                            >
-                                        </button>
-                                        <button class="review-button">
-                                            <img
-                                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAI6SURBVHgB7ZexbhNBEIb/2dhFpIBSunAk0yPFJUiWODeQAgmK0CPxAMAT4PACgEQJEj0uUkY0uQIJSjd0SDiQwqUF6Y67YWbB512T892R87nhl07y3u7q/2Z2dqwjLCjqtQMY3DVEdxjooAIReMSgUUTRwWY4Gftzf8TB9naSXHrChEdYoYjx3JgfBxROpymANeetY6HsogZpRgyd9RXC6AsbeU3mKvVSTwvDQasTc/ML1iAm7ps4aQ6wLiW22Hk3a56617ARfk0fuv8YeaK9e/6eVjt7rdw0s+zsefRRng/p2Ow/ALYuYymAA2n3T06XLe8Y5IjfPJsPxJwUIsu8d9OLmIevkKd8gIUs0N5+5loPbvIN/P4dLgxgIZwsUGvH1sZfksipez0dJm7mLgwgWYBzlucVo/dOoz8aojIAVTJ8PTeTSL0sSPRGqt8DLqjCAHz0Fjj7PodwIqbeLX9twfSXAlDzrCy4xaegOVfPUwMlxArg9gJJu/03E8OZaZnoVfTzxg6X2iCpN07649tXvaMpq+JHMJPWggu0pDGtBEBT7TaYIu25UgAL4bZYbc8Lt2D1ANqeP39Kx+d2xlUCWLmFJ+25foCK9B9AAPgEaxLJx0qDGYdEeIiS4pdPwbP7/4+dkOU+URS0A2I6xhoU0cYV0wxPQ2Z+gZqlnpvheGyLsGEaAz0P1CR79uKpvy0AheOpIdOvIxPqoV7q+RtmcUHQ6cRJPJCv5K5M7qIS8YkWu4R7qEfuzvwC6o3pQznqsqgAAAAASUVORK5CYII="
-                                                    alt="Яндекс"
-                                                    class="hero__review-logo"
-                                                    width="32" height="32"
-                                            >
-                                            <span>{% if yandex_data.average_rating %}{{ yandex_data.average_rating }}{% else %} 5{% endif %}</span>
-                                            <img
-                                                    src="data:image/svg+xml,%3csvg%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M11.4416%202.9252L12.9083%205.85853C13.1083%206.26686%2013.6416%206.65853%2014.0916%206.73353L16.7499%207.1752C18.4499%207.45853%2018.8499%208.69186%2017.6249%209.90853L15.5583%2011.9752C15.2083%2012.3252%2015.0166%2013.0002%2015.1249%2013.4835L15.7166%2016.0419C16.1833%2018.0669%2015.1083%2018.8502%2013.3166%2017.7919L10.8249%2016.3169C10.3749%2016.0502%209.63326%2016.0502%209.17492%2016.3169L6.68326%2017.7919C4.89992%2018.8502%203.81659%2018.0585%204.28326%2016.0419L4.87492%2013.4835C4.98326%2013.0002%204.79159%2012.3252%204.44159%2011.9752L2.37492%209.90853C1.15826%208.69186%201.54992%207.45853%203.24992%207.1752L5.90826%206.73353C6.34992%206.65853%206.88326%206.26686%207.08326%205.85853L8.54992%202.9252C9.34992%201.33353%2010.6499%201.33353%2011.4416%202.9252Z'%20fill='%23F9CB2D'/%3e%3c/svg%3e"
-                                                    alt=""
-                                                    class="hidden-tablet"
-                                                    width="20" height="20"
-                                            >
-                                        </button>
-                                        <button class="review-button">
-                                            <img
-                                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAATkSURBVHgBrVddTBxVFP7u7GIWijCYYAjLzyBpKz+GIdFUNKYQk9L6oEtsbHyiRH0wMRGqL76UXd9r6YPxoY1tnyq2ZumDKfICTaStNhFMoU1jWoa/CiXCsFhYWJjbcy8sy8LOsAt8yWTv7D33fN89995z7jAkCR5UVXg8PjAcBmM6PRo4V2UnYya1DXr6wXET4XAHazDNZPyybYlv5AmiZrhdjeuESSnml0hMgB2bMLATAXLGGemt1GzGrsD9rH4igFQEyFkrrJuaGvYGBixelygayhbyLq++x+SQvsgn/zVX39wRFwHOuYZH33VjulfDwigQHtvqyp0FeE8AmeVAeuHqf8sh4GknMH0r8ZgYtkQiTsAvw8Ghg1kHtAq1POZ4fmTV6dzgKnnxZzDDwPV7FowZLs30fIYqrwIth17G24GHratj7UTML1RHT8m6gLyrRa2Mwx99ryQRBRkFKNxXgHpvPd7KfZMIgaafltHziCf0fPINBa1HXNA8FL27HzpEw2pj9ZMt6wLyruRpzPXCUCJTIeBabTv+MwtQ98MyzAUOJ6jpQPfnbug5RD5yIT6CcRp4iVgKt3xR0vx2Dr8qb8HKYnLkAuYCpG3fqUJoBwMIRULISsta7QwNxMQsheh4f9vMtKCmLkasGdjM/o/3eqVDu7DbobaUyUi82vEaskmA8FWxtqyVORUoV8vM7LTsEnc4vOJjrsT56Gj+EbnuqZILiDHDtEk/0o7jwj8/YnR+DLem7mw0UTm4T6FMUGvnpCa3BtcHLOwUQkRFdrmDBTusKAqrsuvOSnsxqXW3gzHNUZRZaNtPcddFJtTsDEKROdrV29ar3UBTOIdqL2AW2R7sGHq+goGZQScTVXHqvU2bxlfpaOKIqnxg0LzvaKMwBtuLw43xLplYxJFKFWKM9hLbvPM3wxSJyKBHT9QrkohwcPHEIbmj/35ioWOAy6OZCKpHpGOqCxR6UR/ajasYm3cuTq59x7NrKAq6nYUIYYRNofTl//F+RTpOv5uDWcp2d0biT0fzOwqCTS68/sq/mEAX+ue6cJ7Ov5iEHZiCTjcY76Fmo5OAjev46f5PcPaD0+h/wtcTlK+C0X8unLnfhjODZ5EsLIvflKl4adkacjoNmxHQW7FfOUkpekW+951y4+HSNbTc/RqpYOFZKEcxGgyTyC+nMrBz/DfaZKL+M3kHEOst0m0qoPBfMptMuQnBV5Q25rK+THbw7bWdrXtF9Vs9IU7HTRQgUYiKqCBF7xj9Uw8C36AFUsDEx4bh/bnoHGX9pEWI3a168uQxHX02JktutOIVZhTESCkVR8uxGRnF8PzvKE4vCxwrOGrISEQdrpXlPmxzGRXOhOOLb5/HX8OZMlXr3lieWLRCRDSCifA9TC4OStJJaotfAQ5mtJZNlUTt4zJM3hWNbkaWvBFvDFs5VbREs5lcJMdLo5hYHMBTekQ7bM3aihfkHK46f5nNpVQgOBTUfZovKERsnI0gFM/IfC/CKyFHIltyFxr8B6b6N/6f+MOEruffPz7UPb30WMMeINHMo0hYaRhjxhelf5ZQmglgt+Scn+PhSHUicsm1nQP/A7ox8xU/Y7wRyYIKHF/ml7krrc2OOGaaJPx9qqp40nyUtGpJDH2eoxjR7CkqKl0Babb9jCk9VjjS4a9O7vP8OSFAKqa8USIUAAAAAElFTkSuQmCC"
-                                                    alt="2gis"
-                                                    class="hero__review-logo"
-                                                    width="32" height="32"
-                                            >
-                                            <span>{% if gis_data.average_rating %}{{ gis_data.average_rating }}{% else %} 5{% endif %}</span>
-                                            <img
-                                                    src="data:image/svg+xml,%3csvg%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M11.4416%202.9252L12.9083%205.85853C13.1083%206.26686%2013.6416%206.65853%2014.0916%206.73353L16.7499%207.1752C18.4499%207.45853%2018.8499%208.69186%2017.6249%209.90853L15.5583%2011.9752C15.2083%2012.3252%2015.0166%2013.0002%2015.1249%2013.4835L15.7166%2016.0419C16.1833%2018.0669%2015.1083%2018.8502%2013.3166%2017.7919L10.8249%2016.3169C10.3749%2016.0502%209.63326%2016.0502%209.17492%2016.3169L6.68326%2017.7919C4.89992%2018.8502%203.81659%2018.0585%204.28326%2016.0419L4.87492%2013.4835C4.98326%2013.0002%204.79159%2012.3252%204.44159%2011.9752L2.37492%209.90853C1.15826%208.69186%201.54992%207.45853%203.24992%207.1752L5.90826%206.73353C6.34992%206.65853%206.88326%206.26686%207.08326%205.85853L8.54992%202.9252C9.34992%201.33353%2010.6499%201.33353%2011.4416%202.9252Z'%20fill='%23F9CB2D'/%3e%3c/svg%3e"
-                                                    alt=""
-                                                    class="hidden-tablet"
-                                                    width="20" height="20"
-                                            >
-                                        </button>
-                                    </div>
-                                    <div class="button__wrapper">
-                                        <button class="hero__button button modal-open">
-                                            Заказать уборку
-                                        </button>
-                                        <button class="hero__button--arrow button--arrow modal-open">
-                                            <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M15.5713 8.5H1.42915" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
-                                                <path d="M8.50022 15.5711L15.5713 8.5L8.50022 1.42893" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
-                                            </svg>
-                                        </button>
-                                    </div>
+                                <div class="hero__review">
+                                    <button class="review-button" onclick="window.open('https://www.vl.ru/chistota-dv', '_blank')">
+                                        <img
+                                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAOLSURBVHgBzVdNaBNBFP5mdjdNqiFJa8WDYosHEQX/LiKICt5b0Zug+IPoQfAggierBxFEqAdRBFFvXgTx76JoqzfRWhHEg9hUemlpm9W0sSa7M7633YRtmzbbJC1+sPmZnZnv/c2b9wRCInkvk3QLboeAsVsAW2iolYf91zY9aQ30adftMaLGY/toyg6zr6g0IXkr06oMdVZAHgkQVgQJc1+6uGSfTqVRjQCsscrjohA4ixqgNbpkhASZwyJlBWCttYE3mDJz7dBIC4W95awhZ5HfzGypKzlDoFVLvOG9Z78Kktdb85koY4mSAOxzXcCnRSMPChHB1mJMlFzAAbfo5Axyh8/l/0XJ9P1YQggXbewKzwJKqk4sMTi3eIL4vs+gzsg7Gn9zmvMAmpYJNC+XyNLYhFMKPFtYaDNB6RUwUCt4U5fIshkX61eZuLArhgPrIhicUHjwLY+XPx2M5ZWXmXwJvNRuKi32iIoJuQI5rbdHXJzcEcW1nQk0kD5n3uZw/Mk4RFQgRo/0SYJcfK+YQsjNwc30DK0qEedIw00tJt6dS6DRFLj8/g8uvsohvkIi3mR4Cs+5ni41E4GjxyZcGRPY3mIgm9foHXQwPK7REJvSIriXQavHSOu77ctxbEMDFL1cc9vGKG2SXDlFPB+5j1Y+BcngpkMUON0DDkwp8PxgHPp8E552xLG6QeCXrciUPvmwi94TCRwl8hwFl3F1BBOkTiQiwhAXkRSJO5my09m8kzmFQh54dCCO9jYLP3672Pcwi/4hB72nktjUbHrzrCujaF5lwFFYMFiADOa556Xv540pAx8PJ7yxD8MONq8wYZH9Gq+PIpY04FZBTrDZBen5ZrBvo40S3yc1kY15Y9tapsjbn2Uh6XxXSc5IS63V5zAz2dTRhESiK+NZ5cuoi6dfCyRI9WeYSzgphe4Ou4CtoWPAidc5HHoxjlSTRPh4KyOAi55iKuaLKHS9N0lRbxl8GmrLYJSKU5LvZQ31YCELo5RwaiXnopW5vdtQurILSwyumL1v/uB7maxwA0sE0v5GsSwrVUTSkp2ocCTrxJ6WFjpLvMUf7A+qUvYuqhDFojTQI0wry9ksooD9iyIEkzvYP7M3+P8aE4ZnCQtb6xGYHHBeGT5HjxiuOaWilQqXIwgPL7fw8a66OZ0lCGVMFNChtKISTlCLJdZiWnuuB7TWfVLIblgI3Z7/A9REe8uT8RSyAAAAAElFTkSuQmCC"
+                                                alt="VL.ru"
+                                                class="hero__review-logo"
+                                                width="32" height="32"
+                                        >
+                                        <span>{% if vl_data.average_rating %}{{ vl_data.average_rating }}{% else %} 5{% endif %}</span>
+                                        <img
+                                                src="data:image/svg+xml,%3csvg%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M11.4416%202.9252L12.9083%205.85853C13.1083%206.26686%2013.6416%206.65853%2014.0916%206.73353L16.7499%207.1752C18.4499%207.45853%2018.8499%208.69186%2017.6249%209.90853L15.5583%2011.9752C15.2083%2012.3252%2015.0166%2013.0002%2015.1249%2013.4835L15.7166%2016.0419C16.1833%2018.0669%2015.1083%2018.8502%2013.3166%2017.7919L10.8249%2016.3169C10.3749%2016.0502%209.63326%2016.0502%209.17492%2016.3169L6.68326%2017.7919C4.89992%2018.8502%203.81659%2018.0585%204.28326%2016.0419L4.87492%2013.4835C4.98326%2013.0002%204.79159%2012.3252%204.44159%2011.9752L2.37492%209.90853C1.15826%208.69186%201.54992%207.45853%203.24992%207.1752L5.90826%206.73353C6.34992%206.65853%206.88326%206.26686%207.08326%205.85853L8.54992%202.9252C9.34992%201.33353%2010.6499%201.33353%2011.4416%202.9252Z'%20fill='%23F9CB2D'/%3e%3c/svg%3e"
+                                                alt=""
+                                                class=""
+                                                width="20" height="20"
+                                        >
+                                    </button>
+                                    <button class="review-button" onclick="window.open('https://yandex.ru/maps/-/CHWKmQ7K', '_blank')">
+                                        <img
+                                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAI6SURBVHgB7ZexbhNBEIb/2dhFpIBSunAk0yPFJUiWODeQAgmK0CPxAMAT4PACgEQJEj0uUkY0uQIJSjd0SDiQwqUF6Y67YWbB512T892R87nhl07y3u7q/2Z2dqwjLCjqtQMY3DVEdxjooAIReMSgUUTRwWY4Gftzf8TB9naSXHrChEdYoYjx3JgfBxROpymANeetY6HsogZpRgyd9RXC6AsbeU3mKvVSTwvDQasTc/ML1iAm7ps4aQ6wLiW22Hk3a56617ARfk0fuv8YeaK9e/6eVjt7rdw0s+zsefRRng/p2Ow/ALYuYymAA2n3T06XLe8Y5IjfPJsPxJwUIsu8d9OLmIevkKd8gIUs0N5+5loPbvIN/P4dLgxgIZwsUGvH1sZfksipez0dJm7mLgwgWYBzlucVo/dOoz8aojIAVTJ8PTeTSL0sSPRGqt8DLqjCAHz0Fjj7PodwIqbeLX9twfSXAlDzrCy4xaegOVfPUwMlxArg9gJJu/03E8OZaZnoVfTzxg6X2iCpN07649tXvaMpq+JHMJPWggu0pDGtBEBT7TaYIu25UgAL4bZYbc8Lt2D1ANqeP39Kx+d2xlUCWLmFJ+25foCK9B9AAPgEaxLJx0qDGYdEeIiS4pdPwbP7/4+dkOU+URS0A2I6xhoU0cYV0wxPQ2Z+gZqlnpvheGyLsGEaAz0P1CR79uKpvy0AheOpIdOvIxPqoV7q+RtmcUHQ6cRJPJCv5K5M7qIS8YkWu4R7qEfuzvwC6o3pQznqsqgAAAAASUVORK5CYII="
+                                                alt="Яндекс"
+                                                class="hero__review-logo"
+                                                width="32" height="32"
+                                        >
+                                        <span>{% if yandex_data.average_rating %}{{ yandex_data.average_rating }}{% else %} 5{% endif %}</span>
+                                        <img
+                                                src="data:image/svg+xml,%3csvg%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M11.4416%202.9252L12.9083%205.85853C13.1083%206.26686%2013.6416%206.65853%2014.0916%206.73353L16.7499%207.1752C18.4499%207.45853%2018.8499%208.69186%2017.6249%209.90853L15.5583%2011.9752C15.2083%2012.3252%2015.0166%2013.0002%2015.1249%2013.4835L15.7166%2016.0419C16.1833%2018.0669%2015.1083%2018.8502%2013.3166%2017.7919L10.8249%2016.3169C10.3749%2016.0502%209.63326%2016.0502%209.17492%2016.3169L6.68326%2017.7919C4.89992%2018.8502%203.81659%2018.0585%204.28326%2016.0419L4.87492%2013.4835C4.98326%2013.0002%204.79159%2012.3252%204.44159%2011.9752L2.37492%209.90853C1.15826%208.69186%201.54992%207.45853%203.24992%207.1752L5.90826%206.73353C6.34992%206.65853%206.88326%206.26686%207.08326%205.85853L8.54992%202.9252C9.34992%201.33353%2010.6499%201.33353%2011.4416%202.9252Z'%20fill='%23F9CB2D'/%3e%3c/svg%3e"
+                                                alt=""
+                                                class=""
+                                                width="20" height="20"
+                                        >
+                                    </button>
+                                    <button class="review-button" onclick="window.open('https://go.2gis.com/0UnDt', '_blank')">
+                                        <img
+                                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAATkSURBVHgBrVddTBxVFP7u7GIWijCYYAjLzyBpKz+GIdFUNKYQk9L6oEtsbHyiRH0wMRGqL76UXd9r6YPxoY1tnyq2ZumDKfICTaStNhFMoU1jWoa/CiXCsFhYWJjbcy8sy8LOsAt8yWTv7D33fN89995z7jAkCR5UVXg8PjAcBmM6PRo4V2UnYya1DXr6wXET4XAHazDNZPyybYlv5AmiZrhdjeuESSnml0hMgB2bMLATAXLGGemt1GzGrsD9rH4igFQEyFkrrJuaGvYGBixelygayhbyLq++x+SQvsgn/zVX39wRFwHOuYZH33VjulfDwigQHtvqyp0FeE8AmeVAeuHqf8sh4GknMH0r8ZgYtkQiTsAvw8Ghg1kHtAq1POZ4fmTV6dzgKnnxZzDDwPV7FowZLs30fIYqrwIth17G24GHratj7UTML1RHT8m6gLyrRa2Mwx99ryQRBRkFKNxXgHpvPd7KfZMIgaafltHziCf0fPINBa1HXNA8FL27HzpEw2pj9ZMt6wLyruRpzPXCUCJTIeBabTv+MwtQ98MyzAUOJ6jpQPfnbug5RD5yIT6CcRp4iVgKt3xR0vx2Dr8qb8HKYnLkAuYCpG3fqUJoBwMIRULISsta7QwNxMQsheh4f9vMtKCmLkasGdjM/o/3eqVDu7DbobaUyUi82vEaskmA8FWxtqyVORUoV8vM7LTsEnc4vOJjrsT56Gj+EbnuqZILiDHDtEk/0o7jwj8/YnR+DLem7mw0UTm4T6FMUGvnpCa3BtcHLOwUQkRFdrmDBTusKAqrsuvOSnsxqXW3gzHNUZRZaNtPcddFJtTsDEKROdrV29ar3UBTOIdqL2AW2R7sGHq+goGZQScTVXHqvU2bxlfpaOKIqnxg0LzvaKMwBtuLw43xLplYxJFKFWKM9hLbvPM3wxSJyKBHT9QrkohwcPHEIbmj/35ioWOAy6OZCKpHpGOqCxR6UR/ajasYm3cuTq59x7NrKAq6nYUIYYRNofTl//F+RTpOv5uDWcp2d0biT0fzOwqCTS68/sq/mEAX+ue6cJ7Ov5iEHZiCTjcY76Fmo5OAjev46f5PcPaD0+h/wtcTlK+C0X8unLnfhjODZ5EsLIvflKl4adkacjoNmxHQW7FfOUkpekW+951y4+HSNbTc/RqpYOFZKEcxGgyTyC+nMrBz/DfaZKL+M3kHEOst0m0qoPBfMptMuQnBV5Q25rK+THbw7bWdrXtF9Vs9IU7HTRQgUYiKqCBF7xj9Uw8C36AFUsDEx4bh/bnoHGX9pEWI3a168uQxHX02JktutOIVZhTESCkVR8uxGRnF8PzvKE4vCxwrOGrISEQdrpXlPmxzGRXOhOOLb5/HX8OZMlXr3lieWLRCRDSCifA9TC4OStJJaotfAQ5mtJZNlUTt4zJM3hWNbkaWvBFvDFs5VbREs5lcJMdLo5hYHMBTekQ7bM3aihfkHK46f5nNpVQgOBTUfZovKERsnI0gFM/IfC/CKyFHIltyFxr8B6b6N/6f+MOEruffPz7UPb30WMMeINHMo0hYaRhjxhelf5ZQmglgt+Scn+PhSHUicsm1nQP/A7ox8xU/Y7wRyYIKHF/ml7krrc2OOGaaJPx9qqp40nyUtGpJDH2eoxjR7CkqKl0Babb9jCk9VjjS4a9O7vP8OSFAKqa8USIUAAAAAElFTkSuQmCC"
+                                                alt="2gis"
+                                                class="hero__review-logo"
+                                                width="32" height="32"
+                                        >
+                                        <span>{% if gis_data.average_rating %}{{ gis_data.average_rating }}{% else %} 5{% endif %}</span>
+                                        <img
+                                                src="data:image/svg+xml,%3csvg%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M11.4416%202.9252L12.9083%205.85853C13.1083%206.26686%2013.6416%206.65853%2014.0916%206.73353L16.7499%207.1752C18.4499%207.45853%2018.8499%208.69186%2017.6249%209.90853L15.5583%2011.9752C15.2083%2012.3252%2015.0166%2013.0002%2015.1249%2013.4835L15.7166%2016.0419C16.1833%2018.0669%2015.1083%2018.8502%2013.3166%2017.7919L10.8249%2016.3169C10.3749%2016.0502%209.63326%2016.0502%209.17492%2016.3169L6.68326%2017.7919C4.89992%2018.8502%203.81659%2018.0585%204.28326%2016.0419L4.87492%2013.4835C4.98326%2013.0002%204.79159%2012.3252%204.44159%2011.9752L2.37492%209.90853C1.15826%208.69186%201.54992%207.45853%203.24992%207.1752L5.90826%206.73353C6.34992%206.65853%206.88326%206.26686%207.08326%205.85853L8.54992%202.9252C9.34992%201.33353%2010.6499%201.33353%2011.4416%202.9252Z'%20fill='%23F9CB2D'/%3e%3c/svg%3e"
+                                                alt=""
+                                                class=""
+                                                width="20" height="20"
+                                        >
+                                    </button>
                                 </div>
                             </div>
-                        </li>
-                        <li class="hero__main-slide splide__slide">
-                            <div class="hero__advantages-mobile">
-                                <div class="hero__advantages-item">
-                                    <p class="hero__advantages-title">Успех гарантирован</p>
-                                    <div class="hero__advantages-info">
-                                        <p class="hero__advantages-value"><span>+{{ about_main.cnt_people }}</span> чел</p>
-                                        <p class="hero__advantages-label">в команде</p>
-                                    </div>
-                                </div>
-                                <div class="hero__advantages-item">
-                                    <p class="hero__advantages-title">Работаем с 2019 г</p>
-                                    <div class="hero__advantages-info">
-                                        <p class="hero__advantages-value"><span>+{{ about_main.cnt_year }}</span> лет</p>
-                                        <p class="hero__advantages-label">В этой сфере</p>
-                                    </div>
-                                </div>
-                                <div class="hero__advantages-item">
-                                    <p class="hero__advantages-title">В надежных руках</p>
-                                    <div class="hero__advantages-info">
-                                        <p class="hero__advantages-value"><span>+{{ about_main.cnt_square }}к</span> м2</p>
-                                        <p class="hero__advantages-label">Вычищаем/мес</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="button__wrapper hero__button-wrap">
-                                <button class="hero__button button modal-open">
-                                    Заказать уборку
-                                </button>
+                            <div class="hero__button-wrapper button__wrapper">
+                                <button class="button hero__button modal-open">Заказать уборку</button>
                                 <button class="hero__button--arrow button--arrow modal-open">
                                     <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M15.5713 8.5H1.42915" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
@@ -349,11 +187,176 @@
                                     </svg>
                                 </button>
                             </div>
-                        </li>
-                    </ul>
+                        </div>
+                    </div>
+                <div class="hero__splide splide">
+                    <div class="hero__advantages">
+                        <div class="hero__advantages-item">
+                            <p class="hero__advantages-title">Успех гарантирован</p>
+                            <div class="hero__advantages-info">
+                                <p class="hero__advantages-value"><span>+{{ about_main.cnt_people }}</span> чел</p>
+                                <p class="hero__advantages-label">в команде</p>
+                            </div>
+                        </div>
+                        <div class="hero__advantages-item">
+                            <p class="hero__advantages-title">Работаем с 2019 г</p>
+                            <div class="hero__advantages-info">
+                                <p class="hero__advantages-value"><span>+{{ about_main.cnt_year }}</span> лет</p>
+                                <p class="hero__advantages-label">В этой сфере</p>
+                            </div>
+                        </div>
+                        <div class="hero__advantages-item">
+                            <p class="hero__advantages-title">В надежных руках</p>
+                            <div class="hero__advantages-info">
+                                <p class="hero__advantages-value"><span>+{{ about_main.cnt_square }}к</span> м2</p>
+                                <p class="hero__advantages-label">Вычищаем/мес</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero__splide-track splide__track">
+                        {% if videos %}
+                            <ul class="splide__list">
+                                {% for video in videos %}
+                                <li class="hero__splide-slide splide__slide">
+                                    <div class="hero__splide-slide-inner">
+                                        <video
+                                                src="{{ video.video.url }}"
+                                                preload="metadata"
+                                                muted
+                                                playsinline
+                                        ></video>
+                                    </div>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
                 </div>
-            </div>
-        </section>
+                <div class="hero__main-mobile hero__main splide visible-tablet">
+                    <div class="hero__main-track splide__track">
+                        <ul class="splide__list">
+                            <li class="hero__main-slide splide__slide visible-tablet">
+                                {% if videos %}
+                                    <video autoplay muted loop playsinline class="hero__mobile-video ">
+                                        <source src="{{ videos.0.video.url }}" type="video/mp4">
+                                    </video>
+                                {% endif %}
+                                <div class="hero__overlay visible-tablet"></div>
+                                <div class="hero__body">
+                                    <div class="hero__header-inner">
+                                        <h3 class="hero__header splitting-text" data-splitting>
+                                            С нами у вас всегда <br class="visible-tablet">
+                                            <span class="hero__header-print"></span>
+                                        </h3>
+                                        <p class="hero__subheader">
+                                            Профессиональный клининг для дома и офиса с гарантией качества.
+                                        </p>
+
+
+                                    </div>
+                                    <div class="hero__mobile-extra">
+                                        <div class="hero__review">
+                                            <button class="review-button" onclick="window.open('https://www.vl.ru/chistota-dv', '_blank')">
+                                                <img
+                                                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAOLSURBVHgBzVdNaBNBFP5mdjdNqiFJa8WDYosHEQX/LiKICt5b0Zug+IPoQfAggierBxFEqAdRBFFvXgTx76JoqzfRWhHEg9hUemlpm9W0sSa7M7633YRtmzbbJC1+sPmZnZnv/c2b9wRCInkvk3QLboeAsVsAW2iolYf91zY9aQ30adftMaLGY/toyg6zr6g0IXkr06oMdVZAHgkQVgQJc1+6uGSfTqVRjQCsscrjohA4ixqgNbpkhASZwyJlBWCttYE3mDJz7dBIC4W95awhZ5HfzGypKzlDoFVLvOG9Z78Kktdb85koY4mSAOxzXcCnRSMPChHB1mJMlFzAAbfo5Axyh8/l/0XJ9P1YQggXbewKzwJKqk4sMTi3eIL4vs+gzsg7Gn9zmvMAmpYJNC+XyNLYhFMKPFtYaDNB6RUwUCt4U5fIshkX61eZuLArhgPrIhicUHjwLY+XPx2M5ZWXmXwJvNRuKi32iIoJuQI5rbdHXJzcEcW1nQk0kD5n3uZw/Mk4RFQgRo/0SYJcfK+YQsjNwc30DK0qEedIw00tJt6dS6DRFLj8/g8uvsohvkIi3mR4Cs+5ni41E4GjxyZcGRPY3mIgm9foHXQwPK7REJvSIriXQavHSOu77ctxbEMDFL1cc9vGKG2SXDlFPB+5j1Y+BcngpkMUON0DDkwp8PxgHPp8E552xLG6QeCXrciUPvmwi94TCRwl8hwFl3F1BBOkTiQiwhAXkRSJO5my09m8kzmFQh54dCCO9jYLP3672Pcwi/4hB72nktjUbHrzrCujaF5lwFFYMFiADOa556Xv540pAx8PJ7yxD8MONq8wYZH9Gq+PIpY04FZBTrDZBen5ZrBvo40S3yc1kY15Y9tapsjbn2Uh6XxXSc5IS63V5zAz2dTRhESiK+NZ5cuoi6dfCyRI9WeYSzgphe4Ou4CtoWPAidc5HHoxjlSTRPh4KyOAi55iKuaLKHS9N0lRbxl8GmrLYJSKU5LvZQ31YCELo5RwaiXnopW5vdtQurILSwyumL1v/uB7maxwA0sE0v5GsSwrVUTSkp2ocCTrxJ6WFjpLvMUf7A+qUvYuqhDFojTQI0wry9ksooD9iyIEkzvYP7M3+P8aE4ZnCQtb6xGYHHBeGT5HjxiuOaWilQqXIwgPL7fw8a66OZ0lCGVMFNChtKISTlCLJdZiWnuuB7TWfVLIblgI3Z7/A9REe8uT8RSyAAAAAElFTkSuQmCC"
+                                                        alt="VL.ru"
+                                                        class="hero__review-logo"
+                                                        width="32" height="32"
+                                                >
+                                                <span>{% if vl_data.average_rating %}{{ vl_data.average_rating }}{% else %} 5{% endif %}</span>
+                                                <img
+                                                        src="data:image/svg+xml,%3csvg%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M11.4416%202.9252L12.9083%205.85853C13.1083%206.26686%2013.6416%206.65853%2014.0916%206.73353L16.7499%207.1752C18.4499%207.45853%2018.8499%208.69186%2017.6249%209.90853L15.5583%2011.9752C15.2083%2012.3252%2015.0166%2013.0002%2015.1249%2013.4835L15.7166%2016.0419C16.1833%2018.0669%2015.1083%2018.8502%2013.3166%2017.7919L10.8249%2016.3169C10.3749%2016.0502%209.63326%2016.0502%209.17492%2016.3169L6.68326%2017.7919C4.89992%2018.8502%203.81659%2018.0585%204.28326%2016.0419L4.87492%2013.4835C4.98326%2013.0002%204.79159%2012.3252%204.44159%2011.9752L2.37492%209.90853C1.15826%208.69186%201.54992%207.45853%203.24992%207.1752L5.90826%206.73353C6.34992%206.65853%206.88326%206.26686%207.08326%205.85853L8.54992%202.9252C9.34992%201.33353%2010.6499%201.33353%2011.4416%202.9252Z'%20fill='%23F9CB2D'/%3e%3c/svg%3e"
+                                                        alt=""
+                                                        class="hidden-tablet"
+                                                        width="20" height="20"
+                                                >
+                                            </button>
+                                            <button class="review-button" onclick="window.open('https://yandex.ru/maps/-/CHWKmQ7K', '_blank')">
+                                                <img
+                                                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAI6SURBVHgB7ZexbhNBEIb/2dhFpIBSunAk0yPFJUiWODeQAgmK0CPxAMAT4PACgEQJEj0uUkY0uQIJSjd0SDiQwqUF6Y67YWbB512T892R87nhl07y3u7q/2Z2dqwjLCjqtQMY3DVEdxjooAIReMSgUUTRwWY4Gftzf8TB9naSXHrChEdYoYjx3JgfBxROpymANeetY6HsogZpRgyd9RXC6AsbeU3mKvVSTwvDQasTc/ML1iAm7ps4aQ6wLiW22Hk3a56617ARfk0fuv8YeaK9e/6eVjt7rdw0s+zsefRRng/p2Ow/ALYuYymAA2n3T06XLe8Y5IjfPJsPxJwUIsu8d9OLmIevkKd8gIUs0N5+5loPbvIN/P4dLgxgIZwsUGvH1sZfksipez0dJm7mLgwgWYBzlucVo/dOoz8aojIAVTJ8PTeTSL0sSPRGqt8DLqjCAHz0Fjj7PodwIqbeLX9twfSXAlDzrCy4xaegOVfPUwMlxArg9gJJu/03E8OZaZnoVfTzxg6X2iCpN07649tXvaMpq+JHMJPWggu0pDGtBEBT7TaYIu25UgAL4bZYbc8Lt2D1ANqeP39Kx+d2xlUCWLmFJ+25foCK9B9AAPgEaxLJx0qDGYdEeIiS4pdPwbP7/4+dkOU+URS0A2I6xhoU0cYV0wxPQ2Z+gZqlnpvheGyLsGEaAz0P1CR79uKpvy0AheOpIdOvIxPqoV7q+RtmcUHQ6cRJPJCv5K5M7qIS8YkWu4R7qEfuzvwC6o3pQznqsqgAAAAASUVORK5CYII="
+                                                        alt="Яндекс"
+                                                        class="hero__review-logo"
+                                                        width="32" height="32"
+                                                >
+                                                <span>{% if yandex_data.average_rating %}{{ yandex_data.average_rating }}{% else %} 5{% endif %}</span>
+                                                <img
+                                                        src="data:image/svg+xml,%3csvg%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M11.4416%202.9252L12.9083%205.85853C13.1083%206.26686%2013.6416%206.65853%2014.0916%206.73353L16.7499%207.1752C18.4499%207.45853%2018.8499%208.69186%2017.6249%209.90853L15.5583%2011.9752C15.2083%2012.3252%2015.0166%2013.0002%2015.1249%2013.4835L15.7166%2016.0419C16.1833%2018.0669%2015.1083%2018.8502%2013.3166%2017.7919L10.8249%2016.3169C10.3749%2016.0502%209.63326%2016.0502%209.17492%2016.3169L6.68326%2017.7919C4.89992%2018.8502%203.81659%2018.0585%204.28326%2016.0419L4.87492%2013.4835C4.98326%2013.0002%204.79159%2012.3252%204.44159%2011.9752L2.37492%209.90853C1.15826%208.69186%201.54992%207.45853%203.24992%207.1752L5.90826%206.73353C6.34992%206.65853%206.88326%206.26686%207.08326%205.85853L8.54992%202.9252C9.34992%201.33353%2010.6499%201.33353%2011.4416%202.9252Z'%20fill='%23F9CB2D'/%3e%3c/svg%3e"
+                                                        alt=""
+                                                        class="hidden-tablet"
+                                                        width="20" height="20"
+                                                >
+                                            </button>
+                                            <button class="review-button" onclick="window.open('https://go.2gis.com/0UnDt', '_blank')">
+                                                <img
+                                                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAATkSURBVHgBrVddTBxVFP7u7GIWijCYYAjLzyBpKz+GIdFUNKYQk9L6oEtsbHyiRH0wMRGqL76UXd9r6YPxoY1tnyq2ZumDKfICTaStNhFMoU1jWoa/CiXCsFhYWJjbcy8sy8LOsAt8yWTv7D33fN89995z7jAkCR5UVXg8PjAcBmM6PRo4V2UnYya1DXr6wXET4XAHazDNZPyybYlv5AmiZrhdjeuESSnml0hMgB2bMLATAXLGGemt1GzGrsD9rH4igFQEyFkrrJuaGvYGBixelygayhbyLq++x+SQvsgn/zVX39wRFwHOuYZH33VjulfDwigQHtvqyp0FeE8AmeVAeuHqf8sh4GknMH0r8ZgYtkQiTsAvw8Ghg1kHtAq1POZ4fmTV6dzgKnnxZzDDwPV7FowZLs30fIYqrwIth17G24GHratj7UTML1RHT8m6gLyrRa2Mwx99ryQRBRkFKNxXgHpvPd7KfZMIgaafltHziCf0fPINBa1HXNA8FL27HzpEw2pj9ZMt6wLyruRpzPXCUCJTIeBabTv+MwtQ98MyzAUOJ6jpQPfnbug5RD5yIT6CcRp4iVgKt3xR0vx2Dr8qb8HKYnLkAuYCpG3fqUJoBwMIRULISsta7QwNxMQsheh4f9vMtKCmLkasGdjM/o/3eqVDu7DbobaUyUi82vEaskmA8FWxtqyVORUoV8vM7LTsEnc4vOJjrsT56Gj+EbnuqZILiDHDtEk/0o7jwj8/YnR+DLem7mw0UTm4T6FMUGvnpCa3BtcHLOwUQkRFdrmDBTusKAqrsuvOSnsxqXW3gzHNUZRZaNtPcddFJtTsDEKROdrV29ar3UBTOIdqL2AW2R7sGHq+goGZQScTVXHqvU2bxlfpaOKIqnxg0LzvaKMwBtuLw43xLplYxJFKFWKM9hLbvPM3wxSJyKBHT9QrkohwcPHEIbmj/35ioWOAy6OZCKpHpGOqCxR6UR/ajasYm3cuTq59x7NrKAq6nYUIYYRNofTl//F+RTpOv5uDWcp2d0biT0fzOwqCTS68/sq/mEAX+ue6cJ7Ov5iEHZiCTjcY76Fmo5OAjev46f5PcPaD0+h/wtcTlK+C0X8unLnfhjODZ5EsLIvflKl4adkacjoNmxHQW7FfOUkpekW+951y4+HSNbTc/RqpYOFZKEcxGgyTyC+nMrBz/DfaZKL+M3kHEOst0m0qoPBfMptMuQnBV5Q25rK+THbw7bWdrXtF9Vs9IU7HTRQgUYiKqCBF7xj9Uw8C36AFUsDEx4bh/bnoHGX9pEWI3a168uQxHX02JktutOIVZhTESCkVR8uxGRnF8PzvKE4vCxwrOGrISEQdrpXlPmxzGRXOhOOLb5/HX8OZMlXr3lieWLRCRDSCifA9TC4OStJJaotfAQ5mtJZNlUTt4zJM3hWNbkaWvBFvDFs5VbREs5lcJMdLo5hYHMBTekQ7bM3aihfkHK46f5nNpVQgOBTUfZovKERsnI0gFM/IfC/CKyFHIltyFxr8B6b6N/6f+MOEruffPz7UPb30WMMeINHMo0hYaRhjxhelf5ZQmglgt+Scn+PhSHUicsm1nQP/A7ox8xU/Y7wRyYIKHF/ml7krrc2OOGaaJPx9qqp40nyUtGpJDH2eoxjR7CkqKl0Babb9jCk9VjjS4a9O7vP8OSFAKqa8USIUAAAAAElFTkSuQmCC"
+                                                        alt="2gis"
+                                                        class="hero__review-logo"
+                                                        width="32" height="32"
+                                                >
+                                                <span>{% if gis_data.average_rating %}{{ gis_data.average_rating }}{% else %} 5{% endif %}</span>
+                                                <img
+                                                        src="data:image/svg+xml,%3csvg%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M11.4416%202.9252L12.9083%205.85853C13.1083%206.26686%2013.6416%206.65853%2014.0916%206.73353L16.7499%207.1752C18.4499%207.45853%2018.8499%208.69186%2017.6249%209.90853L15.5583%2011.9752C15.2083%2012.3252%2015.0166%2013.0002%2015.1249%2013.4835L15.7166%2016.0419C16.1833%2018.0669%2015.1083%2018.8502%2013.3166%2017.7919L10.8249%2016.3169C10.3749%2016.0502%209.63326%2016.0502%209.17492%2016.3169L6.68326%2017.7919C4.89992%2018.8502%203.81659%2018.0585%204.28326%2016.0419L4.87492%2013.4835C4.98326%2013.0002%204.79159%2012.3252%204.44159%2011.9752L2.37492%209.90853C1.15826%208.69186%201.54992%207.45853%203.24992%207.1752L5.90826%206.73353C6.34992%206.65853%206.88326%206.26686%207.08326%205.85853L8.54992%202.9252C9.34992%201.33353%2010.6499%201.33353%2011.4416%202.9252Z'%20fill='%23F9CB2D'/%3e%3c/svg%3e"
+                                                        alt=""
+                                                        class="hidden-tablet"
+                                                        width="20" height="20"
+                                                >
+                                            </button>
+                                        </div>
+                                        <div class="button__wrapper">
+                                            <button class="hero__button button modal-open">
+                                                Заказать уборку
+                                            </button>
+                                            <button class="hero__button--arrow button--arrow modal-open">
+                                                <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M15.5713 8.5H1.42915" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path d="M8.50022 15.5711L15.5713 8.5L8.50022 1.42893" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="hero__main-slide splide__slide">
+                                <div class="hero__advantages-mobile">
+                                    <div class="hero__advantages-item">
+                                        <p class="hero__advantages-title">Успех гарантирован</p>
+                                        <div class="hero__advantages-info">
+                                            <p class="hero__advantages-value"><span>+{{ about_main.cnt_people }}</span> чел</p>
+                                            <p class="hero__advantages-label">в команде</p>
+                                        </div>
+                                    </div>
+                                    <div class="hero__advantages-item">
+                                        <p class="hero__advantages-title">Работаем с 2019 г</p>
+                                        <div class="hero__advantages-info">
+                                            <p class="hero__advantages-value"><span>+{{ about_main.cnt_year }}</span> лет</p>
+                                            <p class="hero__advantages-label">В этой сфере</p>
+                                        </div>
+                                    </div>
+                                    <div class="hero__advantages-item">
+                                        <p class="hero__advantages-title">В надежных руках</p>
+                                        <div class="hero__advantages-info">
+                                            <p class="hero__advantages-value"><span>+{{ about_main.cnt_square }}к</span> м2</p>
+                                            <p class="hero__advantages-label">Вычищаем/мес</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="button__wrapper hero__button-wrap">
+                                    <button class="hero__button button modal-open">
+                                        Заказать уборку
+                                    </button>
+                                    <button class="hero__button--arrow button--arrow modal-open">
+                                        <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M15.5713 8.5H1.42915" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                                            <path d="M8.50022 15.5711L15.5713 8.5L8.50022 1.42893" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
         <section class="about">
             <div class="about__inner">
                 <div class="about__header-inner">
@@ -492,7 +495,6 @@
                                                 >
                                         </li>
                                         {% endfor %}
-
                                     </ul>
                                 </div>
                                 <div class="service__progress-wrapper">
@@ -634,55 +636,20 @@
             <div class="team__splide splide">
                 <div class="team__splide-track splide__track">
                     <ul class="team__splide-list splide__list">
+                        {% for emp in employee %}
                         <li class="team__splide-slide splide__slide">
                             <img
-                                    src="{% static "pages/images/team/person1.png" %}"
+                                    src="{{ emp.photo }}"
                                     alt=""
                                     class="team__img"
-                                    width="307" height="370"
+                                    width="307" height="370" 
                             >
                             <div class="team__info">
-                                <p class="team__info-name">Имя Фамилия</p>
-                                <p class="team__info-post">Должность</p>
+                                <p class="team__info-name">{{ emp.name }}</p>
+                                <p class="team__info-post">{{ emp.position }}</p>
                             </div>
                         </li>
-                        <li class="team__splide-slide splide__slide">
-                            <img
-                                    src="{% static "pages/images/team/person2.png" %}"
-                                    alt=""
-                                    class="team__img"
-                                    width="307" height="370"
-                            >
-                            <div class="team__info">
-                                <p class="team__info-name">Имя Фамилия</p>
-                                <p class="team__info-post">Должность</p>
-                            </div>
-                        </li>
-                        <li class="team__splide-slide splide__slide">
-                            <img
-                                    src="{% static "pages/images/team/person3.png" %}"
-                                    alt=""
-                                    class="team__img"
-                                    width="307" height="370"
-                            >
-                            <div class="team__info">
-                                <p class="team__info-name">Имя Фамилия</p>
-                                <p class="team__info-post">Должность</p>
-                            </div>
-                        </li>
-                        <li class="team__splide-slide splide__slide">
-                            <img
-                                    src="{% static "pages/images/team/person4.png" %}"
-                                    alt=""
-                                    class="team__img"
-                                    width="307" height="370"
-                            >
-                            <div class="team__info">
-                                <p class="team__info-name">Имя Фамилия</p>
-                                <p class="team__info-post">Должность</p>
-                            </div>
-                        </li>
-
+                        {% endfor %}
                     </ul>
                 </div>
             </div>

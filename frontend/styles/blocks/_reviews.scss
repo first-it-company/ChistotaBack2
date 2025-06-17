@@ -80,6 +80,7 @@
       @include tablet{
         width: rem(320);
         height: fit-content;
+        min-height: rem(320);
       }
 
       &-inner{

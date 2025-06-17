@@ -6,10 +6,10 @@ const defaultReviewsData = [
         author_name: "Анна",
         service: "Послеремонтная уборка",
         review_text: "Заказывали уборку после переезда — квартира засияла!",
-        photo: 'static/pages/images/reviews/user1.png',
+        photo: 'static/pages/images/reviews/avatar.png',
         rating: 5,
         link: {
-            url: "https://2gis.ru/",
+            url: "https://go.2gis.com/Q5sPN",
             text: "Читать на 2GIS",
             icon: 'static/pages/icons/2gis.png',
             image: 'static/pages/images/reviews/image1.png'
@@ -33,8 +33,8 @@ function createReviewSlide(review) {
 
     const userName = review.author_name || 'Аноним';
     const userText = review.review_text || '';
-    const userPhoto = review.photo || 'static/pages/images/reviews/user1.png';
-    const userService = review.service || 'Услуга';
+    const userPhoto = review.photo || 'static/pages/images/reviews/avatar.png';
+    const userService = review.service || 'Уборка';
     const userScore = review.rating || 5;
 
     return `
