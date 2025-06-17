@@ -27,10 +27,8 @@
       flex-direction: column;
       gap: rem(24);
       margin-bottom: rem(24);
-    }
-
-    @include tablet{
       order: 1;
+      width: 100%;
     }
   }
 
