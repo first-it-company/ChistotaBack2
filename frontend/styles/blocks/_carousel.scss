@@ -20,4 +20,11 @@
     gap: rem(20);
     width: max-content;
   }
+
+  &__slide{
+    img{
+      max-height: rem(40);
+      width: auto;
+    }
+  }
 }

@@ -19,7 +19,7 @@ export function initBrandsCarousel() {
 
     gsap.to(track, {
         x: `-=${track.scrollWidth / 2}`,
-        duration: 50,
+        duration: 100,
         ease: "linear",
         repeat: -1,
         modifiers: {

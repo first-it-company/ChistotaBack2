@@ -82,6 +82,10 @@
       order: 4;
       padding-inline: 0;
     }
+
+    @include mobile{
+      padding-inline: rem(1);
+    }
   }
 
   &__form{
@@ -210,7 +214,7 @@
     text-wrap: nowrap;
     width: 100%;
 
-    @include laptop{
+    @include tablet{
       width: 60%;
     }
 
