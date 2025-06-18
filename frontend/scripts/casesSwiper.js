@@ -65,17 +65,13 @@ export function initCasesSlider() {
         }
     };
 
-    if (btnPrev) {
-        btnPrev.addEventListener('click', () => {
-            splide.go('-1');
-        });
-    }
+    btnPrev.addEventListener('click', e => {
+        splide.go('-1')
+    })
 
-    if (btnNext) {
-        btnNext.addEventListener('click', () => {
-            splide.go('+1');
-        });
-    }
+    btnNext.addEventListener('click', e => {
+        splide.go('+1')
+    })
 
     const syncOpacity = () => {
         const slides = document.querySelectorAll('.cases__splide-slide');
@@ -89,6 +85,7 @@ export function initCasesSlider() {
     };
 
     splide.on('move', syncOpacity);
+    splide.on('move.end', updateUI);
     splide.on('mounted updated', () => {
         updateUI();
         syncOpacity();
