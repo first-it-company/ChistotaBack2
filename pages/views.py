@@ -47,7 +47,7 @@ def yandex_data_company():
 def gis_reviews_data():
     response = requests.get(
         'http://195.133.27.193/api/twoGis-reviews/',
-        params={'company': 'Чистота Дв', 'cnt': 20, 'min_rating': 5}
+        params={'company': 'Чистота Дв', 'cnt': 50, 'min_rating': 5}
     )
     response.raise_for_status()
 
@@ -89,10 +89,12 @@ def home(request):
                 'url': 'https://2gis.ru/',
                 'text': 'Читать на 2GIS',
                 'icon': 'static/pages/icons/2gis.png',
+                'image': review.get('photos', [])[0] if review.get('photos', []) else ''
             }
         }
         reviews_for_slider.append(slider_review)
- 
+
+    reviews_for_slider.sort(key=lambda x: not bool(x['link']['image']))
     gis_reviews_json = json.dumps(reviews_for_slider, cls=DjangoJSONEncoder, ensure_ascii=False)
 
     return render(request, 'index.html', {
