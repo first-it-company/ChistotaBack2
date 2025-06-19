@@ -1,0 +1,49 @@
+@use "../helpers" as *;
+
+.decorative-lines{
+  width: 100%;
+  position: absolute;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 0;
+
+  &__item{
+    height: rem(30);
+    position: absolute;
+    border-radius: rem(20);
+    &:first-child{
+      width: 97%;
+      background-color: var(--color-blue-200);
+      bottom: rem(-6);
+      z-index: 0;
+    }
+    &:nth-child(2){
+      width: 94%;
+      background-color: var(--color-blue-100);
+      bottom: rem(-12);
+      z-index: -1;
+    }
+    &:last-child{
+      width: 91%;
+      z-index: -2;
+      bottom: rem(-18);
+      background-color: var(--color-blue-50);
+    }
+  }
+
+
+  &__wrapper{
+    position: relative;
+
+    &.cta__lines{
+      .decorative-lines{
+        @include tablet{
+          bottom: rem(-18);
+        }
+      }
+    }
+  }
+}
+
