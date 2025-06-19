@@ -10,8 +10,6 @@
   border-bottom: 1px solid #E5E5E5;
   transition: transform 0.3s ease-in-out;
 
-
-
   &.nav-up {
     transform: translateY(-100%);
   }
@@ -44,6 +42,7 @@
       padding: rem(40);
       padding-inline: rem(20);
       border-radius: 0 0 rem(20) rem(20);
+      border: 1px solid #E5E5E5;
 
       &:not(.is-active){
         @include hide;

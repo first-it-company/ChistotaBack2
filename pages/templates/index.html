@@ -51,6 +51,7 @@
                             width="163" height="26"
                     >
                 </a>
+                
                 <div class="header__overlay">
                     <nav class="header__menu">
                         <ul class="header__menu-list">
@@ -61,7 +62,7 @@
                                 <a href="#service" class="header__menu-link">Услуги</a>
                             </li>
                             <li class="header__menu-item">
-                                <a href="" class="header__menu-link">Цены</a>
+                                <a href="#cases" class="header__menu-link">Кейсы</a>
                             </li>
                             <li class="header__menu-item">
                                 <a href="#faq" class="header__menu-link">Контакты</a>
@@ -179,7 +180,8 @@
                             <div class="hero__button-wrapper button__wrapper">
                                 <button class="button hero__button modal-open">Заказать уборку</button>
                                 <button class="hero__button--arrow button--arrow modal-open">
-                                    <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <span class="arrow-container"></span>
+                                    <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: none;">
                                         <path d="M15.5713 8.5H1.42915" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
                                         <path d="M8.50022 15.5711L15.5713 8.5L8.50022 1.42893" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
                                     </svg>
@@ -222,6 +224,7 @@
                                                 preload="metadata"
                                                 muted
                                                 playsinline
+                                                loop
                                         ></video>
                                     </div>
                                 </li>
@@ -231,14 +234,24 @@
                     </div>
                 </div>
                 <div class="hero__main-mobile hero__main splide visible-tablet">
+                    <div class="hero__button--mobile button__wrapper">
+                        <button class="hero__button button modal-open">
+                            Заказать уборку
+                        </button>
+                        <button class="hero__button--arrow button--arrow modal-open">
+                            <span class="arrow-container"></span>
+                            <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                                <path d="M15.5713 8.5H1.42915" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M8.50022 15.5711L15.5713 8.5L8.50022 1.42893" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                    </div>
                     <div class="hero__main-track splide__track">
                         <ul class="splide__list">
                             <li class="hero__main-slide splide__slide visible-tablet">
-                                {% if videos %}
-                                    <video autoplay muted loop playsinline class="hero__mobile-video ">
-                                        <source src="{{ videos.0.video.url }}" type="video/mp4">
-                                    </video>
-                                {% endif %}
+                                <video autoplay muted loop playsinline class="hero__mobile-video ">
+                                    <source src="{% static 'pages/video/intro_video_compres.mp4' %}" type="video/mp4">
+                                </video>
                                 <div class="hero__overlay visible-tablet"></div>
                                 <div class="hero__body">
                                     <div class="hero__header-inner">
@@ -249,8 +262,6 @@
                                         <p class="hero__subheader">
                                             Профессиональный клининг для дома и офиса с гарантией качества.
                                         </p>
-
-
                                     </div>
                                     <div class="hero__mobile-extra">
                                         <div class="hero__review">
@@ -300,17 +311,6 @@
                                                 >
                                             </button>
                                         </div>
-                                        <div class="button__wrapper">
-                                            <button class="hero__button button modal-open">
-                                                Заказать уборку
-                                            </button>
-                                            <button class="hero__button--arrow button--arrow modal-open">
-                                                <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M15.5713 8.5H1.42915" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
-                                                    <path d="M8.50022 15.5711L15.5713 8.5L8.50022 1.42893" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
-                                                </svg>
-                                            </button>
-                                        </div>
                                     </div>
                                 </div>
                             </li>
@@ -337,17 +337,6 @@
                                             <p class="hero__advantages-label">Вычищаем/мес</p>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="button__wrapper hero__button-wrap">
-                                    <button class="hero__button button modal-open">
-                                        Заказать уборку
-                                    </button>
-                                    <button class="hero__button--arrow button--arrow modal-open">
-                                        <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M15.5713 8.5H1.42915" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
-                                            <path d="M8.50022 15.5711L15.5713 8.5L8.50022 1.42893" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg>
-                                    </button>
                                 </div>
                             </li>
                         </ul>
@@ -417,8 +406,8 @@
 
             </div>
         </section>
-        <section id="service" class="service container">
-            <div class="service__inner">
+        <section class="service container">
+            <div id="service" class="service__inner">
                 <div class="service__title">
                     <h5 class="h5 service__header splitting-text" data-splitting>Наши <span class="orange">Услуги</span></h5>
                     <p class="service__subheader">Профессиональный клининг, который говорит сам за себя. <br> услуги — это ваше время, комфорт и безупречный результат.</p>
@@ -552,7 +541,7 @@
                         </div>
                     </div>
                 </div>
-
+                <div class="cta__lines decorative-lines__wrapper">
                 <form 
                     action="/" 
                     class="cta__form" 
@@ -569,9 +558,10 @@
                                     class="cta__cell-input"
                                     placeholder="Имя"
                                     type="text"
-                                    required name="name"
+                                    name="name"
                                     minlength="2"
                                     maxlength="50"
+                                    required 
                             />
                         </div>
 
@@ -580,8 +570,10 @@
                                     type="tel"
                                     class="cta__cell-input"
                                     placeholder="Номер телефона"
-                                    required name="phone"
+                                    pattern="\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}"
+                                    name="phone"
                                     data-phone
+                                    required
                             />
                         </div>
 
@@ -604,6 +596,12 @@
                         <button type="submit" class="button cta__button">Оставить заявку</button>
                     </div>
                 </form>
+                <div class="decorative-lines">
+                        <span class="decorative-lines__item"></span>
+                        <span class="decorative-lines__item"></span>
+                        <span class="decorative-lines__item"></span>
+                    </div>
+                </div>
             </div>
         </section>
         <section class="team container">
@@ -629,7 +627,7 @@
                 </div>
             </div>
         </section>
-        <section class="cases">
+        <section class="cases" id='cases'>
             <div class="cases__inner container">
                 <div class="cases__title">
                     <h5 class="h5 splitting-text" data-splitting>Мы выполнили <br class="hidden-mobile"><span class="orange">>{{ order_info.cnt_order }} заказов</span></h5>
@@ -679,7 +677,8 @@
                     <div class="cases__button-wrapper button__wrapper visible-mobile modal-open">
                         <button class="button cases__button">Связаться</button>
                         <button class="cases__button--arrow button--arrow modal-open">
-                            <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <span class="arrow-container"></span>
+                            <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: none;">
                                 <path d="M15.5713 8.5H1.42915" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
                                 <path d="M8.50022 15.5711L15.5713 8.5L8.50022 1.42893" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
@@ -888,7 +887,7 @@
                             >
                         </a>
                     </div>
-                    <div class="faq__form-wrapper">
+                    <div class="faq__form-wrapper decorative-lines__wrapper">
                         <form 
                             action="/" 
                             method="post" 
@@ -913,10 +912,12 @@
                                     <div class="faq__cell">
                                         <input
                                                 type="tel"
-                                                required name="phone"
+                                                name="phone"
                                                 class="faq__cell-input"
                                                 placeholder="Номер телефона"
+                                                pattern="\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}"
                                                 data-phone
+                                                required
                                         />
                                     </div>
                                 </div>
@@ -939,6 +940,11 @@
                                 <button type="submit" class="button faq__button"><span>Оставить заявку</span></button>
                             </div>
                         </form>
+                        <div class="decorative-lines">
+                            <span class="decorative-lines__item"></span>
+                            <span class="decorative-lines__item"></span>
+                            <span class="decorative-lines__item"></span>
+                        </div>
                     </div>
 
                 </div>
@@ -958,79 +964,96 @@
 
         <div class="modal">
             <div class="modal__overlay"></div>
-            <div class="modal__content">
-                <button class="modal__close modal__close-button"></button>
-                <div class="modal__header">
-                    <h4 class="modal__title">Оставьте <span>заявку!</span></h4>
-                    <p class="modal__subtitle">Мы перезвоним вам в течение 15 минут, чтобы уточнить детали и рассчитать стоимость</p>
-                </div>
+            <div class="modal__wrapper">
+                <div class="modal__content">
+                    <button class="modal__close modal__close-button"></button>
+                    <div class="modal__header">
+                        <h4 class="modal__title">Оставьте <span>заявку!</span></h4>
+                        <p class="modal__subtitle">Мы перезвоним вам в течение 15 минут, чтобы уточнить детали и рассчитать стоимость</p>
+                    </div>
 
-                <form
-                    class="modal__form"
-                    action="/" 
-                    method="post" 
-                    id="form-feedback" 
-                    data-url="{% url 'post_feedback' %}"
-                    data-feedback-form
-                    >
-                    {% csrf_token %}
-                    <div class="modal__form-row">
-                        <div class="modal__form-cell">
+                    <form
+                        class="modal__form"
+                        action="/" 
+                        method="post" 
+                        id="form-feedback" 
+                        data-url="{% url 'post_feedback' %}"
+                        data-feedback-form
+                        >
+                        {% csrf_token %}
+                        <div class="modal__form-row">
+                            <div class="modal__form-cell">
+                                <input
+                                        class="modal__form-input"
+                                        placeholder="Имя"
+                                        type="text"
+                                        name="name"
+                                        minlength="2"
+                                        maxlength="50"
+                                        required
+                                />
+                            </div>
+                            <div class="modal__form-cell">
+                                <input
+                                        class="modal__form-input"
+                                        placeholder="Номер телефона"
+                                        pattern="\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}"
+                                        type="tel"
+                                        name="phone"
+                                        data-phone
+                                        required
+                                />
+                            </div>
+                        </div>
+                        <div class="modal__form-cell--long">
                             <input
-                                    class="modal__form-input"
-                                    placeholder="Имя"
-                                    type="text"
-                                    required name="name"
-                                    minlength="2"
-                                    maxlength="50"
+                                    class="modal__form-input--long"
+                                    placeholder="Уточните свой вопрос"
+                                    name="message"
+                                    maxlength="300" 
                             />
                         </div>
-                        <div class="modal__form-cell">
-                            <input
-                                    class="modal__form-input"
-                                    placeholder="Номер телефона"
-                                    type="tel"
-                                    required name="phone"
-                                    data-phone
-                            />
+                        <div class="modal__policy policy">
+                            <input type="checkbox" class="policy__checkbox" name="" checked>
+                            <label for="policy" class="policy__label">
+                                С правилами <a href="/">политики конфиденциальности</a> ознакомлен
+                            </label>
                         </div>
-                    </div>
-                    <div class="modal__form-cell--long">
-                        <input
-                                class="modal__form-input--long"
-                                placeholder="Уточните свой вопрос"
-                                name="message"
-                                maxlength="300" 
-                        />
-                    </div>
-                    <div class="modal__policy policy">
-                        <input type="checkbox" class="policy__checkbox" name="" checked>
-                        <label for="policy" class="policy__label">
-                            С правилами <a href="/">политики конфиденциальности</a> ознакомлен
-                        </label>
-                    </div>
-                    <button type="submit" class="modal__button button">Оставить заявку</button>
-                </form>
+                        <button type="submit" class="modal__button button">Оставить заявку</button>
+                    </form>
+                </div>
+                <div class="decorative-lines">
+                    <span class="decorative-lines__item"></span>
+                    <span class="decorative-lines__item"></span>
+                    <span class="decorative-lines__item"></span>
+                </div>
             </div>
         </div>
 
         <div class="modal-success" id='success'>
             <div class="modal-success__overlay"></div>
-            <div class="modal-success__content">
-                <button class="modal-success__close modal-success__close-button"></button>
-                <img 
-                    src="{% static 'pages/icons/success.svg' %}" 
-                    alt="Успех" 
-                    class="modal-success__image"
-                    width="72"
-                    height="72"
-                    loading="lazy"
-                >
-                <div class="modal-success__header">
-                    <h4 class="modal-success__title">Отлично!</h4>
-                    <p class="modal-success__subtitle">Спасибо за вашу заявку! Наш менеджер в скором времени свяжется с вами!</p>
+            <div class="modal-success__wrapper">
+                <div class="modal-success__content">
+                    <button class="modal-success__close modal-success__close-button"></button>
+                    <img 
+                        src="{% static 'pages/icons/success.svg' %}" 
+                        alt="Успех" 
+                        class="modal-success__image"
+                        width="72"
+                        height="72"
+                        loading="lazy"
+                    >
+                    <div class="modal-success__header">
+                        <h4 class="modal-success__title">Отлично!</h4>
+                        <p class="modal-success__subtitle">Спасибо за вашу заявку! Наш менеджер в скором времени свяжется с вами!</p>
+                    </div>
+                    <button class="button modal-success__button modal-success__close hidden-tablet">На главную</button>
                 </div>
-                <button class="button modal-success__button modal-success__close hidden-tablet">На главную</button>
+                <div class="decorative-lines">
+                    <span class="decorative-lines__item"></span>
+                    <span class="decorative-lines__item"></span>
+                    <span class="decorative-lines__item"></span>
+                </div>
             </div>
         </div>
     </main>
@@ -1083,7 +1106,7 @@
                         <ul class="footer__list">
                             <li class="p3 footer__list-item"><a href="#about">О компании</a></li>
                             <li class="p3 footer__list-item"><a href="#service">Услуги</a></li>
-                            <li class="p3 footer__list-item"><a>Цены</a></li>
+                            <li class="p3 footer__list-item"><a href="#cases">Кейсы</a></li>
                             <li class="p3 footer__list-item"><a href="#faq">Контакты</a></li>
                         </ul>
                     </div>

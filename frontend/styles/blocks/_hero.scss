@@ -269,7 +269,7 @@
     }
 
     @include mobile{
-      font-size: rem(60);
+      font-size: rem(45);
     }
 
     @include mobile-s{
@@ -331,12 +331,21 @@
       padding-inline: rem(20);
       padding-bottom: rem(20);
     }
+
+    &--mobile{
+      position: absolute;
+      z-index: 100;
+      bottom: rem(20);
+      width: 100%;
+      padding-inline: rem(20);
+    }
   }
 
   &__mobile-extra{
     display: flex;
     flex-direction: column;
     row-gap: rem(24);
+    margin-bottom: rem(100);
   }
   &__mobile-video{
     position: absolute;

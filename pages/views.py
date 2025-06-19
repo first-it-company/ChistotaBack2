@@ -86,7 +86,7 @@ def home(request):
             'photo': review.get('author_avatar_url', '/static/images/reviews/avatar.png'),
             'service': 'Уборка',
             'link': {
-                'url': 'https://2gis.ru/',
+                'url': 'https://go.2gis.com/Q5sPN',
                 'text': 'Читать на 2GIS',
                 'icon': 'static/pages/icons/2gis.png',
             }

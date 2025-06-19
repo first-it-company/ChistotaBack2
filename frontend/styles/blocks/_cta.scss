@@ -105,8 +105,12 @@
     flex-direction: column;
     justify-content: space-between;
 
+    height: 100%;
+    position: relative;
+    z-index: 10;
+
+
     @include laptop{
-      width: 50%;
       row-gap: rem(24);
     }
 
@@ -117,6 +121,8 @@
       top: rem(15);
       padding: rem(32) rem(20);
     }
+
+
 
     &-title{
       font-weight: 600;

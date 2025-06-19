@@ -91,21 +91,27 @@
   }
 
   &__splide {
-    @include mobile{
+    @include mobile {
       order: 2;
     }
-
-    &-slide{
+  
+    &-slide {
       display: flex;
       flex-direction: column;
+      
+      @include mobile {
+        transition: opacity 0.3s ease; 
 
-      @include mobile{
-        &:not(.is-active){
+        &:not(.is-active) {
           opacity: 0.5 !important;
+        }
+        
+        &.is-active {
+          opacity: 1 !important;
         }
       }
     }
-  }
+}
 
   &__button{
     height: rem(55);

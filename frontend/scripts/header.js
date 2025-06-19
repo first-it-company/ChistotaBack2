@@ -1,5 +1,5 @@
 export function initHeader() {
-    const root = document.querySelector('.header')
+const root = document.querySelector('.header')
     if (!root) return
 
     const overlay = root.querySelector('.header__overlay')
@@ -50,12 +50,12 @@ export function initHeader() {
     window.addEventListener('scroll', () => {
         const currentScroll = window.scrollY
 
+        if (overlay.classList.contains(STATE_CLASSES.isActive)) {
+            closeOverlay()
+        }
+
         if (currentScroll > lastScroll && currentScroll > scrollThreshold) {
             root.classList.add(STATE_CLASSES.navUp)
-
-            if (overlay.classList.contains(STATE_CLASSES.isActive)) {
-                closeOverlay()
-            }
         } else {
             root.classList.remove(STATE_CLASSES.navUp)
         }

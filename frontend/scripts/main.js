@@ -2,7 +2,7 @@ import '../styles/main.scss';
 
 import { initTypewriterHero } from './typewriterHero.js';
 import { initTypewriterCta } from './typewritterCta.js';
-import { initCasesSlider } from './casesSwiper.js';
+import { initCasesSlider, updateSliderWithFilter } from './casesSwiper.js';
 import { initBrandsCarousel } from './brandsCarousel.js';
 import { initDropdown } from './dropdown.js'
 import { initReviewsSlider } from './reviewsSlider.js';
@@ -41,26 +41,16 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('[data-dropdown-config]').forEach(element => {
         try {
             const config = JSON.parse(element.dataset.dropdownConfig);
-
             initDropdown({
                 containerSelector: `.${element.classList[1]}`,
                 options: config.options || [],
                 onSelect: function(value) {
-                    const orderItems = document.querySelectorAll('.cases__splide-slide');
-                    orderItems.forEach(item => {
-                        const itemScope = item.dataset.scope;
-                        if (value === '' || itemScope === value) {
-                            item.style.display = 'block';
-                        } else {
-                            item.style.display = 'none';
-                        }
-                    });
+                    updateSliderWithFilter(value);
                 }
             });
         } catch (e) {
             console.error('Error parsing dropdown config:', e);
         }
     });
-
 });
 
