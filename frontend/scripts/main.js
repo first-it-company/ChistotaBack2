@@ -18,8 +18,10 @@ import { initServiceSliders } from "./serviceSlider";
 import { initModal } from "./modal.js";
 import { initFormFeedback } from "./form.js";
 import { initModalSuccess } from "./modalSuccess.js";
+import { loader } from "./loader"
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+    initHeroSlider();
     initTypewriterHero();
     initTypewriterCta();
     initCasesSlider();
@@ -30,13 +32,13 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollWordAnimation();
     initHeader();
     initExpandableText();
-    initHeroSlider();
     initMobileHeroSlider();
     initTeamSlider();
     initServiceSliders();
     initModal();
     initFormFeedback();
     initModalSuccess();
+
     
     document.querySelectorAll('[data-dropdown-config]').forEach(element => {
         try {
@@ -52,5 +54,11 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Error parsing dropdown config:', e);
         }
     });
+
+    await loader();
+    document.getElementById('loader-overlay').style.display = 'none';
+    const content = document.getElementById('main');
+    content.classList.remove('blurred');
+    content.classList.add('loaded');
 });
 

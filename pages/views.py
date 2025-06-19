@@ -78,17 +78,22 @@ def home(request):
     logo = Logo.objects.all()
 
     reviews_for_slider = []
+
+    
+
     for review in gis_reviews:
         slider_review = {
             'author_name': review.get('author_name', 'Аноним'),
             'rating': review.get('rating', 4),
             'review_text': review.get('review_text', ''),
+            
             'photo': review.get('author_avatar_url', '/static/images/reviews/avatar.png'),
             'service': 'Уборка',
             'link': {
                 'url': 'https://go.2gis.com/Q5sPN',
                 'text': 'Читать на 2GIS',
                 'icon': 'static/pages/icons/2gis.png',
+                'img': review.get('photos', '')
             }
         }
         reviews_for_slider.append(slider_review)
