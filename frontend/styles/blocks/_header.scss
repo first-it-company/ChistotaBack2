@@ -1,14 +1,32 @@
 @use "../helpers" as *;
 
 .header{
-  padding-block: rem(20);
   font-family: var(--font-family-accent);
   position: sticky;
   z-index: 200;
   top: 0;
-  background-color: var(--color-white);
   border-bottom: 1px solid #E5E5E5;
   transition: transform 0.3s ease-in-out;
+  background-color: var(--color-white);
+
+  &__logo {
+    flex-shrink: 0;
+    width: 16vw;
+
+  @include tablet {
+    width: 170px;
+  }
+
+  }
+
+   &__contacts-logo {
+      width: 2vw;
+
+     @include tablet{
+       width: 40px;
+       height: 40px;
+     }
+    }
 
   &.nav-up {
     transform: translateY(-100%);
@@ -17,8 +35,21 @@
   &__body {
     &-inner{
       display: flex;
+      padding-block: 1vw;
+      padding-inline: 40px;
+      //gap: rem(80);
       justify-content: space-between;
       align-items: center;
+      border-radius: 12px;
+      //background: rgb(242, 246, 250);
+
+      @include tablet {
+        padding: 20px;
+      }
+
+      @include mobile {
+        padding-inline: 16px;
+      }
     }
   }
 
@@ -28,7 +59,7 @@
     align-items: center;
     transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
 
-    @include mobile {
+    @include burger {
       width: 100%;
       height: rem(420);
       background-color: var(--color-white);
@@ -51,7 +82,20 @@
     }
   }
 
+  &__menu-link{
+    font-family: Noah;
+    font-size: 1.5vw;
+    font-weight: 400;
+    text-wrap: nowrap;
+
+    @include tablet {
+      font-size: 1.5rem;
+    }
+  }
+
   &__menu{
+    //margin-right: auto;
+
     &-list{
       display: flex;
       column-gap: rem(40);
@@ -66,7 +110,7 @@
         font-size: rem(16);
       }
 
-      @include mobile{
+      @include burger{
         flex-direction: column;
         gap: rem(24);
         font-size: rem(24);
@@ -83,7 +127,7 @@
       column-gap: rem(12);
     }
 
-    @include mobile{
+    @include burger{
       justify-content: space-between;
       width: 100%;
       gap: rem(24);
@@ -97,6 +141,7 @@
       display: flex;
       align-items: center;
       column-gap: rem(24);
+      flex-shrink: 0;
 
       @include mobile-s{
         gap: rem(18);
@@ -105,13 +150,14 @@
 
 
     &-link{
-      font-size: rem(24);
+      font-size: 1.6vw;
+      text-wrap: nowrap;
 
       @include tablet{
         font-size: rem(16);
       }
 
-      @include mobile{
+      @include burger{
         font-size: rem(24);
       }
 

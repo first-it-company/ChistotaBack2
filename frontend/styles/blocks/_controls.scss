@@ -3,12 +3,14 @@
 
 .controls{
   display: flex;
-  gap: rem(38);
+  gap: rem(24);
   align-items: center;
+
+
   &__button{
     border: 1px solid var(--color-blue);
     border-radius: rem(70);
-    padding: rem(16) rem(32);
+    padding: rem(16) rem(28);
     background-color: var(--color-blue);
 
     img{
@@ -28,9 +30,13 @@
 
   &__current{
     font-weight: 600;
-    font-size: rem(16);
+    font-size: 1vw;
     line-height: 1.8;
     color: var(--color-black);
+
+    @include container {
+      font-size: 1rem;
+    }
 
     span{
       color: var(--color-gray-200);

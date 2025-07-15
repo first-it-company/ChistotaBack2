@@ -8,11 +8,15 @@
 
     &-slides{
       position: relative;
-      overflow: hidden;
-      left: calc(50% - 680px + 40px);
+      overflow: visible;
+      right: 0;
+      width: calc(100% - 40px);
+      max-width: calc(100vw - 80px);
 
       @include container{
-        left: 20px;
+        left: 0;
+        width: calc(100% - 40px);
+        max-width: calc(100vw - 40px);
       }
     }
 
@@ -67,11 +71,11 @@
       }
 
       &__container{
-        margin-bottom: rem(30);
+        margin-bottom: rem(40);
 
         @include tablet{
-          margin-bottom: 0;
-          order: 3;
+          margin-bottom: 32px;
+          order: 2;
         }
 
       }
@@ -85,4 +89,58 @@
     }
   }
 
+}
+
+// Дополнительные слайдеры отзывов
+.ms-slide__container-2,
+.ms-slide__container-3 {
+
+
+  
+  .ms-slides {
+    position: relative;
+    overflow: visible;
+    right: 0;
+    width: calc(100% - 40px);
+    max-width: calc(100vw - 80px);
+
+    @include container{
+      left: 0;
+      width: calc(100% - 40px);
+      max-width: calc(100vw - 40px);
+    }
+  }
+
+  @include tablet{
+    order: 2;
+  }
+}
+
+.reviews__extra-1,
+.reviews__extra-2,
+.reviews__extra-3 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: rem(20);
+
+  @include tablet{
+    width: 100%;
+    justify-content: flex-start;
+    //order: 2;
+    margin-bottom: rem(32);
+  }
+}
+
+// Для первого слайдера убираем верхний отступ, так как он идет сразу после заголовка
+.reviews__extra-1 {
+  margin-top: rem(20);
+  
+  @include tablet{
+    margin-top: rem(16);
+  }
+}
+
+.ms-slide__container-2 {
+  margin-bottom: 40px;
 }

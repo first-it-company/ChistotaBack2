@@ -12,10 +12,13 @@ export function initTeamSlider() {
         pagination: false,
         breakpoints: {
             768:{
-                perPage: 3,
+                perPage: 2,
+                padding: { right: '30%' },
             },
             520:{
-                perPage: 2,
+                perPage: 1,
+                padding: { right: '30%' },
+                gap: 16,
             }
         }
     });

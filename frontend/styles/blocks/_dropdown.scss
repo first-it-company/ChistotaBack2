@@ -11,7 +11,11 @@
   }
 
   &__label {
-    font-size: rem(18);
+    font-size: 1.2vw;
+
+    @include tablet{
+      font-size: rem(20);
+    }
 
     @include mobile{
       font-size: rem(16);

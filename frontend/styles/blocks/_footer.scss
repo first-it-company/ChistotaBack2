@@ -1,14 +1,44 @@
 @use "../helpers" as *;
 
 .footer{
+  border-radius: 40px 40px 0px 0px;
+/* Основные/Черный */
+  background: rgb(42, 42, 42);
+  position: relative;
+
+
+
   &__inner{
-    padding-top: rem(50);
+    padding: rem(60) rem(40) rem(40) rem(40);
+    margin: 0;
+    width: 100%;
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url('/static/pages/images/footer/back.png') 0 0 / cover no-repeat;
+      z-index: 100;
+      pointer-events: none;
+      border-radius: 40px 40px 0px 0px;
+
+      @include mobile{
+        background: url('/static/pages/images/footer/back-m.png') 0 0 / cover no-repeat;
+      }
+
+
+    }
+    @include mobile{
+
+        padding: rem(40) rem(16) rem(16) rem(16);
+      }
   }
 
   &__body{
     display: flex;
     justify-content: space-between;
     padding-bottom: rem(40);
+
 
     @include tablet{
       flex-direction: column;
@@ -18,9 +48,9 @@
 
   &__info{
     font-family: var(--font-family-accent);
-    font-size: rem(24);
+    font-size: 1.5vw;
     color: var(--color-gray-200);
-    max-width: rem(534);
+    max-width: 40%;
     display: flex;
     flex-direction: column;
     gap: rem(30);
@@ -28,28 +58,185 @@
     @include tablet{
       max-width: 100%;
     }
+
+    a .footer__logo {
+    width: 23vw;
+
+      @include tablet{
+        width: 170px;
+      }
+  }
   }
 
   &__title{
-    font-size: rem(24);
+    font-size: 1.3vw;
+    color: rgb(223, 223, 223);
+
 
     @include laptop{
       font-size: rem(20);
+    }
+
+    @include mobile{
+      font-size: rem(16);
     }
   }
 
   &__socials-wrapper{
     display: flex;
-    gap:rem(24)
+    gap:rem(16);
+    padding: 1.2vw;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    margin-top: auto;
+    align-items: center;
+
+    @include tablet {
+      padding: rem(10);
+    }
+
+  }
+
+
+
+  &__socials-logo {
+    flex-shrink: 0;
+
+    @include mobile{
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  &__inst-text {
+    color: rgb(128, 128, 128);
+    font-family: Noah;
+    font-size: 1.1vw;
+    font-weight: 400;
+
+    @include tablet {
+      font-size: 12px;
+    }
+
+     @include mobile{
+    font-size: 9px;
+  }
+  }
+
+
+
+  &__list-wrapper {
+    //width: 30%;
+
+    @include mobile {
+      width: 49%;
+    }
+  }
+
+  &__review {
+    display: flex;
+    gap: rem(10);
+    margin-top: rem(20);
+    overflow: hidden;
+
+    @include tablet {
+      width: 100%;
+      margin-top: rem(16);
+    }
+
+    .splide {
+      width: 100%;
+
+      &__track {
+        overflow: visible;
+      }
+
+      &__list {
+        display: flex;
+        gap: rem(10);
+      }
+
+      &__slide {
+        width: auto !important;
+        flex-shrink: 0;
+      }
+    }
+
+    &__review-button {
+      align-items: center;
+      display: flex;
+      gap: rem(10);
+      padding: rem(14) rem(20);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.04);
+      flex-shrink: 0;
+      transition: background-color 0.3s ease;
+      
+      @media (max-width: 1130px) {
+        padding: rem(10) rem(14);
+        gap: rem(6);
+      }
+
+      svg {
+        flex-shrink: 0;
+      }
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      span {
+        color: rgb(255, 255, 255);
+        font-family: TT Firs Neue;
+        font-size: 1.3vw;
+        font-weight: 500;
+
+        @include tablet {
+          font-size: rem(20);
+        }
+
+        @include mobile {
+          font-size: rem(14 );
+        }
+      }
+
+      @include tablet {
+        width: 100%;
+        justify-content: center;
+      }
+
+      @include mobile{
+        padding: 12px;
+      }
+    }
   }
 
   &__nav{
+    justify-content: space-between;
     display: flex;
-    gap: rem(196);
+    flex-wrap: wrap;
+    gap: rem(20) rem(40);
+    width: 45%;
+    margin-right: 5%;
+
+    @media (max-width: 1400px) {
+      width: 46vw;
+    }
 
     @include laptop{
-      gap: rem(65);
+      gap: rem(40);
     }
+
+    @include tablet{
+      margin-right: 0;
+      width: 100%;
+      justify-content: space-between;
+      row-gap: rem(24);
+      column-gap: 2%;
+    }
+
 
     @include mobile{
       justify-content: space-between;
@@ -61,13 +248,14 @@
     flex-direction: column;
     gap: rem(24);
     font-weight: 400;
-    font-size: rem(20);
+    font-size: 1.2vw;
     color: var(--color-black);
 
 
     &-title{
-      color: var(--color-blue);
-      margin-bottom: rem(40);
+      text-wrap: nowrap;
+      color: rgb(109, 170, 225);
+      margin-bottom: rem(16);
 
       @include mobile{
         font-size: rem(18);
@@ -75,10 +263,17 @@
     }
 
     &-item{
-      line-height: rem(14);
+      text-wrap: nowrap;
+      font-size: 1vw;
       display: flex;
       align-items: center;
       gap: rem(8);
+      color: var(--color-white);
+
+      @include tablet {
+        font-size: rem(18);
+        text-wrap: wrap;
+      }
 
       @include mobile{
         font-size: rem(18);
@@ -90,17 +285,35 @@
     }
   }
 
+  &__socials-logo {
+    width: 3vw;
+    height: 3vw;
+
+    @include tablet {
+      width: 40px;
+      height: 40px;
+    }
+
+    @include mobile {
+      width: 32px;
+      height: 32px;
+    }
+  }
+
   &__extra{
     &-info{
       display: flex;
       align-items: center;
       justify-content: space-between;
       font-family: var(--font-family-accent);
-      font-size: rem(18);
-      color: var(--color-gray-200);
-      border-top: 1px solid var(--color-gray-100);
+      font-size: 1.1vw;
+      color: rgb(128, 128, 128);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
       padding-top: rem(40);
-      padding-bottom: rem(55);
+
+      @include laptop{
+        font-size: rem(18);
+      }
 
       @include tablet{
         padding-top: rem(32);
@@ -111,33 +324,19 @@
         align-items: flex-start;
         flex-direction: column;
         gap: rem(24);
+        font-size: rem(14);
 
       }
     }
 
-    &-title{
-      font-weight: 600;
-      font-size: rem(193);
-      color: var(--color-baby-blue);
-      text-transform: uppercase;
-      line-height: rem(160);
-      overflow: hidden;
-      text-align: center;
-      text-wrap: nowrap;
+  }
+}
 
-      @include laptop{
-        font-size: rem(146);
-      }
 
-      @include tablet{
-        font-size: rem(95);
-        line-height: rem(77);
-      }
+.footer__socials-wrapper.tablet{
+  display: none;
 
-      @include mobile{
-        font-size: rem(52);
-        line-height: rem(44);
-      }
-    }
+  @include tablet{
+    display: flex;
   }
 }

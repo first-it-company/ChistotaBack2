@@ -11,6 +11,7 @@
     }
     @include mobile{
       bottom: rem(75);
+
     }
   }
 
@@ -23,8 +24,14 @@
 
   &__slide{
     img{
-      max-height: rem(40);
+      max-height: 3vw;
       width: auto;
+
+      @include tablet {
+      max-height: rem(50);
     }
+    }
+
+
   }
 }

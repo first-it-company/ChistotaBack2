@@ -1,104 +1,139 @@
+from itertools import count
+
 from django.shortcuts import render
 import requests
 from .models import (AboutMain, Services, ScopeServices, OrderInfo,
                      Order, QuestionAnswer, Contact, Feedback, PriceServices,
-                     VideoMain, Employee, Logo)
+                     VideoMain, Employee, Logo, SocialNetwork)
 from django.http.response import JsonResponse
 import json
 from django.core.serializers.json import DjangoJSONEncoder
 
 
-def gis_data_company():
-    response = requests.get(
-        'http://195.133.27.193/api/twoGis-data/',
-        params={'company': 'Чистота Дв'}
-    )
-    response.raise_for_status()
+def get_reviews_data():
+    url = 'http://185.104.113.137:8000/api/common/get_reviews/'
+    params = {
+        'branch_id': 1,
+        'only_providers': True
+    }
+    headers = {
+        'accept': 'application/json'
+    }
+    
+    try:
+        response = requests.get(url, params=params, headers=headers)
+        response.raise_for_status()
+        data = response.json()
+        
+        # Получаем рейтинги из branch
+        branch = data['branch']
+        ratings = {
+            'twogis': '{:.1f}'.format(float(branch['twogis_review_avg'])),
+            'vlru': '{:.1f}'.format(float(branch['vlru_review_avg'])),
+            'yandex': '{:.1f}'.format(float(branch['yandex_review_avg']))
+        }
 
-    data = response.json()
+        counts = {
+            'twogis': branch['twogis_review_count'],
+            'vlru': branch['vlru_review_count'],
+            'yandex': branch['yandex_review_count']
+        }
+        
+        # Преобразуем отзывы в нужный формат
+        reviews_for_slider = []
+        for review in data['reviews']:
+            provider = review['provider']
+            provider_info = {
+                '2gis': {
+                    'url': branch['twogis_map_url'],
+                    'text': 'Читать на 2GIS',
+                    'icon': 'static/pages/icons/2gis.png'
+                },
+                'vlru': {
+                    'url': branch['vlru_url'],
+                    'text': 'Читать на VL.ru',
+                    'icon': 'static/pages/icons/VL.png'
+                },
+                'yandex': {
+                    'url': branch['yandex_map_url'],
+                    'text': 'Читать на Яндекс',
+                    'icon': 'static/pages/icons/Yandex.png'
+                }
+            }
+            
+            slider_review = {
+                'author_name': review['author'],
+                'rating': int(float(review['rating'])),  # Преобразуем в целое число для звезд
+                'rating_display': '{:.1f}'.format(float(review['rating'])),  # Для отображения с десятичной частью
+                'review_text': review['content'],
+                'photo': review['avatar'] if review['avatar'] else '/static/pages/images/reviews/avatar.png',
+                'service': 'Уборка',  # Можно добавить определение услуги по контексту отзыва
+                'link': {
+                    'url': review['review_url'],
+                    'text': provider_info[provider]['text'],
+                    'icon': provider_info[provider]['icon'],
+                    'image': review['photos'].split(',')[0] if review['photos'] else ''
+                },
+                'provider': provider
+            }
+            reviews_for_slider.append(slider_review)
+        
+        # Сортируем отзывы - сначала с фото
+        reviews_for_slider.sort(key=lambda x: not bool(x['link']['image']))
+        
+        return {
+            'reviews': reviews_for_slider,
+            'ratings': ratings,
+            'counts': counts
+        }
+        
+    except requests.exceptions.RequestException as e:
+        print(f"Error fetching reviews: {e}")
+        return {
+            'reviews': [],
+            'ratings': {
+                'twogis': '5.0',
+                'vlru': '5.0',
+                'yandex': '5.0'
+            },
+            'counts': {
+                'twogis': '0',
+                'vlru': '0',
+                'yandex': '0'
+            }
 
-    return data
-
-
-def vl_data_company():
-    response = requests.get(
-        'http://195.133.27.193/api/vl-data/',
-        params={'company': 'Чистота Дв'}
-    )
-    response.raise_for_status()
-
-    data = response.json()
-
-    return data
-
-
-def yandex_data_company():
-    response = requests.get(
-        'http://195.133.27.193/api/yandex-data/',
-        params={'company': 'Чистота Дв'}
-    )
-    response.raise_for_status()
-
-    data = response.json()
-
-    return data
-
-
-def gis_reviews_data():
-    response = requests.get(
-        'http://195.133.27.193/api/twoGis-reviews/',
-        params={'company': 'Чистота Дв', 'cnt': 50, 'min_rating': 5}
-    )
-    response.raise_for_status()
-
-    data = response.json()['reviews']
-
-    return data
+        }
 
 
 def home(request):
     about_main = AboutMain.objects.first()
-    services = Services.objects.all()
+    services = Services.objects.all().order_by('order')
     scope_services = ScopeServices.objects.all()
-
     used_orders_scope_ids = Order.objects.values_list('scope', flat=True).distinct()
     scope_services_for_orders = ScopeServices.objects.filter(id__in=used_orders_scope_ids)
-
     order_info = OrderInfo.objects.first()
     orders = Order.objects.all()
-    gis_data = gis_data_company()
-    gis_reviews = gis_reviews_data()
-    vl_data = vl_data_company()
-    yandex_data = yandex_data_company()
     questions = QuestionAnswer.objects.all()
     contact = Contact.objects.first()
     list_square = PriceServices.objects.values_list('square', flat=True).distinct()
     videos = VideoMain.objects.all()
     employee = Employee.objects.all()
     logo = Logo.objects.all()
-
-    reviews_for_slider = []
-
     
+    # Получаем ссылки на социальные сети
+    social_networks = {
+        'instagram_url': SocialNetwork.objects.filter(name='instagram').first().url if SocialNetwork.objects.filter(name='instagram').exists() else '',
+        'telegram_url': SocialNetwork.objects.filter(name='telegram').first().url if SocialNetwork.objects.filter(name='telegram').exists() else '',
+        'vk_url': SocialNetwork.objects.filter(name='vk').first().url if SocialNetwork.objects.filter(name='vk').exists() else '',
+        'whatsapp_url': SocialNetwork.objects.filter(name='whatsapp').first().url if SocialNetwork.objects.filter(name='whatsapp').exists() else '',
+    }
 
-    for review in gis_reviews:
-        slider_review = {
-            'author_name': review.get('author_name', 'Аноним'),
-            'rating': review.get('rating', 4),
-            'review_text': review.get('review_text', ''),
-            
-            'photo': review.get('author_avatar_url', '/static/images/reviews/avatar.png'),
-            'service': 'Уборка',
-            'link': {
-                'url': 'https://go.2gis.com/Q5sPN',
-                'text': 'Читать на 2GIS',
-                'icon': 'static/pages/icons/2gis.png',
-                'image': review.get('photos', [])[0] if review.get('photos', []) else ''
-            }
-        }
-        reviews_for_slider.append(slider_review)
+    # Получаем отзывы и рейтинги
+    reviews_data = get_reviews_data()
+    reviews_for_slider = reviews_data['reviews']
+    ratings = reviews_data['ratings']
+    counts = reviews_data['counts']
 
-    reviews_for_slider.sort(key=lambda x: not bool(x['link']['image']))
     gis_reviews_json = json.dumps(reviews_for_slider, cls=DjangoJSONEncoder, ensure_ascii=False)
 
     return render(request, 'index.html', {
@@ -107,18 +142,19 @@ def home(request):
         'scope_services': scope_services,
         'order_info': order_info,
         'orders': orders,
-        'gis_data': gis_data,
-        'gis_reviews': gis_reviews,
         'gis_reviews_json': gis_reviews_json,
         'questions': questions,
         'contact': contact,
         'list_square': list_square,
         'videos': videos,
-        'vl_data': vl_data,
-        'yandex_data': yandex_data,
+        'gis_data': {'average_rating': ratings['twogis'], 'count': counts['twogis']},
+        'vl_data': {'average_rating': ratings['vlru'], 'count': counts['vlru']},
+        'yandex_data': {'average_rating': ratings['yandex'], 'count': counts['yandex']},
         'employee': employee,
         'scope_services_for_orders': scope_services_for_orders,
-        'logo': logo
+        'logo': logo,
+        'reviews': reviews_for_slider,
+        **social_networks  # Добавляем все ссылки на соцсети в контекст
     })
 
 

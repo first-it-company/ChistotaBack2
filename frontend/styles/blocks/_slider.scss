@@ -18,9 +18,13 @@
 
   &__header{
     font-weight: 500;
-    font-size: rem(24);
+    font-size: 1.5vw;
     text-transform: uppercase;
     color: var(--color-black);
+
+    @include tablet {
+      font-size: rem(26);
+    }
 
     @include mobile{
       font-size: rem(18);
@@ -28,14 +32,14 @@
   }
 
   &__features{
-    padding: rem(8) rem(16);
+    padding: 0.8vw 1vw;
     color: var(--color-orange);
-    font-size: rem(16);
+    font-size: 1vw;
 
     &-wrapper{
       display: flex;
       align-items: center;
-      column-gap: rem(16);
+      column-gap: 1vw;
     }
   }
 
@@ -43,5 +47,16 @@
     object-fit: cover;
     border-radius: rem(20);
     aspect-ratio: 636 / 370;
+    width: 100%;
+
+    @include tablet{
+    aspect-ratio: 1.1;
   }
+
+    @include mobile {
+      aspect-ratio: 236/320;
+    }
+  }
+
+
 }

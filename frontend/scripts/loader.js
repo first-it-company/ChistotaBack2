@@ -1,3 +1,5 @@
+import { videoManager } from './videoManager.js';
+
 export async function loader(timeoutMs = 8000) {
     if (document.readyState !== 'complete') {
         await new Promise(resolve => {
@@ -5,45 +7,25 @@ export async function loader(timeoutMs = 8000) {
         });
     }
 
-    const isSmallScreen = window.innerWidth < 1023;
+    const videoSelector = '.hero__splide-slide-inner video';
+    
+    // Get unique video elements by src
+    const videoElements = document.querySelectorAll(videoSelector);
+    const uniqueVideos = Array.from(videoElements).reduce((acc, video) => {
+        const src = video.getAttribute('src');
+        if (!acc.has(src)) {
+            acc.set(src, video);
+        }
+        return acc;
+    }, new Map());
 
-    let videos = [];
-
-    if (isSmallScreen) {
-        videos = Array.from(document.querySelectorAll('.hero__main-slide video'));
-    } else {
-        videos = Array.from(document.querySelectorAll('.hero__splide-slide-inner video'));
-    }
-
-    const uniqueVideos = Array.from(new Set(videos));
-
-    const videoPromises = uniqueVideos.map(video => {
-        return new Promise(resolve => {
-            if (video.readyState >= 4) {
-                resolve();
-            } else {
-                const onLoad = () => {
-                    cleanup();
-                    resolve();
-                };
-                const onError = () => {
-                    cleanup();
-                    resolve();
-                };
-                const cleanup = () => {
-                    video.removeEventListener('loadeddata', onLoad);
-                    video.removeEventListener('error', onError);
-                };
-
-                video.addEventListener('loadeddata', onLoad, { once: true });
-                video.addEventListener('error', onError, { once: true });
-                
-                setTimeout(() => {
-                    cleanup();
-                    resolve();
-                }, timeoutMs);
-            }
-        });
+    const videoPromises = Array.from(uniqueVideos.values()).map(video => {
+        // Set required attributes
+        video.muted = true;
+        video.playsInline = true;
+        
+        // Используем videoManager для загрузки
+        return videoManager.loadVideo(video);
     });
 
     await Promise.all(videoPromises);

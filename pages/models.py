@@ -42,9 +42,12 @@ class ServicePhoto(models.Model):
 class Services(models.Model):
     scope = models.ForeignKey(ScopeServices, on_delete=models.CASCADE, verbose_name='Сфера')
     desc = models.TextField(verbose_name='Описание')
+    color = models.CharField(max_length=50, verbose_name='Цвет)')
+    gradient = models.TextField(verbose_name='Градиент (linear-gradient(0deg, #53647A, #53647A), rgba(83, 100, 122, 0.4) 55%, rgba(0, 96, 223, 0.4) 100%);)')
     price = models.DecimalField(max_digits=12, decimal_places=2, verbose_name='Цена')
     time_work = models.CharField(max_length=150, verbose_name='Часы работы')
     square = models.CharField(max_length=150, verbose_name='Площадь работы')
+    order = models.IntegerField(verbose_name='порядок')
     photos = models.ManyToManyField(
         ServicePhoto,
         verbose_name='Фотографии'
@@ -179,3 +182,15 @@ class Logo(models.Model):
     class Meta:
         verbose_name = 'Лого для блока Нас Выбирают'
         verbose_name_plural = 'Лого для блока Нас Выбирают'
+
+
+class SocialNetwork(models.Model):
+    name = models.CharField(max_length=100, verbose_name='Название соцсети')
+    url = models.URLField(verbose_name='Ссылка на соцсеть', null=True, blank=True)
+
+    class Meta:
+        verbose_name = 'Социальная сеть'
+        verbose_name_plural = 'Социальные сети'
+
+    def __str__(self):
+        return self.name

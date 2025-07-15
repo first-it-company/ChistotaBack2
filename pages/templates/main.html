@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    {% load static %}
+    {% load django_vite %}
+    {% vite_hmr_client %}
+    {% vite_asset 'scripts/main.js' %}
+    <link rel="stylesheet" href="{% static 'pages/styles.css' %}">
 </head>
 <body>
 <h1>На главном экране видео</h1>
@@ -19,7 +24,7 @@
 {% for service in services %}
 <p>Заголовок: {{ service.scope.name }}</p>
 <p>Описание: {{ service.desc }}</p>
-<p>Цена: {{ service.price }}</p>
+<p>Цена: {{ service.price|floatformat:0 }}</p>
 <p>Часы работы: {{ service.time_work }}</p>
 <p>Площадь работы: {{ service.square }}</p>
 {% for serv_photo in service.photos.all %} <!-- Изменил: теперь несколько фото может быть -->
@@ -75,25 +80,77 @@
 <p>Адрес: {{ contact.address }}</p>
 
 <h1>Форма обратной связи</h1>
-<form method="post" id="form-feedback">
+<form method="post" id="form-feedback" class="modal__form">
     {% csrf_token %}
-    <input type="text" placeholder="Имя" required name="name">
-    <select name="square-select-form" id="square-select-form" required>
-        {% for square in list_square %}
-            <option value="{{ square }}">{{ square }}</option>
-        {% endfor %}
-    </select>
-    <select name="select-form" id="scope-select-form" required>
-        <option value="">Услуга</option>
-        {% for scope in scope_services %}
-            <option value="{{ scope.name }}">{{ scope.name }}</option>
-        {% endfor %}
-    </select>
-    <input type="tel" placeholder="Телефон" required name="phone">
-    <textarea placeholder="Введите свой вопрос" name="message"></textarea>
-    <button class="submit">Отправить</button>
-    <div style="margin-top: 10px;">
-        <span>Итого: </span><span id="total-price">0</span><span>₽</span>
+    <div class="modal__fields">
+        <div class="faq__row">
+            <div class="faq__cell">
+                <input
+                    class="faq__cell-input"
+                    type="text"
+                    placeholder="Имя"
+                    name="name"
+                    minlength="2"
+                    maxlength="50"
+                    required
+                >
+            </div>
+            <div class="faq__cell">
+                <input
+                    class="faq__cell-input"
+                    type="tel"
+                    placeholder="Телефон"
+                    pattern="\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}"
+                    name="phone"
+                    data-phone
+                    required
+                >
+            </div>
+        </div>
+        <div class="faq__row">
+            <div class="faq__cell">
+                <div class="custom-select" data-name="square-select-form">
+                    <div class="custom-select__trigger faq__cell-input">
+                        <span class="custom-select__placeholder">Площадь</span>
+                        <div class="custom-select__arrow"></div>
+                    </div>
+                    <div class="custom-select__dropdown">
+                        {% for square in list_square %}
+                        <div class="custom-select__option" data-value="{{ square }}">{{ square }}</div>
+                        {% endfor %}
+                    </div>
+                    <input type="hidden" name="square-select-form" id="square-select-form" class="custom-select__input" required>
+                </div>
+            </div>
+            <div class="faq__cell">
+                <div class="custom-select" data-name="select-form">
+                    <div class="custom-select__trigger faq__cell-input">
+                        <span class="custom-select__placeholder">Услуга</span>
+                        <div class="custom-select__arrow"></div>
+                    </div>
+                    <div class="custom-select__dropdown">
+                        {% for scope in scope_services %}
+                        <div class="custom-select__option" data-value="{{ scope.name }}">{{ scope.name }}</div>
+                        {% endfor %}
+                    </div>
+                    <input type="hidden" name="select-form" id="scope-select-form" class="custom-select__input" required>
+                </div>
+            </div>
+        </div>
+        <div class="faq__cell--long">
+            <input
+                class="faq__cell-input--long"
+                placeholder="Введите свой вопрос"
+                name="message"
+                maxlength="300"
+            >
+        </div>
+    </div>
+    <div class="modal__action">
+        <button type="submit" class="button faq__button submit">Отправить</button>
+        <div style="margin-top: 10px;">
+            <span>Итого: </span><span id="total-price">0</span><span>₽</span>
+        </div>
     </div>
 </form>
 
@@ -198,6 +255,15 @@ function calculatePrice() {
 // Слушаем изменения в select
 squareSelect.addEventListener('change', calculatePrice);
 serviceSelect.addEventListener('change', calculatePrice);
+</script>
+
+<script src="{% static 'pages/main.js' %}"></script>
+
+<script>
+    // Инициализация кастомных селектов после загрузки DOM
+    document.addEventListener('DOMContentLoaded', function() {
+        initCustomSelect();
+    });
 </script>
 
 </body>

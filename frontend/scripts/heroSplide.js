@@ -1,87 +1,176 @@
 import { Splide } from '@splidejs/splide';
+import '@splidejs/splide/css';
+import { videoManager } from './videoManager.js';
+
+function syncHeroHeight() {
+  const heroBody = document.querySelector('.hero__body');
+  const heroSplide = document.querySelector('.hero__splide');
+  
+  if (!heroBody || !heroSplide) return;
+  
+  const setHeight = () => {
+    const bodyHeight = heroBody.offsetHeight;
+    heroSplide.style.height = `${bodyHeight}px`;
+  };
+
+  // Устанавливаем высоту при загрузке
+  setHeight();
+
+  // Обновляем высоту при изменении размера окна
+  window.addEventListener('resize', setHeight);
+
+  // Обновляем высоту при изменении содержимого (например, когда загружаются шрифты)
+  const observer = new ResizeObserver(() => {
+    setHeight();
+  });
+  
+  observer.observe(heroBody);
+}
 
 export function initHeroSlider() {
+    // Check if slider already exists and destroy it
+    const existingSlider = document.querySelector('.hero__splide');
+    if (existingSlider && existingSlider.splide) {
+        existingSlider.splide.destroy(true);
+    }
+
     const splide = new Splide('.hero__splide', {
         type: 'slide',
-        rewind: false,
-        fixedWidth: 473,
-        fixedHeight: 689,
+        rewind: true,
+        width: '100%',
+        fixedWidth: '47%',
         perMove: 1,
         arrows: false,
         pagination: false,
         trimSpace: false,
-        gap: '-240px',
+        // gap: '20px',
         classes: {
             slide: 'hero__splide-slide splide__slide',
             active: 'is-active',
             visible: 'is-visible',
         },
-
-
         breakpoints: {
-            1300: {
-                fixedWidth: 447,
-                fixedHeight: 650,
-                gap: '-230px',
+            768: {
+                fixedWidth: '60%',
+                gap: '10px',
             },
         }
     });
 
-    function updateSlidePositions() {
-        const slides = document.querySelectorAll('.hero__splide-slide');
-        const activeIndex = splide.index;
 
-        slides.forEach((slide, index) => {
-            slide.classList.remove('slide-offset', 'slide-previous');
 
-            if (index < activeIndex) {
-                slide.classList.add('slide-previous');
-            } else if (index > activeIndex) {
-                slide.classList.add('slide-offset');
-            }
-        });
-    }
+    // Improved video handling
+    let currentVideo = null;
 
-    function playActiveVideo() {
+    function stopAllVideos() {
         const allVideos = document.querySelectorAll('.hero__splide-slide video');
         allVideos.forEach(video => {
             video.pause();
             video.currentTime = 0;
         });
+    }
 
-        const activeSlide = splide.Components.Slides.getAt(splide.index).slide;
+    async function playActiveVideo() {
+        stopAllVideos();
+
+        const activeSlide = splide.Components.Slides.getAt(splide.index)?.slide;
+        if (!activeSlide) return;
+
         const activeVideo = activeSlide.querySelector('video');
         if (activeVideo) {
-            activeVideo.play();
+            if (currentVideo && currentVideo !== activeVideo) {
+                currentVideo.pause();
+                currentVideo.currentTime = 0;
+            }
+            
+            // Загружаем видео через менеджер (предотвращает дублирование)
+            await videoManager.loadVideo(activeVideo);
+            
+            activeVideo.play().catch(err => console.warn('Video autoplay failed:', err));
+            currentVideo = activeVideo;
         }
     }
 
-    function updateSlideTransforms() {
-        const slides = document.querySelectorAll('.hero__splide-slide');
-        const activeIndex = splide.index;
 
-        slides.forEach((slide, index) => {
-            const offset = index - activeIndex;
 
-            const scale = Math.max(0.6, 1 - Math.abs(offset) * 0.2);
-            const translate = offset * 300;
+    // Initialize videos without loading them
+    const videos = document.querySelectorAll('.hero__splide-slide video');
+    videos.forEach(video => {
+        video.muted = true;
+        video.playsInline = true;
+    });
 
-            const inner = slide.querySelector('.hero__splide-slide-inner');
-            if (inner) {
-                inner.style.transform = `translateX(${translate}px) scale(${scale})`;
-                inner.style.zIndex = 100 - Math.abs(offset);
+    // Add custom arrow handlers and counter
+    function addCustomArrowHandlers() {
+        const btnPrev = document.getElementById('heroBtnPrev');
+        const btnNext = document.getElementById('heroBtnNext');
+        const counterEl = document.getElementById('heroCurrent');
+
+        const updateUI = () => {
+            const index = splide.index;
+            const endIndex = splide.Components.Controller.getEnd();
+            const current = index + 1;
+            const total = endIndex + 1;
+            
+            const formattedCurrent = String(current).padStart(2, '0');
+            const formattedTotal = String(total).padStart(2, '0');
+            
+            if (counterEl) {
+                counterEl.textContent = `${formattedCurrent}/${formattedTotal}`;
             }
-        });
+            
+            if (btnPrev) {
+                btnPrev.classList.toggle('is-disabled', index === 0);
+            }
+            
+            if (btnNext) {
+                btnNext.classList.toggle('is-disabled', index === endIndex);
+            }
+        };
+
+        if (btnPrev) {
+            btnPrev.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                splide.go('<');
+            });
+        }
+        
+        if (btnNext) {
+            btnNext.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                splide.go('>');
+            });
+        }
+
+        // Update UI on slide change
+        splide.on('move.end', updateUI);
+        splide.on('mounted updated', updateUI);
     }
 
-
     splide.on('mounted move', () => {
-
-        updateSlidePositions();
         playActiveVideo();
-        updateSlideTransforms();
+    });
+
+    splide.on('mounted', () => {
+        addCustomArrowHandlers();
+        // Принудительно запускаем первое видео при инициализации
+        setTimeout(() => {
+            playActiveVideo();
+        }, 100);
+    });
+
+    // Cleanup on destroy
+    splide.on('destroy', () => {
+        stopAllVideos();
+        currentVideo = null;
     });
 
     splide.mount();
+    
+    // Синхронизируем высоту после монтирования слайдера
+    syncHeroHeight();
+    
     return splide;
 }

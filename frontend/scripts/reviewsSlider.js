@@ -1,133 +1,39 @@
 import MomentumSlider from "momentum-slider";
 
-
-const defaultReviewsData = [
-    {
-        author_name: "Анна",
-        service: "Послеремонтная уборка",
-        review_text: "Заказывали уборку после переезда — квартира засияла!",
-        photo: 'static/pages/images/reviews/avatar.png',
-        rating: 5,
-        link: {
-            url: "https://go.2gis.com/Q5sPN",
-            text: "Читать на 2GIS",
-            icon: 'static/pages/icons/2gis.png',
-            image: 'static/pages/images/reviews/image1.png'
-        }
-    }
-];
-
-function createReviewSlide(review) {
-    const starsCount = review.rating || review.score || 5;
-    const starsHtml = Array(5).fill(0).map((_, i) => {
-        return `<img src="static/pages/icons/star.svg" class="reviews__stars_img" width="20" height="20" style="opacity:${i < starsCount ? 1 : 0.3}">`;
-    }).join('');
-
-    const reviewImageBlock = review.link?.image
-        ? `
-          <div class="reviews__photo-wrapper">
-              <img src="${review.link.image}" alt="" class="reviews__photo" width="288" height="152">
-          </div>
-        `
-        : '';
-
-    const userName = review.author_name || 'Аноним';
-    const userText = review.review_text || '';
-    const userPhoto = review.photo || 'static/pages/images/reviews/avatar.png';
-    const userService = review.service || 'Уборка';
-    const userScore = review.rating || 5;
-
-    return `
-      <div class="reviews__swiper-slide">
-        <div class="reviews__swiper-slide-inner">
-          <div class="reviews__user-wrapper">
-            <div class="reviews__user-info">
-              <div class="reviews__img-wrapper">
-                <img src="${userPhoto}" alt="" class="reviews__img" width="64" height="64">
-              </div>
-              <div class="reviews__user">
-                <div class="reviews__user-top">
-                  <p class="reviews__score">${userScore}.0</p>
-                  <div class="reviews__stars">${starsHtml}</div>
-                </div>
-                <div class="reviews__user-bottom">
-                  <p class="reviews__user-name">${userName}</p>
-                  <p class="reviews__user-service">${userService}</p>
-                </div>
-              </div>
-            </div>
-            <div class="reviews__user-commas hidden-tablet">
-              <img src="static/pages/icons/commas.svg" alt="" class="reviews__commas" width="48" height="48">
-            </div>
-          </div>
-          <div class="reviews__content">
-            <div class="reviews__body-wrapper">
-              <div class="reviews__body">
-                <span>${userText}</span>
-              </div>
-              ${review.link ? `
-                <button class="reviews__button" onclick="window.open('${review.link.url}', '_blank')">
-                  <img src="${review.link.icon}" alt="" class="reviews__commas" width="40" height="40">
-                  <span class="reviews__button-title">${review.link.text}</span>
-                </button>
-              ` : ''}
-            </div>
-            ${reviewImageBlock}
-          </div>
-        </div>
-      </div>
-    `;
-}
-
-export function initReviewsSlider(externalData = null) {
-    // Получаем данные из разных источников
-    let reviewsData = externalData;
+// Функция для инициализации одного слайдера
+function initSingleReviewsSlider(containerSelector, prevBtnSelector, nextBtnSelector, currentIndicatorSelector) {
+    console.log(`Инициализация слайдера для ${containerSelector}`);
     
-    if (!reviewsData) {
-        // Пытаемся получить данные из DOM
-        const dataElement = document.getElementById('gis-reviews-data');
-        if (dataElement) {
-            try {
-                reviewsData = JSON.parse(dataElement.textContent);
-            } catch (e) {
-                console.warn('Ошибка парсинга данных отзывов:', e);
-            }
-        }
-    }
-    
-    if (!reviewsData) {
-        // Пытаемся получить из data-атрибута
-        const reviewsContainer = document.querySelector('[data-reviews]');
-        if (reviewsContainer) {
-            try {
-                reviewsData = JSON.parse(reviewsContainer.dataset.reviews);
-            } catch (e) {
-                console.warn('Ошибка парсинга data-reviews:', e);
-            }
-        }
-    }
-    
-    if (!reviewsData) {
-        // Пытаемся получить из глобальной переменной
-        if (typeof window.gisReviewsData !== 'undefined') {
-            reviewsData = window.gisReviewsData;
-        }
-    }
-    
-    // Fallback к дефолтным данным
-    if (!reviewsData || !Array.isArray(reviewsData) || reviewsData.length === 0) {
-        console.warn('Данные отзывов не найдены, используются дефолтные');
-        reviewsData = defaultReviewsData;
-    }
-
-    const slidersContainer = document.querySelector('.ms-slide__container');
-    const prevButton = document.querySelector('.reviews__controls-prev');
-    const nextButton = document.querySelector('.reviews__controls-next');
-    const currentSlideIndicator = document.querySelector('.reviews__controls-current');
-
+    const slidersContainer = document.querySelector(containerSelector);
     if (!slidersContainer) {
-        console.error('Контейнер слайдера не найден');
+        console.warn(`Контейнер ${containerSelector} не найден`);
         return;
+    }
+
+    const sliderWrapper = slidersContainer.querySelector('.reviews__slider-wrapper');
+    if (!sliderWrapper) {
+        console.warn(`Обертка слайдера не найдена в ${containerSelector}`);
+        return;
+    }
+
+    const slides = sliderWrapper.querySelectorAll('.reviews__swiper-slide');
+    console.log(`Найдено ${slides.length} слайдов в ${containerSelector}`);
+
+    if (slides.length === 0) {
+        console.warn(`Нет слайдов в ${containerSelector}`);
+        return;
+    }
+
+    const prevButton = document.querySelector(prevBtnSelector);
+    const nextButton = document.querySelector(nextBtnSelector);
+    const currentSlideIndicator = document.querySelector(currentIndicatorSelector);
+
+    if (!prevButton || !nextButton || !currentSlideIndicator) {
+        console.warn(`Не найдены элементы управления для ${containerSelector}:`, {
+            prevButton: !!prevButton,
+            nextButton: !!nextButton,
+            indicator: !!currentSlideIndicator
+        });
     }
 
     const mobileMediaQuery = window.matchMedia('(max-width: 768px)');
@@ -135,12 +41,15 @@ export function initReviewsSlider(externalData = null) {
     const getSliderConfig = (isMobile) => ({
         el: slidersContainer,
         cssClass: 'ms-slides',
-        range: [0, reviewsData.length - 1],
-        rangeContent: (index) => createReviewSlide(reviewsData[index]),
+        range: [0, slides.length - 1],
+        rangeContent: (index) => slides[index].outerHTML,
+        multiplier: 0.45,
+        friction: 0.92,
+        bounce: 0.2,
         change: (newIndex) => {
             const formatNumber = (num) => num.toString().padStart(2, '0');
             if (currentSlideIndicator) {
-                currentSlideIndicator.innerHTML = `${formatNumber(newIndex + 1)}/<span>${formatNumber(reviewsData.length)}</span>`;
+                currentSlideIndicator.innerHTML = `${formatNumber(newIndex + 1)}/<span>${formatNumber(slides.length)}</span>`;
             }
             
             if (prevButton) {
@@ -149,23 +58,39 @@ export function initReviewsSlider(externalData = null) {
             }
             
             if (nextButton) {
-                nextButton.disabled = newIndex === reviewsData.length - 1;
-                nextButton.classList.toggle('is-disabled', newIndex === reviewsData.length - 1);
+                nextButton.disabled = newIndex === slides.length - 1;
+                nextButton.classList.toggle('is-disabled', newIndex === slides.length - 1);
             }
         },
         style: {
             '.reviews__swiper-slide': {
-                transform: [{ scale: isMobile ? [0.95, 1] : [0.85, 1] }],
+                transform: [{ scale: isMobile ? [0.95, 1] : [0.9, 1] }],
                 opacity: [0.5, 1]
             },
         },
     });
 
-    let msImages = new MomentumSlider(getSliderConfig(mobileMediaQuery.matches));
+    let msImages;
+    try {
+        // Очищаем контейнер от предыдущих слайдов
+        while (slidersContainer.firstChild) {
+            slidersContainer.removeChild(slidersContainer.firstChild);
+        }
+        
+        msImages = new MomentumSlider(getSliderConfig(mobileMediaQuery.matches));
+        console.log(`Слайдер ${containerSelector} успешно инициализирован`);
+    } catch (error) {
+        console.error(`Ошибка при инициализации слайдера ${containerSelector}:`, error);
+        return;
+    }
 
     const handleMediaChange = (e) => {
-        msImages.destroy();
-        msImages = new MomentumSlider(getSliderConfig(e.matches));
+        try {
+            msImages.destroy();
+            msImages = new MomentumSlider(getSliderConfig(e.matches));
+        } catch (error) {
+            console.error(`Ошибка при пересоздании слайдера ${containerSelector}:`, error);
+        }
     };
 
     mobileMediaQuery.addEventListener('change', handleMediaChange);
@@ -182,7 +107,7 @@ export function initReviewsSlider(externalData = null) {
     if (nextButton) {
         nextButton.addEventListener('click', () => {
             const currentIndex = msImages.getCurrentIndex();
-            if (currentIndex < reviewsData.length - 1) {
+            if (currentIndex < slides.length - 1) {
                 msImages.select(currentIndex + 1);
             }
         });
@@ -190,19 +115,56 @@ export function initReviewsSlider(externalData = null) {
 
     // Инициализация индикаторов
     const formatNumber = (num) => num.toString().padStart(2, '0');
-    if (currentSlideIndicator) {
-        currentSlideIndicator.innerHTML = `${formatNumber(1)}/<span>${formatNumber(reviewsData.length)}</span>`;
+    if (currentSlideIndicator && slides.length > 0) {
+        currentSlideIndicator.innerHTML = `${formatNumber(1)}/<span>${formatNumber(slides.length)}</span>`;
     }
     
     if (prevButton) {
         prevButton.disabled = true;
         prevButton.classList.add('is-disabled');
     }
+
+    return msImages;
+}
+
+export function initReviewsSlider() {
+    console.log('Начало инициализации всех слайдеров');
     
-    if (nextButton && reviewsData.length <= 1) {
-        nextButton.disabled = true;
-        nextButton.classList.add('is-disabled');
+    try {
+        // VL.ru слайдер
+        initSingleReviewsSlider(
+            '.ms-slide__container',
+            '.reviews__controls-prev',
+            '.reviews__controls-next',
+            '.reviews__controls-current'
+        );
+    } catch (error) {
+        console.error('Ошибка при инициализации VL.ru слайдера:', error);
     }
 
-    return msImages; // Возвращаем инстанс для возможного внешнего управления
+    try {
+        // 2GIS слайдер
+        initSingleReviewsSlider(
+            '.ms-slide__container-2',
+            '.reviews__controls-prev-2',
+            '.reviews__controls-next-2',
+            '.reviews__controls-current-2'
+        );
+    } catch (error) {
+        console.error('Ошибка при инициализации 2GIS слайдера:', error);
+    }
+
+    try {
+        // Яндекс слайдер
+        initSingleReviewsSlider(
+            '.ms-slide__container-3',
+            '.reviews__controls-prev-3',
+            '.reviews__controls-next-3',
+            '.reviews__controls-current-3'
+        );
+    } catch (error) {
+        console.error('Ошибка при инициализации Яндекс слайдера:', error);
+    }
+
+    console.log('Завершение инициализации всех слайдеров');
 }

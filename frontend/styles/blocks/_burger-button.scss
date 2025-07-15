@@ -3,7 +3,7 @@
 .burger-button{
   width: rem(24);
   height: rem(24);
-  display: inline-flex;
+  display: none;
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-end;
@@ -11,6 +11,11 @@
   color: var(--color-blue);
   background-color: transparent;
   border: none;
+  cursor: pointer;
+
+  @include burger {
+    display: inline-flex;
+  }
 
   &.is-active{
     .burger-button__line{

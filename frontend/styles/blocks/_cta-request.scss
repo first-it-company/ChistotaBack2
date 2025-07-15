@@ -1,37 +1,44 @@
 @use "../helpers" as *;
 
 .cta-request {
-  padding: rem(70) rem(16);
+  padding: rem(60) 0;
 
   @include tablet{
     padding: rem(40) 0;
   }
 
   &__wrapper{
-    background: var(--color-blue) url("images/cta-request/background.png") 0 0/cover no-repeat;
     border-radius: rem(40);
+    background: rgb(42, 42, 42);
+    background-size: cover;
+    background-repeat: no-repeat;
 
     @include tablet{
-      background: var(--color-blue) url("images/cta-request/background-m.png") 0 0/cover no-repeat;
     }
   }
 
   &__inner{
-    padding-block: rem(70);
+    padding-block: rem(80);
+    padding-inline: 5.6vw;
     display: flex;
     justify-content: space-between;
     align-items: center;
 
     @include tablet{
+      padding: 60px;
       align-items: flex-start;
       flex-direction: column;
       row-gap: rem(60);
+    }
+
+    @include mobile{
+      padding-inline: 16px;
     }
   }
 
   &__header{
     font-weight: 600;
-    font-size: rem(80);
+    font-size: 5vw;
     text-transform: uppercase;
     color: var(--color-white);
     line-height: normal;
@@ -52,9 +59,10 @@
   &__action{
     display: flex;
     flex-direction: column;
-    row-gap: rem(24);
+    row-gap: 1.5vw;
 
     @include tablet{
+      row-gap: 20px;
       width: 100%;
       flex-direction: row;
       justify-content: space-between;
@@ -67,10 +75,21 @@
   }
 
   &__button{
-    font-size: rem(24);
-    line-height: rem(17);
-    padding: rem(19) 0;
-    width: rem(399);
+    font-size: 1.5vw;
+    padding: 2vw 6vw;
+    //width: rem(399);
+    background-color: rgb(0, 96, 223);
+    color: var(--color-white);
+
+    @include tablet {
+      font-size: 1.5rem;
+      padding: rem(24) rem(40);
+    }
+
+    @include hover{
+        background-color: var(--color-white);
+        color: rgb(0, 96, 223);
+    }
 
     @include mobile{
       width: 100%;
@@ -79,8 +98,9 @@
 
   &__contacts{
     display: flex;
-    column-gap: rem(12);
-    justify-content: right;
+    column-gap: rem(32);
+    justify-content: center;
+    width: 100%;
 
     @include mobile{
       column-gap: rem(32);
@@ -89,13 +109,16 @@
     &-item{
       display: flex;
       justify-content: center;
-      background-color: var(--color-white);
-      border-radius: 100%;
-      width: rem(50);
-      height: rem(50);
+      width: 3vw;
+      height: 3vw;
+
+      @include tablet{
+        width: 40px;
+        height: 40px;
+      }
 
       @include hover{
-        background-color: var(--color-gray-100);
+
       }
     }
   }

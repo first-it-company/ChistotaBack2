@@ -2,13 +2,20 @@
 
 .reviews{
   overflow: hidden;
+  position: relative;
+  width: 100%;
 
   &__inner{
-    padding-block: rem(70);
+    padding-top: rem(60);
+    padding-bottom: 100px;
+    padding-inline: 40px;
+    overflow-x: hidden;
+    position: relative;
 
     @include tablet{
       padding-top: rem(60);
-      padding-bottom: rem(10);
+      padding-bottom: rem(80);
+      padding-inline: 20px;
     }
 
     @include tablet{
@@ -17,9 +24,17 @@
     }
   }
 
+  &__user-commas{
+
+    @include tablet {
+      width: 30px;
+    }
+  }
+
   &__title{
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    gap: rem(25);
     align-items: start;
     margin-bottom: rem(40);
 
@@ -27,8 +42,23 @@
       flex-direction: column;
       gap: rem(24);
       margin-bottom: rem(24);
-      order: 1;
+      //order: 1;
       width: 100%;
+    }
+  }
+
+  &__counts{
+    color: rgb(147, 147, 147);
+    font-family: Noah;
+    font-size: 1.2vw;
+    font-weight: 400;
+
+    @include tablet{
+      font-size: rem(18);
+    }
+
+    @include mobile {
+      font-size: 14px;
     }
   }
 
@@ -63,6 +93,18 @@
     }
   }
 
+  &__subheader {
+    font-size: 1.5vw;
+
+    @include tablet {
+      font-size: 1.5rem;
+    }
+
+    @include mobile {
+      font-size: 1rem;
+    }
+  }
+
   &__swiper{
     overflow: visible;
     margin: 0 !important;
@@ -70,22 +112,27 @@
     &-slide{
       background-color: var(--color-gray-50);
       border-radius: rem(17);
-      padding: rem(20) rem(27);
-      width: rem(680);
-      height: rem(308);
+      padding: 1.3vw 1.6vw;
+      width: 36vw; // Уменьшаем ширину слайда
       transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+      //margin-right: 2vw; // Добавляем отступ между слайдами
 
 
       @include tablet{
-        width: rem(320);
+        width: 75vw;
         height: fit-content;
         min-height: rem(320);
+        padding: rem(20) rem(26);
+      }
+
+      @include mobile {
+        padding: rem(16)
       }
 
       &-inner{
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        gap: rem(15);
         height: 100%;
       }
     }
@@ -111,7 +158,7 @@
       align-items: center;
 
       @include tablet{
-        margin-bottom: rem(32);
+        margin-bottom: 0;
       }
     }
 
@@ -127,6 +174,10 @@
       align-items: center;
       column-gap: rem(8);
       margin-bottom: rem(12);
+
+      @include tablet{
+        margin-bottom: 0;
+      }
     }
 
     &-bottom{
@@ -145,9 +196,8 @@
 
     &-name{
       font-weight: 400;
-      font-size: rem(20);
+      font-size: 1.3vw;
       color: var(--color-black);
-      line-height: rem(14);
 
       @include tablet{
         font-size: rem(18);
@@ -157,9 +207,8 @@
     &-service{
       font-family: var(--font-family-accent);
       font-weight: 400;
-      font-size: rem(18);
+      font-size: 1.2vw;
       color: var(--color-gray-200);
-      line-height: rem(12);
 
       @include tablet{
         font-size: rem(14);
@@ -168,10 +217,9 @@
   }
   &__score{
     font-weight: 500;
-    font-size: rem(24);
+    font-size: 1.5vw;
     text-transform: uppercase;
     color: var(--color-black);
-    line-height: rem(17);
 
     @include tablet{
       font-size: rem(18);
@@ -182,21 +230,27 @@
   &__body{
     font-family: var(--font-family-accent);
     font-weight: 400;
-    font-size: rem(18);
+    font-size: 1.1vw;
     color: var(--color-black);
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 1.4;
+    max-height: calc(1.4em * 5);
+    word-break: break-word; // Разрешаем перенос длинных слов
 
     @include tablet{
       order: 1;
-    }
-
-    @include tablet{
       font-size: rem(20);
+      -webkit-line-clamp: 4;
+      max-height: calc(1.4em * 4);
     }
 
     &-wrapper{
       display: flex;
       flex-direction: column;
-      gap: rem(40);
+      gap: rem(0);
 
       @include tablet{
         display: contents;
@@ -226,9 +280,8 @@
 
     &-title{
       font-weight: 400;
-      font-size: rem(20);
+      font-size: 1.3cw;
       color: var(--color-blue);
-      line-height: rem(14);
     }
   }
   &__stars{
@@ -237,6 +290,8 @@
 
   &__img{
     border-radius: rem(8);
+    aspect-ratio: 1;
+    object-fit: cover;
 
     &-wrapper{
       max-width: rem(64);
@@ -258,7 +313,7 @@
     display: flex;
     width: 100%;
     justify-content: space-between;
-    gap: rem(40);
+    gap: rem(20);
 
     @include tablet{
       flex-direction: column;
@@ -274,8 +329,10 @@
     object-fit: cover;
 
     &-wrapper {
-      min-width: rem(288);
-      min-height: rem(152);
+      width: 45%;
+      //height: rem(150);
+      aspect-ratio: 180/134;
+      flex-shrink: 0;
 
       @include tablet{
         max-width: rem(280);
@@ -286,7 +343,9 @@
       }
 
       @include tablet{
-        order: 2;
+        order: 0;
+        width: 100%;
+        aspect-ratio: 265/134;
       }
     }
   }

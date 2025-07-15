@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-go9w%!m)9&61rp3r)wd0-u^d6*^9mn_+qa4lnglxmhg=_2t*99'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '85.209.9.241']
+ALLOWED_HOSTS = ['127.0.0.1', '85.209.9.241', 'localhost']
 
 
 INSTALLED_APPS = [
@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
     'django_vite',
     'pages',
     'corsheaders'
@@ -49,17 +50,24 @@ STATIC_ROOT = BASE_DIR / 'static'
 
 STATIC_URL = '/static/'
 
+STATICFILES_DIRS = [
+    BASE_DIR / 'pages/static',
+]
+
 DJANGO_VITE = {
     'default': {
-        'dev_mode':False, 
+        'dev_mode': DEBUG,
         'manifest_path': BASE_DIR / 'pages/static/pages/.vite/manifest.json',
         'static_url_prefix': 'pages/',
+        'dev_server_port': 5173,
+        'dev_server_host': 'localhost',
     }
 }
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -138,3 +146,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Добавляем настройки CORS
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+]
+
+CORS_ALLOW_CREDENTIALS = True

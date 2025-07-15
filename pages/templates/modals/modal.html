@@ -1,0 +1,80 @@
+{% load static %}
+<div class="modal">
+    <div class="modal__overlay"></div>
+    <div class="modal__content">
+        <button class="modal__close" aria-label="Закрыть">×</button>
+        <div class="modal__body">
+            <h2 class="modal__title">Заказать уборку</h2>
+            <form class="modal__form" id="feedbackForm">
+                <div class="modal__fields">
+                                <div class="faq__row">
+                                    <div class="faq__cell">
+                                        <input
+                                                type="text"
+                                                class="faq__cell-input"
+                                                placeholder="Имя"
+                                                required name="name"
+                                                minlength="2"
+                                                maxlength="50"
+                                        />
+                                    </div>
+                                    <div class="faq__cell">
+                                        <input
+                                                type="number"
+                                                class="faq__cell-input"
+                                                placeholder="6 900 м2"
+                                                name="square"
+                                        />
+                                    </div>
+                                    <div class="faq__cell">
+                                        <div class="custom-select" data-name="service">
+                                            <div class="custom-select__trigger faq__cell-input">
+                                                <span class="custom-select__placeholder">Помыть окна</span>
+                                                <div class="custom-select__arrow"></div>
+                                            </div>
+                                            <div class="custom-select__dropdown">
+                                                {% for s in scope_services %}
+                                                <div class="custom-select__option" data-value="{{ s.name }}">{{ s.name }}</div>
+                                                {% endfor %}
+                                            </div>
+                                            <input type="hidden" name="service" class="custom-select__input">
+                                        </div>
+                                    </div>
+
+                                </div>
+                                 <div class="faq__row">
+                                     <div class="faq__cell">
+                                        <input
+                                                type="tel"
+                                                name="phone"
+                                                class="faq__cell-input"
+                                                placeholder="Номер телефона"
+                                                pattern="\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}"
+                                                data-phone
+                                                required
+                                        />
+                                    </div>
+                                <div class="faq__cell">
+                                    <input
+                                            class="faq__cell-input"
+                                            placeholder="Уточните свой вопрос"
+                                            name="message"
+                                            maxlength="300"
+                                    />
+                                </div>
+
+                                 </div>
+                                <div class="policy">
+                                    <input type="checkbox" class="policy__checkbox" name="" checked>
+                                    <label for="policy" class="policy__label">
+                                        С правилами <a href="/">политики конфиденциальности</a> ознакомлен
+                                    </label>
+                                </div>
+                            </div>
+                <div class="modal__action">
+                    <button type="submit" class="button faq__button">Отправить заявку</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div> 

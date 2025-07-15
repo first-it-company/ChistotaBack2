@@ -1,8 +1,12 @@
 @use "../helpers" as *;
 
 .faq{
-  padding-top: rem(70);
-  padding-bottom: rem(59);
+  padding-top: rem(100);
+  padding-bottom: rem(100);
+  margin-bottom: -25px;
+  border-radius: 60px 60px 0px 0px;
+  background: rgb(242, 246, 250);
+
 
   @include tablet{
     padding: rem(60) 0;
@@ -11,24 +15,31 @@
   &__inner{
     display: flex;
     column-gap: rem(40);
+    padding-inline: 40px;
 
     @include tablet{
       flex-direction: column;
+      padding-inline: 20px;
       &.container{
         padding-inline: 0;
       }
     }
   }
 
+  &__price{
+    color: rgb(42, 42, 42);
+    font-family: TT Firs Neue;
+    font-size: 1.5vw;
+    font-weight: 500;
+    text-wrap: nowrap;
+  }
+
   &__body{
     display: flex;
     flex-direction: column;
-    width: rem(640);
+    width: 49%;
     gap: rem(40);
 
-    @include laptop{
-      width: 100%;
-    }
 
     @include tablet{
       width: 100%;
@@ -37,12 +48,16 @@
     }
   }
 
+  .decorative-lines {
+    display: inline-flex !important;
+  }
+
   &__title{
     display: flex;
     flex-direction: column;
     line-height: normal;
     gap: rem(32);
-    width: rem(531);
+    width: 80%;
 
 
     @include tablet{
@@ -62,6 +77,15 @@
 
   &__subheader{
     color: var(--color-gray-300);
+    font-size: 1.5vw;
+
+    @include tablet {
+      font-size: 1.5rem;
+    }
+
+    @include mobile {
+      font-size: rem(14);
+    }
   }
 
   &__socials-wrapper{
@@ -91,7 +115,6 @@
     border: 1px solid var(--color-blue);
     border-radius: rem(20);
     padding: rem(40);
-    max-height: rem(326);
     background-color: var(--color-white);
     opacity: 1;
     width: 100%;
@@ -110,7 +133,7 @@
     display: flex;
     gap: rem(16);
     flex-wrap: wrap;
-    width: rem(560);
+    width: 100%;
     margin-bottom: rem(40);
 
     @include laptop{
@@ -132,7 +155,12 @@
     display: flex;
     gap: 1rem;
     width: 100%;
+
   }
+
+  &__row.long {
+      height: 100px;
+    }
 
   &__cell{
     width: 100%;
@@ -148,18 +176,29 @@
 
     &--long{
       width: 100%;
+      height: 100%;
     }
   }
 
   &__cell-input{
     width: 100%;
-    height: rem(50);
+    height: 3vw;
     border: 1px solid var(--color-gray-50);
     border-radius: rem(8);
-    padding: rem(8) rem(12);
+    padding: 0.5vw 0.7vw;
     font-family: var(--font-family-accent);
     font-weight: 400;
-    font-size: rem(18);
+    font-size: 1.2vw;
+
+    @include tablet{
+      height: 40px;
+      font-size: rem(18);
+      padding: rem(8) rem(12);
+    }
+
+    @include mobile{
+      font-size: rem(16);
+    }
 
     @include hover{
       transition-duration: var(--transition-duration);
@@ -176,8 +215,16 @@
 
     &::placeholder {
       font-weight: 400;
-      font-size: rem(18);
+      font-size: 1.2vw;
       color: var(--color-gray-250);
+
+      @include tablet {
+        font-size: rem(18);
+      }
+
+      @include mobile{
+        font-size: rem(16);
+      }
     }
 
     .dropdown__toggle {
@@ -189,6 +236,7 @@
     &--long{
       @extend .faq__cell-input;
       width: 100%;
+      height: 100%;
     }
   }
 
@@ -196,7 +244,7 @@
   &__action{
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    gap: rem(20);
 
     @include tablet{
       flex-direction: column;
@@ -205,37 +253,39 @@
   }
 
   &__button{
-    padding-block: rem(19);
-    width: rem(344);
+    padding: 1.2vw 2vw;
     line-height: rem(17);
     text-wrap: nowrap;
     width: 100%;
 
     @include tablet{
       width: 60%;
+      padding: rem(20) rem(35);
     }
 
     @include mobile{
+
       width: 100%;
     }
   }
 
   &__price{
     font-weight: 500;
-    font-size: rem(24);
+    font-size: 1.5vw;
     text-transform: uppercase;
-    color: var(--color-black);
+    color: white;
 
   }
 
   &__questions{
-    width: 100%;
+    width: 49%;
     display: flex;
     flex-direction: column;
     gap: rem(24);
 
 
     @include tablet{
+      width: 100%;
       padding-inline: rem(20);
       margin-bottom: rem(32);
       order: 3;
@@ -247,8 +297,15 @@
     border-bottom: 1px solid var(--color-gray-200);
     padding: rem(16) 0 rem(24) 0;
 
-    &[open] summary::after {
-      background-image: url('data:image/svg+xml;utf8,<svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12.5H19" stroke="%230060DF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>');
+    &[open] {
+      .faq__content {
+        max-height: rem(1000);
+        opacity: 1;
+      }
+
+      summary::after {
+        background-image: url('data:image/svg+xml;utf8,<svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12.5H19" stroke="%230060DF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>');
+      }
     }
 
     &[open] .faq__legend{
@@ -268,7 +325,7 @@
     padding-right: 1rem;
     outline: none;
     font-weight: 500;
-    font-size: rem(24);
+    font-size: 1.5vw;
     text-transform: uppercase;
     color: var(--color-black);
 
@@ -300,7 +357,138 @@
   &__content{
     font-family: var(--font-family-accent);
     font-weight: 400;
-    font-size: rem(18);
+    font-size: 1.2vw;
     margin-top: rem(16);
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+
+    @include tablet {
+    font-size: rem(18);
   }
+  }
+
+
+
+}
+
+// Кастомный select
+.custom-select {
+  position: relative;
+  width: 100%;
+  
+  &__trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+    background-color: var(--color-white);
+    
+    &:hover {
+      border-color: var(--color-blue);
+    }
+    
+    &.is-open {
+      border-color: var(--color-blue);
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+  
+  &__placeholder {
+    color: var(--color-gray-250);
+    font-weight: 400;
+    font-size: 1.2vw;
+    font-family: var(--font-family-accent);
+    
+    &.has-value {
+      color: var(--color-black);
+    }
+
+    @include mobile{
+      font-size: 16px;
+    }
+  }
+  
+  &__arrow {
+    width: rem(12);
+    height: rem(12);
+    border-right: 2px solid var(--color-gray-250);
+    border-bottom: 2px solid var(--color-gray-250);
+    transform: rotate(45deg);
+    transition: transform 0.3s ease;
+    
+    .custom-select__trigger.is-open & {
+      transform: rotate(-135deg);
+      border-color: var(--color-blue);
+    }
+  }
+  
+  &__dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--color-white);
+    border: 1px solid var(--color-blue);
+    border-top: none;
+    border-radius: 0 0 rem(8) rem(8);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    max-height: rem(200);
+    overflow-y: auto;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    
+    &.is-open {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+  }
+  
+  &__option {
+    padding: 0.8vw 0.8vw;
+    font-family: var(--font-family-accent);
+    font-weight: 400;
+    font-size: 1.2vw;
+    color: var(--color-black);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    
+    &:hover {
+      background-color: var(--color-gray-50);
+    }
+    
+    &:active {
+      background-color: var(--color-blue);
+      color: var(--color-white);
+    }
+    
+    &.is-selected {
+      background-color: var(--color-blue);
+      color: var(--color-white);
+    }
+  }
+}
+
+.faq__socials-logo {
+
+  width: 3vw;
+  height: 3vw;
+
+  @include tablet {
+    width: 50px;
+    height: 50px;
+  }
+
+  @include mobile{
+     width: 40px;
+  height: 40px;
+  }
+
 }

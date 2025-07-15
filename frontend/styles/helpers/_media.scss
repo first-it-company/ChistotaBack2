@@ -1,10 +1,12 @@
 @use 'functions' as *;
 
 $laptop: 1440.98;
-$tablet: 1023.98;
+$tablet: 990;
 $container: 1299.98;
 $mobile: 768.98;
+$mobile-m: 590;
 $mobile-s: 391.98;
+$burger: 990;
 
 @mixin laptop-above{
   @media(width > rem($laptop)){
@@ -18,44 +20,62 @@ $mobile-s: 391.98;
   }
 }
 
-@mixin tablet-above{
-  @media(width > rem($tablet)){
-    @content;
+  @mixin tablet-above{
+    @media(width > rem($tablet)){
+      @content;
+    }
   }
-}
 
-@mixin tablet{
-  @media(width <= rem($tablet)){
-    @content;
+  @mixin tablet{
+    @media(width <= rem($tablet)){
+      @content;
+    }
   }
-}
 
-@mixin container{
-  @media(width <= rem($container)){
-    @content;
+  @mixin container{
+    @media(width <= rem($container)){
+      @content;
+    }
   }
-}
 
-@mixin mobile-above{
-  @media(width > rem($mobile)){
-    @content;
+  @mixin mobile-above{
+    @media(width > rem($mobile)){
+      @content;
+    }
   }
-}
 
-@mixin mobile{
-  @media(width <= rem($mobile)){
-    @content;
+  @mixin mobile{
+    @media(width <= rem($mobile)){
+      @content;
+    }
   }
-}
 
-@mixin mobile-s-above{
-  @media(width > rem($mobile-s)){
-    @content;
+  @mixin mobile-m{
+    @media(width <= rem($mobile-m)){
+      @content;
+    }
   }
-}
 
-@mixin mobile-s{
-  @media(width <= rem($mobile-s)){
-    @content;
+  @mixin mobile-s-above{
+    @media(width > rem($mobile-s)){
+      @content;
+    }
   }
-}
+
+  @mixin mobile-s{
+    @media(width <= rem($mobile-s)){
+      @content;
+    }
+  }
+
+  @mixin burger {
+    @media(width <= rem($burger)){
+      @content;
+    }
+  }
+
+  @mixin burger-above {
+    @media(width > rem($burger)){
+      @content;
+    }
+  }

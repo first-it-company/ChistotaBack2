@@ -1,32 +1,36 @@
 @font-face {
   font-family: 'TT Firs Neue';
-  src: url("fonts/TTFirsNeue-Regular.woff2") format("woff2");
+  src: url("/static/pages/fonts/TTFirsNeue-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
+  font-stretch: normal;
   font-display: swap;
 }
 
 @font-face {
   font-family: 'TT Firs Neue';
-  src: url("fonts/TTFirsNeue-Medium.woff2") format("woff2");
+  src: url("/static/pages/fonts/TTFirsNeue-Medium.woff2") format("woff2");
   font-weight: 500;
   font-style: normal;
+  font-stretch: normal;
   font-display: swap;
 }
 
 @font-face {
   font-family: 'TT Firs Neue';
-  src: url("fonts/TTFirsNeue-DemiBold.woff2") format("woff2");
+  src: url("/static/pages/fonts/TTFirsNeue-DemiBold.woff2") format("woff2");
   font-weight: 600;
   font-style: normal;
+  font-stretch: normal;
   font-display: swap;
 }
 
 
 @font-face {
   font-family: 'Noah';
-  src: url("fonts/Noah-Regular.woff2") format("woff2");
+  src: url("/static/pages/fonts/Noah-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
+  font-stretch: normal;
   font-display: swap;
 }

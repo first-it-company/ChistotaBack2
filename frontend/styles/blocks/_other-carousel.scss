@@ -2,15 +2,16 @@
 
 .other-carousel{
   padding-top: rem(50);
-  padding-bottom: rem(70);
+  padding-bottom: rem(120);
 
   @include tablet{
-    padding-block: rem(60)
+    padding-bottom: rem(80);
+    padding-top: rem(60);
   }
 
   &__title{
     font-weight: 500;
-    font-size: rem(50);
+    font-size: 3vw;
     text-transform: uppercase;
     color: var(--color-black);
     text-align: center;
@@ -38,11 +39,12 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: url("images/carousel/white-background.png") 0 0 / cover no-repeat;
+      background: url("/static/pages/images/carousel/back1.png") 0 0 / cover no-repeat;
       z-index: 100;
+      pointer-events: none;
 
       @include tablet{
-        background: url("images/carousel/white-background-m.png") 0 0 / 100% 100% no-repeat;
+        background: url("/static/pages/images/carousel/back2.png") 0 0 / 100% 100% no-repeat;
       }
     }
   }
@@ -53,15 +55,30 @@
     width: 100%;
   }
 
+  &__button {
+    color: rgb(255, 255, 255);
+    font-size: 24px;
+    font-weight: 600;
+    background: rgb(0, 96, 223);
+    cursor: pointer;
+    transition-duration: var(--transition-duration);
+    text-transform: uppercase;
+
+    @include hover{
+
+    background-color: var(--color-white);
+    color: var(--color-blue);
+    }
+  }
+
   &__slide {
     flex-shrink: 0;
     font-weight: 400;
-    font-size: rem(24);
-    line-height: rem(30);
+    font-size: 1.5vw;
     font-family: var(--font-family-accent);
     border: 1px solid var(--color-gray-100);
     border-radius: rem(20);
-    padding: rem(22) rem(26);
+    padding: 1.2vw 1.3vw;
 
     @include tablet{
       font-size: rem(20);
