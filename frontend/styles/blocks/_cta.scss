@@ -1,7 +1,7 @@
 @use "../helpers" as *;
 
 .cta{
-  background: url("/static/pages/images/cta/background.png") 0 0 / cover no-repeat;
+  background: url("@/images/cta/background.png") 0 0 / cover no-repeat;
 
   @include tablet{
     background: none;
@@ -54,7 +54,7 @@
     gap: rem(67);
 
     @include tablet{
-      background: url("/static/pages/images/cta/background-m.png") 0 0 / cover no-repeat;
+      background: url("@/images/cta/background-m.png") 0 0 / cover no-repeat;
       width: 100%;
       padding-inline: rem(20);
       row-gap: rem(40);

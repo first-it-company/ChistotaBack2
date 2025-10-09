@@ -39,12 +39,12 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: url("/static/pages/images/carousel/back1.png") 0 0 / cover no-repeat;
+      background: url("@/images/carousel/white-background.png") 0 0 / cover no-repeat;
       z-index: 100;
       pointer-events: none;
 
       @include tablet{
-        background: url("/static/pages/images/carousel/back2.png") 0 0 / 100% 100% no-repeat;
+        background: url("@/images/carousel/white-background-m.png") 0 0 / 100% 100% no-repeat;
       }
     }
   }

@@ -28,6 +28,13 @@ function syncHeroHeight() {
 }
 
 export function initHeroSlider() {
+    const sliderElement = document.querySelector('.hero__splide');
+
+    // Проверяем, существует ли слайдер и есть ли в нем слайды
+    if (!sliderElement || !sliderElement.querySelector('.splide__slide')) {
+        // console.warn('[Splide] Slider element or slides not found. Initialization aborted.');
+        return;
+    }
     // Check if slider already exists and destroy it
     const existingSlider = document.querySelector('.hero__splide');
     if (existingSlider && existingSlider.splide) {

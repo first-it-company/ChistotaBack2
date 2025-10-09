@@ -31,13 +31,13 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: url('/static/pages/images/about/background.png') 0 0 / cover no-repeat;
+      background: url('@/images/about/background.png') 0 0 / cover no-repeat;
       z-index: 100;
       pointer-events: none;
 
 
       @include tablet{
-        background: url('/static/pages/images/about/background-m.png') 0 0 / cover no-repeat;
+        background: url('@/images/about/background-m.png') 0 0 / cover no-repeat;
       }
     }
   }

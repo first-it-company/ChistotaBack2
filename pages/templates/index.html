@@ -39,9 +39,7 @@
     </script>
     {% vite_hmr_client %}
     {% vite_asset 'scripts/main.js' %}
-    {% if not debug %}
-{#    <link rel="stylesheet" href="{% static 'pages/styles.css' %}">#}
-    {% endif %}
+    
 </head>
 <body id='top'>
     <header class="header">
@@ -605,7 +603,7 @@
                         id="scope-select"
                         data-dropdown-config='{
                             "options": [
-                            {"value": "", "label": "Все"},
+                            {"value": "", "label": "Все"}{% if scope_services_for_orders %},{% endif %}
                             {% for scope in scope_services_for_orders %}
                                 {"value": "{{ scope.name }}", "label": "{{ scope.name }}"}{% if not forloop.last %},{% endif %}
                             {% endfor %}

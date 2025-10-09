@@ -7,11 +7,14 @@ services:
     command: >
       sh -c " python manage.py migrate &&
               python manage.py collectstatic --noinput &&
+              npm run build --prefix frontend/
               gunicorn --bind 0.0.0.0:8000 --timeout 120 --workers 3 chistota.wsgi"
     volumes:
       - .:/app
       - static_volume:/app/static
       - media_volume:/app/media
+    environment:
+      - DEBUG=False
     networks:
       - app_network
 

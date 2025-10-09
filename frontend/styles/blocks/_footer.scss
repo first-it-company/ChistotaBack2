@@ -17,13 +17,13 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: url('/static/pages/images/footer/back.png') 0 0 / cover no-repeat;
+      background: url('@/images/footer/back.png') 0 0 / cover no-repeat;
       z-index: 100;
       pointer-events: none;
       border-radius: 40px 40px 0px 0px;
 
       @include mobile{
-        background: url('/static/pages/images/footer/back-m.png') 0 0 / cover no-repeat;
+        background: url('@/images/footer/back.png') 0 0 / cover no-repeat;
       }
 
 

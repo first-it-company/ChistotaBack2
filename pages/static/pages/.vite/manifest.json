@@ -1,11 +1,68 @@
 {
+  "fonts/Noah-Regular.woff2": {
+    "file": "assets/Noah-Regular-BSh0hfDd.woff2",
+    "src": "fonts/Noah-Regular.woff2"
+  },
+  "fonts/TTFirsNeue-DemiBold.woff2": {
+    "file": "assets/TTFirsNeue-DemiBold-CvIPrGlC.woff2",
+    "src": "fonts/TTFirsNeue-DemiBold.woff2"
+  },
+  "fonts/TTFirsNeue-Medium.woff2": {
+    "file": "assets/TTFirsNeue-Medium-Coy3uly_.woff2",
+    "src": "fonts/TTFirsNeue-Medium.woff2"
+  },
+  "fonts/TTFirsNeue-Regular.woff2": {
+    "file": "assets/TTFirsNeue-Regular-61uDxq-R.woff2",
+    "src": "fonts/TTFirsNeue-Regular.woff2"
+  },
+  "images/about/background-m.png": {
+    "file": "assets/background-m-BibXiYs-.png",
+    "src": "images/about/background-m.png"
+  },
+  "images/about/background.png": {
+    "file": "assets/background-BIAwGGEd.png",
+    "src": "images/about/background.png"
+  },
+  "images/carousel/white-background-m.png": {
+    "file": "assets/white-background-m-T82QVq7M.png",
+    "src": "images/carousel/white-background-m.png"
+  },
+  "images/carousel/white-background.png": {
+    "file": "assets/white-background-DEkTe5Wp.png",
+    "src": "images/carousel/white-background.png"
+  },
+  "images/cta/background-m.png": {
+    "file": "assets/background-m-r_tzDS6K.png",
+    "src": "images/cta/background-m.png"
+  },
+  "images/cta/background.png": {
+    "file": "assets/background-DMVW1GAJ.png",
+    "src": "images/cta/background.png"
+  },
+  "images/footer/back.png": {
+    "file": "assets/back-BbNJiMaq.png",
+    "src": "images/footer/back.png"
+  },
   "scripts/main.js": {
-    "file": "main.js",
+    "file": "assets/main-BlcxfA8-.js",
     "name": "main",
     "src": "scripts/main.js",
     "isEntry": true,
     "css": [
-      "styles.css"
+      "assets/main-iH3JQpOe.css"
+    ],
+    "assets": [
+      "assets/TTFirsNeue-Regular-61uDxq-R.woff2",
+      "assets/TTFirsNeue-Medium-Coy3uly_.woff2",
+      "assets/TTFirsNeue-DemiBold-CvIPrGlC.woff2",
+      "assets/Noah-Regular-BSh0hfDd.woff2",
+      "assets/background-BIAwGGEd.png",
+      "assets/background-m-BibXiYs-.png",
+      "assets/white-background-DEkTe5Wp.png",
+      "assets/white-background-m-T82QVq7M.png",
+      "assets/background-DMVW1GAJ.png",
+      "assets/background-m-r_tzDS6K.png",
+      "assets/back-BbNJiMaq.png"
     ]
   }
 }
