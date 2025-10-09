@@ -6,11 +6,10 @@ services:
     container_name: django_app
     command: >
       sh -c " python manage.py migrate &&
-              python manage.py collectstatic --noinput &&
-              npm run build --prefix frontend/
               gunicorn --bind 0.0.0.0:8000 --timeout 120 --workers 3 chistota.wsgi"
     volumes:
       - .:/app
+      - /app/pages/static/pages
       - static_volume:/app/static
       - media_volume:/app/media
     environment:

@@ -11,7 +11,9 @@ env/
 
 db.sqlite3
 /media/
-staticfiles/
+/static/
+
+/node_modules/
 
 logs/
 *.log
@@ -27,3 +29,5 @@ gunicorn_error.log
 ssl/
 
 /frontend/node_modules/
+
+/pages/static/
