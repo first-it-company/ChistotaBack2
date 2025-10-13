@@ -1,0 +1,46 @@
+{% load django_vite %}
+{% load static %}
+{% load humanize %}
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Чистота</title>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Чистота ДВ">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Чистота ДВ">
+    <meta name="msapplication-TileColor" content="#009BE5">
+    <meta property="og:title" content="Чистота ДВ">
+    <meta property="og:description"
+          content="Профессиональный клининг для дома и офиса с гарантией качества.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://chistota-dv.ru/">
+    <meta property="og:image" content="/og-image.jpg">
+    <meta name="currency" content="ruble">
+    <meta name="theme-color" content="#009BE5">
+    <meta name="description"
+          content="Профессиональный клининг во Владивостоке: уборка квартир, уборка офисов, генеральная уборка, послеремонтная уборка. Надежная клининговая компания с опытом.">
+    <meta name="author" content="Чистота ДВ">
+    <meta name="copyright" content="© 2025 ЧИСТОТА ДВ">
+    <title>Услуги клининга во Владивостоке — профессиональная уборка квартир и офисов</title>
+    <link rel="icon" sizes="32x32" href="{% static "pages/favicon.svg" %}">
+    <link rel="icon"
+          sizes="32x32"
+          href="{% static "pages/icons/favicons/favicon.svg" %}"
+          type="image/svg+xml">
+    <link rel="apple-touch-icon"
+          sizes="180x180"
+          href="{% static "pages/icons/favicons/favicon.png" %}">
+    <link rel="canonical" href="https://www.chistota-dv.ru/">
+    <script>window.gisReviewsData = {{ gis_reviews_json|safe }};</script>
+    {% vite_hmr_client %}
+    {% vite_asset 'scripts/main.js' %}
+  </head>
+  <body id='top'>
+    {% block content %}{% endblock %}
+  </body>
+</html>
