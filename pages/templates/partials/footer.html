@@ -1,0 +1,207 @@
+{% load static %}
+<footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__body">
+            <div class="footer__info">
+                <a href="#top">
+                    <img
+                            src="{% static "pages/icons/logo2.svg" %}"
+                            alt="Чистота ДВ"
+                            class="footer__logo"
+                            width="auto" height="auto"
+                    >
+                </a>
+                <p class="p1 footer__title">Ясность нашей позиции очевидна: высокое качество позиционных исследований играет определяющее значение для системы массового участия</p>
+                <div class="footer__socials-wrapper hidden-tablet">
+
+                     <a href="{{ whatsapp_url }}" target="_blank" class="footer__socials-logo">
+                        <img
+                                 src="{% static 'pages/icons/whatsapp.svg' %}"
+                                 alt="whatsapp"
+                                class=""
+                                width="100%" height="100%"
+                        >
+                    </a>
+                    <a href="{{ vk_url }}" target="_blank" class="footer__socials-logo">
+                        <img
+                                 src="{% static 'pages/icons/vk.svg' %}"
+                                alt="Вконтакте"
+                                class=""
+                                width="100%" height="100%"
+                        >
+                    </a>
+
+                    <a href="{{ telegram_url }}" target="_blank" class="footer__socials-logo">
+                        <img
+                                 src="{% static 'pages/icons/telegram.svg' %}"
+                                alt="Telegram"
+                                class=""
+                                width="100%" height="100%"
+                        >
+                    </a>
+                     <a href="{{instagram_url }}" target="_blank" class="footer__socials-logo">
+                        <img
+                                 src="{% static 'pages/icons/instagram.svg' %}"
+                                alt="Instagram"
+                                class=""
+                                width="100%" height="100%"
+                        >
+                    </a>
+                    <p class="footer__inst-text">*Instagram — проект Meta Platforms Inc.,
+                    деятельность которой в России запрещена</p>
+                </div>
+            </div>
+
+            <div class="footer__nav">
+                <div class="footer__list-wrapper">
+                    <p class="p2 footer__list-title">
+                        О компании
+                    </p>
+                    <ul class="footer__list">
+                        <li class="p3 footer__list-item"><a href="#about">О компании</a></li>
+                        <li class="p3 footer__list-item"><a href="#service">Услуги</a></li>
+                        <li class="p3 footer__list-item"><a href="#cases">Цены</a></li>
+                        <li class="p3 footer__list-item"><a href="#faq">Контакты</a></li>
+                    </ul>
+                </div>
+                <div class="footer__list-wrapper">
+                    <p class="p2 footer__list-title">
+                        Контакты
+                    </p>
+                    <ul class="footer__list">
+                        <li class="p3 footer__list-item">
+                            <img
+                                    src="data:image/svg+xml,%3csvg%20width='14'%20height='14'%20viewBox='0%200%2014%2014'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%20clip-path='url(%23clip0_126_211)'%3e%3cpath%20fill-rule='evenodd'%20clip-rule='evenodd'%20d='M0.875%202.625C0.875%201.6585%201.6585%200.875%202.625%200.875H3.42512C3.927%200.875%204.36448%201.21658%204.48621%201.70348L5.13126%204.28367C5.23799%204.71059%205.07846%205.1599%204.72641%205.42394L3.9718%205.9899C3.89344%206.04867%203.87641%206.13473%203.89842%206.19482C4.5608%208.00303%205.99697%209.4392%207.80518%2010.1016C7.86527%2010.1236%207.95133%2010.1066%208.0101%2010.0282L8.57606%209.27359C8.8401%208.92154%209.28941%208.76201%209.71633%208.86874L12.2965%209.51379C12.7834%209.63552%2013.125%2010.073%2013.125%2010.5749V11.375C13.125%2012.3415%2012.3415%2013.125%2011.375%2013.125H10.0625C4.98838%2013.125%200.875%209.01162%200.875%203.9375V2.625Z'%20fill='rgb(109, 170, 225)'/%3e%3c/g%3e%3cdefs%3e%3cclipPath%20id='clip0_126_211'%3e%3crect%20width='14'%20height='14'%20fill='white'/%3e%3c/clipPath%3e%3c/defs%3e%3c/svg%3e"
+                                    alt=""
+                                    class="footer__logo"
+                                    width="14" height="14"
+                            >
+                            <a href="tel:{{ contact.phone }}">{{ contact.phone }}</a>
+                        </li>
+                        <li class="p3 footer__list-item">
+                            <img
+                                    src="data:image/svg+xml,%3csvg%20width='14'%20height='14'%20viewBox='0%200%2014%2014'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20fill-rule='evenodd'%20clip-rule='evenodd'%20d='M6.73152%2013.0381C6.74914%2013.0483%206.76299%2013.0562%206.77279%2013.0617L6.78908%2013.0708C6.91909%2013.1422%207.08036%2013.1416%207.21049%2013.071L7.22721%2013.0617C7.23701%2013.0562%207.25086%2013.0483%207.26848%2013.0381C7.30372%2013.0177%207.35407%2012.9879%207.41738%2012.9489C7.54394%2012.871%207.7226%2012.7561%207.93602%2012.6053C8.36214%2012.3043%208.93069%2011.8577%209.50048%2011.2743C10.6346%2010.1132%2011.8125%208.36859%2011.8125%206.125C11.8125%203.46713%209.65787%201.3125%207%201.3125C4.34213%201.3125%202.1875%203.46713%202.1875%206.125C2.1875%208.36859%203.36544%2010.1132%204.49952%2011.2743C5.06931%2011.8577%205.63786%2012.3043%206.06398%2012.6053C6.2774%2012.7561%206.45606%2012.871%206.58262%2012.9489C6.64593%2012.9879%206.69628%2013.0177%206.73152%2013.0381ZM7%207.875C7.9665%207.875%208.75%207.0915%208.75%206.125C8.75%205.1585%207.9665%204.375%207%204.375C6.0335%204.375%205.25%205.1585%205.25%206.125C5.25%207.0915%206.0335%207.875%207%207.875Z'%20fill='rgb(109, 170, 225)'/%3e%3c/svg%3e"
+                                    alt=""
+                                    class=""
+                                    width="14" height="14"
+                            >
+                            {{ contact.address }}
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer__socials-wrapper tablet">
+
+                    <a href="{{ telegram_url }}" target="_blank" class="footer__socials-logo">
+                        <img
+                                src="data:image/svg+xml,%3csvg%20width='32'%20height='32'%20viewBox='0%200%2032%2032'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M16%2032C24.8366%2032%2032%2024.8366%2032%2016C32%207.16344%2024.8366%200%2016%200C7.16344%200%200%207.16344%200%2016C0%2024.8366%207.16344%2032%2016%2032Z'%20fill='url(%23paint0_linear_54_639)'/%3e%3cpath%20fill-rule='evenodd'%20clip-rule='evenodd'%20d='M7.24285%2015.8311C11.9072%2013.7989%2015.0175%2012.4591%2016.5737%2011.8119C21.0171%209.9637%2021.9404%209.64266%2022.5421%209.63206C22.6745%209.62973%2022.9704%209.66253%2023.1621%209.81808C23.324%209.94942%2023.3685%2010.1269%2023.3899%2010.2514C23.4112%2010.3759%2023.4377%2010.6596%2023.4166%2010.8812C23.1758%2013.4112%2022.1339%2019.5508%2021.6039%2022.3844C21.3796%2023.5834%2020.938%2023.9855%2020.5104%2024.0248C19.5813%2024.1103%2018.8757%2023.4108%2017.9758%2022.8208C16.5676%2021.8977%2015.7721%2021.3231%2014.4051%2020.4223C12.8254%2019.3813%2013.8495%2018.8092%2014.7498%2017.8741C14.9854%2017.6294%2019.0792%2013.9058%2019.1585%2013.568C19.1684%2013.5257%2019.1776%2013.3682%2019.084%2013.2851C18.9905%2013.2019%2018.8524%2013.2304%2018.7527%2013.253C18.6115%2013.285%2016.3619%2014.772%2012.0038%2017.7137C11.3653%2018.1522%2010.7869%2018.3659%2010.2687%2018.3547C9.69743%2018.3423%208.59851%2018.0317%207.78158%2017.7661C6.77957%2017.4404%205.9832%2017.2682%206.05255%2016.715C6.08867%2016.4269%206.48544%2016.1322%207.24285%2015.8311Z'%20fill='white'/%3e%3cdefs%3e%3clinearGradient%20id='paint0_linear_54_639'%20x1='1600'%20y1='0'%20x2='1600'%20y2='3176.27'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20stop-color='%232AABEE'/%3e%3cstop%20offset='1'%20stop-color='%23229ED9'/%3e%3c/linearGradient%3e%3c/defs%3e%3c/svg%3e"
+                                alt="Telegram"
+                                class=""
+                                width="100%" height="100%"
+                        >
+                    </a>
+                    <a href="{{ vk_url }}" target="_blank" class="footer__socials-logo">
+                        <img
+                                src="data:image/svg+xml,%3csvg%20width='32'%20height='32'%20viewBox='0%200%2032%2032'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M15.3434%2032H16.6758C23.9091%2032%2027.5264%2032%2029.7728%2029.7536C32.0192%2027.5072%2032%2023.8913%2032%2016.6758V15.3242C32%208.11008%2032%204.49281%2029.7728%202.24641C27.5456%206.4373e-06%2023.9091%200%2016.6758%200H15.3434C8.1088%200%204.4928%206.4373e-06%202.24639%202.24641C-1.43051e-06%204.49281%200%208.10753%200%2015.3242V16.6758C0%2023.8913%20-1.43051e-06%2027.5072%202.24639%2029.7536C4.4928%2032%208.1088%2032%2015.3434%2032Z'%20fill='%230077FF'/%3e%3cpath%20d='M17.1722%2023.0717C9.95684%2023.0717%205.57796%2018.0656%205.40771%209.74687H9.06212C9.17604%2015.8576%2011.9562%2018.4509%2014.0874%2018.9795V9.74687H17.5908V15.0192C19.6464%2014.7914%2021.7969%2012.3926%2022.5213%209.74687H25.9658C25.4141%2013.0019%2023.073%2015.4006%2021.4167%2016.3901C23.073%2017.1901%2025.738%2019.2842%2026.7658%2023.0717H22.9783C22.1783%2020.5398%2020.2174%2018.5789%2017.5908%2018.3126V23.0717H17.1722Z'%20fill='white'/%3e%3c/svg%3e"
+                                alt="Вконтакте"
+                                class=""
+                                width="40" height="40"
+                        >
+                    </a>
+                    <a href="{{ whatsapp_url }}" target="_blank" class="footer__socials-logo">
+                        <img
+                                 src="{% static 'pages/icons//whatsapp.svg' %}",
+                                 alt="whatsapp"
+                                class=""
+                                width="100%" height="100%"
+                        >
+                    </a>
+                     <a href="{{ instagram_url }}" target="_blank" class="footer__socials-logo">
+                        <img
+                                src="data:image/svg+xml,%3csvg%20width='32'%20height='32'%20viewBox='0%200%2032%2032'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M9.37354%200.110798C7.67111%200.19115%206.50835%200.463834%205.49227%200.861972C4.44044%201.27202%203.54881%201.82155%202.66182%202.71217C1.77379%203.60331%201.22844%204.49652%200.821506%205.54941C0.427516%206.56808%200.160533%207.7314%200.0853556%209.43487C0.0107156%2011.1415%20-0.00640125%2011.6858%200.00191875%2016.0306C0.0102068%2020.3748%200.0293812%2020.9202%200.110764%2022.6273C0.192143%2024.3293%200.46381%2025.4915%200.861944%2026.5081C1.27251%2027.56%201.82148%2028.4511%202.71261%2029.3386C3.60323%2030.2261%204.49695%2030.771%205.55033%2031.1785C6.56796%2031.5719%207.73177%2031.8399%209.43473%2031.9146C11.1413%2031.9898%2011.6861%2032.0064%2016.0298%2031.9981C20.3756%2031.9898%2020.9204%2031.9706%2022.627%2031.8897C24.3294%2031.8083%2025.4911%2031.5356%2026.5083%2031.1385C27.5601%2030.7269%2028.4517%2030.179%2029.3387%2029.2878C30.2257%2028.3972%2030.7711%2027.5035%2031.178%2026.4501C31.572%2025.4324%2031.84%2024.2686%2031.9141%2022.5667C31.9888%2020.859%2032.0064%2020.3137%2031.9981%2015.9694C31.9898%2011.6246%2031.9701%2011.0803%2031.8893%209.37423C31.8084%207.67074%2031.5357%206.50899%2031.1381%205.49187C30.727%204.44003%2030.1786%203.5494%2029.2879%202.66137C28.3973%201.77438%2027.5036%201.22797%2026.4502%200.822058C25.4321%200.428065%2024.2688%200.159524%2022.5658%200.0859112C20.8592%200.0102248%2020.3144%20-0.00635437%2015.9692%200.00193683C11.625%200.010228%2011.0801%200.0288968%209.37354%200.110798ZM9.56019%2029.0348C8.0003%2028.9669%207.15325%2028.7077%206.58872%2028.4905C5.84117%2028.2012%205.30774%2027.8544%204.74631%2027.2971C4.18592%2026.7378%203.83806%2026.2059%203.54621%2025.4599C3.32691%2024.8953%203.06306%2024.0493%202.98997%2022.4894C2.91065%2020.803%202.89251%2020.2971%202.88473%2016.0249C2.87644%2011.7537%202.89197%2011.2477%202.9656%209.55982C3.03246%208.00096%203.29324%207.15285%203.50992%206.58882C3.79917%205.84023%204.14494%205.30783%204.70328%204.7464C5.26262%204.18496%205.7945%203.83814%206.541%203.54629C7.10502%203.32596%207.95107%203.06416%209.51041%202.99004C11.1978%202.91019%2011.7032%202.89309%2015.9743%202.8848C20.2465%202.87649%2020.7524%202.89154%2022.4404%202.96567C23.9992%203.03357%2024.8473%203.29175%2025.4108%203.51C26.1588%203.79926%2026.6923%204.14401%2027.2532%204.70337C27.8141%205.26274%2028.162%205.79358%2028.4538%206.54164C28.6741%207.10411%2028.9359%207.95119%2029.0095%209.51005C29.0899%2011.1975%2029.108%2011.7034%2029.1158%2015.9746C29.1241%2020.2468%2029.1086%2020.7527%2029.0344%2022.4396C28.9665%2023.9995%2028.7078%2024.8471%2028.4901%2025.4122C28.2008%2026.1592%2027.855%2026.6927%2027.2962%2027.2541C26.7374%2027.8135%2026.2055%2028.1623%2025.4585%2028.4542C24.8955%2028.674%2024.0485%2028.9363%2022.4901%2029.0105C20.8028%2029.0898%2020.2973%2029.1079%2016.0246%2029.1157C11.7535%2029.124%2011.2481%2029.1079%209.56019%2029.0348ZM22.6037%207.44731C22.6057%208.50694%2023.4673%209.3649%2024.5269%209.36283C25.587%209.36076%2026.445%208.49968%2026.4435%207.44005C26.4414%206.38042%2025.5798%205.52195%2024.5197%205.52402C23.4596%205.52609%2022.6016%206.38768%2022.6037%207.44731ZM7.78467%2016.0155C7.79347%2020.5532%2011.4788%2024.2235%2016.0153%2024.2147C20.5523%2024.2059%2024.2247%2020.5215%2024.2159%2015.9839C24.2071%2011.4479%2020.5212%207.77546%2015.9837%207.78427C11.4471%207.79308%207.77584%2011.479%207.78467%2016.0155ZM10.6664%2016.0098C10.6613%2013.0648%2013.0449%2010.6723%2015.9894%2010.6671C18.9344%2010.6614%2021.3274%2013.044%2021.3331%2015.9896C21.3388%2018.9352%2018.9552%2021.3271%2016.0096%2021.3329C13.0651%2021.3386%2010.6721%2018.9554%2010.6664%2016.0098Z'%20fill='url(%23paint0_linear_118_1328)'/%3e%3cdefs%3e%3clinearGradient%20id='paint0_linear_118_1328'%20x1='16'%20y1='0'%20x2='16'%20y2='32'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20stop-color='%23C51EA9'/%3e%3cstop%20offset='0.293269'%20stop-color='%23D22097'/%3e%3cstop%20offset='0.698907'%20stop-color='%23E75D5A'/%3e%3cstop%20offset='1'%20stop-color='%23F2A328'/%3e%3c/linearGradient%3e%3c/defs%3e%3c/svg%3e"
+                                alt="Instagram"
+                                class=""
+                                width="100%" height="100%"
+                        >
+                    </a>
+                    <p class="footer__inst-text">*Instagram — проект Meta Platforms Inc.,
+                    деятельность которой в России запрещена</p>
+                </div>
+                <div class="footer__review splide" id="footer-review-slider">
+                    <div class="splide__track">
+                        <div class="splide__list">
+                            <div class="splide__slide">
+                                <button class="footer__review__review-button" onclick="window.open('https://www.vl.ru/chistota-dv', '_blank')">
+                                    <img
+                                            src="{% static "pages/icons/VL.png" %}"
+                                           alt="VL.ru"
+                                            class="hero__review-logo"
+                                            width="100%" height="100%"
+                                    >
+                                    <span>{% if vl_data.average_rating %}{{ vl_data.average_rating }}{% else %} 5.0{% endif %}</span>
+                                    <img
+                                            src="{% static "pages/icons/star.svg" %}"
+                                           alt=""
+                                            class=""
+                                            width="100%" height="100%"
+                                    >
+                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M13 1L1 13" stroke="#939393" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M13 10V1H4" stroke="#939393" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="splide__slide">
+                                <button class="footer__review__review-button" onclick="window.open('https://yandex.ru/maps/-/CHWKmQ7K', '_blank')">
+                                    <img
+                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAI6SURBVHgB7ZexbhNBEIb/2dhFpIBSunAk0yPFJUiWODeQAgmK0CPxAMAT4PACgEQJEj0uUkY0uQIJSjd0SDiQwqUF6Y67YWbB512T892R87nhl07y3u7q/2Z2dqwjLCjqtQMY3DVEdxjooAIReMSgUUTRwWY4Gftzf8TB9naSXHrChEdYoYjx3JgfBxROpymANeetY6HsogZpRgyd9RXC6AsbeU3mKvVSTwvDQasTc/ML1iAm7ps4aQ6wLiW22Hk3a56617ARfk0fuv8YeaK9e/6eVjt7rdw0s+zsefRRng/p2Ow/ALYuYymAA2n3T06XLe8Y5IjfPJsPxJwUIsu8d9OLmIevkKd8gIUs0N5+5loPbvIN/P4dLgxgIZwsUGvH1sZfksipez0dJm7mLgwgWYBzlucVo/dOoz8aojIAVTJ8PTeTSL0sSPRGqt8DLqjCAHz0Fjj7PodwIqbeLX9twfSXAlDzrCy4xaegOVfPUwMlxArg9gJJu/03E8OZaZnoVfTzxg6X2iCpN07649tXvaMpq+JHMJPWggu0pDGtBEBT7TaYIu25UgAL4bZYbc8Lt2D1ANqeP39Kx+d2xlUCWLmFJ+25foCK9B9AAPgEaxLJx0qDGYdEeIiS4pdPwbP7/4+dkOU+URS0A2I6xhoU0cYV0wxPQ2Z+gZqlnpvheGyLsGEaAz0P1CR79uKpvy0AheOpIdOvIxPqoV7q+RtmcUHQ6cRJPJCv5K5M7qIS8YkWu4R7qEfuzvwC6o3pQznqsqgAAAAASUVORK5CYII="
+                                            alt="Яндекс"
+                                            class="hero__review-logo"
+                                            width="100%" height="100%"
+                                    >
+                                    <span>{% if yandex_data.average_rating > 1 %}{{ yandex_data.average_rating }}{% else %} 5.0{% endif %}</span>
+                                    <img
+                                            src="{% static "pages/icons/star.svg" %}"
+                                            alt=""
+                                            class=""
+                                            width="100%" height="100%"
+                                    >
+                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M13 1L1 13" stroke="#939393" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M13 10V1H4" stroke="#939393" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="splide__slide">
+                                <button class="footer__review__review-button" onclick="window.open('https://go.2gis.com/0UnDt', '_blank')">
+                                    <img
+                                            src="{% static "pages/icons/2gis.png" %}"
+                                            alt="2gis"
+                                            class="hero__review-logo"
+                                            width="100%" height="100%"
+                                    >
+                                    <span>{% if gis_data.average_rating %}{{ gis_data.average_rating }}{% else %} 5.0{% endif %}</span>
+                                    <img
+                                            src="{% static "pages/icons/star.svg" %}"
+                                            alt=""
+                                            class=""
+                                            width="100%" height="100%"
+                                    >
+                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M13 1L1 13" stroke="#939393" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M13 10V1H4" stroke="#939393" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer__extra">
+            <div class="footer__extra-info">
+                <a href="" class="footer__extra-policy">Политика конфиденциальности</a>
+                <p class="footer__extra-copyright">© 2025 ЧИСТОТА ДВ. Все права защищены</p>
+            </div>
+        </div>
+    </div>
+</footer>
