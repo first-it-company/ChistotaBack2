@@ -349,7 +349,7 @@
         <section class="service">
             <div id="service" class="service__inner">
                 <div class="service__title">
-                    <h5 class="h5 service__header splitting-text" data-splitting>Наши <span class="orange">Услуги</span></h5>
+                    <h5 class="h5 service__header splitting-text" data-splitting>Наши <span class="gradient">Услуги</span></h5>
                     <p class="service__subheader">Профессиональный клининг, который говорит сам за себя. <br> услуги — это ваше время, комфорт и безупречный результат.</p>
                 </div>
                 <div class="service__cards-wrapper">
@@ -383,7 +383,7 @@
                                     </div>
                                 </div/>
                                 <div class="service__pricing">
-                                    <button class="service__button button modal-open">ЗАКАЗАТЬ УБОРКУ</button>
+                                    <button class="button service__button modal-open">ЗАКАЗАТЬ</button>
                                     <div class="service__pricing__info">
                                         <p>СТОИМОСТЬ:</p>
                                         <span class="service__pricing__info__price">ОТ {{ service.price|floatformat:0|intcomma }} ₽</span>
@@ -567,7 +567,7 @@
             </div>
         </section>
         <section class="team">
-            <h5 class="team__header h5 splitting-text" data-splitting>Сотрудники <span class="orange">Компании</span></h5>
+            <h5 class="team__header h5 splitting-text" data-splitting>Сотрудники Компании</h5>
             <div class="team__splide splide">
                 <div class="team__splide-track splide__track">
                     <ul class="team__splide-list splide__list">
@@ -592,7 +592,7 @@
         <section class="cases" id='cases'>
             <div class="cases__inner">
                 <div class="cases__title">
-                    <h5 class="h5 splitting-text" data-splitting>Мы выполнили <br class="hidden-mobile"><span class="orange">>{{ order_info.cnt_order }} заказов</span></h5>
+                    <h5 class="h5 splitting-text" data-splitting>Мы выполнили <br class="hidden-mobile"><span class="gradient">>{{ order_info.cnt_order }} заказов</span></h5>
                     <p class="p1 cases__subtitle">
                         Посмотрите на наши <span>реальные работы</span>
                         и убедитесь, что <span>мы предоставляем услуги</span> <span>высокого качества.</span>
@@ -796,7 +796,7 @@
         <section class="reviews">
             <div class="reviews__inner">
                 <div class="reviews__title">
-                    <h5 class="h5 reviews__header splitting-text" data-splitting> наши <span class="orange">отзывы</span></h5>
+                    <h5 class="h5 reviews__header splitting-text" data-splitting> наши <span class="gradient">отзывы</span></h5>
                     <p class="reviews__subheader p1">Посмотрите на наши <span>реальные работы</span><br class="hidden-mobile">
                         и убедитесь, что <span>мы предоставляем услуги высокого качества.</span></p>
                 </div>
@@ -1118,18 +1118,18 @@
                                     width="100%" height="100%"
                             >
                         </a>
+                        <a href="{{ vk_url }}" target="_blank" class="faq__socials-logo">
+                          <img
+                            src="{% static "pages/icons//vk.svg" %}"
+                            alt="Вконтакте"
+                            class="faq__logo"
+                            width="100%" height="100%"
+                          >
+                        </a>
                         <a href="{{ telegram_url }}" target="_blank" class="faq__socials-logo">
                             <img
                                     src="{% static "pages/icons//telegram.svg" %}"
                                     alt="Telegram"
-                                    class="faq__logo"
-                                    width="100%" height="100%"
-                            >
-                        </a>
-                        <a href="{{ vk_url }}" target="_blank" class="faq__socials-logo">
-                            <img
-                                    src="{% static "pages/icons//vk.svg" %}"
-                                    alt="Вконтакте"
                                     class="faq__logo"
                                     width="100%" height="100%"
                             >

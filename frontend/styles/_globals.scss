@@ -1,12 +1,12 @@
 @use 'helpers' as *;
 
-html{
-  &.is-lock{
+html {
+  &.is-lock {
     // overflow: hidden;
   }
 }
 
-body{
+body {
   @include fluid-text(18, 14);
   font-family: var(--font-family);
   display: flex;
@@ -20,11 +20,11 @@ body{
   overflow-x: hidden;
 }
 
-main{
+main {
   flex-grow: 1;
   width: 100%;
-  
-  &:first-child{
+
+  &:first-child {
     width: 100%;
     margin: 0 auto;
     position: relative;
@@ -39,6 +39,7 @@ main{
 
 .input-error {
   border: 1px solid var(--color-orange) !important;
+
   &:focus-visible {
     outline: 1px solid var(--color-orange) !important;
   }
@@ -56,7 +57,7 @@ h5 {
   font-weight: 600;
 }
 
-.h5{
+.h5 {
   font-weight: 600;
   font-size: 3vw;
   line-height: 1.3;
@@ -64,27 +65,25 @@ h5 {
   text-transform: uppercase;
   color: var(--color-black);
 
-  @include tablet{
+  @include tablet {
     font-size: rem(36);
     line-height: normal;
     letter-spacing: normal;
   }
-  .orange {
-    color: var(--color-orange);
-  }
 }
 
-.p1{
+.p1 {
   font-family: var(--font-family-accent);
   font-weight: 400;
   font-size: rem(24);
   color: var(--color-gray-200);
+
   span {
     color: var(--color-black);
   }
 }
 
-.p2{
+.p2 {
   font-weight: 500;
   font-size: rem(24);
   text-transform: uppercase;
@@ -100,15 +99,23 @@ svg * {
   transition-duration: var(--transition-duration);
 }
 
-a{
+a {
   color: inherit;
 
-  @include hover{
+  @include hover {
     color: var(--color-blue);
   }
 
-  &[class]{
+  &[class] {
     text-decoration: none;
   }
 }
 
+
+.gradient {
+  background: linear-gradient(to right, #2A2A2A, #0060DF);
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

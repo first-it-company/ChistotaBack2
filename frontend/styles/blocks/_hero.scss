@@ -1,6 +1,6 @@
 @use "../helpers" as *;
 
-.hero{
+.hero {
   padding-block: rem(40);
   gap: rem(25);
   display: flex;
@@ -10,23 +10,22 @@
   left: 40px;
   margin: 0 auto;
 
-  @include tablet{
+  @include tablet {
     flex-direction: column;
     left: 0;
     padding: 2.5rem 20px;
     margin: 0;
   }
 
-  @include laptop{
-  }
+  @include laptop {}
 
 
-  @include tablet{
+  @include tablet {
     padding: 0;
     padding-bottom: rem(90);
   }
 
-  &__advantages{
+  &__advantages {
     border-radius: 40px;
     background: rgb(42, 42, 42);
     background-repeat: no-repeat;
@@ -40,49 +39,49 @@
 
     text-align: center;
 
-    @include tablet{
+    @include tablet {
       padding: 20px;
     }
 
-    @include mobile{
+    @include mobile {
       border-radius: 20px;
       padding: 32px 16px;
     }
 
-    &-header{
+    &-header {
       color: rgb(255, 255, 255);
       font-size: 3.2vw;
       font-weight: 600;
       text-transform: uppercase;
       margin-bottom: 1.5rem;
 
-      @include tablet{
+      @include tablet {
         font-size: rem(32);
       }
 
-      @include mobile{
+      @include mobile {
         font-size: rem(28);
       }
     }
 
-    &-wrapper{
+    &-wrapper {
       display: flex;
       gap: 2%;
       margin-bottom: rem(60);
 
-      @include mobile{
+      @include mobile {
         flex-direction: column;
         gap: rem(16);
         margin-bottom: 2rem;
       }
     }
 
-    &-links{
+    &-links {
       justify-content: center;
       margin-top: 2rem;
     }
 
-    &-mobile{
+    &-mobile {
       padding-top: rem(32);
       padding-inline: rem(20);
       display: flex;
@@ -92,7 +91,7 @@
       height: 80%;
     }
 
-    &-item{
+    &-item {
       padding: rem(5);
       width: 32%;
       display: flex;
@@ -102,13 +101,13 @@
       align-items: center;
 
 
-      @include tablet{
+      @include tablet {
         width: 100%;
         height: 100%;
       }
     }
 
-    &-title{
+    &-title {
       width: fit-content;
       font-size: 0.8vw;
       padding: 0.8vw 1vw;
@@ -118,18 +117,18 @@
       text-transform: uppercase;
       text-wrap: nowrap;
 
-      @include tablet{
+      @include tablet {
         padding: rem(8) rem(12);
         font-size: rem(12);
       }
 
-      @include mobile{
+      @include mobile {
         padding: rem(12) rem(20);
         font-size: rem(10);
       }
     }
 
-    &-info{
+    &-info {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -137,37 +136,38 @@
       margin-bottom: 1rem;
     }
 
-    &-value{
+    &-value {
       font-size: 1vw;
       color: rgba(255, 255, 255, 0.6);
       line-height: 1;
 
-      @include tablet{
+      @include tablet {
         font-size: rem(18);
       }
 
-      span{
+      span {
         font-size: 4vw;
         font-weight: 600;
         color: white;
 
-        @include tablet{
+        @include tablet {
           font-size: rem(40);
           font-weight: 500;
         }
       }
     }
 
-    &-label{
+    &-label {
       font-size: 1vw;
       color: white;
 
-      @include tablet{
+      @include tablet {
         font-size: rem(18);
       }
     }
   }
-  &__splide{
+
+  &__splide {
     position: sticky !important;
     top: rem(20);
     width: 100%;
@@ -176,19 +176,19 @@
     display: flex;
     align-items: center;
 
-    @include tablet{
+    @include tablet {
       padding: 0 rem(20);
       height: 100% !important;
     }
 
-    &__list{
+    &__list {
       display: flex;
       align-items: flex-end;
       overflow: hidden;
       height: 100%;
     }
 
-    &-track{
+    &-track {
       overflow: hidden;
       position: relative;
       height: 100%;
@@ -203,11 +203,11 @@
       align-items: flex-end;
 
       z-index: 1;
-      
+
       @include laptop {
         width: 45%;
       }
-      
+
       @include tablet {
         width: 70%;
 
@@ -220,11 +220,11 @@
         transform: scale(0.858);
         transform-origin: bottom center;
         transition:
-                transform 0.3s cubic-bezier(0.65, 0, 0.35, 1),
-                opacity 0.3s ease-in-out;
+          transform 0.3s cubic-bezier(0.65, 0, 0.35, 1),
+          opacity 0.3s ease-in-out;
         will-change: transform, opacity;
 
-        @include mobile{
+        @include mobile {
           transform: scale(1);
         }
 
@@ -253,7 +253,7 @@
 
   }
 
-  &__main{
+  &__main {
     display: flex;
     flex-direction: column;
     //justify-content: space-between;
@@ -262,10 +262,9 @@
     min-width: 50vw;
     position: relative;
 
-    @include laptop{
-    }
+    @include laptop {}
 
-    @include tablet{
+    @include tablet {
       height: 100%;
       z-index: 190;
       min-width: 100%;
@@ -279,11 +278,11 @@
       padding-inline: rem(16);
     }
 
-    &-mobile{
+    &-mobile {
       width: 100%;
     }
 
-    &-slide{
+    &-slide {
       width: 100vw !important;
       display: flex;
       flex-direction: column;
@@ -291,22 +290,20 @@
     }
 
   }
-  &__body{
+
+  &__body {
     display: flex;
     flex-direction: column;
     border-radius: 20px;
-    background: rgb(242, 246, 250);
     padding: 2vw 2.2vw;
 
-    @include container{
+    @include container {}
 
-    }
-
-    @include tablet{
+    @include tablet {
       padding-inline: 0;
       width: 100%;
       height: 100%;
-      gap:0;
+      gap: 0;
       justify-content: space-between;
       padding-top: rem(32);
       padding-bottom: rem(20);
@@ -320,7 +317,8 @@
     }
 
   }
-  &__header{
+
+  &__header {
     font-size: 4.5vw;
     font-weight: 600;
     text-transform: uppercase;
@@ -328,26 +326,23 @@
     margin-bottom: rem(12);
     line-height: normal;
 
-    @include tablet{
+    @include tablet {
       height: auto;
     }
 
-    @include mobile{
+    @include mobile {
       font-size: rem(45);
 
     }
 
-    @include mobile-s{
+    @include mobile-s {
       font-size: rem(36);
     }
 
-    &-print{
-      color: var(--color-orange);
-
-    }
+    // &-print {}
   }
 
-  &__subheader2{
+  &__subheader2 {
     color: var(--color-gray);
     font-size: 1vw;
     font-weight: 400;
@@ -361,12 +356,12 @@
       font-size: 1rem;
     }
 
-    @include mobile{
+    @include mobile {
       font-size: rem(14);
     }
   }
 
-  &__subheader{
+  &__subheader {
     margin-bottom: 3vw;
     font-size: 2vw;
     font-family: var(--font-family-accent);
@@ -377,17 +372,18 @@
     //}
 
 
-    @include tablet{
+    @include tablet {
 
       font-size: 2rem;
       margin-bottom: 40px;
     }
 
-    @include mobile{
+    @include mobile {
       font-size: rem(20);
     }
   }
-  &__review{
+
+  &__review {
     display: flex;
     gap: 2%;
     margin-bottom: rem(45);
@@ -398,14 +394,14 @@
       justify-content: center;
       font-size: 1.5vw;
 
-      @include tablet{
+      @include tablet {
         padding: rem(20) rem(40);
         font-size: 1.5rem;
         width: 20%;
         background: rgb(244, 244, 245);
       }
 
-      @include mobile-m{
+      @include mobile-m {
         font-size: 1rem;
         width: 32%;
         padding: rem(10) rem(20);
@@ -413,41 +409,40 @@
       }
     }
 
-    @include tablet{
+    @include tablet {
       margin-bottom: 40px;
     }
 
-    &-logo{
+    &-logo {
       margin-right: 8px;
 
-      @media (max-width: 420px){
+      @media (max-width: 420px) {
         margin-right: 4px;
         width: 24px;
         height: 24px;
       }
     }
   }
-  &__button{
+
+  &__button {
     width: 100%;
-     font-size: 2vw !important;
+    font-size: 2vw !important;
     padding: 2vw rem(50) !important;
 
 
 
-    @include tablet{
+    @include tablet {}
 
-    }
-
-    @include mobile{
+    @include mobile {
       padding: rem(22) rem(10) !important;
       font-size: rem(20) !important;
     }
 
-    &--arrow{
+    &--arrow {
       min-width: 6vw;
       aspect-ratio: 1;
 
-      @include mobile{
+      @include mobile {
         min-width: 58px;
       }
 
@@ -462,12 +457,12 @@
       }
     }
 
-    &-wrap{
+    &-wrap {
       padding-inline: rem(20);
       padding-bottom: rem(20);
     }
 
-    &--mobile{
+    &--mobile {
       position: absolute;
       z-index: 100;
       bottom: rem(20);
@@ -476,13 +471,14 @@
     }
   }
 
-  &__mobile-extra{
+  &__mobile-extra {
     display: flex;
     flex-direction: column;
     row-gap: rem(24);
     margin-bottom: rem(100);
   }
-  &__mobile-video{
+
+  &__mobile-video {
     position: absolute;
     top: 0;
     width: 100%;
@@ -491,33 +487,35 @@
     z-index: 0;
   }
 
-  &__overlay{
+  &__overlay {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.3);
+    background: rgba(0, 0, 0, 0.3);
     z-index: 1;
     backdrop-filter: blur(8px);
   }
 }
 
 
-.splide__pagination{
+.splide__pagination {
   gap: rem(8);
   bottom: -45px !important;
 }
-.splide__pagination__page{
+
+.splide__pagination__page {
   width: rem(8);
   aspect-ratio: 1;
   opacity: 1 !important;
   border-radius: rem(5) !important;
   transition:
-          width 0.4s cubic-bezier(0.65, 0, 0.35, 1),
-          background-color 0.4s ease !important;
-      &.is-active{
-        width: rem(40);
-        background-color: var(--color-blue) !important;
-      }
+    width 0.4s cubic-bezier(0.65, 0, 0.35, 1),
+    background-color 0.4s ease !important;
+
+  &.is-active {
+    width: rem(40);
+    background-color: var(--color-blue) !important;
+  }
 }
 
 .hero__slide-arrows {
@@ -527,8 +525,8 @@
   left: 51%;
   transform: translateY(-50%);
   z-index: 10;
-  
-  @media (max-width: 1680px){
+
+  @media (max-width: 1680px) {
     gap: 1vw !important;
   }
 
@@ -544,10 +542,10 @@
     }
 
   }
-  
+
   &--mobile {
     display: none;
-    
+
     @include tablet {
       display: flex;
       top: rem(60);

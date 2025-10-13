@@ -1,11 +1,10 @@
 @use "../helpers" as *;
 
-.header{
+.header {
   font-family: var(--font-family-accent);
   position: sticky;
   z-index: 200;
   top: 0;
-  border-bottom: 1px solid #E5E5E5;
   transition: transform 0.3s ease-in-out;
   background-color: var(--color-white);
 
@@ -13,27 +12,27 @@
     flex-shrink: 0;
     width: 16vw;
 
-  @include tablet {
-    width: 170px;
-  }
-
-  }
-
-   &__contacts-logo {
-      width: 2vw;
-
-     @include tablet{
-       width: 40px;
-       height: 40px;
-     }
+    @include tablet {
+      width: 170px;
     }
+
+  }
+
+  &__contacts-logo {
+    width: 2vw;
+
+    @include tablet {
+      width: 40px;
+      height: 40px;
+    }
+  }
 
   &.nav-up {
     transform: translateY(-100%);
   }
 
   &__body {
-    &-inner{
+    &-inner {
       display: flex;
       padding-block: 1vw;
       padding-inline: 40px;
@@ -53,7 +52,7 @@
     }
   }
 
-  &__overlay{
+  &__overlay {
     display: contents;
     justify-content: space-between;
     align-items: center;
@@ -64,7 +63,7 @@
       height: rem(420);
       background-color: var(--color-white);
       position: fixed;
-      inset:0;
+      inset: 0;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
@@ -75,14 +74,14 @@
       border-radius: 0 0 rem(20) rem(20);
       border: 1px solid #E5E5E5;
 
-      &:not(.is-active){
+      &:not(.is-active) {
         @include hide;
         transform: translateY(-100%);
       }
     }
   }
 
-  &__menu-link{
+  &__menu-link {
     font-family: Noah;
     font-size: 1.5vw;
     font-weight: 400;
@@ -93,24 +92,24 @@
     }
   }
 
-  &__menu{
+  &__menu {
     //margin-right: auto;
 
-    &-list{
+    &-list {
       display: flex;
       column-gap: rem(40);
       font-size: rem(24);
 
-      @include laptop{
+      @include laptop {
         column-gap: rem(25);
       }
 
-      @include tablet{
+      @include tablet {
         column-gap: rem(18);
         font-size: rem(16);
       }
 
-      @include burger{
+      @include burger {
         flex-direction: column;
         gap: rem(24);
         font-size: rem(24);
@@ -118,50 +117,50 @@
     }
   }
 
-  &__contacts{
+  &__contacts {
     display: flex;
     align-items: center;
     column-gap: rem(24);
 
-    @include tablet{
+    @include tablet {
       column-gap: rem(12);
     }
 
-    @include burger{
+    @include burger {
       justify-content: space-between;
       width: 100%;
       gap: rem(24);
     }
 
-    @include mobile-s{
+    @include mobile-s {
       gap: 1rem;
     }
 
-    &-wrapper{
+    &-wrapper {
       display: flex;
       align-items: center;
       column-gap: rem(24);
       flex-shrink: 0;
 
-      @include mobile-s{
+      @include mobile-s {
         gap: rem(18);
       }
     }
 
 
-    &-link{
+    &-link {
       font-size: 1.6vw;
       text-wrap: nowrap;
 
-      @include tablet{
+      @include tablet {
         font-size: rem(16);
       }
 
-      @include burger{
+      @include burger {
         font-size: rem(24);
       }
 
-      @include mobile-s{
+      @include mobile-s {
         font-size: rem(18);
       }
     }

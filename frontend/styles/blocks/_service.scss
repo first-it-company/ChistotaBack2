@@ -1,43 +1,42 @@
 @use "../helpers" as *;
 
-.service{
-  @include tablet{
-  }
+.service {
+  @include tablet {}
 
-  @include mobile{
+  @include mobile {
     display: contents;
   }
 
-  &__title{
+  &__title {
     text-align: center;
   }
 
-  &__header{
+  &__header {
     margin-bottom: rem(26);
     line-height: 0.8;
 
-    @include tablet{
+    @include tablet {
       margin-bottom: rem(20);
     }
   }
 
-  &__subheader{
+  &__subheader {
     font-family: var(--font-family-accent);
     font-weight: 400;
     font-size: 1.5vw;
     margin-bottom: rem(47);
 
-    @include tablet{
+    @include tablet {
       margin-bottom: rem(32);
       font-size: rem(20);
     }
   }
 
-  &__inner{
+  &__inner {
     padding-bottom: rem(100);
     padding-inline: 40px;
 
-    @include tablet{
+    @include tablet {
       padding-bottom: rem(90);
       padding-inline: 20px;
     }
@@ -62,7 +61,7 @@
     height: calc(var(--card-height) * var(--cards-count) + var(--total-gap));
     z-index: 100;
 
-    @include tablet{
+    @include tablet {
       padding-inline: 1px;
     }
   }
@@ -100,12 +99,10 @@
         $scale: calc(var(--base-scale) + ($i - 1) * var(--scale-step));
         z-index: $i;
 
-        transform: scale($scale)
-        translateY(calc((-#{$i} - 1) * var(--overlap-offset)));
+        transform: scale($scale) translateY(calc((-#{$i} - 1) * var(--overlap-offset)));
 
         &.is-active {
-          transform: scale(calc(#{$scale} + 0.02))
-          translateY(calc((-#{$i} - 1) * var(--overlap-offset)));
+          transform: scale(calc(#{$scale} + 0.02)) translateY(calc((-#{$i} - 1) * var(--overlap-offset)));
 
         }
       }
@@ -113,25 +110,28 @@
 
     }
 
-    &:nth-child(1){ }
-    &:nth-child(2){
+    &:nth-child(1) {}
+
+    &:nth-child(2) {
 
       //background: linear-gradient(180.00deg, rgb(0, 96, 223),rgb(51, 128, 229) 100%),rgb(42, 42, 42);
     }
-    &:nth-child(3){
+
+    &:nth-child(3) {
       //box-shadow: 0 -9px 0 -1px var(--color-blue-200);
     }
-    &:nth-child(4){
+
+    &:nth-child(4) {
       //background: linear-gradient(180.00deg, rgb(0, 96, 223),rgb(51, 128, 229) 100%),rgb(42, 42, 42);
     }
 
-    @include tablet{
+    @include tablet {
       top: rem(90);
     }
 
 
 
-    &-body{
+    &-body {
       display: flex;
       justify-content: space-between;
       width: 48%;
@@ -139,7 +139,7 @@
       padding: rem(25);
       min-height: rem(480);
 
-      @include tablet{
+      @include tablet {
         flex-direction: column;
         gap: 0;
         width: 100%;
@@ -148,36 +148,36 @@
       }
     }
 
-    &-main{
+    &-main {
       width: 100%;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
 
-      @include tablet{
+      @include tablet {
         width: 100%;
       }
     }
 
-    &-header{
+    &-header {
       font-weight: 500;
       font-size: 2.5vw;
       margin-bottom: rem(16);
       color: var(--color-white);
       line-height: normal;
 
-      @include tablet{
+      @include tablet {
         margin-bottom: rem(24);
         font-size: rem(36);
       }
 
-      @include mobile{
+      @include mobile {
         font-size: rem(28);
         margin-bottom: 2px;
       }
     }
 
-    &-subheader{
+    &-subheader {
       font-weight: 400;
       font-size: 1.5vw;
       margin-bottom: rem(25);
@@ -190,7 +190,7 @@
         margin-bottom: rem(24);
       }
 
-      @include tablet{
+      @include tablet {
 
         &.collapsed {
           display: -webkit-box;
@@ -206,38 +206,38 @@
       }
     }
 
-    &-features{
+    &-features {
       display: flex;
       column-gap: rem(15);
 
-    .card-features {
-      color: var(--color-white);
-      background: rgba(255, 255, 255, 0.3);
-      padding: 0.7vw;
-      font-size: 1vw;
-      border: none;
+      .card-features {
+        color: var(--color-white);
+        background: rgba(255, 255, 255, 0.3);
+        padding: 0.7vw;
+        font-size: 1vw;
+        border: none;
+
+        @include tablet {
+          font-size: rem(12);
+          padding: rem(8) rem(12);
+        }
+      }
 
       @include tablet {
-        font-size: rem(12);
-        padding: rem(8) rem(12);
-      }
-    }
-
-      @include tablet{
         margin-bottom: rem(32);
 
       }
     }
 
 
-    &-img{
+    &-img {
       border-radius: rem(20);
 
       @include laptop {
         width: 95%;
       }
 
-      @include tablet{
+      @include tablet {
         width: 100%;
         height: 100%;
         object-fit: cover;
@@ -246,18 +246,18 @@
     }
   }
 
-  &__pricing{
+  &__pricing {
     display: flex;
     column-gap: rem(23);
     align-items: center;
 
-    @include container{
+    @include container {
       flex-direction: column-reverse;
       align-items: flex-start;
       gap: rem(32);
     }
 
-    @include tablet{
+    @include tablet {
       margin-bottom: rem(16);
       gap: rem(20);
       justify-content: center;
@@ -279,7 +279,7 @@
           font-size: 1.5rem;
         }
 
-        @include mobile{
+        @include mobile {
           font-size: 1rem;
           margin-bottom: 2px;
         }
@@ -293,9 +293,9 @@
         font-weight: 500;
         text-wrap: nowrap;
 
-         @include tablet {
-           font-size: 2rem;
-         }
+        @include tablet {
+          font-size: 2rem;
+        }
 
         @include mobile {
           font-size: 1.5rem;
@@ -308,7 +308,7 @@
 
   }
 
-  &__price{
+  &__price {
     font-weight: 500;
     line-height: rem(17);
     font-size: rem(24);
@@ -317,33 +317,33 @@
     text-wrap: nowrap;
   }
 
-  &__button{
+  &__button {
     width: 100%;
     border-radius: 16px;
-    background: var(--color-white);
-    color: rgb(42, 42, 42);
+    background: var(--color-blue);
+    color: var(--color-white);
     font-size: 1.5vw;
     font-weight: 500;
     padding: 1.5vw 3vw;
     text-wrap: nowrap;
     text-transform: uppercase;
 
-    @include mobile{
+    @include mobile {
       width: rem(350);
     }
 
-    @include tablet{
+    @include tablet {
       width: 100%;
       padding: 1.5rem 3rem;
       font-size: 1.5rem;
     }
   }
 
-  &__progress{
+  &__progress {
     background-color: var(--color-gray-100);
     border-radius: 50px;
 
-    &-wrapper{
+    &-wrapper {
       display: none;
       padding-inline: rem(50);
       padding-top: rem(30);
@@ -361,11 +361,12 @@
       width: 0;
     }
   }
-  &__splide{
+
+  &__splide {
     transform-origin: center top;
 
 
-    &-wrap{
+    &-wrap {
       width: 100%;
       //height: fit-content;
       transform: translateZ(0);
@@ -374,7 +375,7 @@
 
     }
 
-    &-slide{
+    &-slide {
       border-radius: rem(20);
     }
   }
@@ -383,7 +384,7 @@
     display: flex;
     gap: 2%;
 
-    @include tablet{
+    @include tablet {
       flex-direction: column;
     }
   }
@@ -396,12 +397,12 @@
     padding: 1vw;
     background: var(--color-white);
 
-    
+
     @include tablet {
       width: 100%;
       margin: rem(20) 0;
       padding: rem(10);
-       aspect-ratio: 1.4;
+      aspect-ratio: 1.4;
     }
   }
 
@@ -409,14 +410,14 @@
     width: 100%;
     height: 100%;
     position: relative;
-    
+
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       transition: transform 0.5s ease;
     }
-    
+
     &:hover img {
       //transform: scale(1.05);
     }
@@ -443,4 +444,3 @@
     transform: scale($inverse-scale);
   }
 }
-

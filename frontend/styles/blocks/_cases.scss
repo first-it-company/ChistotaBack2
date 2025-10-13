@@ -1,9 +1,10 @@
 @use "../helpers" as *;
 
-.cases{
+.cases {
   background-color: rgb(242, 246, 250);
   border-radius: 40px;
-  &__inner{
+
+  &__inner {
 
     padding-top: rem(80);
     padding-bottom: rem(80);
@@ -13,16 +14,17 @@
     row-gap: rem(48);
 
 
-    @include tablet{
+    @include tablet {
       padding-block: rem(40);
       row-gap: rem(32);
       padding-inline: 20px;
     }
   }
 
-  &__controls-prev, &__controls-next  {
-    border: 1px solid var(--color-orange) !important;
-    background-color: var(--color-orange) !important;
+  &__controls-prev,
+  &__controls-next {
+    border: 1px solid var(--color-blue) !important;
+    background-color: var(--color-blue) !important;
 
 
     &.is-disabled {
@@ -31,18 +33,18 @@
       cursor: default;
 
       img {
-        filter: brightness(1) invert(1) !important;
+        filter: brightness(1) invert(0) !important;
       }
     }
   }
 
-  &__title{
+  &__title {
     display: flex;
     justify-content: space-between;
     align-items: center;
     text-align: left;
 
-    @include mobile{
+    @include mobile {
       order: 1;
       flex-wrap: wrap;
       flex-direction: column;
@@ -51,33 +53,33 @@
     }
   }
 
-  &__subtitle{
+  &__subtitle {
     max-width: 50%;
     font-size: 1.5vw;
 
-    @include tablet{
+    @include tablet {
       max-width: 45%;
       font-size: rem(20);
     }
 
-    @include mobile{
+    @include mobile {
       max-width: 100%;
     }
   }
 
-  &__action{
+  &__action {
     display: flex;
     justify-content: space-between;
     align-items: center;
 
-    @include mobile{
+    @include mobile {
       display: contents;
       flex-direction: column;
       order: 2;
     }
   }
 
-  &__dropdown{
+  &__dropdown {
     padding: 1vw 2vw;
     border: 1px solid var(--color-gray-100);
     border-radius: rem(14);
@@ -93,7 +95,7 @@
       font-size: rem(20);
     }
 
-    @include hover{
+    @include hover {
       border: 1px solid var(--color-blue);
     }
 
@@ -105,18 +107,18 @@
       outline: 1px solid var(--color-blue);
     }
 
-    .dropdown__toggle{
-        justify-content: space-between;
-      }
+    .dropdown__toggle {
+      justify-content: space-between;
+    }
 
-    @include mobile{
+    @include mobile {
       order: 1;
       width: 100%;
 
 
     }
 
-    @include tablet{
+    @include tablet {
       padding-bottom: -8px;
     }
   }
@@ -125,7 +127,7 @@
     display: flex;
     flex-direction: column;
     gap: rem(32);
-    
+
     @include mobile {
       order: 2;
       gap: rem(16);
@@ -133,6 +135,7 @@
   }
 
   &__splide {
+
     &--top,
     &--bottom {
       flex: 1;
@@ -143,18 +146,18 @@
         display: none;
       }
     }
-  
+
     &-slide {
       display: flex;
       flex-direction: column;
-      
+
       @include mobile {
-        transition: opacity 0.3s ease; 
+        transition: opacity 0.3s ease;
 
         &:not(.is-active) {
           opacity: 0.5 !important;
         }
-        
+
         &.is-active {
           opacity: 1 !important;
         }
@@ -162,19 +165,20 @@
     }
   }
 
-  &__button{
+  &__button {
     height: rem(55);
 
-    @include mobile{
+    @include mobile {
       width: 100%;
     }
 
-    &--arrow{
+    &--arrow {
       min-width: rem(55);
       aspect-ratio: 1;
     }
-    &-wrapper{
-      @include mobile{
+
+    &-wrapper {
+      @include mobile {
         order: 3;
       }
     }

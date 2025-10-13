@@ -1,19 +1,19 @@
 @use "../helpers" as *;
 
 
-.controls{
+.controls {
   display: flex;
   gap: rem(24);
   align-items: center;
 
 
-  &__button{
+  &__button {
     border: 1px solid var(--color-blue);
     border-radius: rem(70);
     padding: rem(16) rem(28);
     background-color: var(--color-blue);
 
-    img{
+    img {
       filter: brightness(0) invert(1);
     }
 
@@ -22,13 +22,13 @@
       pointer-events: none;
       cursor: default;
 
-      img{
+      img {
         filter: none;
       }
     }
   }
 
-  &__current{
+  &__current {
     font-weight: 600;
     font-size: 1vw;
     line-height: 1.8;
@@ -38,7 +38,7 @@
       font-size: 1rem;
     }
 
-    span{
+    span {
       color: var(--color-gray-200);
     }
   }
