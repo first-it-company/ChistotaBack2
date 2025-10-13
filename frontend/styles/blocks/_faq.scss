@@ -1,32 +1,32 @@
 @use "../helpers" as *;
 
-.faq{
+.faq {
   padding-top: rem(100);
   padding-bottom: rem(100);
   margin-bottom: -25px;
-  border-radius: 60px 60px 0px 0px;
-  background: rgb(242, 246, 250);
+  border-top: 1px solid var(--color-gray-100);
 
 
-  @include tablet{
+  @include tablet {
     padding: rem(60) 0;
   }
 
-  &__inner{
+  &__inner {
     display: flex;
     column-gap: rem(40);
     padding-inline: 40px;
 
-    @include tablet{
+    @include tablet {
       flex-direction: column;
       padding-inline: 20px;
-      &.container{
+
+      &.container {
         padding-inline: 0;
       }
     }
   }
 
-  &__price{
+  &__price {
     color: rgb(42, 42, 42);
     font-family: TT Firs Neue;
     font-size: 1.5vw;
@@ -34,14 +34,14 @@
     text-wrap: nowrap;
   }
 
-  &__body{
+  &__body {
     display: flex;
     flex-direction: column;
     width: 49%;
     gap: rem(40);
 
 
-    @include tablet{
+    @include tablet {
       width: 100%;
       display: contents;
 
@@ -52,7 +52,7 @@
     display: inline-flex !important;
   }
 
-  &__title{
+  &__title {
     display: flex;
     flex-direction: column;
     line-height: normal;
@@ -60,7 +60,7 @@
     width: 80%;
 
 
-    @include tablet{
+    @include tablet {
       width: 100%;
       gap: rem(24);
       order: 1;
@@ -69,13 +69,13 @@
     }
   }
 
-  &__header{
-    @include tablet{
+  &__header {
+    @include tablet {
       font-size: rem(40);
     }
   }
 
-  &__subheader{
+  &__subheader {
     color: var(--color-gray-300);
     font-size: 1.5vw;
 
@@ -88,65 +88,64 @@
     }
   }
 
-  &__socials-wrapper{
+  &__socials-wrapper {
     display: flex;
     gap: rem(24);
 
-    @include tablet{
+    @include tablet {
       order: 2;
       padding-inline: rem(20);
       margin-bottom: rem(32);
     }
   }
 
-  &__form-wrapper{
+  &__form-wrapper {
     position: relative;
 
-    @include tablet{
+    @include tablet {
       order: 4;
       padding-inline: 0;
     }
 
   }
 
-  &__form{
+  &__form {
     position: relative;
     z-index: 100;
-    border: 1px solid var(--color-blue);
     border-radius: rem(20);
     padding: rem(40);
-    background-color: var(--color-white);
+    background-color: #F5F8FC;
     opacity: 1;
     width: 100%;
 
-    @include laptop{
+    @include laptop {
       padding: rem(16);
     }
 
-    @include tablet{
+    @include tablet {
       gap: rem(20);
       max-height: 100%;
     }
   }
 
-  &__fields{
+  &__fields {
     display: flex;
     gap: rem(16);
     flex-wrap: wrap;
     width: 100%;
     margin-bottom: rem(40);
 
-    @include laptop{
+    @include laptop {
       width: auto;
       margin-bottom: rem(24);
     }
 
-    @include tablet{
+    @include tablet {
       justify-content: flex-start;
 
     }
 
-    @include mobile-s{
+    @include mobile-s {
       justify-content: space-between;
     }
   }
@@ -159,48 +158,49 @@
   }
 
   &__row.long {
-      height: 100px;
-    }
+    height: 100px;
+  }
 
-  &__cell{
+  &__cell {
     width: 100%;
-    @include mobile-s{
-      &:nth-child(5){
+
+    @include mobile-s {
+      &:nth-child(5) {
         width: 100% !important;
       }
     }
 
-    @include mobile-s{
+    @include mobile-s {
       width: rem(163);
     }
 
-    &--long{
+    &--long {
       width: 100%;
       height: 100%;
     }
   }
 
-  &__cell-input{
+  &__cell-input {
     width: 100%;
     height: 3vw;
-    border: 1px solid var(--color-gray-50);
+    border: none;
     border-radius: rem(8);
     padding: 0.5vw 0.7vw;
     font-family: var(--font-family-accent);
     font-weight: 400;
     font-size: 1.2vw;
 
-    @include tablet{
+    @include tablet {
       height: 40px;
       font-size: rem(18);
       padding: rem(8) rem(12);
     }
 
-    @include mobile{
+    @include mobile {
       font-size: rem(16);
     }
 
-    @include hover{
+    @include hover {
       transition-duration: var(--transition-duration);
       border: 1px solid var(--color-blue);
     }
@@ -222,7 +222,7 @@
         font-size: rem(18);
       }
 
-      @include mobile{
+      @include mobile {
         font-size: rem(16);
       }
     }
@@ -233,7 +233,7 @@
       }
     }
 
-    &--long{
+    &--long {
       @extend .faq__cell-input;
       width: 100%;
       height: 100%;
@@ -241,50 +241,49 @@
   }
 
 
-  &__action{
+  &__action {
     display: flex;
     align-items: center;
     gap: rem(20);
 
-    @include tablet{
+    @include tablet {
       flex-direction: column;
       gap: rem(24);
     }
   }
 
-  &__button{
+  &__button {
     padding: 1.2vw 2vw;
     line-height: rem(17);
     text-wrap: nowrap;
     width: 100%;
 
-    @include tablet{
+    @include tablet {
       width: 60%;
       padding: rem(20) rem(35);
     }
 
-    @include mobile{
+    @include mobile {
 
       width: 100%;
     }
   }
 
-  &__price{
+  &__price {
     font-weight: 500;
     font-size: 1.5vw;
     text-transform: uppercase;
-    color: white;
-
+    color: var(--color-black);
   }
 
-  &__questions{
+  &__questions {
     width: 49%;
     display: flex;
     flex-direction: column;
     gap: rem(24);
 
 
-    @include tablet{
+    @include tablet {
       width: 100%;
       padding-inline: rem(20);
       margin-bottom: rem(32);
@@ -308,17 +307,17 @@
       }
     }
 
-    &[open] .faq__legend{
+    &[open] .faq__legend {
       transition-duration: var(--transition-duration);
       color: var(--color-blue);
     }
 
-    &:last-child{
+    &:last-child {
       border-bottom: none;
     }
   }
 
-  &__legend{
+  &__legend {
     list-style: none;
     cursor: pointer;
     position: relative;
@@ -329,11 +328,11 @@
     text-transform: uppercase;
     color: var(--color-black);
 
-    @include laptop{
+    @include laptop {
       font-size: rem(18);
     }
 
-    @include tablet{
+    @include tablet {
       font-size: rem(24);
     }
 
@@ -354,7 +353,7 @@
     }
   }
 
-  &__content{
+  &__content {
     font-family: var(--font-family-accent);
     font-weight: 400;
     font-size: 1.2vw;
@@ -365,8 +364,8 @@
     transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
 
     @include tablet {
-    font-size: rem(18);
-  }
+      font-size: rem(18);
+    }
   }
 
 
@@ -377,7 +376,7 @@
 .custom-select {
   position: relative;
   width: 100%;
-  
+
   &__trigger {
     display: flex;
     align-items: center;
@@ -385,33 +384,33 @@
     cursor: pointer;
     transition: border-color 0.3s ease;
     background-color: var(--color-white);
-    
+
     &:hover {
       border-color: var(--color-blue);
     }
-    
+
     &.is-open {
       border-color: var(--color-blue);
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
     }
   }
-  
+
   &__placeholder {
     color: var(--color-gray-250);
     font-weight: 400;
     font-size: 1.2vw;
     font-family: var(--font-family-accent);
-    
+
     &.has-value {
       color: var(--color-black);
     }
 
-    @include mobile{
+    @include mobile {
       font-size: 16px;
     }
   }
-  
+
   &__arrow {
     width: rem(12);
     height: rem(12);
@@ -419,13 +418,13 @@
     border-bottom: 2px solid var(--color-gray-250);
     transform: rotate(45deg);
     transition: transform 0.3s ease;
-    
+
     .custom-select__trigger.is-open & {
       transform: rotate(-135deg);
       border-color: var(--color-blue);
     }
   }
-  
+
   &__dropdown {
     position: absolute;
     top: 100%;
@@ -443,14 +442,14 @@
     visibility: hidden;
     transform: translateY(-10px);
     transition: all 0.3s ease;
-    
+
     &.is-open {
       opacity: 1;
       visibility: visible;
       transform: translateY(0);
     }
   }
-  
+
   &__option {
     padding: 0.8vw 0.8vw;
     font-family: var(--font-family-accent);
@@ -459,16 +458,16 @@
     color: var(--color-black);
     cursor: pointer;
     transition: background-color 0.2s ease;
-    
+
     &:hover {
       background-color: var(--color-gray-50);
     }
-    
+
     &:active {
       background-color: var(--color-blue);
       color: var(--color-white);
     }
-    
+
     &.is-selected {
       background-color: var(--color-blue);
       color: var(--color-white);
@@ -486,9 +485,9 @@
     height: 50px;
   }
 
-  @include mobile{
-     width: 40px;
-  height: 40px;
+  @include mobile {
+    width: 40px;
+    height: 40px;
   }
 
 }

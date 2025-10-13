@@ -19,39 +19,39 @@
     }
   }
 
-  &__close-button{
-      @include reset-button;
+  &__close-button {
+    @include reset-button;
+    position: absolute;
+    right: rem(10);
+    top: rem(10);
+    padding: rem(20);
+    border-radius: rem(8);
+    background-color: var(--color-gray-50);
+
+    @include hover {
+      background-color: var(--color-gray-100);
+    }
+
+    &::before,
+    &::after {
+      content: '';
       position: absolute;
-      right: rem(10);
-      top: rem(10);
-      padding: rem(20);
-      border-radius: rem(8);
-      background-color: var(--color-gray-50);
+      left: 50%;
+      top: 50%;
+      width: rem(20);
+      height: rem(2);
+      background-color: var(--color-blue);
+      transform-origin: center;
+      border-radius: 100%;
+    }
 
-      @include hover{
-          background-color: var(--color-gray-100);
-      }
+    &::before {
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
 
-      &::before,
-      &::after {
-          content: '';
-          position: absolute;
-          left: 50%;
-          top: 50%;
-          width: rem(20);
-          height: rem(2);
-          background-color: var(--color-blue);
-          transform-origin: center;
-          border-radius: 100%;
-      }
-
-      &::before {
-          transform: translate(-50%, -50%) rotate(45deg);
-      }
-
-      &::after {
-          transform: translate(-50%, -50%) rotate(-45deg);
-      }
+    &::after {
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
   }
 
   &.is-active {
@@ -76,18 +76,18 @@
     flex-direction: column;
     row-gap: rem(40);
 
-    @include tablet{
+    @include tablet {
       padding: rem(32) rem(20);
     }
   }
 
-  &__header{
+  &__header {
     display: flex;
     flex-direction: column;
     row-gap: rem(16);
   }
 
-  &__title{
+  &__title {
     font-weight: 500;
     font-size: 1.5vw;
     text-transform: uppercase;
@@ -100,13 +100,9 @@
     @include mobile {
       font-size: rem(20);
     }
-
-    span {
-      color: var(--color-orange);
-    }
   }
 
-  &__subtitle{
+  &__subtitle {
     font-size: 1.3vw;
     color: var(--color-black);
 
@@ -119,23 +115,23 @@
     }
   }
 
-  &__form{
+  &__form {
     display: flex;
     flex-direction: column;
     gap: rem(24);
   }
 
-  &__fields{
+  &__fields {
     display: flex;
     gap: rem(16);
     flex-wrap: wrap;
     width: 100%;
 
-    @include tablet{
+    @include tablet {
       justify-content: flex-start;
     }
 
-    @include mobile-s{
+    @include mobile-s {
       justify-content: space-between;
     }
 
@@ -148,16 +144,16 @@
 
     .faq__cell {
       width: 100%;
-      
-      @include mobile-s{
+
+      @include mobile-s {
         width: rem(163);
-        
-        &:nth-child(5){
+
+        &:nth-child(5) {
           width: 100% !important;
         }
       }
 
-      &--long{
+      &--long {
         width: 100%;
       }
     }
@@ -171,12 +167,12 @@
     }
   }
 
-  &__action{
+  &__action {
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    @include tablet{
+    @include tablet {
       flex-direction: column;
       gap: rem(24);
     }
@@ -186,19 +182,19 @@
       width: 100%;
       text-wrap: nowrap;
 
-      @include tablet{
+      @include tablet {
         width: 60%;
         padding: rem(20) rem(32);
       }
 
-      @include mobile{
+      @include mobile {
         width: 100%;
         padding: rem(12) rem(16);
       }
     }
   }
 
-  }
+}
 
 
 .modal-video {
@@ -209,13 +205,13 @@
   width: 100%;
   height: 100%;
   z-index: 1000;
-  
+
   &.active {
     display: flex;
     justify-content: center;
     align-items: center;
   }
-  
+
   &__overlay {
     position: absolute;
     top: 0;
@@ -225,7 +221,7 @@
     background-color: rgba(0, 0, 0, 0.8);
     cursor: pointer;
   }
-  
+
   &__content {
     position: relative;
     width: 90%;
@@ -235,13 +231,13 @@
     overflow: hidden;
     z-index: 1;
     padding: rem(40) 0; // Добавляем отступы сверху и снизу
-    
+
     @include mobile {
       width: 95%;
       padding: rem(20) 0; // Уменьшаем отступы на мобильных
     }
   }
-  
+
   &__close {
     position: absolute;
     top: rem(10); // Уменьшаем отступ сверху для кнопки
@@ -256,27 +252,27 @@
     cursor: pointer;
     z-index: 2;
     transition: background-color 0.3s;
-    
+
     &:hover {
       background: rgba(255, 255, 255, 0.3);
     }
   }
-  
+
   &__player {
     position: relative;
     padding-top: 100%; // Уменьшаем высоту с 177.78% до 150%
     max-height: 80vh; // Уменьшаем максимальную высоту до 80% от высоты экрана
     margin: 0 auto;
     width: 90%; // Добавляем ширину контейнера
-    
+
     @include tablet {
       width: 85%;
     }
-    
+
     @include mobile {
       width: 90%;
     }
-    
+
     video {
       position: absolute;
       top: 0;
@@ -287,4 +283,3 @@
     }
   }
 }
-

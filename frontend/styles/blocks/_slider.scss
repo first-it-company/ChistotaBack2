@@ -1,13 +1,13 @@
 @use "../helpers" as *;
 
 .slider {
-  &__title{
+  &__title {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: rem(24);
 
-    @include tablet{
+    @include tablet {
       flex-direction: column;
       align-items: flex-start;
       gap: rem(16);
@@ -16,7 +16,7 @@
     }
   }
 
-  &__header{
+  &__header {
     font-weight: 500;
     font-size: 1.5vw;
     text-transform: uppercase;
@@ -26,32 +26,32 @@
       font-size: rem(26);
     }
 
-    @include mobile{
+    @include mobile {
       font-size: rem(18);
     }
   }
 
-  &__features{
+  &__features {
     padding: 0.8vw 1vw;
-    color: var(--color-orange);
+    color: var(--color-blue);
     font-size: 1vw;
 
-    &-wrapper{
+    &-wrapper {
       display: flex;
       align-items: center;
       column-gap: 1vw;
     }
   }
 
-  &__image{
+  &__image {
     object-fit: cover;
     border-radius: rem(20);
     aspect-ratio: 636 / 370;
     width: 100%;
 
-    @include tablet{
-    aspect-ratio: 1.1;
-  }
+    @include tablet {
+      aspect-ratio: 1.1;
+    }
 
     @include mobile {
       aspect-ratio: 236/320;

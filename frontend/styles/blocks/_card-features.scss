@@ -3,14 +3,13 @@
 .card-features {
   display: flex;
   align-items: center;
-  border: 1px solid var(--color-gray-100);
   font-size: 1vw;
   line-height: normal;
   border-radius: rem(150);
   gap: rem(6);
   padding: 0.5vw 1vw;
-  background: rgba(251, 138, 46, 0.1);
-  
+  background: #F5F8FC;
+
   @media (max-width: 1500px) {
     font-size: 16px;
   }
@@ -20,7 +19,7 @@
     padding: 12px 22px;
   }
 
-  @include mobile{
+  @include mobile {
     padding: 11px 14px;
     text-wrap: nowrap;
   }

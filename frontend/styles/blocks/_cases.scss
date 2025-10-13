@@ -1,8 +1,7 @@
 @use "../helpers" as *;
 
 .cases {
-  background-color: rgb(242, 246, 250);
-  border-radius: 40px;
+  border-top: 1px solid var(--color-gray-100);
 
   &__inner {
 
