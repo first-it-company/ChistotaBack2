@@ -26,14 +26,6 @@
     }
   }
 
-  &__price {
-    color: rgb(42, 42, 42);
-    font-family: TT Firs Neue;
-    font-size: 1.5vw;
-    font-weight: 500;
-    text-wrap: nowrap;
-  }
-
   &__body {
     display: flex;
     flex-direction: column;
@@ -44,7 +36,6 @@
     @include tablet {
       width: 100%;
       display: contents;
-
     }
   }
 

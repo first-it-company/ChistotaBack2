@@ -1,9 +1,6 @@
 from django.urls import path
 
-from .apps import PagesConfig
 from .views import calculate_price, home, post_feedback
-
-app_name = PagesConfig.name
 
 urlpatterns = [
     path("", home, name="home"),

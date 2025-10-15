@@ -262,50 +262,6 @@
       gap: rem(20);
       justify-content: center;
     }
-
-    &__info {
-      display: flex;
-      flex-direction: column;
-
-
-      p {
-        color: rgb(244, 244, 245);
-        font-family: Noah;
-        font-size: 1.5vw;
-        font-weight: 400;
-        margin-bottom: rem(10);
-
-        @include tablet {
-          font-size: 1.5rem;
-        }
-
-        @include mobile {
-          font-size: 1rem;
-          margin-bottom: 2px;
-        }
-      }
-
-      &__price {
-
-        color: rgb(255, 255, 255);
-        font-family: TT Firs Neue;
-        font-size: 2vw;
-        font-weight: 500;
-        text-wrap: nowrap;
-
-        @include tablet {
-          font-size: 2rem;
-        }
-
-        @include mobile {
-          font-size: 1.5rem;
-        }
-      }
-
-
-    }
-
-
   }
 
   &__price {
@@ -368,11 +324,8 @@
 
     &-wrap {
       width: 100%;
-      //height: fit-content;
       transform: translateZ(0);
       isolation: isolate;
-
-
     }
 
     &-slide {
