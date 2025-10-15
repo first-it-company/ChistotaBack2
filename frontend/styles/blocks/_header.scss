@@ -36,8 +36,7 @@
       display: flex;
       padding-block: 1vw;
       padding-inline: 40px;
-      //gap: rem(80);
-      justify-content: space-between;
+      gap: rem(80);
       align-items: center;
       border-radius: 12px;
       //background: rgb(242, 246, 250);
@@ -121,6 +120,7 @@
     display: flex;
     align-items: center;
     column-gap: rem(24);
+    margin-left: auto;
 
     @include tablet {
       column-gap: rem(12);
