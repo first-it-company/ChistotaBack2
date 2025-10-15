@@ -1,0 +1,61 @@
+{% load number_filters %}
+<section class="service">
+  <div id="service" class="service__inner">
+    <div class="service__title">
+      <h5 class="h5 service__header splitting-text">
+        <span data-splitting>Наши</span> <span class="gradient">Услуги</span>
+      </h5>
+      <p class="service__subheader">
+        Профессиональный клининг, который говорит сам за себя.
+        <br>
+        услуги — это ваше время, комфорт и безупречный результат.
+      </p>
+    </div>
+    <div class="service__cards-wrapper">
+      {% for service in services %}
+        <div class="service__card"
+             style="background: {{ service.color }} {{ service.gradient }}">
+          <div class="service__card-wrapper">
+            <div class="service__card-body">
+              <div class="service__card-main">
+                <div>
+                  <h6 class="service__card-header">{{ service.scope.name }}</h6>
+                  <p class="service__card-subheader">{{ service.desc }}</p>
+                  <div class="service__card-features">
+                    <div class="card-features">
+                      <img src="data:image/svg+xml,%3csvg%20width='16'%20height='16'%20viewBox='0%200%2016%2016'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M14.6668%207.99992C14.6668%2011.6799%2011.6802%2014.6666%208.00016%2014.6666C4.32016%2014.6666%201.3335%2011.6799%201.3335%207.99992C1.3335%204.31992%204.32016%201.33325%208.00016%201.33325C11.6802%201.33325%2014.6668%204.31992%2014.6668%207.99992Z'%20stroke='%23FFFFFF'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3cpath%20d='M10.4734%2010.1199L8.40675%208.88659C8.04675%208.67326%207.75342%208.15992%207.75342%207.73992V5.00659'%20stroke='%23FFFFFF'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/svg%3e"
+                           alt=""
+                           class=""
+                           width="20"
+                           height="20">
+                      <span>{{ service.time_work }} ч</span>
+                    </div>
+                    <div class="card-features">
+                      <img src="data:image/svg+xml,%3csvg%20width='16'%20height='16'%20viewBox='0%200%2016%2016'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M7.99996%202C4.68798%202%202%204.68798%202%207.99996M7.99996%2013.9999C11.3119%2013.9999%2013.9999%2011.3119%2013.9999%207.99996'%20stroke='%23FFFFFF'%20stroke-miterlimit='10'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3cpath%20d='M10.7358%205.26396L13.5198%202.47998'%20stroke='%23FFFFFF'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3cpath%20d='M5.26416%2010.736L2.48018%2013.52'%20stroke='%23FFFFFF'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3cpath%20d='M7.80029%208.20009L8.40029%207.6001'%20stroke='%23FFFFFF'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3cpath%20d='M14%204.89798V2H11.1021'%20stroke='%23FFFFFF'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3cpath%20d='M1.99997%2011.102V14H4.89795'%20stroke='%23FFFFFF'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/svg%3e"
+                           alt=""
+                           class=""
+                           width="20"
+                           height="20">
+                      <span>до {{ service.square|space_thousands }} м2</span>
+                    </div>
+                  </div>
+                </div />
+                <div class="service__pricing">
+                  <button class="button service__button modal-open">ЗАКАЗАТЬ</button>
+                </div>
+              </div>
+            </div>
+            <div class="service__splide-wrap">
+              <div class="service__image">
+                {% with first_photo=service.photos.first %}
+                  {% if first_photo %}<img src="{{ first_photo.photo.url }}" alt="" class="service__card-img">{% endif %}
+                {% endwith %}
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+</section>
