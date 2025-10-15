@@ -1,74 +1,173 @@
 @use "../helpers" as *;
 
-.team{
+.team {
   padding-top: rem(100);
   padding-bottom: rem(80);
   padding-inline: 40px;
-  font-size: 3vw;
 
-  @include tablet{
+  @include tablet {
     padding-top: rem(50);
     padding-bottom: rem(60);
     padding-inline: 20px;
   }
 
-  &__header{
+  &__header-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: rem(52);
 
-    @include tablet{
+    @include tablet {
       margin-bottom: rem(20);
     }
   }
 
-  &__img{
-    border-radius: rem(20);
-    object-fit: cover;
-    margin-bottom: rem(24);
-    aspect-ratio: 0.92;
-    width: 100%;
+  &__layout {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: rem(40);
+    align-items: center;
 
-    @include tablet{
-      margin-bottom: rem(16);
+    @include tablet {
+      grid-template-columns: 1fr;
+      gap: rem(20);
     }
   }
 
-  &__info{
+  &__splide {
+    height: 65vh;
+  }
+
+  .splide__track,
+  .splide__list {
+    height: 100%;
+  }
+
+  &__info {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
     text-align: left;
-    gap: rem(16);
+    color: var(--color-black);
 
-    @include tablet{
-      gap: rem(12);
+    &-experience {
+      display: none;
+      font-size: 16px;
+      line-height: normal;
+      align-items: center;
+      border-radius: rem(150);
+      gap: rem(8);
+      padding: 1vw 2vw;
+      background: #F5F8FC;
+      text-transform: uppercase;
+      width: fit-content;
+
+      &-label {
+        color: var(--color-blue);
+      }
     }
 
-    &-name{
-      font-size: 1.3vw;
-      color: var(--color-black);
-
-      @include tablet{
-        font-size: rem(20);
-      }
-
-      @include tablet-above{
-        line-height: rem(14);
-
-      }
+    &-name {
+      font-size: 2.5vw;
     }
 
-    &-post{
+    &-post {
       font-family: var(--font-family-accent);
-      font-size: 1vw;
-      color: var(--color-gray-200);
+      font-size: 1.5vw;
+      color: var(--color-gray-300);
+    }
 
-       @include tablet{
+    &-description {
+      font-family: var(--font-family-accent);
       font-size: 1rem;
+      color: var(--color-gray-200);
+      margin-top: rem(20);
     }
-    }
-
-
   }
 
+  .team__splide-list {
+    align-items: flex-start;
+  }
 
+  &__splide-slide {
+    height: 80%;
+    transition: height 0.3s ease-in-out;
 
+    &.is-active {
+      height: 100%;
+    }
+  }
+
+  &__img {
+    border-radius: rem(20);
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: rem(16);
+
+    &-counter {
+      font-size: 1rem;
+      color: var(--color-gray-300);
+      font-weight: 600;
+
+      span {
+        color: var(--color-black);
+      }
+    }
+
+    &-button {
+      &.is-disabled {
+        background-color: var(--color-white);
+        pointer-events: none;
+        cursor: default;
+
+        img {
+          filter: none;
+        }
+      }
+    }
+  }
+
+  &__slide-info {
+    display: block;
+    text-align: left;
+    margin-top: rem(12);
+  }
+
+  &__slide-name {
+    font-size: rem(24);
+    font-weight: 600;
+    color: var(--color-black);
+  }
+
+  &__slide-post {
+    font-family: var(--font-family-accent);
+    font-size: 1.2rem;
+    color: var(--color-gray-200);
+  }
+
+  @include tablet {
+    &__info {
+      display: none;
+    }
+
+    &__splide {
+      height: 35vh;
+    }
+
+    &__splide-slide {
+      height: 80%;
+
+      &.is-active {
+        height: 80%;
+      }
+    }
+  }
 }

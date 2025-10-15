@@ -168,13 +168,13 @@
         {% endif %}
         <div class="hero__slide-arrows controls hidden-mobile">
           <button id="heroBtnPrev" class="cases__controls-prev hero__controls-prev controls__button controls__prev is-disabled">
-            <img src="data:image/svg+xml,%3csvg%20width='24'%20height='24'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M19%2012H5'%20stroke='%230060DF'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3cpath%20d='M12%205L5%2012L12%2019'%20stroke='%230060DF'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/svg%3e" alt="Назад" class="controls__img" width="24" height="24">
+            <img src="{% static 'pages/icons/arrow-left.svg' %}" alt="Назад" class="controls__img" width="24" height="24">
           </button>
 
           <p id="heroCurrent" class="hero__controls-current controls__current">01/{{ videos|length|stringformat:"02d" }}</p>
 
           <button id="heroBtnNext" class="cases__controls-next hero__controls-next controls__button controls__next">
-            <img src="data:image/svg+xml,%3csvg%20width='24'%20height='24'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M5%2012H19'%20stroke='%230060DF'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3cpath%20d='M12%205L19%2012L12%2019'%20stroke='%230060DF'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/svg%3e" alt="Вперед" class="controls__img" width="24" height="24">
+            <img src="{% static 'pages/icons/arrow-right.svg' %}" alt="Вперед" class="controls__img" width="24" height="24">
           </button>
         </div>
       </div>
@@ -462,29 +462,7 @@
       </div>
     </div>
   </section>
-  <section class="team">
-    <h5 class="team__header h5 splitting-text" data-splitting>Сотрудники Компании</h5>
-    <div class="team__splide splide">
-      <div class="team__splide-track splide__track">
-        <ul class="team__splide-list splide__list">
-          {% for emp in employee %}
-          <li class="team__splide-slide splide__slide">
-            <img
-              src="{{ emp.photo.url }}"
-              alt=""
-              class="team__img"
-              width="307" height="370" 
-            >
-            <div class="team__info">
-              <p class="team__info-name">{{ emp.name }}</p>
-              <p class="team__info-post">{{ emp.position }}</p>
-            </div>
-          </li>
-          {% endfor %}
-        </ul>
-      </div>
-    </div>
-  </section>
+  {% include 'partials/team.html' %}
   <section class="cases" id='cases'>
     <div class="cases__inner">
       <div class="cases__title">
@@ -513,7 +491,7 @@
         <div class="controls hidden-mobile">
           <button id="btnPrev" class="cases__controls-prev controls__button controls__prev">
             <img
-              src="data:image/svg+xml,%3csvg%20width='24'%20height='24'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M19%2012H5'%20stroke='%230060DF'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3cpath%20d='M12%205L5%2012L12%2019'%20stroke='%230060DF'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/svg%3e"
+              src="{% static 'pages/icons/arrow-left.svg' %}"
               alt="Назад"
               class="controls__img"
               width="24" height="24"
@@ -524,7 +502,7 @@
 
           <button id="btnNext" class="cases__controls-next controls__button controls__next">
             <img
-              src="data:image/svg+xml,%3csvg%20width='24'%20height='24'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M5%2012H19'%20stroke='%230060DF'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3cpath%20d='M12%205L19%2012L12%2019'%20stroke='%230060DF'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/svg%3e"
+              src="{% static 'pages/icons/arrow-right.svg' %}"
               alt="Вперед"
               class="controls__img"
               width="24" height="24"
@@ -710,7 +688,7 @@
         <div class="controls hidden-tablet">
           <button class="reviews__controls-prev controls__button controls__prev">
             <img
-              src="data:image/svg+xml,%3csvg%20width='24'%20height='24'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M19%2012H5'%20stroke='%230060DF'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3cpath%20d='M12%205L5%2012L12%2019'%20stroke='%230060DF'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/svg%3e"
+              src="{% static 'pages/icons/arrow-left.svg' %}"
               alt="Назад"
               class="controls__img"
               width="24" height="24"
@@ -721,7 +699,7 @@
 
           <button class="reviews__controls-next controls__button controls__next">
             <img
-              src="data:image/svg+xml,%3csvg%20width='24'%20height='24'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M5%2012H19'%20stroke='%230060DF'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3cpath%20d='M12%205L19%2012L12%2019'%20stroke='%230060DF'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/svg%3e"
+              src="{% static 'pages/icons/arrow-right.svg' %}"
               alt="Вперед"
               class="controls__img"
               width="24" height="24"
@@ -808,7 +786,7 @@
         <div class="controls hidden-tablet">
           <button class="reviews__controls-prev-2 controls__button controls__prev">
             <img
-              src="data:image/svg+xml,%3csvg%20width='24'%20height='24'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M19%2012H5'%20stroke='%230060DF'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3cpath%20d='M12%205L5%2012L12%2019'%20stroke='%230060DF'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/svg%3e"
+              src="{% static 'pages/icons/arrow-left.svg' %}"
               alt="Назад"
               class="controls__img"
               width="24" height="24"
@@ -819,7 +797,7 @@
 
           <button class="reviews__controls-next-2 controls__button controls__next">
             <img
-              src="data:image/svg+xml,%3csvg%20width='24'%20height='24'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M5%2012H19'%20stroke='%230060DF'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3cpath%20d='M12%205L19%2012L12%2019'%20stroke='%230060DF'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/svg%3e"
+              src="{% static 'pages/icons/arrow-right.svg' %}"
               alt="Вперед"
               class="controls__img"
               width="24" height="24"
@@ -907,7 +885,7 @@
       <!--   <div class="controls hidden-tablet"> -->
       <!--     <button class="reviews__controls-prev-3 controls__button controls__prev"> -->
       <!--       <img -->
-      <!--         src="data:image/svg+xml,%3csvg%20width='24'%20height='24'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M19%2012H5'%20stroke='%230060DF'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3cpath%20d='M12%205L5%2012L12%2019'%20stroke='%230060DF'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/svg%3e" -->
+      <!--         src="{% static 'pages/icons/arrow-left.svg' %}" -->
       <!--         alt="Назад" -->
       <!--         class="controls__img" -->
       <!--         width="24" height="24" -->
@@ -918,7 +896,7 @@
       <!---->
       <!--     <button class="reviews__controls-next-3 controls__button controls__next"> -->
       <!--       <img -->
-      <!--         src="data:image/svg+xml,%3csvg%20width='24'%20height='24'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M5%2012H19'%20stroke='%230060DF'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3cpath%20d='M12%205L19%2012L12%2019'%20stroke='%230060DF'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/svg%3e" -->
+      <!--         src="{% static 'pages/icons/arrow-right.svg' %}" -->
       <!--         alt="Вперед" -->
       <!--         class="controls__img" -->
       <!--         width="24" height="24" -->
