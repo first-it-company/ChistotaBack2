@@ -9,11 +9,25 @@
 
   &__title {
     text-align: center;
+
+    &--catalog {
+      text-align: left;
+      margin-bottom: 70px;
+
+      .service__header {
+        text-align: left;
+        text-transform: uppercase;
+        color: var(--color-black);
+      }
+    }
   }
 
   &__header {
     margin-bottom: rem(26);
+    font-size: 3.2vw;
     line-height: 0.8;
+    text-transform: uppercase;
+    color: var(--color-black);
 
     @include tablet {
       margin-bottom: rem(20);

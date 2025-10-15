@@ -1,282 +1,272 @@
 {% extends 'base.html' %}
 {% load static number_filters %}
 {% block content %}
-<div class="overflow-wrapper">
-  <section class="hero">
-    <div class="hero__main">
-      <div class="hero__body">
-        <div class="hero__header-inner">
-          <h3 class="hero__header splitting-text" data-splitting>
-            С нами у вас всегда <br>
-            <span class="hero__header-print gradient"></span>
-          </h3>
-          <p class="hero__subheader">
-            Клининговая компания №1 в Приморском крае
-          </p>
-
-          <div class="hero__review">
-            <button class="review-button" onclick="window.open('https://www.vl.ru/chistota-dv', '_blank')">
-              <img
-                src="{% static "pages/icons/VL.png" %}"
-                alt="VL.ru"
-                class="hero__review-logo"
-                width="100%" height="100%"
-              >
-              <span>{% if vl_data.average_rating %}{{ vl_data.average_rating }}{% else %} 5.0{% endif %}</span>
-              <img
-                src="{% static "pages/icons/star.svg" %}"
-
-                alt=""
-                class=""
-                width="100%" height="100%"
-              >
+  <div class="overflow-wrapper">
+    <section class="hero">
+      <div class="hero__main">
+        <div class="hero__body">
+          <div class="hero__header-inner">
+            <h3 class="hero__header splitting-text" data-splitting>
+              С нами у вас всегда
+              <br>
+              <span class="hero__header-print gradient"></span>
+            </h3>
+            <p class="hero__subheader">Клининговая компания №1 в Приморском крае</p>
+            <div class="hero__review">
+              <button class="review-button"
+                      onclick="window.open('https://www.vl.ru/chistota-dv', '_blank')">
+                <img src="{% static "pages/icons/VL.png" %}"
+                     alt="VL.ru"
+                     class="hero__review-logo"
+                     width="100%"
+                     height="100%">
+                <span>
+                  {% if vl_data.average_rating %}
+                    {{ vl_data.average_rating }}
+                  {% else %}
+                    5.0
+                  {% endif %}
+                </span>
+                <img src="{% static "pages/icons/star.svg" %}"
+                     alt=""
+                     class=""
+                     width="100%"
+                     height="100%">
+              </button>
+              <button class="review-button"
+                      onclick="window.open('https://yandex.ru/maps/-/CHWKmQ7K', '_blank')">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAI6SURBVHgB7ZexbhNBEIb/2dhFpIBSunAk0yPFJUiWODeQAgmK0CPxAMAT4PACgEQJEj0uUkY0uQIJSjd0SDiQwqUF6Y67YWbB512T892R87nhl07y3u7q/2Z2dqwjLCjqtQMY3DVEdxjooAIReMSgUUTRwWY4Gftzf8TB9naSXHrChEdYoYjx3JgfBxROpymANeetY6HsogZpRgyd9RXC6AsbeU3mKvVSTwvDQasTc/ML1iAm7ps4aQ6wLiW22Hk3a56617ARfk0fuv8YeaK9e/6eVjt7rdw0s+zsefRRng/p2Ow/ALYuYymAA2n3T06XLe8Y5IjfPJsPxJwUIsu8d9OLmIevkKd8gIUs0N5+5loPbvIN/P4dLgxgIZwsUGvH1sZfksipez0dJm7mLgwgWYBzlucVo/dOoz8aojIAVTJ8PTeTSL0sSPRGqt8DLqjCAHz0Fjj7PodwIqbeLX9twfSXAlDzrCy4xaegOVfPUwMlxArg9gJJu/03E8OZaZnoVfTzxg6X2iCpN07649tXvaMpq+JHMJPWggu0pDGtBEBT7TaYIu25UgAL4bZYbc8Lt2D1ANqeP39Kx+d2xlUCWLmFJ+25foCK9B9AAPgEaxLJx0qDGYdEeIiS4pdPwbP7/4+dkOU+URS0A2I6xhoU0cYV0wxPQ2Z+gZqlnpvheGyLsGEaAz0P1CR79uKpvy0AheOpIdOvIxPqoV7q+RtmcUHQ6cRJPJCv5K5M7qIS8YkWu4R7qEfuzvwC6o3pQznqsqgAAAAASUVORK5CYII="
+                     alt="Яндекс"
+                     class="hero__review-logo"
+                     width="100%"
+                     height="100%">
+                <span>
+                  {% if yandex_data.average_rating > 1 %}
+                    {{ yandex_data.average_rating }}
+                  {% else %}
+                    5.0
+                  {% endif %}
+                </span>
+                <img src="{% static "pages/icons/star.svg" %}"
+                     alt=""
+                     class=""
+                     width="100%"
+                     height="100%">
+              </button>
+              <button class="review-button"
+                      onclick="window.open('https://go.2gis.com/0UnDt', '_blank')">
+                <img src="{% static "pages/icons/2gis.png" %}"
+                     alt="2gis"
+                     class="hero__review-logo"
+                     width="100%"
+                     height="100%">
+                <span>
+                  {% if gis_data.average_rating %}
+                    {{ gis_data.average_rating }}
+                  {% else %}
+                    5.0
+                  {% endif %}
+                </span>
+                <img src="{% static "pages/icons/star.svg" %}"
+                     alt=""
+                     class=""
+                     width="100%"
+                     height="100%">
+              </button>
+            </div>
+          </div>
+          <p class="hero__subheader2">Профессиональный клининг для дома и офиса с гарантией качества.</p>
+          <div class="hero__button-wrapper button__wrapper">
+            <button class="button hero__button modal-open">Заказать уборку</button>
+            <button class="hero__button--arrow button--arrow modal-open">
+              <span class="arrow-container"></span>
+              <svg width="100%"
+                   height="100%"
+                   viewBox="0 0 17 17"
+                   fill="none"
+                   xmlns="http://www.w3.org/2000/svg"
+                   style="display: none">
+                <path d="M15.5713 8.5H1.42915" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M8.50022 15.5711L15.5713 8.5L8.50022 1.42893" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
             </button>
-            <button class="review-button" onclick="window.open('https://yandex.ru/maps/-/CHWKmQ7K', '_blank')">
-              <img
-                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAI6SURBVHgB7ZexbhNBEIb/2dhFpIBSunAk0yPFJUiWODeQAgmK0CPxAMAT4PACgEQJEj0uUkY0uQIJSjd0SDiQwqUF6Y67YWbB512T892R87nhl07y3u7q/2Z2dqwjLCjqtQMY3DVEdxjooAIReMSgUUTRwWY4Gftzf8TB9naSXHrChEdYoYjx3JgfBxROpymANeetY6HsogZpRgyd9RXC6AsbeU3mKvVSTwvDQasTc/ML1iAm7ps4aQ6wLiW22Hk3a56617ARfk0fuv8YeaK9e/6eVjt7rdw0s+zsefRRng/p2Ow/ALYuYymAA2n3T06XLe8Y5IjfPJsPxJwUIsu8d9OLmIevkKd8gIUs0N5+5loPbvIN/P4dLgxgIZwsUGvH1sZfksipez0dJm7mLgwgWYBzlucVo/dOoz8aojIAVTJ8PTeTSL0sSPRGqt8DLqjCAHz0Fjj7PodwIqbeLX9twfSXAlDzrCy4xaegOVfPUwMlxArg9gJJu/03E8OZaZnoVfTzxg6X2iCpN07649tXvaMpq+JHMJPWggu0pDGtBEBT7TaYIu25UgAL4bZYbc8Lt2D1ANqeP39Kx+d2xlUCWLmFJ+25foCK9B9AAPgEaxLJx0qDGYdEeIiS4pdPwbP7/4+dkOU+URS0A2I6xhoU0cYV0wxPQ2Z+gZqlnpvheGyLsGEaAz0P1CR79uKpvy0AheOpIdOvIxPqoV7q+RtmcUHQ6cRJPJCv5K5M7qIS8YkWu4R7qEfuzvwC6o3pQznqsqgAAAAASUVORK5CYII="
-                alt="Яндекс"
-                class="hero__review-logo"
-                width="100%" height="100%"
-              >
-              <span>{% if yandex_data.average_rating > 1 %}{{ yandex_data.average_rating }}{% else %} 5.0{% endif %}</span>
-              <img
-                src="{% static "pages/icons/star.svg" %}"
-                alt=""
-                class=""
-                width="100%" height="100%"
-              >
+          </div>
+        </div>
+        <div class="hero__advantages"
+             style="background-image: url({% static  'pages/images/hero/advantages-back.png' %} )">
+          <h2 class="hero__advantages-header">Клининговая компания №1 в Приморском крае</h2>
+          <div class="hero__advantages-wrapper">
+            <div class="hero__advantages-item">
+              <div class="hero__advantages-info">
+                <p class="hero__advantages-value">
+                  <span>+{{ about_main.cnt_people }}</span> чел
+                </p>
+                <p class="hero__advantages-label">в команде</p>
+              </div>
+              <p class="hero__advantages-title">Успех гарантирован</p>
+            </div>
+            <div class="hero__advantages-item">
+              <div class="hero__advantages-info">
+                <p class="hero__advantages-value">
+                  <span>+{{ about_main.cnt_year }}</span> лет
+                </p>
+                <p class="hero__advantages-label">В этой сфере</p>
+              </div>
+              <p class="hero__advantages-title">Работаем с 2019 г</p>
+            </div>
+            <div class="hero__advantages-item">
+              <div class="hero__advantages-info">
+                <p class="hero__advantages-value">
+                  <span>+{{ about_main.cnt_square|space_thousands }}к</span> м2
+                </p>
+                <p class="hero__advantages-label">Вычищаем/мес</p>
+              </div>
+              <p class="hero__advantages-title">В надежных руках</p>
+            </div>
+          </div>
+          <button class="button hero__button modal-open">Рассчитать стоимость</button>
+          <div class="hero__advantages-links cta__socials-wrapper">
+            <a href="{{ instagram_url }}" class="cta__socials-logo" target="_blank">
+              <img src="{% static "pages/icons//instagram.svg" %}"
+                   alt="Instagram"
+                   class="cta__logo"
+                   width="100%"
+                   height="100%">
+            </a>
+            <a href="{{ telegram_url }}" class="cta__socials-logo" target="_blank">
+              <img src="{% static "pages/icons//telegram.svg" %}"
+                   alt="Telegram"
+                   class="cta__logo"
+                   width="100%"
+                   height="100%">
+            </a>
+            <a href="{{ vk_url }}" class="cta__socials-logo" target="_blank">
+              <img src="{% static "pages/icons//vk.svg" %}"
+                   alt="Вконтакте"
+                   class="cta__logo"
+                   width="100%"
+                   height="100%">
+            </a>
+            <a href="{{ whatsapp_url }}" class="cta__socials-logo" target="_blank">
+              <img src="{% static "pages/icons//whatsapp.svg" %}"
+                   alt="WhatsApp"
+                   class="cta__logo"
+                   width="100%"
+                   height="100%">
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="hero__splide splide">
+        <div class="hero__splide-track splide__track">
+          {% if videos %}
+            <ul class="splide__list">
+              {% for video in videos %}
+                <li class="hero__splide-slide splide__slide">
+                  <div class="hero__splide-slide-inner">
+                    <video src="{{ video.video.url }}" preload="metadata" muted playsinline loop>
+                    </video>
+                  </div>
+                </li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+          <div class="hero__slide-arrows controls hidden-mobile">
+            <button id="heroBtnPrev"
+                    class="cases__controls-prev hero__controls-prev controls__button controls__prev is-disabled">
+              <img src="{% static 'pages/icons/arrow-left.svg' %}"
+                   alt="Назад"
+                   class="controls__img"
+                   width="24"
+                   height="24">
             </button>
-            <button class="review-button" onclick="window.open('https://go.2gis.com/0UnDt', '_blank')">
-              <img
-                src="{% static "pages/icons/2gis.png" %}"
-                alt="2gis"
-                class="hero__review-logo"
-                width="100%" height="100%"
-              >
-              <span>{% if gis_data.average_rating %}{{ gis_data.average_rating }}{% else %} 5.0{% endif %}</span>
-              <img
-                src="{% static "pages/icons/star.svg" %}"
-                alt=""
-                class=""
-                width="100%" height="100%"
-              >
+            <p id="heroCurrent" class="hero__controls-current controls__current">01/{{ videos|length|stringformat:"02d" }}</p>
+            <button id="heroBtnNext"
+                    class="cases__controls-next hero__controls-next controls__button controls__next">
+              <img src="{% static 'pages/icons/arrow-right.svg' %}"
+                   alt="Вперед"
+                   class="controls__img"
+                   width="24"
+                   height="24">
             </button>
           </div>
         </div>
-        <p class="hero__subheader2">
-          Профессиональный клининг для дома и офиса с гарантией качества.
-        </p>
-        <div class="hero__button-wrapper button__wrapper">
-          <button class="button hero__button modal-open">Заказать уборку</button>
-          <button class="hero__button--arrow button--arrow modal-open">
-            <span class="arrow-container"></span>
-            <svg width="100%" height="100%" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: none;">
-              <path d="M15.5713 8.5H1.42915" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
-              <path d="M8.50022 15.5711L15.5713 8.5L8.50022 1.42893" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </button>
-        </div>
       </div>
-      <div class="hero__advantages" style="background-image: url({% static  'pages/images/hero/advantages-back.png'%} );">
-        <h2 class="hero__advantages-header">Клининговая компания №1 в Приморском крае</h2>
-        <div class="hero__advantages-wrapper">
-          <div class="hero__advantages-item">
-            <div class="hero__advantages-info">
-              <p class="hero__advantages-value"><span>+{{ about_main.cnt_people }}</span> чел</p>
-              <p class="hero__advantages-label">в команде</p>
-            </div>
-            <p class="hero__advantages-title">Успех гарантирован</p>
-
-          </div>
-          <div class="hero__advantages-item">
-            <div class="hero__advantages-info">
-              <p class="hero__advantages-value"><span>+{{ about_main.cnt_year }}</span> лет</p>
-              <p class="hero__advantages-label">В этой сфере</p>
-            </div>
-            <p class="hero__advantages-title">Работаем с 2019 г</p>
-
-          </div>
-          <div class="hero__advantages-item">
-            <div class="hero__advantages-info">
-              <p class="hero__advantages-value"><span>+{{ about_main.cnt_square|space_thousands }}к</span> м2</p>
-              <p class="hero__advantages-label">Вычищаем/мес</p>
-            </div>
-            <p class="hero__advantages-title">В надежных руках</p>
-
-          </div>
-        </div>
-        <button class="button hero__button modal-open">Рассчитать стоимость</button>
-        <div class="hero__advantages-links cta__socials-wrapper">
-
-          <a href="{{ instagram_url }}" class="cta__socials-logo" target="_blank">
-            <img
-              src="{% static "pages/icons//instagram.svg" %}"
-              alt="Instagram"
-              class="cta__logo"
-              width="100%" height="100%"
-            >
-          </a>
-
-          <a href="{{ telegram_url }}" class="cta__socials-logo" target="_blank">
-            <img
-              src="{% static "pages/icons//telegram.svg" %}"
-              alt="Telegram"
-              class="cta__logo"
-              width="100%" height="100%"
-            >
-          </a>
-          <a href="{{ vk_url }}" class="cta__socials-logo" target="_blank">
-            <img
-              src="{% static "pages/icons//vk.svg" %}"
-              alt="Вконтакте"
-              class="cta__logo"
-              width="100%" height="100%"
-            >
-          </a>
-
-          <a href="{{ whatsapp_url }}" class="cta__socials-logo" target="_blank">
-            <img
-              src="{% static "pages/icons//whatsapp.svg" %}"
-              alt="WhatsApp"
-              class="cta__logo"
-              width="100%" height="100%"
-            >
-          </a>
-
-        </div>
-      </div>
-
-    </div>
-    <div class="hero__splide splide">
-      <div class="hero__splide-track splide__track">
-        {% if videos %}
-        <ul class="splide__list">
-          {% for video in videos %}
-          <li class="hero__splide-slide splide__slide">
-            <div class="hero__splide-slide-inner">
-              <video
-                src="{{ video.video.url }}"
-                preload="metadata"
-                muted
-                playsinline
-                loop
-              ></video>
-            </div>
-          </li>
-          {% endfor %}
-        </ul>
-        {% endif %}
-        <div class="hero__slide-arrows controls hidden-mobile">
-          <button id="heroBtnPrev" class="cases__controls-prev hero__controls-prev controls__button controls__prev is-disabled">
-            <img src="{% static 'pages/icons/arrow-left.svg' %}" alt="Назад" class="controls__img" width="24" height="24">
-          </button>
-
-          <p id="heroCurrent" class="hero__controls-current controls__current">01/{{ videos|length|stringformat:"02d" }}</p>
-
-          <button id="heroBtnNext" class="cases__controls-next hero__controls-next controls__button controls__next">
-            <img src="{% static 'pages/icons/arrow-right.svg' %}" alt="Вперед" class="controls__img" width="24" height="24">
-          </button>
-        </div>
-      </div>
-
-    </div>
-
-  </section>
-</div>
-<section id="about" class="about">
-  <div class="about__inner">
-    <div class="about__header-inner">
-      <h1 class="about__header">Нас <br class="visible-mobile">выбирают</h1>
-      <img
-        src="{% static "pages/images/about/inst.svg" %}"
-        alt="Instagram"
-        class="about__inst hidden-mobile"
-        width="116" height="48"
-      >
-      <img
-        src="{% static "pages/images/about/tg.svg" %}"
-        alt="Telegram"
-        class="about__tg hidden-mobile"
-        width="111" height="48"
-      >
-      <img
-        src="{% static "pages/images/about/VK.svg" %}"
-        alt="VK"
-        class="about__vk hidden-mobile"
-        width="100" height="48"
-      >
-
-      <img
-        src="{% static "pages/images/about/inst-m.svg" %}"
-        alt="Instagram"
-        class="about__inst visible-mobile"
-        width="81" height="29"
-      >
-      <img
-        src="{% static "pages/images/about/tg-m.svg" %}"
-        alt="Telegram"
-        class="about__tg visible-mobile"
-        width="68" height="29"
-      >
-      <img
-        src="{% static "pages/images/about/vk-m.svg" %}"
-        alt="VK"
-        class="about__vk visible-mobile"
-        width="65" height="29"
-      >
-    </div>
-    <p class="about__subheader">— клининг с безупречной репутацией.<br class="hidden-mobile"> С 2020 года создаем идеальную чистоту <span>для домов</span> и <span>бизнеса</span>, используя профессиональные методы и премиальную химию.</p>
-
-    <div class="carousel__wrapper">
-      <div class="carousel__track">
-        {% for log in logo %}
-        <div class="carousel__slide">
-
-          <img src="{{ log.photo.url }}">
-        </div>
-        {% endfor %}
-        {% for log in logo %}
-        <div class="carousel__slide">
-          <img src="{{ log.photo.url }}">
-        </div>
-        {% endfor %}
-      </div>
-    </div>
-    <button class="about__button button modal-open">Заказать уборку</button>
-
+    </section>
   </div>
-</section>
-{% include 'partials/service.html' %}
+  <section id="about" class="about">
+    <div class="about__inner">
+      <div class="about__header-inner">
+        <h1 class="about__header">
+          Нас
+          <br class="visible-mobile">
+          выбирают
+        </h1>
+        <img src="{% static "pages/images/about/inst.svg" %}"
+             alt="Instagram"
+             class="about__inst hidden-mobile"
+             width="116"
+             height="48">
+        <img src="{% static "pages/images/about/tg.svg" %}"
+             alt="Telegram"
+             class="about__tg hidden-mobile"
+             width="111"
+             height="48">
+        <img src="{% static "pages/images/about/VK.svg" %}"
+             alt="VK"
+             class="about__vk hidden-mobile"
+             width="100"
+             height="48">
+        <img src="{% static "pages/images/about/inst-m.svg" %}"
+             alt="Instagram"
+             class="about__inst visible-mobile"
+             width="81"
+             height="29">
+        <img src="{% static "pages/images/about/tg-m.svg" %}"
+             alt="Telegram"
+             class="about__tg visible-mobile"
+             width="68"
+             height="29">
+        <img src="{% static "pages/images/about/vk-m.svg" %}"
+             alt="VK"
+             class="about__vk visible-mobile"
+             width="65"
+             height="29">
+      </div>
+      <p class="about__subheader">
+        — клининг с безупречной репутацией.
+        <br class="hidden-mobile">
+        С 2020 года создаем идеальную чистоту <span>для домов</span> и <span>бизнеса</span>, используя профессиональные методы и премиальную химию.
+      </p>
+      <div class="carousel__wrapper">
+        <div class="carousel__track">
+          {% for log in logo %}
+            <div class="carousel__slide">
+              <img src="{{ log.photo.url }}">
+            </div>
+          {% endfor %}
+          {% for log in logo %}
+            <div class="carousel__slide">
+              <img src="{{ log.photo.url }}">
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      <button class="about__button button modal-open">Заказать уборку</button>
+    </div>
+  </section>
+  {% include 'partials/service.html' %}
   <section class="other-carousel">
     <h2 class="other-carousel__title splitting-text" data-splitting>А также...</h2>
     <div class="other-carousel__wrapper">
       <div class="other-carousel__track other-carousel__track--top">
-        <div class="other-carousel__slide other-carousel__button modal-open">
-          Заказать
-        </div>
-        {% for scope in scope_services|slice:"5:10" %}
-        <div class="other-carousel__slide">
-          {{ scope.name }}
-        </div>
-        {% endfor %}
-        {% for scope in scope_services|slice:"5:10" %}
-        <div class="other-carousel__slide">
-          {{ scope.name }}
-        </div>
-        {% endfor %}
+        <div class="other-carousel__slide other-carousel__button modal-open">Заказать</div>
+        {% for scope in scope_services|slice:"5:10" %}<div class="other-carousel__slide">{{ scope.name }}</div>{% endfor %}
+        {% for scope in scope_services|slice:"5:10" %}<div class="other-carousel__slide">{{ scope.name }}</div>{% endfor %}
       </div>
       <div class="other-carousel__track other-carousel__track--bottom">
-        {% for scope in scope_services|slice:":5" %}
-        <div class="other-carousel__slide">
-          {{ scope.name }}
-        </div>
-        {% endfor %}
-
-        {% for scope in scope_services|slice:":5" %}
-        <div class="other-carousel__slide">
-          {{ scope.name }}
-        </div>
-        {% endfor %}
+        {% for scope in scope_services|slice:":5" %}<div class="other-carousel__slide">{{ scope.name }}</div>{% endfor %}
+        {% for scope in scope_services|slice:":5" %}<div class="other-carousel__slide">{{ scope.name }}</div>{% endfor %}
       </div>
     </div>
   </section>
@@ -290,97 +280,79 @@
         <div class="cta__socials">
           <p class="cta__socials-title">Подписывайся на нас в социальных сетях! Будь вкурсе всех событий</p>
           <div class="cta__socials-wrapper">
-
             <a href="{{ instagram_url }}" class="cta__socials-logo" target="_blank">
-              <img
-                src="{% static "pages/icons//instagram.svg" %}"
-                alt="Instagram"
-                class="cta__logo"
-                width="100%" height="100%"
-              >
+              <img src="{% static "pages/icons//instagram.svg" %}"
+                   alt="Instagram"
+                   class="cta__logo"
+                   width="100%"
+                   height="100%">
             </a>
-
             <a href="{{ telegram_url }}" class="cta__socials-logo" target="_blank">
-              <img
-                src="{% static "pages/icons/telegram.svg" %}"
-                alt="Telegram"
-                class="cta__logo"
-                width="100%" height="100%"
-              >
+              <img src="{% static "pages/icons/telegram.svg" %}"
+                   alt="Telegram"
+                   class="cta__logo"
+                   width="100%"
+                   height="100%">
             </a>
-
             <a href="{{ vk_url }}" class="cta__socials-logo" target="_blank">
-              <img
-                src="{% static "pages/icons/vk.svg" %}"
-                alt="Вконтакте"
-                class="cta__logo"
-                width="100%" height="100%"
-              >
+              <img src="{% static "pages/icons/vk.svg" %}"
+                   alt="Вконтакте"
+                   class="cta__logo"
+                   width="100%"
+                   height="100%">
             </a>
-
             <a href="{{ whatsapp_url }}" class="cta__socials-logo" target="_blank">
-              <img
-                src="{% static "pages/icons/whatsapp.svg" %}"
-                alt="WhatsApp"
-                class="cta__logo"
-                width="100%" height="100%"
-              >
+              <img src="{% static "pages/icons/whatsapp.svg" %}"
+                   alt="WhatsApp"
+                   class="cta__logo"
+                   width="100%"
+                   height="100%">
             </a>
-
           </div>
         </div>
       </div>
       <div class="cta__lines decorative-lines__wrapper">
-        <form 
-          action="/" 
-          class="cta__form" 
-          method="post" 
-          id="form-feedback" 
-          data-url="{% url 'post_feedback' %}"
-          data-feedback-form
-        >
+        <form action="/"
+              class="cta__form"
+              method="post"
+              id="form-feedback"
+              data-url="{% url 'post_feedback' %}"
+              data-feedback-form>
           {% csrf_token %}
-          <h3 class="cta__form-title">Подсчет <span class="gradient">услуги</span></h3>
+          <h3 class="cta__form-title">
+            Подсчет <span class="gradient">услуги</span>
+          </h3>
           <div class="cta__fields">
             <div class="faq__row">
               <div class="faq__cell">
-                <input
-                  type="text"
-                  class="faq__cell-input"
-                  placeholder="Имя"
-                  required name="name"
-                  minlength="2"
-                  maxlength="50"
-                />
+                <input type="text"
+                       class="faq__cell-input"
+                       placeholder="Имя"
+                       required
+                       name="name"
+                       minlength="2"
+                       maxlength="50" />
               </div>
               <div class="faq__cell">
-                <input
-                  type="tel"
-                  name="phone"
-                  class="faq__cell-input"
-                  placeholder="Номер телефона"
-                  pattern="\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}"
-                  data-phone
-                  required
-                />
+                <input type="tel"
+                       name="phone"
+                       class="faq__cell-input"
+                       placeholder="Номер телефона"
+                       pattern="\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}"
+                       data-phone
+                       required />
               </div>
-
-
             </div>
-
             <div class="faq__row">
               <div class="faq__cell--long">
-                <textarea
-                  class="faq__cell-input--long tablet"
-                  placeholder="Уточните свой вопрос"
-                  name="message"
-                  maxlength="300"
-                ></textarea>
-                <input
-                  class="faq__cell-input--long hidden-tablet"
-                  placeholder="Уточните свой вопрос"
-                  name="message"
-                  maxlength="300">
+                <textarea class="faq__cell-input--long tablet"
+                          placeholder="Уточните свой вопрос"
+                          name="message"
+                          maxlength="300"></textarea>
+                <input class="faq__cell-input--long hidden-tablet"
+                       placeholder="Уточните свой вопрос"
+                       name="message"
+                       maxlength="300">
               </div>
             </div>
             <div class="policy">
@@ -406,51 +378,47 @@
   <section class="cases" id='cases'>
     <div class="cases__inner">
       <div class="cases__title">
-        <h5 class="h5 splitting-text"><span data-splitting>Мы выполнили </span><br class="hidden-mobile"><span class="gradient">>{{ order_info.cnt_order }} заказов</span></h5>
+        <h5 class="h5 splitting-text">
+          <span data-splitting>Мы выполнили</span>
+          <br class="hidden-mobile">
+          <span class="gradient">>{{ order_info.cnt_order }} заказов</span>
+        </h5>
         <p class="p1 cases__subtitle">
           Посмотрите на наши <span>реальные работы</span>
           и убедитесь, что <span>мы предоставляем услуги</span> <span>высокого качества.</span>
         </p>
       </div>
       <div class="cases__action">
-        <div class="cases__dropdown dropdown-cases"  
-          id="scope-select"
-          data-dropdown-config='{
-          "options": [
-          {"value": "", "label": "Все"}{% if scope_services_for_orders %},{% endif %}
+        <div class="cases__dropdown dropdown-cases" id="scope-select" data-dropdown-config='{ "options": [ {"value": "", "label": "Все"}
+          {% if scope_services_for_orders %},{% endif %}
           {% for scope in scope_services_for_orders %}
-          {"value": "{{ scope.name }}", "label": "{{ scope.name }}"}{% if not forloop.last %},{% endif %}
+            {"value": "{{ scope.name }}", "label": "{{ scope.name }}"}
+            {% if not forloop.last %},{% endif %}
           {% endfor %}
-          ]
-          }'>
-          <button class="dropdown__toggle" id="scope-select">
-            Выбор услуги
-          </button>
-          <ul class="dropdown__menu hidden"></ul>
+          ] }'>
+          <button class="dropdown__toggle" id="scope-select">Выбор услуги</button>
+          <ul class="dropdown__menu hidden">
+          </ul>
         </div>
         <div class="controls hidden-mobile">
-          <button id="btnPrev" class="cases__controls-prev controls__button controls__prev">
-            <img
-              src="{% static 'pages/icons/arrow-left.svg' %}"
-              alt="Назад"
-              class="controls__img"
-              width="24" height="24"
-            >
+          <button id="btnPrev"
+                  class="cases__controls-prev controls__button controls__prev">
+            <img src="{% static 'pages/icons/arrow-left.svg' %}"
+                 alt="Назад"
+                 class="controls__img"
+                 width="24"
+                 height="24">
           </button>
-
           <p id="casesCurrent" class="cases__controls-current controls__current"></p>
-
-          <button id="btnNext" class="cases__controls-next controls__button controls__next">
-            <img
-              src="{% static 'pages/icons/arrow-right.svg' %}"
-              alt="Вперед"
-              class="controls__img"
-              width="24" height="24"
-            >
+          <button id="btnNext"
+                  class="cases__controls-next controls__button controls__next">
+            <img src="{% static 'pages/icons/arrow-right.svg' %}"
+                 alt="Вперед"
+                 class="controls__img"
+                 width="24"
+                 height="24">
           </button>
         </div>
-
-
       </div>
       <div class="cases__slider-container">
         <!-- Верхний ряд слайдера -->
@@ -458,82 +426,97 @@
           <div class="splide__track">
             <div class="cases__splide-wrapper cases__splide-wrapper--top splide__list">
               {% for order in orders %}
-              {% if forloop.counter0|divisibleby:2 %}
-              <div class="cases__splide-slide splide__slide" data-scope="{{ order.scope.name }}">
-                <div class="slider__title">
-                  <h2 class="slider__header">{{ order.scope.name }}</h2>
-                  <div class="slider__features-wrapper">
-                    <div class="card-features slider__features">
-                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M8.10671 7.24683C8.04004 7.24016 7.96004 7.24016 7.88671 7.24683C6.30004 7.1935 5.04004 5.8935 5.04004 4.2935C5.04004 2.66016 6.36004 1.3335 8.00004 1.3335C9.63337 1.3335 10.96 2.66016 10.96 4.2935C10.9534 5.8935 9.69337 7.1935 8.10671 7.24683Z" stroke="currentColor" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M4.77335 9.7065C3.16002 10.7865 3.16002 12.5465 4.77335 13.6198C6.60669 14.8465 9.61335 14.8465 11.4467 13.6198C13.06 12.5398 13.06 10.7798 11.4467 9.7065C9.62002 8.4865 6.61335 8.4865 4.77335 9.7065Z" stroke="currentColor" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg>
-                      <span>{{ order.entity }}</span>
+                {% if forloop.counter0|divisibleby:2 %}
+                  <div class="cases__splide-slide splide__slide"
+                       data-scope="{{ order.scope.name }}">
+                    <div class="slider__title">
+                      <h2 class="slider__header">{{ order.scope.name }}</h2>
+                      <div class="slider__features-wrapper">
+                        <div class="card-features slider__features">
+                          <svg width="16"
+                               height="16"
+                               viewBox="0 0 16 16"
+                               fill="none"
+                               xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8.10671 7.24683C8.04004 7.24016 7.96004 7.24016 7.88671 7.24683C6.30004 7.1935 5.04004 5.8935 5.04004 4.2935C5.04004 2.66016 6.36004 1.3335 8.00004 1.3335C9.63337 1.3335 10.96 2.66016 10.96 4.2935C10.9534 5.8935 9.69337 7.1935 8.10671 7.24683Z" stroke="currentColor" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M4.77335 9.7065C3.16002 10.7865 3.16002 12.5465 4.77335 13.6198C6.60669 14.8465 9.61335 14.8465 11.4467 13.6198C13.06 12.5398 13.06 10.7798 11.4467 9.7065C9.62002 8.4865 6.61335 8.4865 4.77335 9.7065Z" stroke="currentColor" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                          </svg>
+                          <span>{{ order.entity }}</span>
+                        </div>
+                        <div class="slider__features card-features">
+                          <svg width="16"
+                               height="16"
+                               viewBox="0 0 16 16"
+                               fill="none"
+                               xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7.9987 1.3335C4.3187 1.3335 1.33203 4.32016 1.33203 8.00016M7.9987 14.6668C11.6787 14.6668 14.6654 11.6802 14.6654 8.00016" stroke="currentColor" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M11.0391 4.96003L14.1324 1.8667" stroke="currentColor" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M4.96094 11.04L1.8676 14.1333" stroke="currentColor" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M7.77734 8.22233L8.44401 7.55566" stroke="currentColor" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M14.6653 4.5535V1.3335H11.4453" stroke="currentColor" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M1.33469 11.4465V14.6665H4.55469" stroke="currentColor" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                          </svg>
+                          <span>{{ order.square|space_thousands }} м2</span>
+                        </div>
+                      </div>
                     </div>
-                    <div class="slider__features card-features">
-                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M7.9987 1.3335C4.3187 1.3335 1.33203 4.32016 1.33203 8.00016M7.9987 14.6668C11.6787 14.6668 14.6654 11.6802 14.6654 8.00016" stroke="currentColor" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M11.0391 4.96003L14.1324 1.8667" stroke="currentColor" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M4.96094 11.04L1.8676 14.1333" stroke="currentColor" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M7.77734 8.22233L8.44401 7.55566" stroke="currentColor" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M14.6653 4.5535V1.3335H11.4453" stroke="currentColor" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M1.33469 11.4465V14.6665H4.55469" stroke="currentColor" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg>
-                      <span>{{ order.square|space_thousands }} м2</span>
-                    </div>
+                    <img src="{{ order.photo.url }}"
+                         alt=""
+                         class="slider__image"
+                         width="636"
+                         height="370">
                   </div>
-                </div>
-                <img
-                  src="{{ order.photo.url }}"
-                  alt=""
-                  class="slider__image"
-                  width="636" height="370"
-                >
-              </div>
-              {% endif %}
+                {% endif %}
               {% endfor %}
             </div>
           </div>
         </div>
-
         <!-- Нижний ряд слайдера -->
         <div class="cases__splide cases__splide--bottom splide">
           <div class="splide__track">
             <div class="cases__splide-wrapper cases__splide-wrapper--bottom splide__list">
               {% for order in orders %}
-              {% if not forloop.counter0|divisibleby:2 %}
-              <div class="cases__splide-slide splide__slide" data-scope="{{ order.scope.name }}">
-                <div class="slider__title">
-                  <h2 class="slider__header">{{ order.scope.name }}</h2>
-                  <div class="slider__features-wrapper">
-                    <div class="card-features slider__features">
-                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M8.10671 7.24683C8.04004 7.24016 7.96004 7.24016 7.88671 7.24683C6.30004 7.1935 5.04004 5.8935 5.04004 4.2935C5.04004 2.66016 6.36004 1.3335 8.00004 1.3335C9.63337 1.3335 10.96 2.66016 10.96 4.2935C10.9534 5.8935 9.69337 7.1935 8.10671 7.24683Z" stroke="currentColor" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M4.77335 9.7065C3.16002 10.7865 3.16002 12.5465 4.77335 13.6198C6.60669 14.8465 9.61335 14.8465 11.4467 13.6198C13.06 12.5398 13.06 10.7798 11.4467 9.7065C9.62002 8.4865 6.61335 8.4865 4.77335 9.7065Z" stroke="currentColor" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg>
-                      <span>{{ order.entity }}</span>
+                {% if not forloop.counter0|divisibleby:2 %}
+                  <div class="cases__splide-slide splide__slide"
+                       data-scope="{{ order.scope.name }}">
+                    <div class="slider__title">
+                      <h2 class="slider__header">{{ order.scope.name }}</h2>
+                      <div class="slider__features-wrapper">
+                        <div class="card-features slider__features">
+                          <svg width="16"
+                               height="16"
+                               viewBox="0 0 16 16"
+                               fill="none"
+                               xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8.10671 7.24683C8.04004 7.24016 7.96004 7.24016 7.88671 7.24683C6.30004 7.1935 5.04004 5.8935 5.04004 4.2935C5.04004 2.66016 6.36004 1.3335 8.00004 1.3335C9.63337 1.3335 10.96 2.66016 10.96 4.2935C10.9534 5.8935 9.69337 7.1935 8.10671 7.24683Z" stroke="currentColor" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M4.77335 9.7065C3.16002 10.7865 3.16002 12.5465 4.77335 13.6198C6.60669 14.8465 9.61335 14.8465 11.4467 13.6198C13.06 12.5398 13.06 10.7798 11.4467 9.7065C9.62002 8.4865 6.61335 8.4865 4.77335 9.7065Z" stroke="currentColor" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                          </svg>
+                          <span>{{ order.entity }}</span>
+                        </div>
+                        <div class="slider__features card-features">
+                          <svg width="16"
+                               height="16"
+                               viewBox="0 0 16 16"
+                               fill="none"
+                               xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7.9987 1.3335C4.3187 1.3335 1.33203 4.32016 1.33203 8.00016M7.9987 14.6668C11.6787 14.6668 14.6654 11.6802 14.6654 8.00016" stroke="currentColor" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M11.0391 4.96003L14.1324 1.8667" stroke="currentColor" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M4.96094 11.04L1.8676 14.1333" stroke="currentColor" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M7.77734 8.22233L8.44401 7.55566" stroke="currentColor" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M14.6653 4.5535V1.3335H11.4453" stroke="currentColor" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M1.33469 11.4465V14.6665H4.55469" stroke="currentColor" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                          </svg>
+                          <span>{{ order.square|space_thousands }} м2</span>
+                        </div>
+                      </div>
                     </div>
-                    <div class="slider__features card-features">
-                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M7.9987 1.3335C4.3187 1.3335 1.33203 4.32016 1.33203 8.00016M7.9987 14.6668C11.6787 14.6668 14.6654 11.6802 14.6654 8.00016" stroke="currentColor" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M11.0391 4.96003L14.1324 1.8667" stroke="currentColor" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M4.96094 11.04L1.8676 14.1333" stroke="currentColor" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M7.77734 8.22233L8.44401 7.55566" stroke="currentColor" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M14.6653 4.5535V1.3335H11.4453" stroke="currentColor" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M1.33469 11.4465V14.6665H4.55469" stroke="currentColor" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg>
-                      <span>{{ order.square|space_thousands }} м2</span>
-                    </div>
+                    <img src="{{ order.photo.url }}"
+                         alt=""
+                         class="slider__image"
+                         width="636"
+                         height="370">
                   </div>
-                </div>
-                <img
-                  src="{{ order.photo.url }}"
-                  alt=""
-                  class="slider__image"
-                  width="636" height="370"
-                >
-              </div>
-              {% endif %}
+                {% endif %}
               {% endfor %}
             </div>
           </div>
@@ -541,482 +524,7 @@
       </div>
     </div>
   </section>
-  <section class="cta-request">
-    <div class="cta-request__wrapper" style="background-image: url({% static  'pages/images/cta-request/back.png'%} );">
-      <div class="cta-request__inner">
-        <h2 class="cta-request__header splitting-text" data-splitting>
-          Ваше время <br class="hidden-mobile"> дороже <br class="visible-mobile">
-          <span id="typewriterCta"></span>
-        </h2>
-        <div class="cta-request__action">
-          <button class="cta-request__button button--white modal-open">
-            Оставить заявку
-          </button>
-          <div class="cta-request__contacts">
-            <a href="{{ instagram_url }}" target="_blank" class="cta-request__contacts-item">
-              <img
-                src="{% static "pages/icons//instagram.svg" %}"
-                alt=""
-                class=""
-                width="100%" height="100%"
-              >
-            </a>
-            <a href="{{ telegram_url }}" target="_blank" class="cta-request__contacts-item">
-              <img
-                src="{% static "pages/icons//telegram.svg" %}"
-                alt=""
-                class=""
-                width="100%" height="100%"
-              >
-            </a>
-            <a href="{{ vk_url }}" target="_blank" class="cta-request__contacts-item">
-              <img
-                src="{% static "pages/icons//vk.svg" %}"
-                alt=""
-                class=""
-                width="100%" height="100%"
-              >
-            </a>
-            <a href="{{ whatsapp_url }}" target="_blank" class="cta-request__contacts-item">
-              <img
-                src="{% static "pages/icons//whatsapp.svg" %}"
-                alt=""
-                class=""
-                width="100%" height="100%"
-              >
-            </a>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-  <section class="reviews">
-    <div class="reviews__inner">
-      <div class="reviews__title">
-        <h5 class="h5 reviews__header splitting-text"><span data-splitting> наши </span><span class="gradient">отзывы</span></h5>
-        <p class="reviews__subheader p1">Посмотрите на наши <span>реальные работы</span><br class="hidden-mobile">
-          и убедитесь, что <span>мы предоставляем услуги высокого качества.</span></p>
-      </div>
-
-
-      <div class="reviews__extra-1">
-        <div class="reviews__links">
-          <button class="review-button" onclick="window.open('https://www.vl.ru/chistota-dv', '_blank')">
-            <span>VL.RU</span>
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M13 1L1 13" stroke="#939393" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M13 10V1H4" stroke="#939393" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-
-            <span class="reviews__counts">{% if vl_data.count%}({{ vl_data.count }}) {% else %} (50){% endif %}</span>
-            <img
-              src="{% static "pages/icons/VL.png" %}"
-              alt="VL.ru"
-              class="hero__review-logo"
-              width="32" height="32"
-            >
-            <span> {% if vl_data.average_rating %}{{ vl_data.average_rating }}{% else %} 5.0{% endif %}</span>
-            <img
-              src="{% static "pages/icons/star.svg" %}"
-              alt=""
-              class=""
-              width="20" height="20"
-            >
-          </button>
-        </div>
-        <div class="controls hidden-tablet">
-          <button class="reviews__controls-prev controls__button controls__prev">
-            <img
-              src="{% static 'pages/icons/arrow-left.svg' %}"
-              alt="Назад"
-              class="controls__img"
-              width="24" height="24"
-            >
-          </button>
-
-          <p class="reviews__controls-current controls__current"></p>
-
-          <button class="reviews__controls-next controls__button controls__next">
-            <img
-              src="{% static 'pages/icons/arrow-right.svg' %}"
-              alt="Вперед"
-              class="controls__img"
-              width="24" height="24"
-            >
-          </button>
-        </div>
-      </div>
-      <div class="reviews__slider-container">
-        <div class="ms-slide__container">
-          <div class="reviews__slider-wrapper">
-            {% for review in reviews %}
-            {% if review.provider == 'vlru' %}
-            <div class="reviews__swiper-slide">
-              <div class="reviews__swiper-slide-inner">
-                <div class="reviews__user-wrapper">
-                  <div class="reviews__user-info">
-                    <div class="reviews__img-wrapper">
-                      <img src="{{ review.photo }}" alt="" class="reviews__img" width="64" height="64">
-                    </div>
-                    <div class="reviews__user">
-                      <div class="reviews__user-bottom">
-                        <p class="reviews__user-name">{{ review.author_name }}</p>
-                        <p class="reviews__user-service">{{ review.service }}</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="reviews__user-commas">
-                    <img src="{% static 'pages/icons/commas.svg' %}" alt="" class="reviews__commas" width="48" height="48">
-                  </div>
-                </div>
-                <div class="reviews__content">
-                  {% if review.link.image %}
-                  <div class="reviews__photo-wrapper">
-                    <img src="{{ review.link.image }}" alt="" class="reviews__photo" width="288" height="152">
-                  </div>
-                  {% endif %}
-                  <div class="reviews__body-wrapper">
-                    <div class="reviews__user-top">
-                      <p class="reviews__score">{{ review.rating_display }}</p>
-                      <div class="reviews__stars">
-                        {% for i in "12345"|make_list %}
-                        <img src="{% static 'pages/icons/star.svg' %}" class="reviews__stars_img" width="20" height="20" 
-                          style="opacity:{% if forloop.counter <= review.rating %}1{% else %}0.3{% endif %}">
-                        {% endfor %}
-                      </div>
-                    </div>
-                    <div class="reviews__body">
-                      <span>{{ review.review_text }}</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            {% endif %}
-            {% endfor %}
-          </div>
-        </div>
-      </div>
-
-      <div class="reviews__extra-2 ">
-        <div class="reviews__links">
-          <button class="review-button" onclick="window.open('https://go.2gis.com/0UnDt', '_blank')">
-            <span>2GIS</span>
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M13 1L1 13" stroke="#939393" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M13 10V1H4" stroke="#939393" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <span class="reviews__counts">{% if gis_data.count%}({{ gis_data.count }}) {% else %} (0){% endif %}</span>
-            <img
-              src="{% static "pages/icons/2gis.png" %}"
-              alt="2gis"
-              class="hero__review-logo"
-              width="32" height="32"
-            >
-            <span> {% if gis_data.average_rating %}{{ gis_data.average_rating }}{% else %} 5.0{% endif %}</span>
-            <img
-              src="{% static "pages/icons/star.svg" %}"
-              alt=""
-              class=""
-              width="20" height="20"
-            >
-          </button>
-        </div>
-        <div class="controls hidden-tablet">
-          <button class="reviews__controls-prev-2 controls__button controls__prev">
-            <img
-              src="{% static 'pages/icons/arrow-left.svg' %}"
-              alt="Назад"
-              class="controls__img"
-              width="24" height="24"
-            >
-          </button>
-
-          <p class="reviews__controls-current-2 controls__current"></p>
-
-          <button class="reviews__controls-next-2 controls__button controls__next">
-            <img
-              src="{% static 'pages/icons/arrow-right.svg' %}"
-              alt="Вперед"
-              class="controls__img"
-              width="24" height="24"
-            >
-          </button>
-        </div>
-      </div>
-      <div class="reviews__slider-container">
-        <div class="ms-slide__container-2">
-          <div class="reviews__slider-wrapper">
-            {% for review in reviews %}
-            {% if review.provider == '2gis' %}
-            <div class="reviews__swiper-slide">
-              <div class="reviews__swiper-slide-inner">
-                <div class="reviews__user-wrapper">
-                  <div class="reviews__user-info">
-                    <div class="reviews__img-wrapper">
-                      <img src="{{ review.photo }}" alt="" class="reviews__img" width="64" height="64">
-                    </div>
-                    <div class="reviews__user">
-                      <div class="reviews__user-bottom">
-                        <p class="reviews__user-name">{{ review.author_name }}</p>
-                        <p class="reviews__user-service">{{ review.service }}</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="reviews__user-commas">
-                    <img src="{% static 'pages/icons/commas.svg' %}" alt="" class="reviews__commas" width="48" height="48">
-                  </div>
-                </div>
-                <div class="reviews__content">
-                  {% if review.link.image %}
-                  <div class="reviews__photo-wrapper">
-                    <img src="{{ review.link.image }}" alt="" class="reviews__photo" width="288" height="152">
-                  </div>
-                  {% endif %}
-                  <div class="reviews__body-wrapper">
-                    <div class="reviews__user-top">
-                      <p class="reviews__score">{{ review.rating_display }}</p>
-                      <div class="reviews__stars">
-                        {% for i in "12345"|make_list %}
-                        <img src="{% static 'pages/icons/star.svg' %}" class="reviews__stars_img" width="20" height="20" 
-                          style="opacity:{% if forloop.counter <= review.rating %}1{% else %}0.3{% endif %}">
-                        {% endfor %}
-                      </div>
-                    </div>
-                    <div class="reviews__body">
-                      <span>{{ review.review_text }}</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            {% endif %}
-            {% endfor %}
-          </div>
-        </div>
-      </div>
-
-      <!-- Yandex -->
-      <!-- <div class="reviews__extra-3"> -->
-      <!--   <div class="reviews__links"> -->
-      <!--     <button class="review-button" onclick="window.open('https://yandex.ru/maps/-/CHWKmQ7K', '_blank')"> -->
-      <!--       <span>Yandex</span> -->
-      <!--       <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"> -->
-      <!--         <path d="M13 1L1 13" stroke="#939393" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> -->
-      <!--         <path d="M13 10V1H4" stroke="#939393" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> -->
-      <!--       </svg> -->
-      <!--       <span class="reviews__counts">{% if yandex_data.count%}({{ yandex_data.count }}) {% else %} (0){% endif %}</span> -->
-      <!--       <img -->
-      <!--         src="{% static "pages/icons/Yandex.png" %}" -->
-      <!--         alt="Яндекс" -->
-      <!--         class="hero__review-logo" -->
-      <!--         width="32" height="32" -->
-      <!--       > -->
-      <!--       <span> {% if yandex_data.average_rating > 1 %}{{ yandex_data.average_rating }}{% else %} 5.0{% endif %}</span> -->
-      <!--       <img -->
-      <!--         src="{% static "pages/icons/star.svg" %}" -->
-      <!--         alt="" -->
-      <!--         class="" -->
-      <!--         width="20" height="20" -->
-      <!--       > -->
-      <!--     </button> -->
-      <!--   </div> -->
-      <!--   <div class="controls hidden-tablet"> -->
-      <!--     <button class="reviews__controls-prev-3 controls__button controls__prev"> -->
-      <!--       <img -->
-      <!--         src="{% static 'pages/icons/arrow-left.svg' %}" -->
-      <!--         alt="Назад" -->
-      <!--         class="controls__img" -->
-      <!--         width="24" height="24" -->
-      <!--       > -->
-      <!--     </button> -->
-      <!---->
-      <!--     <p class="reviews__controls-current-3 controls__current"></p> -->
-      <!---->
-      <!--     <button class="reviews__controls-next-3 controls__button controls__next"> -->
-      <!--       <img -->
-      <!--         src="{% static 'pages/icons/arrow-right.svg' %}" -->
-      <!--         alt="Вперед" -->
-      <!--         class="controls__img" -->
-      <!--         width="24" height="24" -->
-      <!--       > -->
-      <!--     </button> -->
-      <!--   </div> -->
-      <!-- </div> -->
-      <!-- <div class="reviews__slider-container"> -->
-      <!--   <div class="ms-slide__container-3"> -->
-      <!--     <div class="reviews__slider-wrapper"> -->
-      <!--       {% for review in reviews %} -->
-      <!--       {% if review.provider == 'yandex' %} -->
-      <!--       <div class="reviews__swiper-slide"> -->
-      <!--         <div class="reviews__swiper-slide-inner"> -->
-      <!--           <div class="reviews__user-wrapper"> -->
-      <!--             <div class="reviews__user-info"> -->
-      <!--               <div class="reviews__img-wrapper"> -->
-      <!--                 <img src="{{ review.photo }}" alt="" class="reviews__img" width="64" height="64"> -->
-      <!--               </div> -->
-      <!--               <div class="reviews__user"> -->
-      <!--                 <div class="reviews__user-bottom"> -->
-      <!--                   <p class="reviews__user-name">{{ review.author_name }}</p> -->
-      <!--                   <p class="reviews__user-service">{{ review.service }}</p> -->
-      <!--                 </div> -->
-      <!--               </div> -->
-      <!--             </div> -->
-      <!--             <div class="reviews__user-commas"> -->
-      <!--               <img src="{% static 'pages/icons/commas.svg' %}" alt="" class="reviews__commas" width="48" height="48"> -->
-      <!--             </div> -->
-      <!--           </div> -->
-      <!--           <div class="reviews__content"> -->
-      <!--             {% if review.link.image %} -->
-      <!--             <div class="reviews__photo-wrapper"> -->
-      <!--               <img src="{{ review.link.image }}" alt="" class="reviews__photo" width="288" height="152"> -->
-      <!--             </div> -->
-      <!--             {% endif %} -->
-      <!--             <div class="reviews__body-wrapper"> -->
-      <!--               <div class="reviews__user-top"> -->
-      <!--                 <p class="reviews__score">{{ review.rating_display }}</p> -->
-      <!--                 <div class="reviews__stars"> -->
-      <!--                   {% for i in "12345"|make_list %} -->
-      <!--                   <img src="{% static 'pages/icons/star.svg' %}" class="reviews__stars_img" width="20" height="20"  -->
-      <!--                     style="opacity:{% if forloop.counter <= review.rating %}1{% else %}0.3{% endif %}"> -->
-      <!--                   {% endfor %} -->
-      <!--                 </div> -->
-      <!--               </div> -->
-      <!--               <div class="reviews__body"> -->
-      <!--                 <span>{{ review.review_text }}</span> -->
-      <!--               </div> -->
-      <!--             </div> -->
-      <!--           </div> -->
-      <!--         </div> -->
-      <!--       </div> -->
-      <!--       {% endif %} -->
-      <!--       {% endfor %} -->
-      <!--     </div> -->
-      <!--   </div> -->
-      <!-- </div> -->
-
-    </div>
-  </section>
-
-  <section id="faq" class="faq">
-    <div class="faq__inner">
-      <div class="faq__body">
-        <div class="faq__title">
-          <h5 class="faq__header h5 splitting-text" data-splitting>Будем <span class="">на связи!</span></h5>
-          <p class="faq__subheader p1">
-            Также как выбранный нами инновационный путь не даёт нам иного выбора, кроме определения инновационных методов управления процессами.
-          </p>
-        </div>
-        <div class="faq__socials-wrapper">
-          <a href="{{ instagram_url }}" {{ whatsapp_url }} class="faq__socials-logo">
-            <img
-              src="{% static "pages/icons//instagram.svg" %}"
-              alt="Instagram"
-              class="faq__logo"
-              width="100%" height="100%"
-            >
-          </a>
-          <a href="{{ vk_url }}" target="_blank" class="faq__socials-logo">
-            <img
-              src="{% static "pages/icons//vk.svg" %}"
-              alt="Вконтакте"
-              class="faq__logo"
-              width="100%" height="100%"
-            >
-          </a>
-          <a href="{{ telegram_url }}" target="_blank" class="faq__socials-logo">
-            <img
-              src="{% static "pages/icons//telegram.svg" %}"
-              alt="Telegram"
-              class="faq__logo"
-              width="100%" height="100%"
-            >
-          </a>
-          <a href="{{ whatsapp_url }}" target="_blank" class="faq__socials-logo">
-            <img
-              src="{% static "pages/icons//whatsapp.svg" %}"
-              alt="whatsapp"
-              class="faq__logo"
-              width="100%" height="100%"
-            >
-          </a>
-        </div>
-        <div class="faq__form-wrapper decorative-lines__wrapper">
-          <form 
-            action="/" 
-            method="post" 
-            class="faq__form"
-            id="form-feedback" 
-            data-url="{% url 'post_feedback' %}"
-            data-feedback-form
-          >
-            {% csrf_token %}
-            <div class="faq__fields">
-              <div class="faq__row">
-                <div class="faq__cell">
-                  <input
-                    type="text"
-                    class="faq__cell-input"
-                    placeholder="Имя"
-                    required name="name"
-                    minlength="2"
-                    maxlength="50"
-                  />
-                </div>
-                <div class="faq__cell">
-                  <input
-                    type="tel"
-                    name="phone"
-                    class="faq__cell-input"
-                    placeholder="Номер телефона"
-                    pattern="\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}"
-                    data-phone
-                    required
-                  />
-                </div>
-
-
-              </div>
-              <div class="faq__row long">
-                <div class="faq__cell--long">
-                  <textarea
-                    class="faq__cell-input--long"
-                    placeholder="Уточните свой вопрос"
-                    name="message"
-                    maxlength="300"
-                  ></textarea>
-                </div>
-              </div>
-              <div class="policy">
-                <input type="checkbox" class="policy__checkbox" name="" checked>
-                <label for="policy" class="policy__label">
-                  С правилами <a href="/">политики конфиденциальности</a> ознакомлен
-                </label>
-              </div>
-            </div>
-            <div class="faq__action">
-              <button type="submit" class="button faq__button"><span>Оставить заявку</span></button>
-            </div>
-          </form>
-          <div class="decorative-lines">
-            <span class="decorative-lines__item"></span>
-            <span class="decorative-lines__item"></span>
-            <span class="decorative-lines__item"></span>
-          </div>
-        </div>
-
-      </div>
-      <div class="faq__questions">
-        {% for quest in questions %}
-        <details class="faq__item">
-          <summary class="faq__legend">
-            {{ quest.question }}
-          </summary>
-          <p class="faq__content">{{ quest.answer }}</p>
-        </details>
-        {% endfor %}
-      </div>
-    </div>
-  </section>
+  {% include 'partials/cta-request.html' %}
+  {% include 'partials/reviews.html' %}
+  {% include 'partials/faq.html' %}
 {% endblock %}

@@ -1,0 +1,56 @@
+{% load static %}
+<section class="cta-request">
+  <div class="cta-request__wrapper"
+       style="background-image: url({% static  'pages/images/cta-request/back.png' %} )">
+    <div class="cta-request__inner">
+      <h2 class="cta-request__header splitting-text" data-splitting>
+        Ваше время
+        <br class="hidden-mobile">
+        дороже
+        <br class="visible-mobile">
+        <span id="typewriterCta"></span>
+      </h2>
+      <div class="cta-request__action">
+        <button class="cta-request__button button--white modal-open">Оставить заявку</button>
+        <div class="cta-request__contacts">
+          <a href="{{ instagram_url }}"
+             target="_blank"
+             class="cta-request__contacts-item">
+            <img src="{% static "pages/icons//instagram.svg" %}"
+                 alt=""
+                 class=""
+                 width="100%"
+                 height="100%">
+          </a>
+          <a href="{{ telegram_url }}"
+             target="_blank"
+             class="cta-request__contacts-item">
+            <img src="{% static "pages/icons//telegram.svg" %}"
+                 alt=""
+                 class=""
+                 width="100%"
+                 height="100%">
+          </a>
+          <a href="{{ vk_url }}"
+             target="_blank"
+             class="cta-request__contacts-item">
+            <img src="{% static "pages/icons//vk.svg" %}"
+                 alt=""
+                 class=""
+                 width="100%"
+                 height="100%">
+          </a>
+          <a href="{{ whatsapp_url }}"
+             target="_blank"
+             class="cta-request__contacts-item">
+            <img src="{% static "pages/icons//whatsapp.svg" %}"
+                 alt=""
+                 class=""
+                 width="100%"
+                 height="100%">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

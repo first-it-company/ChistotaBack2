@@ -1,0 +1,11 @@
+@use "../helpers" as *;
+
+.extra-services {
+  padding-inline: 40px;
+  padding-bottom: rem(60);
+  border-bottom: 1px solid #DFDFDF;
+}
+
+.extra-services__header {
+  color: var(--color-black);
+}

@@ -1,0 +1,112 @@
+{% load static %}
+<section id="faq" class="faq">
+  <div class="faq__inner">
+    <div class="faq__body">
+      <div class="faq__title">
+        <h5 class="faq__header h5 splitting-text" data-splitting>
+          Будем <span class="">на связи!</span>
+        </h5>
+        <p class="faq__subheader p1">
+          Также как выбранный нами инновационный путь не даёт нам иного выбора, кроме определения инновационных методов управления процессами.
+        </p>
+      </div>
+      <div class="faq__socials-wrapper">
+        <a href="{{ instagram_url }}"
+           {{ whatsapp_url }}
+           class="faq__socials-logo">
+          <img src="{% static "pages/icons//instagram.svg" %}"
+               alt="Instagram"
+               class="faq__logo"
+               width="100%"
+               height="100%">
+        </a>
+        <a href="{{ vk_url }}" target="_blank" class="faq__socials-logo">
+          <img src="{% static "pages/icons//vk.svg" %}"
+               alt="Вконтакте"
+               class="faq__logo"
+               width="100%"
+               height="100%">
+        </a>
+        <a href="{{ telegram_url }}" target="_blank" class="faq__socials-logo">
+          <img src="{% static "pages/icons//telegram.svg" %}"
+               alt="Telegram"
+               class="faq__logo"
+               width="100%"
+               height="100%">
+        </a>
+        <a href="{{ whatsapp_url }}" target="_blank" class="faq__socials-logo">
+          <img src="{% static "pages/icons//whatsapp.svg" %}"
+               alt="whatsapp"
+               class="faq__logo"
+               width="100%"
+               height="100%">
+        </a>
+      </div>
+      <div class="faq__form-wrapper decorative-lines__wrapper">
+        <form action="/"
+              method="post"
+              class="faq__form"
+              id="form-feedback"
+              data-url="{% url 'post_feedback' %}"
+              data-feedback-form>
+          {% csrf_token %}
+          <div class="faq__fields">
+            <div class="faq__row">
+              <div class="faq__cell">
+                <input type="text"
+                       class="faq__cell-input"
+                       placeholder="Имя"
+                       required
+                       name="name"
+                       minlength="2"
+                       maxlength="50" />
+              </div>
+              <div class="faq__cell">
+                <input type="tel"
+                       name="phone"
+                       class="faq__cell-input"
+                       placeholder="Номер телефона"
+                       pattern="\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}"
+                       data-phone
+                       required />
+              </div>
+            </div>
+            <div class="faq__row long">
+              <div class="faq__cell--long">
+                <textarea class="faq__cell-input--long"
+                          placeholder="Уточните свой вопрос"
+                          name="message"
+                          maxlength="300"></textarea>
+              </div>
+            </div>
+            <div class="policy">
+              <input type="checkbox" class="policy__checkbox" name="" checked>
+              <label for="policy" class="policy__label">
+                С правилами <a href="/">политики конфиденциальности</a> ознакомлен
+              </label>
+            </div>
+          </div>
+          <div class="faq__action">
+            <button type="submit" class="button faq__button">
+              <span>Оставить заявку</span>
+            </button>
+          </div>
+        </form>
+        <div class="decorative-lines">
+          <span class="decorative-lines__item"></span>
+          <span class="decorative-lines__item"></span>
+          <span class="decorative-lines__item"></span>
+        </div>
+      </div>
+    </div>
+    <div class="faq__questions">
+      {% for quest in questions %}
+        <details class="faq__item">
+          <summary class="faq__legend">{{ quest.question }}</summary>
+          <p class="faq__content">{{ quest.answer }}</p>
+        </details>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
