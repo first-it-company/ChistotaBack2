@@ -102,7 +102,7 @@ def home(request):
 
     return render(
         request,
-        "index.html",
+        "home.html",
         {
             "about_main": about_main,
             "services": services,
