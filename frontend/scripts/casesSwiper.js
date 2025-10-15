@@ -86,11 +86,21 @@ export function initCasesSlider() {
     };
 
     // Инициализируем верхний слайдер
-    topSplide = new Splide('.cases__splide--top', splideOptions);
+    const topSplideElement = document.querySelector('.cases__splide--top');
+    if (!topSplideElement) {
+        console.warn('[Splide] Top cases slider element not found. Initialization aborted.');
+        return;
+    }
+    topSplide = new Splide(topSplideElement, splideOptions);
     
     // Инициализируем нижний слайдер только если не планшет и не мобильная
     if (!isTabletOrMobile) {
-        bottomSplide = new Splide('.cases__splide--bottom', splideOptions);
+        const bottomSplideElement = document.querySelector('.cases__splide--bottom');
+        if (!bottomSplideElement) {
+            console.warn('[Splide] Bottom cases slider element not found. Initialization aborted.');
+            return;
+        }
+        bottomSplide = new Splide(bottomSplideElement, splideOptions);
     } else {
         console.log('Нижний слайдер не инициализируется (планшет/мобильная)');
     }
