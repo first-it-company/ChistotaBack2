@@ -79,6 +79,9 @@ export function initTeamSlider() {
     if (prevButton) {
       prevButton.classList.add('is-disabled');
     }
+    if (nextButton) {
+      nextButton.classList.toggle('is-disabled', splide.isEnd());
+    }
   });
 
   splide.on('active', (activeSlide) => {
@@ -91,7 +94,7 @@ export function initTeamSlider() {
       prevButton.classList.toggle('is-disabled', splide.index === 0);
     }
     if (nextButton) {
-      nextButton.classList.toggle('is-disabled', splide.index === splide.length - 1);
+      nextButton.classList.toggle('is-disabled', splide.isEnd());
     }
   });
 
