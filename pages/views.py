@@ -33,21 +33,6 @@ def post_feedback(request):
         return JsonResponse({"status": "success"})
 
 
-def calculate_price(request):
-    if request.method == "POST":
-        body = json.loads(request.body)
-        square_int = int(body["square"])
-        price_obj = PriceServices.objects.filter(
-            scope__name=body["service"], square=square_int
-        ).first()
-
-        if price_obj:
-            price = price_obj.price
-        else:
-            price = 0
-
-        return JsonResponse({"price": price})
-
 
 def home(request):
     about_main = AboutMain.objects.first()
