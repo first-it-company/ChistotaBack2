@@ -127,8 +127,13 @@ class QuestionAnswer(models.Model):
 
 
 class Contact(models.Model):
-    phone = models.CharField(max_length=50, verbose_name="Телефон")
-    address = models.TextField(verbose_name="Адрес")
+    phone = models.CharField(max_length=50, verbose_name="Телефон", blank=True)
+    city = models.CharField(max_length=100, verbose_name="Город", blank=True)
+    address = models.CharField(max_length=255, verbose_name="Адрес", blank=True)
+    work_schedule = models.CharField(
+        max_length=255, verbose_name="График работы", blank=True
+    )
+    email = models.EmailField(verbose_name="Электронная почта", blank=True)
 
     class Meta:
         verbose_name = "Контактная информация"
@@ -136,6 +141,26 @@ class Contact(models.Model):
 
     def __str__(self):
         return self.address
+
+
+class CompanyDetails(models.Model):
+    calc_account = models.CharField(
+        max_length=100, verbose_name="Расчётный счёт", blank=True
+    )
+    TIN = models.CharField(max_length=100, verbose_name="ИНН", blank=True)
+    bank = models.CharField(max_length=100, verbose_name="Название Банка", blank=True)
+    BIC = models.CharField(max_length=100, verbose_name="БИК", blank=True)
+    correspondent_account = models.CharField(
+        max_length=100, verbose_name="Корреспондентский счёт", blank=True
+    )
+    name = models.CharField(max_length=100, verbose_name="Наименование", blank=True)
+
+    class Meta:
+        verbose_name = "Реквизиты"
+        verbose_name_plural = "Реквизиты"
+
+    def __str__(self):
+        return self.name
 
 
 class Feedback(models.Model):
@@ -161,6 +186,7 @@ class VideoMain(models.Model):
 
     def __str__(self):
         return self.name
+
 
 class Employee(models.Model):
     photo = ProcessedImageField(

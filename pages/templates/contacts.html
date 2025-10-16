@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <section class="contacts">
+    <h1 class="contacts__header">
+      Контактная <span class="gradient">информация</span>
+    </h1>
+    <p class="">
+      Профессиональный клининг, который говорит сам за себя.
+      <br>
+      Наши услуги — это ваше время, комфорт и безупречный результат.
+    </p>
+    <div class="contacts__main">
+      <div class="contacts__card">
+        <div class="contacts__main-first">
+          {% if contact.address %}
+            <div class="contacts__card-info">
+              <div class="contacts__card-info-content">{{ contact.address }}</div>
+              <div class="contacts__card-info-label">Адрес офиса</div>
+            </div>
+          {% endif %}
+          {% if contact.work_schedule %}
+            <div class="contacts__card-info">
+              <div class="contacts__card-info-content">{{ contact.work_schedule }}</div>
+              <div class="contacts__card-info-label">График работы</div>
+            </div>
+          {% endif %}
+        </div>
+        <div>
+          {% if contact.phone %}
+            <div class="contacts__card-info">
+              <div class="contacts__card-info-content">{{ contact.phone }}</div>
+              <div class="contacts__card-info-label">Горячая линия</div>
+            </div>
+          {% endif %}
+          {% if contact.email %}
+            <div class="contacts__card-info">
+              <div class="contacts__card-info-content">{{ contact.email }}</div>
+              <div class="contacts__card-info-label">Эл. Почта</div>
+            </div>
+          {% endif %}
+        </div>
+        <div class="contacts__card-socials">
+          <div class="footer__socials-wrapper">
+            <a href="{{ whatsapp_url }}"
+               target="_blank"
+               class="footer__socials-logo">
+              <img src="{% static 'pages/icons/whatsapp.svg' %}"
+                   alt="whatsapp"
+                   class=""
+                   width="100%"
+                   height="100%">
+            </a>
+            <a href="{{ vk_url }}" target="_blank" class="footer__socials-logo">
+              <img src="{% static 'pages/icons/vk.svg' %}"
+                   alt="Вконтакте"
+                   class=""
+                   width="100%"
+                   height="100%">
+            </a>
+            <a href="{{ telegram_url }}"
+               target="_blank"
+               class="footer__socials-logo">
+              <img src="{% static 'pages/icons/telegram.svg' %}"
+                   alt="Telegram"
+                   class=""
+                   width="100%"
+                   height="100%">
+            </a>
+            <a href="{{ instagram_url }}"
+               target="_blank"
+               class="footer__socials-logo">
+              <img src="{% static 'pages/icons/instagram.svg' %}"
+                   alt="Instagram"
+                   class=""
+                   width="100%"
+                   height="100%">
+            </a>
+            <p class="footer__inst-text">
+              *Instagram — проект Meta Platforms Inc.,
+              деятельность которой в России запрещена
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="contacts__map">
+        <iframe src="https://yandex.com/map-widget/v1/?um=constructor%3Aa236e0611205c6b53ac8e3db96c27cf6bdac69ba5564ac761452d3519e4cc22e&amp;source=constructor"
+                width="100%"
+                height="100%"
+                frameborder="0"></iframe>
+      </div>
+    </div>
+    <div class="contacts__card">
+      <div class="h5 contacts__card-header">Реквизиты</div>
+      <div class="contacts__card-company-details">
+        {% if company_details.calc_account %}
+          <div class="contacts__card-info">
+            <div class="contacts__card-info-content">{{ company_details.calc_account }}</div>
+            <div class="contacts__card-info-label">Расчётный счёт</div>
+          </div>
+        {% endif %}
+        {% if company_details.bank %}
+          <div class="contacts__card-info">
+            <div class="contacts__card-info-content">{{ company_details.bank }}</div>
+            <div class="contacts__card-info-label">Название банка</div>
+          </div>
+        {% endif %}
+        {% if company_details.correspondent_account %}
+          <div class="contacts__card-info">
+            <div class="contacts__card-info-content">{{ company_details.correspondent_account }}</div>
+            <div class="contacts__card-info-label">Корреспондентский счёт</div>
+          </div>
+        {% endif %}
+        {% if company_details.TIN %}
+          <div class="contacts__card-info">
+            <div class="contacts__card-info-content">{{ company_details.TIN }}</div>
+            <div class="contacts__card-info-label">ИНН</div>
+          </div>
+        {% endif %}
+        {% if company_details.BIC %}
+          <div class="contacts__card-info">
+            <div class="contacts__card-info-content">{{ company_details.BIC }}</div>
+            <div class="contacts__card-info-label">БИК</div>
+          </div>
+        {% endif %}
+        {% if company_details.name %}
+          <div class="contacts__card-info">
+            <div class="contacts__card-info-content">{{ company_details.name }}</div>
+            <div class="contacts__card-info-label">Наименование</div>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+  {% include 'partials/cta-request.html' %}
+  {% include 'partials/faq.html' %}
+{% endblock %}

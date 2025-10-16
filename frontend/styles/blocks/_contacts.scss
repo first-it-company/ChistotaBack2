@@ -1,0 +1,75 @@
+@use "../helpers" as *;
+
+.contacts {
+  padding-inline: rem(60);
+
+  &__header {
+    margin-top: rem(40);
+    margin-bottom: rem(12);
+    font-size: 3.2vw;
+    line-height: 0.8;
+    text-transform: uppercase;
+    color: var(--color-black);
+    font-weight: 600;
+  }
+
+  &__description {
+    font-family: var(--font-family-accent);
+    font-weight: 400;
+    font-size: 1.5vw;
+    margin-bottom: rem(52);
+  }
+
+  &__main {
+    display: flex;
+    gap: rem(24);
+    margin-bottom: rem(24);
+    margin-top: rem(52);
+
+    &-first {
+      margin-bottom: rem(32);
+    }
+  }
+
+  &__card {
+    flex-grow: 1;
+    border: 1px solid var(--color-gray-100);
+    border-radius: rem(24);
+    padding: rem(40);
+
+    &-info {
+      &-content {
+        font-size: rem(20);
+        font-weight: 500;
+      }
+
+      &-label {
+        font-family: var(--font-family-accent);
+        margin-bottom: rem(16);
+      }
+    }
+
+    &-header {
+      margin-bottom: rem(12);
+      color: var(--color-black);
+    }
+
+    &-company-details {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: rem(16);
+    }
+  }
+
+  &__map {
+    flex-basis: 60%;
+    border-radius: rem(32);
+    overflow: hidden;
+    background: #eeeeee;
+  }
+}
+
+
+.contacts__card-socials>.footer__socials-wrapper {
+  padding: 0;
+}
