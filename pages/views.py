@@ -177,9 +177,7 @@ def catalog(request):
 
 
 def service_detail(request, pk: int):
-    about_main = AboutMain.objects.first()
     service = get_object_or_404(Services, pk=pk)
-    scope_services = ScopeServices.objects.all()
     used_orders_scope_ids = Order.objects.values_list("scope", flat=True).distinct()
     scope_services_for_orders = ScopeServices.objects.filter(
         id__in=used_orders_scope_ids
@@ -187,10 +185,6 @@ def service_detail(request, pk: int):
     order_info = OrderInfo.objects.first()
     orders = Order.objects.all()
     questions = QuestionAnswer.objects.all()
-    contact = Contact.objects.first()
-    videos = VideoMain.objects.all()
-    employee = Employee.objects.all()
-    logo = Logo.objects.all()
 
     # Получаем ссылки на социальные сети
     social_networks = {
@@ -230,15 +224,11 @@ def service_detail(request, pk: int):
         request,
         "service_detail.html",
         {
-            "about_main": about_main,
             "service": service,
-            "scope_services": scope_services,
             "order_info": order_info,
             "orders": orders,
             "gis_reviews_json": gis_reviews_json,
             "questions": questions,
-            "contact": contact,
-            "videos": videos,
             "gis_data": {
                 "average_rating": ratings["twogis"],
                 "count": counts["twogis"],
@@ -248,9 +238,7 @@ def service_detail(request, pk: int):
                 "average_rating": ratings["yandex"],
                 "count": counts["yandex"],
             },
-            "employee": employee,
             "scope_services_for_orders": scope_services_for_orders,
-            "logo": logo,
             "reviews": reviews_for_slider,
             **social_networks,
         },
