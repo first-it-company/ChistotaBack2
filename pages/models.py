@@ -50,7 +50,6 @@ class Services(models.Model):
     gradient = models.TextField(
         verbose_name="Градиент (linear-gradient(0deg, #53647A, #53647A), rgba(83, 100, 122, 0.4) 55%, rgba(0, 96, 223, 0.4) 100%);)"
     )
-    price = models.DecimalField(max_digits=12, decimal_places=2, verbose_name="Цена")
     time_work = models.CharField(max_length=150, verbose_name="Часы работы")
     square = models.CharField(max_length=150, verbose_name="Площадь работы")
     order = models.IntegerField(verbose_name="порядок")
