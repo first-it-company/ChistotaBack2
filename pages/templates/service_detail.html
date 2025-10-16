@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% load static number_filters %}
+{% block content %}
+  <section class="service-detail">
+    <div class="service-detail__info">
+      <div>
+        <h1 class="h5 gradient service-detail__info-header">{{ service.scope.name }}</h1>
+        <p class="service-detail__info-description">{{ service.desc }}</p>
+        <div class="service-detail__info-features">
+          <div class="slider__features service-detail__info-feature">
+            <svg width="24"
+                 height="24"
+                 viewBox="0 0 24 24"
+                 fill="none"
+                 xmlns="http://www.w3.org/2000/svg">
+              <path d="M22 12C22 17.52 17.52 22 12 22C6.48 22 2 17.52 2 12C2 6.48 6.48 2 12 2C17.52 2 22 6.48 22 12Z" stroke="#0060DF" stroke-width="1.8" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M15.7099 15.18L12.6099 13.33C12.0699 13.01 11.6299 12.24 11.6299 11.61V7.51001" stroke="#0060DF" stroke-width="1.8" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            {{ service.time_work }} ч
+          </div>
+          <div class="slider__features service-detail__info-feature">
+            <svg width="24"
+                 height="24"
+                 viewBox="0 0 24 24"
+                 fill="none"
+                 xmlns="http://www.w3.org/2000/svg">
+              <path d="M11.9999 3.00012C7.03197 3.00012 3 7.0321 3 12.0001M11.9999 21C16.9679 21 20.9999 16.968 20.9999 12.0001" stroke="#0060DF" stroke-width="1.8" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M16.1035 7.89619L20.2795 3.72021" stroke="#0060DF" stroke-width="1.8" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M7.89648 16.1038L3.72051 20.2798" stroke="#0060DF" stroke-width="1.8" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M11.7002 12.3L12.6002 11.4" stroke="#0060DF" stroke-width="1.8" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M21.0003 7.34697V3H16.6533" stroke="#0060DF" stroke-width="1.8" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M2.99971 16.653V21H7.34668" stroke="#0060DF" stroke-width="1.8" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            до {{ service.square|space_thousands }} м2
+          </div>
+        </div>
+      </div>
+      <button class="button service-detail__info-button">Заказать</button>
+    </div>
+    {% if service.photos.all %}
+      <div class="service-detail__slider splide" id="service-detail-splide">
+        <div class="splide__track">
+          <ul class="splide__list">
+            {% for photo in service.photos.all %}
+              <li class="splide__slide">
+                <img src="{{ photo.photo.url }}"
+                     alt="{{ service.scope.name }} - Фото {{ forloop.counter }}">
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="service-detail__slider-controls controls">
+          <button class="service-detail__slider-button-prev controls__button controls__prev"
+                  id="service-detail-prev">
+            <img src="{% static 'pages/icons/arrow-left.svg' %}"
+                 alt="Предыдущий"
+                 class="controls__img"
+                 width="24"
+                 height="24">
+          </button>
+          <div class="service-detail__slider-counter" id="service-detail-counter"></div>
+          <button class="service-detail__slider-button-next controls__button controls__next"
+                  id="service-detail-next">
+            <img src="{% static 'pages/icons/arrow-right.svg' %}"
+                 alt="Следующий"
+                 class="controls__img"
+                 width="24"
+                 height="24">
+          </button>
+        </div>
+      </div>
+    {% endif %}
+  </section>
+  {% if service.inclusions.all %}
+    <section class="service-included">
+      <div class="h5 service-included__header">Что входит в услугу:</div>
+      <ul class="service-included__list">
+        {% for inclusion in service.inclusions.all %}
+          <li class="service-included__list-item">
+            <div class="service-included__list-item-header">{{ inclusion.header }}</div>
+            <div class="service-included__list-item-description">{{ inclusion.description }}</div>
+          </li>
+        {% endfor %}
+      </ul>
+    </section>
+  {% endif %}
+  {% include 'partials/cases.html' with is_two_rows=False %}
+  {% include 'partials/cta-request.html' %}
+  {% include 'partials/reviews.html' %}
+  {% include 'partials/faq.html' %}
+{% endblock %}

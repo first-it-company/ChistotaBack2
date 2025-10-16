@@ -96,11 +96,11 @@ export function initCasesSlider() {
     // Инициализируем нижний слайдер только если не планшет и не мобильная
     if (!isTabletOrMobile) {
         const bottomSplideElement = document.querySelector('.cases__splide--bottom');
-        if (!bottomSplideElement) {
-            console.warn('[Splide] Bottom cases slider element not found. Initialization aborted.');
-            return;
+        if (bottomSplideElement) {
+            bottomSplide = new Splide(bottomSplideElement, splideOptions);
+        } else {
+            console.warn('[Splide] Bottom cases slider element not found. Continuing with top slider only.');
         }
-        bottomSplide = new Splide(bottomSplideElement, splideOptions);
     } else {
         console.log('Нижний слайдер не инициализируется (планшет/мобильная)');
     }

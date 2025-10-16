@@ -63,6 +63,24 @@ class Services(models.Model):
         return self.scope.name
 
 
+class ServiceInclusion(models.Model):
+    service = models.ForeignKey(
+        Services,
+        related_name="inclusions",
+        on_delete=models.CASCADE,
+        verbose_name="Услуга",
+    )
+    header = models.CharField(max_length=255, verbose_name="Заголовок")
+    description = models.TextField(verbose_name="Описание")
+
+    class Meta:
+        verbose_name = "Что входит в услугу"
+        verbose_name_plural = "Что входит в услугу"
+
+    def __str__(self):
+        return self.header
+
+
 class OrderInfo(models.Model):
     cnt_order = models.IntegerField(verbose_name="Кол-во выполненных заказов")
 
@@ -143,22 +161,6 @@ class VideoMain(models.Model):
 
     def __str__(self):
         return self.name
-
-
-class PriceServices(models.Model):
-    scope = models.ForeignKey(
-        ScopeServices, on_delete=models.CASCADE, verbose_name="Сфера"
-    )
-    square = models.IntegerField(verbose_name="Площадь работы")
-    price = models.DecimalField(max_digits=12, decimal_places=2, verbose_name="Цена")
-
-    class Meta:
-        verbose_name = "Цена услуг"
-        verbose_name_plural = "Цены услуг"
-
-    def __str__(self):
-        return f"{self.scope.name} - {self.price}"
-
 
 class Employee(models.Model):
     photo = ProcessedImageField(

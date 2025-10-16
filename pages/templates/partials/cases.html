@@ -1,0 +1,200 @@
+{% load static number_filters %}
+<section class="cases" id='cases'>
+  <div class="cases__inner">
+    <div class="cases__title">
+      <h5 class="h5 splitting-text">
+        <span data-splitting>Мы выполнили</span>
+        <br class="hidden-mobile">
+        <span class="gradient">>{{ order_info.cnt_order }} заказов</span>
+      </h5>
+      <p class="p1 cases__subtitle">
+        Посмотрите на наши <span>реальные работы</span>
+        и убедитесь, что <span>мы предоставляем услуги</span> <span>высокого качества.</span>
+      </p>
+    </div>
+    <div class="cases__action">
+      <div class="cases__dropdown dropdown-cases" id="scope-select" data-dropdown-config='{ "options": [ {"value": "", "label": "Все"}
+        {% if scope_services_for_orders %},{% endif %}
+        {% for scope in scope_services_for_orders %}
+          {"value": "{{ scope.name }}", "label": "{{ scope.name }}"}
+          {% if not forloop.last %},{% endif %}
+        {% endfor %}
+        ] }'>
+        <button class="dropdown__toggle" id="scope-select">Выбор услуги</button>
+        <ul class="dropdown__menu hidden">
+        </ul>
+      </div>
+      <div class="controls hidden-mobile">
+        <button id="btnPrev"
+                class="cases__controls-prev controls__button controls__prev">
+          <img src="{% static 'pages/icons/arrow-left.svg' %}"
+               alt="Назад"
+               class="controls__img"
+               width="24"
+               height="24">
+        </button>
+        <p id="casesCurrent" class="cases__controls-current controls__current"></p>
+        <button id="btnNext"
+                class="cases__controls-next controls__button controls__next">
+          <img src="{% static 'pages/icons/arrow-right.svg' %}"
+               alt="Вперед"
+               class="controls__img"
+               width="24"
+               height="24">
+        </button>
+      </div>
+    </div>
+    <div class="cases__slider-container">
+      {% if is_two_rows %}
+        <!-- Верхний ряд слайдера -->
+        <div class="cases__splide cases__splide--top splide">
+          <div class="splide__track">
+            <div class="cases__splide-wrapper cases__splide-wrapper--top splide__list">
+              {% for order in orders %}
+                {% if forloop.counter0|divisibleby:2 %}
+                  <div class="cases__splide-slide splide__slide"
+                       data-scope="{{ order.scope.name }}">
+                    <div class="slider__title">
+                      <h2 class="slider__header">{{ order.scope.name }}</h2>
+                      <div class="slider__features-wrapper">
+                        <div class="card-features slider__features">
+                          <svg width="16"
+                               height="16"
+                               viewBox="0 0 16 16"
+                               fill="none"
+                               xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8.10671 7.24683C8.04004 7.24016 7.96004 7.24016 7.88671 7.24683C6.30004 7.1935 5.04004 5.8935 5.04004 4.2935C5.04004 2.66016 6.36004 1.3335 8.00004 1.3335C9.63337 1.3335 10.96 2.66016 10.96 4.2935C10.9534 5.8935 9.69337 7.1935 8.10671 7.24683Z" stroke="currentColor" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M4.77335 9.7065C3.16002 10.7865 3.16002 12.5465 4.77335 13.6198C6.60669 14.8465 9.61335 14.8465 11.4467 13.6198C13.06 12.5398 13.06 10.7798 11.4467 9.7065C9.62002 8.4865 6.61335 8.4865 4.77335 9.7065Z" stroke="currentColor" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                          </svg>
+                          <span>{{ order.entity }}</span>
+                        </div>
+                        <div class="slider__features card-features">
+                          <svg width="16"
+                               height="16"
+                               viewBox="0 0 16 16"
+                               fill="none"
+                               xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7.9987 1.3335C4.3187 1.3335 1.33203 4.32016 1.33203 8.00016M7.9987 14.6668C11.6787 14.6668 14.6654 11.6802 14.6654 8.00016" stroke="currentColor" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M11.0391 4.96003L14.1324 1.8667" stroke="currentColor" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M4.96094 11.04L1.8676 14.1333" stroke="currentColor" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M7.77734 8.22233L8.44401 7.55566" stroke="currentColor" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M14.6653 4.5535V1.3335H11.4453" stroke="currentColor" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M1.33469 11.4465V14.6665H4.55469" stroke="currentColor" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                          </svg>
+                          <span>{{ order.square|space_thousands }} м2</span>
+                        </div>
+                      </div>
+                    </div>
+                    <img src="{{ order.photo.url }}"
+                         alt=""
+                         class="slider__image"
+                         width="636"
+                         height="370">
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        <!-- Нижний ряд слайдера -->
+        <div class="cases__splide cases__splide--bottom splide">
+          <div class="splide__track">
+            <div class="cases__splide-wrapper cases__splide-wrapper--bottom splide__list">
+              {% for order in orders %}
+                {% if not forloop.counter0|divisibleby:2 %}
+                  <div class="cases__splide-slide splide__slide"
+                       data-scope="{{ order.scope.name }}">
+                    <div class="slider__title">
+                      <h2 class="slider__header">{{ order.scope.name }}</h2>
+                      <div class="slider__features-wrapper">
+                        <div class="card-features slider__features">
+                          <svg width="16"
+                               height="16"
+                               viewBox="0 0 16 16"
+                               fill="none"
+                               xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8.10671 7.24683C8.04004 7.24016 7.96004 7.24016 7.88671 7.24683C6.30004 7.1935 5.04004 5.8935 5.04004 4.2935C5.04004 2.66016 6.36004 1.3335 8.00004 1.3335C9.63337 1.3335 10.96 2.66016 10.96 4.2935C10.9534 5.8935 9.69337 7.1935 8.10671 7.24683Z" stroke="currentColor" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M4.77335 9.7065C3.16002 10.7865 3.16002 12.5465 4.77335 13.6198C6.60669 14.8465 9.61335 14.8465 11.4467 13.6198C13.06 12.5398 13.06 10.7798 11.4467 9.7065C9.62002 8.4865 6.61335 8.4865 4.77335 9.7065Z" stroke="currentColor" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                          </svg>
+                          <span>{{ order.entity }}</span>
+                        </div>
+                        <div class="slider__features card-features">
+                          <svg width="16"
+                               height="16"
+                               viewBox="0 0 16 16"
+                               fill="none"
+                               xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7.9987 1.3335C4.3187 1.3335 1.33203 4.32016 1.33203 8.00016M7.9987 14.6668C11.6787 14.6668 14.6654 11.6802 14.6654 8.00016" stroke="currentColor" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M11.0391 4.96003L14.1324 1.8667" stroke="currentColor" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M4.96094 11.04L1.8676 14.1333" stroke="currentColor" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M7.77734 8.22233L8.44401 7.55566" stroke="currentColor" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M14.6653 4.5535V1.3335H11.4453" stroke="currentColor" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M1.33469 11.4465V14.6665H4.55469" stroke="currentColor" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                          </svg>
+                          <span>{{ order.square|space_thousands }} м2</span>
+                        </div>
+                      </div>
+                    </div>
+                    <img src="{{ order.photo.url }}"
+                         alt=""
+                         class="slider__image"
+                         width="636"
+                         height="370">
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      {% else %}
+        <div class="cases__splide cases__splide--top splide">
+          <div class="splide__track">
+            <div class="cases__splide-wrapper cases__splide-wrapper--top splide__list">
+              {% for order in orders %}
+                <div class="cases__splide-slide splide__slide"
+                     data-scope="{{ order.scope.name }}">
+                  <div class="slider__title">
+                    <h2 class="slider__header">{{ order.scope.name }}</h2>
+                    <div class="slider__features-wrapper">
+                      <div class="card-features slider__features">
+                        <svg width="16"
+                             height="16"
+                             viewBox="0 0 16 16"
+                             fill="none"
+                             xmlns="http://www.w3.org/2000/svg">
+                          <path d="M8.10671 7.24683C8.04004 7.24016 7.96004 7.24016 7.88671 7.24683C6.30004 7.1935 5.04004 5.8935 5.04004 4.2935C5.04004 2.66016 6.36004 1.3335 8.00004 1.3335C9.63337 1.3335 10.96 2.66016 10.96 4.2935C10.9534 5.8935 9.69337 7.1935 8.10671 7.24683Z" stroke="currentColor" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                          <path d="M4.77335 9.7065C3.16002 10.7865 3.16002 12.5465 4.77335 13.6198C6.60669 14.8465 9.61335 14.8465 11.4467 13.6198C13.06 12.5398 13.06 10.7798 11.4467 9.7065C9.62002 8.4865 6.61335 8.4865 4.77335 9.7065Z" stroke="currentColor" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <span>{{ order.entity }}</span>
+                      </div>
+                      <div class="slider__features card-features">
+                        <svg width="16"
+                             height="16"
+                             viewBox="0 0 16 16"
+                             fill="none"
+                             xmlns="http://www.w3.org/2000/svg">
+                          <path d="M7.9987 1.3335C4.3187 1.3335 1.33203 4.32016 1.33203 8.00016M7.9987 14.6668C11.6787 14.6668 14.6654 11.6802 14.6654 8.00016" stroke="currentColor" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                          <path d="M11.0391 4.96003L14.1324 1.8667" stroke="currentColor" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                          <path d="M4.96094 11.04L1.8676 14.1333" stroke="currentColor" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                          <path d="M7.77734 8.22233L8.44401 7.55566" stroke="currentColor" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                          <path d="M14.6653 4.5535V1.3335H11.4453" stroke="currentColor" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                          <path d="M1.33469 11.4465V14.6665H4.55469" stroke="currentColor" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <span>{{ order.square|space_thousands }} м2</span>
+                      </div>
+                    </div>
+                  </div>
+                  <img src="{{ order.photo.url }}"
+                       alt=""
+                       class="slider__image"
+                       width="636"
+                       height="370">
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>

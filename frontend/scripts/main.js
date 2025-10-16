@@ -14,6 +14,7 @@ import { initExpandableText } from "./serviceCardText";
 import { initHeroSlider } from "./heroSplide";
 import { initTeamSlider } from "./teamSlider";
 import { initServiceSliders } from "./serviceSlider";
+import { initServiceSlider } from "./serviceSplide";
 import { initModal } from "./modal.js";
 import { initFormFeedback } from "./form.js";
 import { initModalSuccess } from "./modalSuccess.js";
@@ -37,6 +38,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     initExpandableText();
     initTeamSlider();
     initServiceSliders();
+    initServiceSlider();
     initModal();
     initFormFeedback();
     initModalSuccess();
