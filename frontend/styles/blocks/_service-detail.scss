@@ -6,8 +6,8 @@
   padding: rem(80) rem(40);
 
   @media (max-width: rem(768)) {
-    flex-direction: column;
-    padding: rem(40) 0;
+    flex-direction: column-reverse;
+    padding: rem(40) rem(16);
     gap: rem(20);
   }
 
@@ -53,6 +53,8 @@
 
       @media (max-width: rem(768)) {
         width: 100%;
+        font-size: rem(20);
+        padding: rem(24);
       }
     }
   }

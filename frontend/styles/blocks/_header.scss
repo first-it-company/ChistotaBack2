@@ -39,10 +39,10 @@
       gap: rem(80);
       align-items: center;
       border-radius: 12px;
-      //background: rgb(242, 246, 250);
 
       @include tablet {
         padding: 20px;
+        justify-content: space-between;
       }
 
       @include mobile {

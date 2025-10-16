@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from imagekit.models import ProcessedImageField
 
 
@@ -61,6 +62,9 @@ class Services(models.Model):
 
     def __str__(self):
         return self.scope.name
+
+    def get_absolute_url(self):
+        return reverse("service_detail", kwargs={"pk": self.pk})
 
 
 class ServiceInclusion(models.Model):

@@ -3,36 +3,52 @@
 .service-included {
   padding: 0 rem(40) rem(60) rem(40);
   border-bottom: 1px solid #DFDFDF;
-}
 
-.service-included__header {
-  padding-bottom: rem(40);
-
-  @include laptop {
-    padding-bottom: rem(24);
+  @include tablet {
+    padding: 0 rem(16) rem(60) rem(16);
   }
-}
 
-.service-included__list {
-  display: flex;
-  flex-direction: column;
-  gap: rem(16);
-}
+  &__header {
+    padding-bottom: rem(40);
 
-.service-included__list-item {
-  background-color: #F5F8FC;
-  border-radius: rem(20);
-  padding: rem(18);
-}
+    @include tablet {
+      padding-bottom: rem(24);
+    }
+  }
 
-.service-included__list-item-header {
-  font-size: rem(24);
-  font-weight: 500;
-  margin-bottom: rem(4);
-  color: var(--color-black);
-}
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: rem(16);
 
-.service-included__list-item-description {
-  font-size: rem(18);
-  color: var(--color-gray-300);
+    @include tablet {
+      gap: rem(12);
+    }
+  }
+
+  &__list-item {
+    background-color: #F5F8FC;
+    border-radius: rem(20);
+    padding: rem(18);
+
+    &-header {
+      font-size: rem(24);
+      font-weight: 500;
+      margin-bottom: rem(4);
+      color: var(--color-black);
+
+      @include tablet {
+        font-size: rem(20);
+      }
+    }
+
+    &-description {
+      font-size: rem(18);
+      color: var(--color-gray-300);
+
+      @include tablet {
+        font-size: rem(16);
+      }
+    }
+  }
 }

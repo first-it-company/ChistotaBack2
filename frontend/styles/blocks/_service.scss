@@ -1,8 +1,6 @@
 @use "../helpers" as *;
 
 .service {
-  @include tablet {}
-
   @include mobile {
     display: contents;
   }
@@ -12,12 +10,17 @@
 
     &--catalog {
       text-align: left;
-      margin-bottom: 70px;
+      margin-bottom: rem(70);
 
       .service__header {
         text-align: left;
         text-transform: uppercase;
         color: var(--color-black);
+        font-weight: 700;
+
+        @include tablet {
+          font-size: rem(32);
+        }
       }
     }
   }
@@ -28,6 +31,7 @@
     line-height: 0.8;
     text-transform: uppercase;
     color: var(--color-black);
+    font-weight: 700;
 
     @include tablet {
       margin-bottom: rem(20);

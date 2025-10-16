@@ -1,9 +1,15 @@
 @use "../helpers" as *;
 
 .extra-services {
-  padding-inline: 40px;
+  padding-inline: rem(40);
   padding-bottom: rem(60);
   border-bottom: 1px solid #DFDFDF;
+
+  @include tablet {
+    padding-inline: rem(16);
+    padding-bottom: rem(50);
+    margin-top: rem(16);
+  }
 }
 
 .extra-services__header {

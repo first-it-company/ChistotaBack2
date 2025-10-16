@@ -9,56 +9,79 @@
   border-radius: 20px;
   transition: background-color 0.2s ease-in-out;
 
+  @include tablet {
+    gap: rem(8);
+  }
+
   &:hover {
     background-color: #f5f8fc;
+  }
 
-    .extra-services-card__button-icon {
-      transform: rotate(45deg);
-      background-color: var(--color-blue);
+  &__header {
+    color: var(--color-black);
+    font-size: rem(32);
+    font-weight: 500;
+    margin-bottom: rem(4);
 
-      path {
-        stroke: white;
-      }
+    @include tablet {
+      font-size: rem(24);
     }
   }
-}
 
-.extra-services-card__header {
-  color: var(--color-black);
-  font-size: rem(32);
-  font-weight: 500;
-  margin-bottom: rem(4);
-}
+  &__description {
+    font-size: rem(20);
 
-.extra-services-card__description {
-  font-size: rem(20);
-}
+    @include tablet {
+      font-size: rem(14);
+    }
+  }
 
-.extra-services-card__button {
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  gap: rem(16);
-}
+  &__button {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: rem(16);
+  }
 
-.extra-services-card__button-text {
-  flex-shrink: 0;
-  flex-wrap: nowrap;
-  color: var(--color-blue);
-  text-transform: uppercase;
-  font-size: rem(20);
-  font-weight: 500;
-}
+  &__button-text {
+    flex-shrink: 0;
+    flex-wrap: nowrap;
+    color: var(--color-blue);
+    text-transform: uppercase;
+    font-size: rem(20);
+    font-weight: 500;
 
-.extra-services-card__button-icon {
-  flex-shrink: 0;
-  padding: rem(8);
-  border-radius: 50%;
-  background-color: #0060DF1A;
-  transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    @include tablet {
+      display: none;
+    }
+  }
 
-  path {
-    stroke: var(--color-blue);
-    transition: stroke 0.2s ease-in-out;
+  &__button-icon {
+    flex-shrink: 0;
+    padding: rem(8);
+    border-radius: 50%;
+    background-color: #0060DF1A;
+    transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    width: rem(60);
+    height: rem(60);
+
+    path {
+      stroke: var(--color-blue);
+      transition: stroke 0.2s ease-in-out;
+    }
+
+    @include tablet {
+      width: rem(48);
+      height: rem(48);
+    }
+  }
+
+  &:hover &__button-icon {
+    transform: rotate(45deg);
+    background-color: var(--color-blue);
+
+    path {
+      stroke: white;
+    }
   }
 }
