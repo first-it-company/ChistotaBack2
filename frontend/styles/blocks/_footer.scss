@@ -1,52 +1,54 @@
 @use "../helpers" as *;
 
-.footer{
+.footer {
   border-radius: 40px 40px 0px 0px;
-/* Основные/Черный */
+  /* Основные/Черный */
   background: rgb(42, 42, 42);
   position: relative;
 
 
 
-  &__inner{
+  &__inner {
     padding: rem(60) rem(40) rem(40) rem(40);
     margin: 0;
     width: 100%;
+    isolation: isolate;
 
     &::after {
       content: "";
       position: absolute;
       inset: 0;
       background: url('@/images/footer/back.png') 0 0 / cover no-repeat;
-      z-index: 100;
+      z-index: -1;
       pointer-events: none;
       border-radius: 40px 40px 0px 0px;
 
-      @include mobile{
+      @include mobile {
         background: url('@/images/footer/back.png') 0 0 / cover no-repeat;
       }
 
 
     }
-    @include mobile{
 
-        padding: rem(40) rem(16) rem(16) rem(16);
-      }
+    @include mobile {
+
+      padding: rem(40) rem(16) rem(16) rem(16);
+    }
   }
 
-  &__body{
+  &__body {
     display: flex;
     justify-content: space-between;
     padding-bottom: rem(40);
 
 
-    @include tablet{
+    @include tablet {
       flex-direction: column;
       gap: rem(32);
     }
   }
 
-  &__info{
+  &__info {
     font-family: var(--font-family-accent);
     font-size: 1.5vw;
     color: var(--color-gray-200);
@@ -55,37 +57,37 @@
     flex-direction: column;
     gap: rem(30);
 
-    @include tablet{
+    @include tablet {
       max-width: 100%;
     }
 
     a .footer__logo {
-    width: 23vw;
+      width: 23vw;
 
-      @include tablet{
+      @include tablet {
         width: 170px;
       }
-  }
+    }
   }
 
-  &__title{
+  &__title {
     font-size: 1.3vw;
     color: rgb(223, 223, 223);
 
 
-    @include laptop{
+    @include laptop {
       font-size: rem(20);
     }
 
-    @include mobile{
+    @include mobile {
       font-size: rem(16);
     }
   }
 
-  &__socials-wrapper{
+  &__socials-wrapper {
     display: flex;
-    gap:rem(16);
-    padding: 1.2vw;
+    gap: rem(16);
+    padding: 0.75vw 1.10vw;
     background: rgba(255, 255, 255, 0.04);
     border: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: 12px;
@@ -103,7 +105,7 @@
   &__socials-logo {
     flex-shrink: 0;
 
-    @include mobile{
+    @include mobile {
       width: 32px;
       height: 32px;
     }
@@ -111,17 +113,17 @@
 
   &__inst-text {
     color: rgb(128, 128, 128);
-    font-family: Noah;
-    font-size: 1.1vw;
+    font-family: var(--font-family-accent);
+    font-size: 0.9vw;
     font-weight: 400;
 
     @include tablet {
       font-size: 12px;
     }
 
-     @include mobile{
-    font-size: 9px;
-  }
+    @include mobile {
+      font-size: 9px;
+    }
   }
 
 
@@ -173,7 +175,7 @@
       background: rgba(255, 255, 255, 0.04);
       flex-shrink: 0;
       transition: background-color 0.3s ease;
-      
+
       @media (max-width: 1130px) {
         padding: rem(10) rem(14);
         gap: rem(6);
@@ -198,7 +200,7 @@
         }
 
         @include mobile {
-          font-size: rem(14 );
+          font-size: rem(14);
         }
       }
 
@@ -207,13 +209,19 @@
         justify-content: center;
       }
 
-      @include mobile{
+      @include mobile {
         padding: 12px;
       }
     }
+
+    &-logo {
+      margin-right: 8px;
+      width: 1.9vw;
+      height: 1.9vw;
+    }
   }
 
-  &__nav{
+  &__nav {
     justify-content: space-between;
     display: flex;
     flex-wrap: wrap;
@@ -225,11 +233,11 @@
       width: 46vw;
     }
 
-    @include laptop{
+    @include laptop {
       gap: rem(40);
     }
 
-    @include tablet{
+    @include tablet {
       margin-right: 0;
       width: 100%;
       justify-content: space-between;
@@ -238,12 +246,12 @@
     }
 
 
-    @include mobile{
+    @include mobile {
       justify-content: space-between;
     }
   }
 
-  &__list{
+  &__list {
     display: flex;
     flex-direction: column;
     gap: rem(24);
@@ -252,17 +260,17 @@
     color: var(--color-black);
 
 
-    &-title{
+    &-title {
       text-wrap: nowrap;
       color: rgb(109, 170, 225);
       margin-bottom: rem(16);
 
-      @include mobile{
+      @include mobile {
         font-size: rem(18);
       }
     }
 
-    &-item{
+    &-item {
       text-wrap: nowrap;
       font-size: 1vw;
       display: flex;
@@ -275,19 +283,19 @@
         text-wrap: wrap;
       }
 
-      @include mobile{
+      @include mobile {
         font-size: rem(18);
       }
 
-      a{
+      a {
         text-decoration: none;
       }
     }
   }
 
   &__socials-logo {
-    width: 3vw;
-    height: 3vw;
+    width: 2.3vw;
+    height: 2.3vw;
 
     @include tablet {
       width: 40px;
@@ -300,8 +308,8 @@
     }
   }
 
-  &__extra{
-    &-info{
+  &__extra {
+    &-info {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -311,16 +319,16 @@
       border-top: 1px solid rgba(255, 255, 255, 0.1);
       padding-top: rem(40);
 
-      @include laptop{
+      @include laptop {
         font-size: rem(18);
       }
 
-      @include tablet{
+      @include tablet {
         padding-top: rem(32);
         padding-bottom: rem(27);
       }
 
-      @include mobile{
+      @include mobile {
         align-items: flex-start;
         flex-direction: column;
         gap: rem(24);
@@ -333,10 +341,10 @@
 }
 
 
-.footer__socials-wrapper.tablet{
+.footer__socials-wrapper.tablet {
   display: none;
 
-  @include tablet{
+  @include tablet {
     display: flex;
   }
 }
