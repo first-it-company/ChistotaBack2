@@ -1,5 +1,7 @@
 {% load static %}
-<section id="faq" class="faq">
+<section id="faq"
+         class="faq"
+         {% if with_border %}style="border-top: 1px solid var(--color-gray-100);"{% endif %}>
   <div class="faq__inner">
     <div class="faq__body">
       <div class="faq__title">

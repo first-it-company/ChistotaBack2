@@ -304,6 +304,10 @@
     text-wrap: nowrap;
     text-transform: uppercase;
 
+    @include hover {
+      color: var(--color-white);
+    }
+
     @include mobile {
       width: rem(350);
     }
@@ -332,7 +336,6 @@
     &:hover {
       svg {
         transform: rotate(45deg);
-        color: var(--color-white);
       }
     }
   }

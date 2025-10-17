@@ -104,6 +104,10 @@
         grid-template-columns: repeat(1, 1fr);
       }
     }
+
+    &-socials {
+      margin-top: rem(32);
+    }
   }
 
   &__map {

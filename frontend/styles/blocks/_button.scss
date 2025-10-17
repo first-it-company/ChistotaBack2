@@ -1,13 +1,13 @@
 @use "../helpers" as *;
 
-.button{
+.button {
   text-wrap: nowrap;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: var(--color-blue);
   color: var(--color-white);
-  border-radius: rem(14);
+  border-radius: rem(16);
   padding: 1vw 6vw;
   font-weight: 500;
   font-size: 1.5vw;
@@ -16,22 +16,23 @@
   text-align: center;
 
   @include tablet {
+    border-radius: rem(14);
     font-size: rem(18);
   }
 
-  @include mobile{
+  @include mobile {
     font-size: rem(20);
     line-height: rem(14);
     padding: rem(28) rem(24);
   }
 
-  @include hover{
+  @include hover {
     transition-duration: var(--transition-duration);
     background-color: var(--color-blue-hover);
   }
 
   &--arrow {
-    border-radius: rem(14);
+    border-radius: rem(16);
     padding: rem(16);
     background-color: var(--color-blue);
     color: var(--color-white);
@@ -42,6 +43,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @include tablet {
+      padding: rem(14);
+    }
 
     .arrow-container {
       display: block;
@@ -78,9 +83,9 @@
       display: none;
     }
 
-    @include hover{
+    @include hover {
 
-      @include tablet-above{
+      @include tablet-above {
         background-color: var(--color-blue-hover);
       }
 
@@ -96,31 +101,31 @@
 
       .arrow-container::before,
       .arrow-container::after {
-        @include tablet-above{
+        @include tablet-above {
           background-image: url('data:image/svg+xml;utf8,<svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.5713 8.5H1.42915" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" /><path d="M8.50022 15.5711L15.5713 8.5L8.50022 1.42893" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" /></svg>');
         }
       }
     }
   }
 
-  &--white{
+  &--white {
     @extend .button;
     background-color: var(--color-white);
     color: var(--color-blue);
 
-    @include hover{
+    @include hover {
       transition-duration: var(--transition-duration);
       background-color: var(--color-blue-hover);
       color: var(--color-blue);
     }
   }
 
-  &__wrapper{
+  &__wrapper {
     display: flex;
     column-gap: rem(16);
     align-items: stretch;
 
-    .button:hover + .button--arrow {
+    .button:hover+.button--arrow {
       .arrow-container::before {
         transform: translateX(0);
       }
