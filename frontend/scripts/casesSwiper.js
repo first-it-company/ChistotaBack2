@@ -120,7 +120,7 @@ export function initCasesSlider() {
         const formattedTotal = String(total).padStart(2, '0');
         
         if (counterEl) {
-            counterEl.textContent = `${formattedCurrent}/${formattedTotal}`;
+            counterEl.innerHTML = `${formattedCurrent}<span>/${formattedTotal}</span>`;
         }
         
         if (btnPrev) {

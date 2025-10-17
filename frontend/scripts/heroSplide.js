@@ -123,7 +123,7 @@ export function initHeroSlider() {
             const formattedTotal = String(total).padStart(2, '0');
             
             if (counterEl) {
-                counterEl.textContent = `${formattedCurrent}/${formattedTotal}`;
+                counterEl.innerHTML = `${formattedCurrent}<span>/${formattedTotal}</span>`;
             }
             
             if (btnPrev) {
@@ -153,7 +153,10 @@ export function initHeroSlider() {
 
         // Update UI on slide change
         splide.on('move.end', updateUI);
-        splide.on('mounted updated', updateUI);
+        splide.on('updated', updateUI);
+
+        // Set initial state
+        updateUI();
     }
 
     splide.on('mounted move', () => {

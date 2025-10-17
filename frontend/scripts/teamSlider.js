@@ -61,7 +61,7 @@ export function initTeamSlider() {
 
   function updateCounter() {
     if (counterElement) {
-      counterElement.innerHTML = `${formatNumber(splide.index + 1)}/<span>${formatNumber(splide.length)}</span>`;
+      counterElement.innerHTML = `${formatNumber(splide.index + 1)}<span>/${formatNumber(splide.length)}</span>`;
     }
   }
   const prevButton = document.querySelector('.team__controls-prev');
