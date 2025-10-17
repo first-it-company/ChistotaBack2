@@ -326,60 +326,7 @@
         </div>
       </div>
       <div class="cta__lines decorative-lines__wrapper">
-        <form action="/"
-              class="cta__form"
-              method="post"
-              id="form-feedback"
-              data-url="{% url 'post_feedback' %}"
-              data-feedback-form>
-          {% csrf_token %}
-          <h3 class="cta__form-title">
-            Подсчет <span class="gradient">услуги</span>
-          </h3>
-          <div class="cta__fields">
-            <div class="faq__row">
-              <div class="faq__cell">
-                <input type="text"
-                       class="faq__cell-input"
-                       placeholder="Имя"
-                       required
-                       name="name"
-                       minlength="2"
-                       maxlength="50" />
-              </div>
-              <div class="faq__cell">
-                <input type="tel"
-                       name="phone"
-                       class="faq__cell-input"
-                       placeholder="Номер телефона"
-                       pattern="\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}"
-                       data-phone
-                       required />
-              </div>
-            </div>
-            <div class="faq__row">
-              <div class="faq__cell--long">
-                <textarea class="faq__cell-input--long tablet"
-                          placeholder="Уточните свой вопрос"
-                          name="message"
-                          maxlength="300"></textarea>
-                <input class="faq__cell-input--long hidden-tablet"
-                       placeholder="Уточните свой вопрос"
-                       name="message"
-                       maxlength="300">
-              </div>
-            </div>
-            <div class="policy">
-              <input type="checkbox" class="policy__checkbox" name="" checked>
-              <label for="policy" class="policy__label">
-                С правилами <a href="/">политики конфиденциальности</a> ознакомлен
-              </label>
-            </div>
-          </div>
-          <div class="cta__action">
-            <button type="submit" class="button cta__button">Оставить заявку</button>
-          </div>
-        </form>
+        {% include 'partials/contact-request-form.html' with with_header=True %}
         <div class="decorative-lines">
           <span class="decorative-lines__item"></span>
           <span class="decorative-lines__item"></span>

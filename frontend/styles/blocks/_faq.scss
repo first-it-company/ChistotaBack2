@@ -117,6 +117,13 @@
       gap: rem(20);
       max-height: 100%;
     }
+
+    &-title {
+      font-size: rem(32);
+      margin-bottom: rem(30);
+      text-transform: uppercase;
+      font-weight: 600;
+    }
   }
 
   &__fields {
@@ -124,7 +131,7 @@
     gap: rem(16);
     flex-wrap: wrap;
     width: 100%;
-    margin-bottom: rem(40);
+    margin-bottom: rem(24);
 
     @include laptop {
       width: auto;
@@ -244,7 +251,7 @@
   }
 
   &__button {
-    padding: 1.2vw 2vw;
+    padding: 2vw;
     line-height: rem(17);
     text-wrap: nowrap;
     width: 100%;

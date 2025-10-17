@@ -43,55 +43,7 @@
         </a>
       </div>
       <div class="faq__form-wrapper decorative-lines__wrapper">
-        <form action="/"
-              method="post"
-              class="faq__form"
-              id="form-feedback"
-              data-url="{% url 'post_feedback' %}"
-              data-feedback-form>
-          {% csrf_token %}
-          <div class="faq__fields">
-            <div class="faq__row">
-              <div class="faq__cell">
-                <input type="text"
-                       class="faq__cell-input"
-                       placeholder="Имя"
-                       required
-                       name="name"
-                       minlength="2"
-                       maxlength="50" />
-              </div>
-              <div class="faq__cell">
-                <input type="tel"
-                       name="phone"
-                       class="faq__cell-input"
-                       placeholder="Номер телефона"
-                       pattern="\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}"
-                       data-phone
-                       required />
-              </div>
-            </div>
-            <div class="faq__row long">
-              <div class="faq__cell--long">
-                <textarea class="faq__cell-input--long"
-                          placeholder="Уточните свой вопрос"
-                          name="message"
-                          maxlength="300"></textarea>
-              </div>
-            </div>
-            <div class="policy">
-              <input type="checkbox" class="policy__checkbox" name="" checked>
-              <label for="policy" class="policy__label">
-                С правилами <a href="/">политики конфиденциальности</a> ознакомлен
-              </label>
-            </div>
-          </div>
-          <div class="faq__action">
-            <button type="submit" class="button faq__button">
-              <span>Оставить заявку</span>
-            </button>
-          </div>
-        </form>
+        {% include 'partials/contact-request-form.html' with with_header=False %}
         <div class="decorative-lines">
           <span class="decorative-lines__item"></span>
           <span class="decorative-lines__item"></span>
