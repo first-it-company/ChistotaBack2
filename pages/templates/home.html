@@ -125,34 +125,42 @@
           </div>
           <button class="button hero__button modal-open">Рассчитать стоимость</button>
           <div class="hero__advantages-links cta__socials-wrapper">
-            <a href="{{ instagram_url }}" class="cta__socials-logo" target="_blank">
-              <img src="{% static "pages/icons/instagram.svg" %}"
-                   alt="Instagram"
-                   class="cta__logo"
-                   width="100%"
-                   height="100%">
-            </a>
-            <a href="{{ telegram_url }}" class="cta__socials-logo" target="_blank">
-              <img src="{% static "pages/icons/telegram.svg" %}"
-                   alt="Telegram"
-                   class="cta__logo"
-                   width="100%"
-                   height="100%">
-            </a>
-            <a href="{{ vk_url }}" class="cta__socials-logo" target="_blank">
-              <img src="{% static "pages/icons/vk.svg" %}"
-                   alt="Вконтакте"
-                   class="cta__logo"
-                   width="100%"
-                   height="100%">
-            </a>
-            <a href="{{ whatsapp_url }}" class="cta__socials-logo" target="_blank">
-              <img src="{% static "pages/icons/whatsapp.svg" %}"
-                   alt="WhatsApp"
-                   class="cta__logo"
-                   width="100%"
-                   height="100%">
-            </a>
+            {% if instagram_url %}
+              <a href="{{ instagram_url }}" class="cta__socials-logo" target="_blank">
+                <img src="{% static "pages/icons/instagram.svg" %}"
+                     alt="Instagram"
+                     class="cta__logo"
+                     width="100%"
+                     height="100%">
+              </a>
+            {% endif %}
+            {% if telegram_url %}
+              <a href="{{ telegram_url }}" class="cta__socials-logo" target="_blank">
+                <img src="{% static "pages/icons/telegram.svg" %}"
+                     alt="Telegram"
+                     class="cta__logo"
+                     width="100%"
+                     height="100%">
+              </a>
+            {% endif %}
+            {% if vk_url %}
+              <a href="{{ vk_url }}" class="cta__socials-logo" target="_blank">
+                <img src="{% static "pages/icons/vk.svg" %}"
+                     alt="Вконтакте"
+                     class="cta__logo"
+                     width="100%"
+                     height="100%">
+              </a>
+            {% endif %}
+            {% if whatsapp_url %}
+              <a href="{{ whatsapp_url }}" class="cta__socials-logo" target="_blank">
+                <img src="{% static "pages/icons/whatsapp.svg" %}"
+                     alt="WhatsApp"
+                     class="cta__logo"
+                     width="100%"
+                     height="100%">
+              </a>
+            {% endif %}
           </div>
         </div>
       </div>
@@ -279,34 +287,42 @@
         <div class="cta__socials">
           <p class="cta__socials-title">Подписывайся на нас в социальных сетях! Будь вкурсе всех событий</p>
           <div class="cta__socials-wrapper">
-            <a href="{{ instagram_url }}" class="cta__socials-logo" target="_blank">
-              <img src="{% static "pages/icons/instagram.svg" %}"
-                   alt="Instagram"
-                   class="cta__logo"
-                   width="100%"
-                   height="100%">
-            </a>
-            <a href="{{ telegram_url }}" class="cta__socials-logo" target="_blank">
-              <img src="{% static "pages/icons/telegram.svg" %}"
-                   alt="Telegram"
-                   class="cta__logo"
-                   width="100%"
-                   height="100%">
-            </a>
-            <a href="{{ vk_url }}" class="cta__socials-logo" target="_blank">
-              <img src="{% static "pages/icons/vk.svg" %}"
-                   alt="Вконтакте"
-                   class="cta__logo"
-                   width="100%"
-                   height="100%">
-            </a>
-            <a href="{{ whatsapp_url }}" class="cta__socials-logo" target="_blank">
-              <img src="{% static "pages/icons/whatsapp.svg" %}"
-                   alt="WhatsApp"
-                   class="cta__logo"
-                   width="100%"
-                   height="100%">
-            </a>
+            {% if instagram_url %}
+              <a href="{{ instagram_url }}" class="cta__socials-logo" target="_blank">
+                <img src="{% static "pages/icons/instagram.svg" %}"
+                     alt="Instagram"
+                     class="cta__logo"
+                     width="100%"
+                     height="100%">
+              </a>
+            {% endif %}
+            {% if telegram_url %}
+              <a href="{{ telegram_url }}" class="cta__socials-logo" target="_blank">
+                <img src="{% static "pages/icons/telegram.svg" %}"
+                     alt="Telegram"
+                     class="cta__logo"
+                     width="100%"
+                     height="100%">
+              </a>
+            {% endif %}
+            {% if vk_url %}
+              <a href="{{ vk_url }}" class="cta__socials-logo" target="_blank">
+                <img src="{% static "pages/icons/vk.svg" %}"
+                     alt="Вконтакте"
+                     class="cta__logo"
+                     width="100%"
+                     height="100%">
+              </a>
+            {% endif %}
+            {% if whatsapp_url %}
+              <a href="{{ whatsapp_url }}" class="cta__socials-logo" target="_blank">
+                <img src="{% static "pages/icons/whatsapp.svg" %}"
+                     alt="WhatsApp"
+                     class="cta__logo"
+                     width="100%"
+                     height="100%">
+              </a>
+            {% endif %}
           </div>
         </div>
       </div>
