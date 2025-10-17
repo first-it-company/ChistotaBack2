@@ -13,7 +13,6 @@
   font-size: 1.5vw;
   text-transform: uppercase;
   border: none;
-  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
   text-align: center;
 
   @include tablet {
@@ -37,7 +36,7 @@
     background-color: var(--color-blue);
     color: var(--color-white);
     border: none;
-    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+
     position: relative;
     overflow: hidden;
     display: flex;
