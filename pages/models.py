@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from imagekit.models import ProcessedImageField
+from slugify import slugify
 
 
 class AboutMain(models.Model):
@@ -46,6 +47,7 @@ class Services(models.Model):
     scope = models.ForeignKey(
         ScopeServices, on_delete=models.CASCADE, verbose_name="Сфера"
     )
+    slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name="URL")
     desc = models.TextField(verbose_name="Описание")
     color = models.CharField(max_length=50, verbose_name="Цвет)")
     gradient = models.TextField(
@@ -64,7 +66,21 @@ class Services(models.Model):
         return self.scope.name
 
     def get_absolute_url(self):
-        return reverse("service_detail", kwargs={"pk": self.pk})
+        return reverse("service_detail", kwargs={"slug": self.slug})
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            base_slug = slugify(self.scope.name)
+            slug = base_slug
+            counter = 1
+            qs = Services.objects.all()
+            if self.pk:
+                qs = qs.exclude(pk=self.pk)
+            while qs.filter(slug=slug).exists():
+                slug = f'{base_slug}-{counter}'
+                counter += 1
+            self.slug = slug
+        super().save(*args, **kwargs)
 
 
 class ServiceInclusion(models.Model):

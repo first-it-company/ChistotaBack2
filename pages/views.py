@@ -176,8 +176,8 @@ def catalog(request):
     )
 
 
-def service_detail(request, pk: int):
-    service = get_object_or_404(Services, pk=pk)
+def service_detail(request, slug: str):
+    service = get_object_or_404(Services, slug=slug)
     used_orders_scope_ids = Order.objects.values_list("scope", flat=True).distinct()
     scope_services_for_orders = ScopeServices.objects.filter(
         id__in=used_orders_scope_ids
