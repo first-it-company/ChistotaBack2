@@ -53,7 +53,15 @@
                   </div>
                 </div />
                 <div class="service__pricing">
-                  <a class="button service__button" href="{{ service.get_absolute_url }}">ЗАКАЗАТЬ</a>
+                  <div class="button__wrapper">
+                    <a href="{{ service.get_absolute_url }}" class="button service__button">подробнее</a>
+                    <a href="{{ service.get_absolute_url }}" class="service__button-arrow">
+                      <svg viewBox="0 0 58 58" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M37.4999 20.5417L20.4999 37.5417" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M37.4999 37.5417V20.5417H20.4999" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                      </svg>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>

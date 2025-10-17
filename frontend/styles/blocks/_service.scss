@@ -313,6 +313,30 @@
     }
   }
 
+  &__button-arrow {
+    background-color: var(--color-blue);
+    border-radius: rem(16);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    svg {
+      width: rem(52);
+      height: rem(52);
+      margin: rem(16);
+      transition: all 0.3s ease;
+    }
+
+    &:hover {
+      background-color: var(--color-white);
+
+      svg {
+        transform: rotate(45deg);
+        color: var(--color-blue);
+      }
+    }
+  }
+
   &__progress {
     background-color: var(--color-gray-100);
     border-radius: 50px;
