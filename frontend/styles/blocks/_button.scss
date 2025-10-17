@@ -28,8 +28,7 @@
 
   @include hover{
     transition-duration: var(--transition-duration);
-    background-color: var(--color-white);
-    color: var(--color-blue);
+    background-color: var(--color-blue-hover);
   }
 
   &--arrow {
@@ -83,7 +82,7 @@
     @include hover{
 
       @include tablet-above{
-        background-color: var(--color-white);
+        background-color: var(--color-blue-hover);
       }
 
       transition-duration: var(--transition-duration);
@@ -99,7 +98,7 @@
       .arrow-container::before,
       .arrow-container::after {
         @include tablet-above{
-          background-image: url('data:image/svg+xml;utf8,<svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.5713 8.5H1.42915" stroke="%23007bff" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" /><path d="M8.50022 15.5711L15.5713 8.5L8.50022 1.42893" stroke="%23007bff" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" /></svg>');
+          background-image: url('data:image/svg+xml;utf8,<svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.5713 8.5H1.42915" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" /><path d="M8.50022 15.5711L15.5713 8.5L8.50022 1.42893" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" /></svg>');
         }
       }
     }
@@ -112,7 +111,7 @@
 
     @include hover{
       transition-duration: var(--transition-duration);
-      background-color: var(--color-gray-100);
+      background-color: var(--color-blue-hover);
       color: var(--color-blue);
     }
   }

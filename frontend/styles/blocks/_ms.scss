@@ -45,6 +45,10 @@
           padding: rem(16) rem(32);
           background-color: var(--color-blue);
 
+          @include hover {
+            background-color: var(--color-blue-hover);
+          }
+
           img {
             filter: brightness(0) invert(1);
           }

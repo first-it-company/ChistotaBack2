@@ -270,7 +270,7 @@
     height: rem(56);
 
     @include hover{
-      background-color: var(--color-white);
+      background-color: var(--color-blue-hover);
       transition-duration: var(--transition-duration);
     }
 

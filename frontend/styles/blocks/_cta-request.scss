@@ -87,11 +87,6 @@
       padding: rem(24) rem(40);
     }
 
-    @include hover {
-      background-color: var(--color-white);
-      color: rgb(0, 96, 223);
-    }
-
     @include mobile {
       width: 100%;
     }

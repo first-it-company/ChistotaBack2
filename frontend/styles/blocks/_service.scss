@@ -330,11 +330,9 @@
     }
 
     &:hover {
-      background-color: var(--color-white);
-
       svg {
         transform: rotate(45deg);
-        color: var(--color-blue);
+        color: var(--color-white);
       }
     }
   }
