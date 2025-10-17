@@ -3,78 +3,79 @@
 .cta-request {
   padding: rem(60) 0;
 
-  @include tablet{
+  @include tablet {
     padding: rem(40) 0;
   }
 
-  &__wrapper{
+  &__wrapper {
     border-radius: rem(40);
     background: rgb(42, 42, 42);
     background-size: cover;
     background-repeat: no-repeat;
+    overflow: hidden;
 
-    @include tablet{
-    }
+    @include tablet {}
   }
 
-  &__inner{
+  &__inner {
     padding-block: rem(80);
     padding-inline: 5.6vw;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background: url("@/images/cta-request/back.png") 0 0 / cover no-repeat;
 
-    @include tablet{
+    @include tablet {
       padding: 60px;
       align-items: flex-start;
       flex-direction: column;
       row-gap: rem(60);
     }
 
-    @include mobile{
+    @include mobile {
       padding-inline: 16px;
     }
   }
 
-  &__header{
+  &__header {
     font-weight: 600;
     font-size: 5vw;
     text-transform: uppercase;
     color: var(--color-white);
     line-height: normal;
 
-    @include laptop{
-     font-size: rem(54);
+    @include laptop {
+      font-size: rem(54);
     }
 
-    @include tablet{
+    @include tablet {
       font-size: rem(72);
     }
 
-    @include mobile{
+    @include mobile {
       font-size: rem(40);
     }
   }
 
-  &__action{
+  &__action {
     display: flex;
     flex-direction: column;
     row-gap: 1.5vw;
 
-    @include tablet{
+    @include tablet {
       row-gap: 20px;
       width: 100%;
       flex-direction: row;
       justify-content: space-between;
     }
 
-    @include mobile{
+    @include mobile {
       flex-direction: column;
       align-items: flex-start;
     }
   }
 
-  &__button{
+  &__button {
     font-size: 1.5vw;
     padding: 2vw 6vw;
     //width: rem(399);
@@ -86,40 +87,38 @@
       padding: rem(24) rem(40);
     }
 
-    @include hover{
-        background-color: var(--color-white);
-        color: rgb(0, 96, 223);
+    @include hover {
+      background-color: var(--color-white);
+      color: rgb(0, 96, 223);
     }
 
-    @include mobile{
+    @include mobile {
       width: 100%;
     }
   }
 
-  &__contacts{
+  &__contacts {
     display: flex;
     column-gap: rem(32);
     justify-content: center;
     width: 100%;
 
-    @include mobile{
+    @include mobile {
       column-gap: rem(32);
     }
 
-    &-item{
+    &-item {
       display: flex;
       justify-content: center;
       width: 3vw;
       height: 3vw;
 
-      @include tablet{
+      @include tablet {
         width: 40px;
         height: 40px;
       }
 
-      @include hover{
-
-      }
+      @include hover {}
     }
   }
 }
