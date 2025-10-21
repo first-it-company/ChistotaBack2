@@ -1,6 +1,20 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+<div class="breadcrumbs">
+    <ul class="breadcrumbs__list">
+        <li class="breadcrumbs__item">
+            <a class="breadcrumbs__link" href="{% url 'home' %}">
+                Главная
+            </a>
+        </li>
+        <li class="breadcrumbs__item">
+            <a class="breadcrumbs__link" href="{% url 'contacts' %}">
+                Контакты
+            </a>
+        </li>
+    </ul>
+</div>
   <section class="contacts">
     <h1 class="contacts__header">
       Контактная <span class="gradient">информация</span>

@@ -25,19 +25,6 @@
     font-size: rem(14);
   }
 
-  &:not(:last-child){
-    &::after{
-      content: "";
-      right: -10px;
-      position: absolute;
-      height: rem(32);
-      border-radius: rem(5);
-      width: 1px;
-      background-color: var(--color-gray-50);
-    }
-  }
-
-
   @include hover{
     background-color: var(--color-blue-hover);
     color: var(--color-white);

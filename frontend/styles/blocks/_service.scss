@@ -315,6 +315,7 @@
   }
 
   &__button-arrow {
+    @include reset-button;
     background-color: var(--color-blue);
     border-radius: rem(16);
     display: flex;

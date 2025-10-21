@@ -2,11 +2,12 @@
 
 .footer {
   border-radius: 40px 40px 0px 0px;
-  /* Основные/Черный */
   background: rgb(42, 42, 42);
   position: relative;
 
-
+  @include mobile{
+    border-radius: 32px 32px 0px 0px;
+  }
 
   &__inner {
     padding: rem(60) rem(40) rem(40) rem(40);
@@ -86,6 +87,7 @@
 
   &__socials-wrapper {
     display: flex;
+    flex-wrap: wrap;
     gap: rem(16);
     padding: 0.75vw 1.10vw;
     background: rgba(255, 255, 255, 0.04);
@@ -216,8 +218,8 @@
 
     &-logo {
       margin-right: 8px;
-      width: 2vw;
-      height: 2vw;
+      width: fluid(32, 28);
+      height:  fluid(32, 28);
     }
   }
 

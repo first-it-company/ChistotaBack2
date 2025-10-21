@@ -36,7 +36,7 @@
     flex-direction: column;
     gap: rem(8);
     color: var(--color-gray-300);
-    background-image: url("/static/pages/advantages-back.png");
+    background-image: url("/static/pages/images/hero/advantages-back.png");
     text-align: center;
 
     @include tablet {
@@ -50,18 +50,10 @@
 
     &-header {
       color: rgb(255, 255, 255);
-      font-size: 3.2vw;
+      font-size: fluid(42, 28);
       font-weight: 600;
       text-transform: uppercase;
       margin-bottom: 1.5rem;
-
-      @include tablet {
-        font-size: rem(32);
-      }
-
-      @include mobile {
-        font-size: rem(28);
-      }
     }
 
     &-wrapper {
@@ -318,7 +310,7 @@
   }
 
   &__header {
-    font-size: fluid(86, 30);
+    font-size: fluid(70, 28);
     font-weight: 600;
     text-transform: uppercase;
     color: var(--color-black);
@@ -391,6 +383,7 @@
       width: 32%;
       padding: 1.4vw 4vw;
       justify-content: center;
+      align-items: center;
       font-size: 1.5vw;
       background: var(--color-white-bg);
 
@@ -429,31 +422,28 @@
   }
 
   &__button {
-    font-size: 2vw !important;
     padding: 2vw rem(50) !important;
+    width: 100%;
 
     @include mobile {
       padding: rem(22) rem(10) !important;
       font-size: rem(20) !important;
     }
 
-    &--arrow {
-      min-width: 6vw;
-      aspect-ratio: 1;
+    &--adv{
+      width: fit-content;
+      align-self: center;
+      padding-block: fluid(33, 10) !important;
 
       @include mobile {
-        min-width: 58px;
+        width: 100%;
       }
+    }
 
-      .arrow-container {
-        width: 2vw !important;
-        height: 2vw !important;
-
-        @include mobile {
-          width: 20px !important;
-          height: 20px !important;
-        }
-      }
+    &--arrow {
+      aspect-ratio: 1;
+      height: 100%;
+      flex-shrink: 0;
     }
 
     &-wrap {

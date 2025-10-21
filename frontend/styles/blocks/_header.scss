@@ -139,7 +139,7 @@
     &-wrapper {
       display: flex;
       align-items: center;
-      column-gap: rem(24);
+      column-gap: rem(12);
       flex-shrink: 0;
 
       @include mobile-s {
