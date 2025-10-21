@@ -11,7 +11,6 @@ def fetch_reviews_data():
         response.raise_for_status()
         data = response.json()
 
-        # Получаем рейтинги из branch
         branch = data["branch"]
         ratings = {
             "twogis": "{:.1f}".format(float(branch["twogis_review_avg"])),
@@ -25,9 +24,12 @@ def fetch_reviews_data():
             "yandex": branch["yandex_review_count"],
         }
 
-        # Преобразуем отзывы в нужный формат
         reviews_for_slider = []
         for review in data["reviews"]:
+            rating_value = float(review["rating"])
+            if rating_value < 4.7:
+                continue
+
             provider = review["provider"]
             provider_info = {
                 "2gis": {
@@ -49,19 +51,11 @@ def fetch_reviews_data():
 
             slider_review = {
                 "author_name": review["author"],
-                "rating": int(
-                    float(review["rating"])
-                ),  # Преобразуем в целое число для звезд
-                "rating_display": "{:.1f}".format(
-                    float(review["rating"])
-                ),  # Для отображения с десятичной частью
+                "rating": int(rating_value),
+                "rating_display": "{:.1f}".format(rating_value),
                 "review_text": review["content"],
-                "photo": (
-                    review["avatar"]
-                    if review["avatar"]
-                    else "/static/pages/images/reviews/avatar.png"
-                ),
-                "service": "Уборка",  # Можно добавить определение услуги по контексту отзыва
+                "photo": review["avatar"] or "/static/pages/images/reviews/avatar.png",
+                "service": "Уборка",
                 "link": {
                     "url": review["review_url"],
                     "text": provider_info[provider]["text"],
@@ -70,9 +64,9 @@ def fetch_reviews_data():
                 },
                 "provider": provider,
             }
+
             reviews_for_slider.append(slider_review)
 
-        # Сортируем отзывы - сначала с фото
         reviews_for_slider.sort(key=lambda x: not bool(x["link"]["image"]))
 
         return {"reviews": reviews_for_slider, "ratings": ratings, "counts": counts}

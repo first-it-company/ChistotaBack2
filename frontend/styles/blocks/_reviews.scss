@@ -48,27 +48,14 @@
   }
 
   &__counts{
-    color: rgb(147, 147, 147);
-    font-family: Noah;
-    font-size: 1.2vw;
+    font-family: Noah, sans-serif;
+    color: var(--color-gray-200);
+    font-size: fluid(18, 16);
     font-weight: 400;
-
-    @include tablet{
-      font-size: rem(18);
-    }
-
-    @include mobile {
-      font-size: 14px;
-    }
+    margin-right: 8px;
   }
 
-  &__header{
-    line-height: rem(35);
 
-    @include tablet{
-      line-height: rem(25);
-    }
-  }
   &__subheader{
     @include laptop{
       font-size: rem(20);
@@ -110,13 +97,11 @@
     margin: 0 !important;
 
     &-slide{
-      background-color: var(--color-gray-50);
-      border-radius: rem(17);
-      padding: 1.3vw 1.6vw;
-      width: 36vw; // Уменьшаем ширину слайда
+      background-color: var(--color-white-bg);
+      border-radius: rem(20);
+      padding: fluid(20, 16);
+      width: 36vw;
       transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
-      //margin-right: 2vw; // Добавляем отступ между слайдами
-
 
       @include tablet{
         width: 75vw;
@@ -196,7 +181,7 @@
 
     &-name{
       font-weight: 400;
-      font-size: 1.3vw;
+      font-size: fluid(24, 18);
       color: var(--color-black);
 
       @include tablet{
@@ -207,7 +192,7 @@
     &-service{
       font-family: var(--font-family-accent);
       font-weight: 400;
-      font-size: 1.2vw;
+      font-size:fluid(24, 14);
       color: var(--color-gray-200);
 
       @include tablet{
@@ -230,7 +215,7 @@
   &__body{
     font-family: var(--font-family-accent);
     font-weight: 400;
-    font-size: 1.1vw;
+    font-size: rem(18);
     color: var(--color-black);
     display: -webkit-box;
     -webkit-line-clamp: 5;
@@ -294,12 +279,12 @@
     object-fit: cover;
 
     &-wrapper{
-      max-width: rem(64);
-      max-height: rem(64);
+      max-width: rem(40);
+      max-height: rem(40);
 
       @include tablet{
-        max-width: rem(59);
-        max-height: rem(59);
+        max-width: rem(36);
+        max-height: rem(36);
       }
     }
   }

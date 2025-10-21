@@ -1,14 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
   {% include 'partials/service.html' with is_catalog=True %}
-  <section class="extra-services">
-    <h2 class="h5 extra-services__header">Дополнительные Услуги</h2>
-    <div class="extra-services__cards">
-      {% for service in services %}
-        {% include 'partials/extra-services-card.html' with service=service %}
-      {% endfor %}
-    </div>
-  </section>
+    {% if additional_services %}
+      <section class="extra-services">
+        <h2 class="h5 extra-services__header">Дополнительные Услуги</h2>
+            <div class="extra-services__cards">
+              {% for service in additional_services %}
+                {% include 'partials/extra-services-card.html' with service=service %}
+              {% endfor %}
+            </div>
+      </section>
+    {% endif %}
   {% include 'partials/reviews.html' %}
   {% include 'partials/cta-request.html' %}
   {% include 'partials/faq.html' with with_border=False %}

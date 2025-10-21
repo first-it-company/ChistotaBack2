@@ -1,0 +1,170 @@
+@use '../helpers' as *;
+
+.about-hero{
+  &__info{
+    padding-top: fluid(40, 32);
+    padding-bottom: fluid(60, 40);
+    padding-inline: fluid(40, 16);
+    color: var(--color-black);
+  }
+
+  &__header{
+    display: flex;
+    flex-direction: column;
+    gap: fluid(24, 20);
+    margin-bottom: fluid(20, 10);
+  }
+
+  &__subheader{
+    display: flex;
+    justify-content: space-between;
+    gap: rem(24);
+
+    @include mobile{
+      flex-direction: column;
+    }
+  }
+
+  &__title{
+    text-transform: uppercase;
+    font-size: fluid(70, 30);
+    font-weight: 600;
+  }
+
+  &__subtitle{
+    font-family: var(--font-family-accent);
+    font-size: fluid(24, 20);
+    font-weight: 400;
+  }
+
+  &__desc{
+    font-family: var(--font-family-accent);
+    font-size: fluid(20, 16);
+    font-weight: 400;
+
+    span{
+      color: var(--color-blue);
+    }
+
+    &-wrapper{
+      display: flex;
+      flex-direction: column;
+      gap: rem(8);
+    }
+  }
+
+  &__team-img{
+    height: fluid(500, 200);
+    overflow: hidden;
+
+    @include mobile{
+      height: rem(175);
+    }
+
+    @include mobile-s{
+      height: rem(140);
+    }
+
+    img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+    }
+  }
+
+  &__advantages{
+    padding-top: rem(40);
+    padding-bottom: rem(60);
+    padding-inline: fluid(40, 16);
+  }
+
+  &__list{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: rem(12);
+
+    @include tablet{
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+
+  &__item{
+    background-color: var(--color-white-bg);
+    border-radius: rem(20);
+    padding: rem(40);
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+    justify-content: space-between;
+
+    @include laptop{
+      padding: rem(20);
+    }
+
+    @include tablet{
+      padding: rem(40);
+    }
+
+    @include mobile-s{
+      padding: rem(20);
+    }
+
+    &-badge{
+      text-align: center;
+      background-color: var(--color-blue);
+      padding: rem(12) rem(16);
+      border-radius: rem(150);
+      color: var(--color-white);
+      line-height: 1;
+      font-size: fluid(12, 10);
+      font-weight: 500;
+      text-transform: uppercase;
+
+      @include laptop{
+        padding: rem(8);
+      }
+
+      @include tablet{
+        padding: rem(12) rem(16);
+      }
+    }
+
+    &-desc{
+      display: flex;
+      flex-direction: column;
+      gap: rem(12);
+      justify-content: space-between;
+
+      &-p{
+        font-size: fluid(16, 14);
+        text-align: right;
+        color: var(--color-black);
+      }
+    }
+  }
+
+  &__number{
+    display: flex;
+    gap:rem(6);
+    align-items: flex-end;
+    color: var(--color-black);
+
+    &-value{
+      font-size: fluid(80, 60);
+      font-weight: 600;
+      line-height: 0.7;
+    }
+
+    &-subtitle{
+      font-size: fluid(16, 14);
+      color: rgba(42, 42, 42, 0.6);
+    }
+  }
+
+  &__line{
+    background-color: var(--color-gray-100);
+    width: 100%;
+    height: 1px;
+  }
+}

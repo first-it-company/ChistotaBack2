@@ -1,22 +1,47 @@
+from email.policy import default
+
 from django.db import models
 from django.urls import reverse
 from imagekit.models import ProcessedImageField
 from slugify import slugify
+from transliterate import translit
 
+
+def slugify_rus(text):
+    try:
+        return slugify(translit(text, 'ru', reversed=True))
+    except Exception:
+        return slugify(text)
 
 class AboutMain(models.Model):
     cnt_people = models.CharField(
-        max_length=50, verbose_name="Кол-во человек в команде"
+        max_length=50,
+        verbose_name="Кол-во человек в команде"
     )
-    cnt_year = models.CharField(max_length=50, verbose_name="Кол-во лет работы в сфере")
-    cnt_square = models.CharField(max_length=50, verbose_name="Кол-во кв.метров чистки")
+
+    cnt_year = models.CharField(
+        max_length=50,
+        verbose_name="Кол-во лет работы в сфере"
+    )
+
+    cnt_square = models.CharField(
+        max_length=50,
+        verbose_name="Кол-во кв.метров чистки"
+    )
+
+    cnt_reviews= models.CharField(
+        max_length=50,
+        verbose_name="Кол-во положительных отзывов",
+        default="25 000",
+        help_text="Число на странице 'О компании' в подзаголовке 'довольными остались свыше 25 000 человек!'"
+    )
 
     class Meta:
-        verbose_name = "О нас на главном экране"
-        verbose_name_plural = "О нас на главном экране"
+        verbose_name = "Информация о компании"
+        verbose_name_plural = "Информация о компании"
 
     def __str__(self):
-        return f"{self.cnt_people} | {self.cnt_year} | {self.cnt_square}"
+        return f"{self.cnt_people} | {self.cnt_year} | {self.cnt_square} | {self.cnt_reviews}"
 
 
 class ScopeServices(models.Model):
@@ -47,11 +72,19 @@ class Services(models.Model):
     scope = models.ForeignKey(
         ScopeServices, on_delete=models.CASCADE, verbose_name="Сфера"
     )
-    slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name="URL")
+    slug = models.SlugField(
+        max_length=255,
+        unique=True,
+        db_index=True,
+        verbose_name="URL",
+        editable=False,
+        blank=True
+    )
     desc = models.TextField(verbose_name="Описание")
-    color = models.CharField(max_length=50, verbose_name="Цвет)")
+    color = models.CharField(max_length=50, verbose_name="Цвет")
     gradient = models.TextField(
-        verbose_name="Градиент (linear-gradient(0deg, #53647A, #53647A), rgba(83, 100, 122, 0.4) 55%, rgba(0, 96, 223, 0.4) 100%);)"
+        verbose_name="Градиент",
+        help_text = "linear-gradient(0deg, #53647A, #53647A), rgba(83, 100, 122, 0.4) 55%, rgba(0, 96, 223, 0.4) 100%);"
     )
     time_work = models.CharField(max_length=150, verbose_name="Часы работы")
     square = models.CharField(max_length=150, verbose_name="Площадь работы")
@@ -65,23 +98,41 @@ class Services(models.Model):
     def __str__(self):
         return self.scope.name
 
+    def _generate_unique_slug(self):
+        base_slug = slugify_rus(self.scope.name)
+        slug = base_slug
+        counter = 1
+        while Services.objects.filter(slug=slug).exclude(pk=self.pk).exists():
+            slug = f"{base_slug}-{counter}"
+            counter += 1
+        return slug
+
     def get_absolute_url(self):
         return reverse("service_detail", kwargs={"slug": self.slug})
 
     def save(self, *args, **kwargs):
-        if not self.slug:
-            base_slug = slugify(self.scope.name)
-            slug = base_slug
-            counter = 1
-            qs = Services.objects.all()
-            if self.pk:
-                qs = qs.exclude(pk=self.pk)
-            while qs.filter(slug=slug).exists():
-                slug = f'{base_slug}-{counter}'
-                counter += 1
-            self.slug = slug
+        if not self.slug or self.slug == '':
+            self.slug = self._generate_unique_slug()
         super().save(*args, **kwargs)
 
+class AdditionalServices(models.Model):
+    scope = models.ForeignKey(
+        ScopeServices,
+        on_delete=models.CASCADE,
+        verbose_name="Сфера"
+    )
+
+    desc = models.TextField(
+        max_length=150,
+        verbose_name="Описание дополнительной услуги"
+    )
+
+    class Meta:
+        verbose_name = "Дополнительная услуга"
+        verbose_name_plural = "Дополнительные услуги"
+
+    def __str__(self):
+        return f"{self.scope.name} | {self.desc}"
 
 class ServiceInclusion(models.Model):
     service = models.ForeignKey(

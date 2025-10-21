@@ -16,6 +16,7 @@ from .models import (
     Services,
     SocialNetwork,
     VideoMain,
+    AdditionalServices
 )
 
 
@@ -42,3 +43,4 @@ admin.site.register(ServicePhoto)
 admin.site.register(Logo)
 admin.site.register(SocialNetwork)
 admin.site.register(CompanyDetails)
+admin.site.register(AdditionalServices)

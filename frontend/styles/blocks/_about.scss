@@ -31,13 +31,13 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: url('@/images/about/background.png') 0 0 / cover no-repeat;
+      background: url('/static/pages/images/about/background.png') 0 0 / cover no-repeat;
       z-index: 100;
       pointer-events: none;
 
 
       @include tablet{
-        background: url('@/images/about/background-m.png') 0 0 / cover no-repeat;
+        background: url('/static/pages/images/about/background-m.png') 0 0 / cover no-repeat;
       }
     }
   }
@@ -63,7 +63,7 @@
     }
 
     @include mobile{
-      font-size: rem(58);
+      font-size: rem(48);
       line-height: normal;
       margin-bottom: rem(32);
     }

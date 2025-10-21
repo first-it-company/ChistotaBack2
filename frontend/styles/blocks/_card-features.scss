@@ -3,19 +3,15 @@
 .card-features {
   display: flex;
   align-items: center;
-  font-size: 1vw;
+  font-size: fluid(16, 14);
+  font-weight: 500;
   line-height: normal;
   border-radius: rem(150);
   gap: rem(6);
   padding: 0.5vw 1vw;
   background: #F5F8FC;
 
-  @media (max-width: 1500px) {
-    font-size: 16px;
-  }
-
   @include tablet {
-    font-size: rem(14);
     padding: 12px 22px;
   }
 
