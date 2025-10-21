@@ -27,7 +27,7 @@
 
   &__header {
     margin-bottom: rem(26);
-    font-size: 3.2vw;
+    font-size: fluid(50, 36);
     line-height: 0.8;
     text-transform: uppercase;
     color: var(--color-black);
@@ -105,9 +105,8 @@
     }
 
     @include mobile {
-      padding: 24px;
-      padding-bottom: 40px;
-      border-radius: rem(20);
+      padding: 8px;
+      border-radius: rem(24);
     }
 
     &:not(:first-child) {
@@ -176,7 +175,9 @@
 
       @include tablet {
         width: 100%;
+        padding: fluid(24, 16);
       }
+
     }
 
     &-header {
@@ -298,9 +299,9 @@
     border-radius: 16px;
     background: var(--color-blue);
     color: var(--color-white);
-    font-size: 1.5vw;
+    font-size: fluid(24,20);
     font-weight: 500;
-    padding: 1.5vw 3vw;
+    padding-block: fluid(30, 20);
     text-wrap: nowrap;
     text-transform: uppercase;
 
@@ -308,14 +309,8 @@
       color: var(--color-white);
     }
 
-    @include mobile {
-      width: rem(350);
-    }
-
     @include tablet {
       width: 100%;
-      padding: 1.5rem 3rem;
-      font-size: 1.5rem;
     }
   }
 
@@ -325,13 +320,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
-    svg {
-      width: rem(52);
-      height: rem(52);
-      margin: rem(16);
-      transition: all 0.3s ease;
-    }
+    height: 100%;
+    aspect-ratio: 1;
+    transition: all 0.3s ease;
 
     &:hover {
       svg {
@@ -371,6 +362,7 @@
       width: 100%;
       transform: translateZ(0);
       isolation: isolate;
+      margin: 0!important;
     }
 
     &-slide {

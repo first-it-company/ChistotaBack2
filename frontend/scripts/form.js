@@ -17,7 +17,8 @@ export function initFormFeedback() {
     if (phoneInput) {
         phoneMask = IMask(phoneInput, {
             mask: '+{7} (000) 000-00-00',
-            lazy: false,
+            lazy: true,
+            placeholderChar: '0',
             dispatch: function (appended, dynamicMasked) {
                 return dynamicMasked;
             },

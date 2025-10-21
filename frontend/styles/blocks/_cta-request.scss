@@ -23,7 +23,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: url("@/images/cta-request/back.png") 0 0 / cover no-repeat;
+    background: url("/static/pages/images/cta-request/background.png") 0 0 / cover no-repeat;
 
     @include tablet {
       padding: 60px;
@@ -95,10 +95,11 @@
   &__contacts {
     display: flex;
     column-gap: rem(32);
-    justify-content: center;
+    justify-content: flex-end;
     width: 100%;
 
     @include mobile {
+      justify-content: flex-start;
       column-gap: rem(32);
     }
 

@@ -8,22 +8,26 @@ export function initTeamSlider() {
   const splide = new Splide(splideElement, {
     type: 'slide',
     rewind: false,
-    perPage: 3,
+    perPage: 1,
     perMove: 1,
     gap: 24,
     padding: 0,
     arrows: false,
     pagination: false,
+    trimSpace: false,
+    fixedWidth: 400,
+
     breakpoints: {
       1440: {
-        perPage: 1,
-        padding: { right: '50%' },
+          fixedWidth: 300,
+          perPage: 1,
+          padding: { right: '50%' },
       },
       768: {
-        padding: { right: '30%' },
+          fixedWidth: 260,
+          padding: { right: 'auto' },
       },
       520: {
-        padding: { right: '20%' },
       }
     }
   });
@@ -79,6 +83,7 @@ export function initTeamSlider() {
     if (prevButton) {
       prevButton.classList.add('is-disabled');
     }
+
     if (nextButton) {
       nextButton.classList.toggle('is-disabled', splide.isEnd());
     }

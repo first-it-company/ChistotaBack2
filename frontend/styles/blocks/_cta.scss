@@ -1,7 +1,7 @@
 @use "../helpers" as *;
 
 .cta {
-  background: url("@/images/cta/background.png") 0 0 / cover no-repeat;
+  background: url("/static/pages/images/cta/background.png") 0 0 / cover no-repeat;
 
   @include tablet {
     background: none;
@@ -49,13 +49,13 @@
 
 
   &__main {
-    width: 50%;
+    width: 82%;
     display: flex;
     flex-direction: column;
     gap: rem(67);
 
     @include tablet {
-      background: url("@/images/cta/background-m.png") 0 0 / cover no-repeat;
+      background: url("/static/pages/images/cta/background-m.png") 0 0 / cover no-repeat;
       width: 100%;
       padding-inline: rem(20);
       row-gap: rem(40);
@@ -283,6 +283,8 @@
     &--long {
       width: 100%;
     }
+
+
 
     @include laptop {
       width: 100%;

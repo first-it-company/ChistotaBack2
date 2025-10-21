@@ -84,12 +84,12 @@
 
   &__dropdown {
     padding: 1vw 2vw;
-    border: 1px solid var(--color-gray-100);
+    border: 1px solid transparent;
     border-radius: rem(14);
-    font-weight: 400;
     font-weight: 400;
     font-size: 1.2vw;
     color: var(--color-black);
+    background-color: var(--color-white-bg);
     width: 279px;
     font-family: var(--font-family-accent);
 
@@ -98,16 +98,12 @@
       font-size: rem(20);
     }
 
-    @include hover {
-      border: 1px solid var(--color-blue);
-    }
-
     &:focus {
       outline: none;
     }
 
     &:focus-visible {
-      outline: 1px solid var(--color-blue);
+      outline: none;
     }
 
     .dropdown__toggle {

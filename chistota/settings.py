@@ -24,8 +24,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-go9w%!m)9&61rp3r)wd0-u^d6*^9mn_+qa4lnglxmhg=_2t*99'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG', 'True') == 'True'
-
+# DEBUG = os.getenv('DEBUG', 'True') == 'True'
+DEBUG = 'False'
 ALLOWED_HOSTS = ['127.0.0.1', '85.209.9.241', 'localhost']
 
 
@@ -51,16 +51,6 @@ STATIC_ROOT = BASE_DIR / 'static'
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = []
-
-DJANGO_VITE = {
-    'default': {
-        'dev_mode': DEBUG,
-        'manifest_path': BASE_DIR / 'pages/static/pages/.vite/manifest.json',
-        'static_url_prefix': 'pages/',
-        'dev_server_port': 5173,
-        'dev_server_host': 'localhost',
-    }
-}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

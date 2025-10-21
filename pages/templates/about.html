@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section class="about-hero">
+    <div class="about-hero__inner">
+        <div class="about-hero__info">
+            <div class="about-hero__header">
+                <h1 class="about-hero__title">
+                    О компании
+                    <span class="gradient">
+                        ЧИСТОТА ДВ
+                    </span>
+                </h1>
+                <p class="about-hero__subtitle">
+                    Клининговая компания №1 в Приморском крае
+                </p>
+            </div>
+
+            <div class="about-hero__subheader">
+                <div class="about-hero__desc-wrapper">
+                    <p class="about-hero__desc">
+                        Компания «Чистота ДВ» занимается клинигом любого уровня сложности.
+                    </p>
+                    <p class="about-hero__desc">
+                        Уже более 20 лет наша фирма приносит чистоту и уют в дома и офисы:
+                        <span>довольными остались свыше {{ about_main.cnt_reviews }} человек!</span>
+                    </p>
+                </div>
+                <div class="button__wrapper">
+                    <button type="button" class="button service__button modal-open">Заказать уборку</button>
+                    <button type="button" class="service__button-arrow modal-open">
+                        <svg viewBox="0 0 58 58" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M37.4999 20.5417L20.4999 37.5417" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M37.4999 37.5417V20.5417H20.4999" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="about-hero__team">
+            <div class="about-hero__team-img">
+                <img
+                    src="{% static 'pages/images/about/team.jpg' %}"
+                    alt=""
+                    width="100%" height="100%"
+                >
+            </div>
+        </div>
+        <div class="about-hero__advantages">
+            <ul class="about-hero__list">
+                <li class="about-hero__item">
+                    <div class="about-hero__number">
+                        <span class="about-hero__number-value">
+                            {{ about_main.cnt_people }}
+                        </span>
+                        <p class="about-hero__number-subtitle">
+                            чел
+                        </p>
+                    </div>
+                    <div class="about-hero__item-desc">
+                        <p class="about-hero__item-desc-p">
+                            в команде
+                        </p>
+                        <span class="about-hero__item-badge">
+                            Успех гарантирован
+                        </span>
+                    </div>
+                </li>
+                <li class="about-hero__item">
+                    <div class="about-hero__number">
+                        <span class="about-hero__number-value">
+                            {{ about_main.cnt_year }}
+                        </span>
+                        <p class="about-hero__number-subtitle">
+                            лет
+                        </p>
+                    </div>
+                    <div class="about-hero__item-desc">
+                        <p class="about-hero__item-desc-p">
+                            Опыта в этой сфере
+                        </p>
+                        <span class="about-hero__item-badge">
+                            Работаем с 2019
+                        </span>
+                    </div>
+                </li>
+                <li class="about-hero__item">
+                    <div class="about-hero__number">
+                        <span class="about-hero__number-value">
+                            {{ about_main.cnt_square }}
+                        </span>
+                        <p class="about-hero__number-subtitle">
+                            тыс. м2
+                        </p>
+                    </div>
+                    <div class="about-hero__item-desc">
+                        <p class="about-hero__item-desc-p">
+                            Вычищаем в месяц
+                        </p>
+                        <span class="about-hero__item-badge">
+                            В надежных руках
+                        </span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <hr class="about-hero__line">
+</section>
+{% include 'partials/team.html' %}
+{% include 'partials/about.html' %}
+{% include 'partials/reviews.html' %}
+{% include 'partials/cta-request.html' %}
+{% include 'partials/faq.html' with with_border=False %}
+{% endblock %}

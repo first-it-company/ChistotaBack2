@@ -119,3 +119,16 @@ a {
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+.gradient-splitting{
+  span{
+    &:last-child{
+      background: linear-gradient(to right, #2A2A2A, #0060DF);
+      color: transparent;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+}
+

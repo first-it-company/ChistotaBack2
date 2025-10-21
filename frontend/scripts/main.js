@@ -6,8 +6,6 @@ import { initCasesSlider, updateSliderWithFilter } from './casesSwiper.js';
 import { initBrandsCarousel } from './brandsCarousel.js';
 import { initDropdown } from './dropdown.js'
 import { initReviewsSlider } from './reviewsSlider.js';
-import { initServiceCarouselR } from './serviceCarouselRight.js';
-import { initServiceCarouselL } from './serviceCarouselLeft.js';
 import { initScrollWordAnimation } from'./splittingHeaders';
 import { initHeader } from'./header.js';
 import { initExpandableText } from "./serviceCardText";
@@ -22,6 +20,7 @@ import { initModalSuccess } from "./modalSuccess.js";
 import { initVideoModal } from './videoModal.js';
 import { initCustomSelect } from './customSelect.js';
 import { initFooterReviewSlider } from './footerReviewSlider.js';
+
 import './videoManager.js'; // Инициализируем менеджер видео
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -31,8 +30,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     initCasesSlider();
     initBrandsCarousel();
     initReviewsSlider();
-    initServiceCarouselR();
-    initServiceCarouselL();
     initScrollWordAnimation();
     initHeader();
     initExpandableText();
@@ -46,7 +43,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     initCustomSelect();
     initFooterReviewSlider();
 
-    
+    if (document.querySelector('[data-service-splide-left]')) {
+        import('./serviceCarousel.js').then(({ initServiceCarouselLeft }) => initServiceCarouselLeft());
+    }
+
+    if (document.querySelector('[data-service-splide-right]')) {
+        import('./serviceCarousel.js').then(({ initServiceCarouselRight }) => initServiceCarouselRight());
+    }
+
     document.querySelectorAll('[data-dropdown-config]').forEach(element => {
         try {
             const config = JSON.parse(element.dataset.dropdownConfig);

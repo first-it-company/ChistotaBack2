@@ -12,6 +12,7 @@
       <div class="cta-request__action">
         <button class="cta-request__button button--white modal-open">Оставить заявку</button>
         <div class="cta-request__contacts">
+            {% if instagram_url %}
           <a href="{{ instagram_url }}"
              target="_blank"
              class="cta-request__contacts-item">
@@ -21,6 +22,8 @@
                  width="100%"
                  height="100%">
           </a>
+            {% endif %}
+            {% if telegram_url %}
           <a href="{{ telegram_url }}"
              target="_blank"
              class="cta-request__contacts-item">
@@ -30,6 +33,8 @@
                  width="100%"
                  height="100%">
           </a>
+            {% endif %}
+            {% if vk_url %}
           <a href="{{ vk_url }}"
              target="_blank"
              class="cta-request__contacts-item">
@@ -39,6 +44,8 @@
                  width="100%"
                  height="100%">
           </a>
+            {% endif %}
+            {% if whatsapp_url %}
           <a href="{{ whatsapp_url }}"
              target="_blank"
              class="cta-request__contacts-item">
@@ -48,6 +55,7 @@
                  width="100%"
                  height="100%">
           </a>
+            {% endif %}
         </div>
       </div>
     </div>

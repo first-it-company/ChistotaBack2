@@ -1,16 +1,21 @@
 @use "../helpers" as *;
 
 .review-button{
+  @include reset-button;
   display: flex;
   align-items: center;
   column-gap: rem(8);
-  padding: rem(8);
+  padding: rem(16) rem(12);
   border-radius: rem(14);
-  border: 1px solid var(--color-gray-50);
   background-color: var(--color-white);
-  font-size: 1.2vw;
+  font-size: fluid(20, 18);
   font-weight: 500;
   position: relative;
+
+  svg{
+    width: 14px;
+    height: 14px;
+  }
 
   @include tablet {
     font-size: rem(20);

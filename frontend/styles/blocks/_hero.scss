@@ -36,7 +36,7 @@
     flex-direction: column;
     gap: rem(8);
     color: var(--color-gray-300);
-    background-image: url("@/images/hero/advantages-back.png");
+    background-image: url("/static/pages/advantages-back.png");
     text-align: center;
 
     @include tablet {
@@ -318,7 +318,7 @@
   }
 
   &__header {
-    font-size: 4.5vw;
+    font-size: fluid(86, 30);
     font-weight: 600;
     text-transform: uppercase;
     color: var(--color-black);
@@ -329,16 +329,15 @@
       height: auto;
     }
 
-    @include mobile {
-      font-size: rem(45);
-
-    }
-
-    @include mobile-s {
-      font-size: rem(36);
-    }
-
-    // &-print {}
+     &-print {
+       .Typewriter__wrapper {
+         background: linear-gradient(to right, #2A2A2A, #0060DF);
+         color: transparent;
+         -webkit-background-clip: text;
+         background-clip: text;
+         -webkit-text-fill-color: transparent;
+       }
+     }
   }
 
   &__subheader2 {
@@ -384,6 +383,7 @@
 
   &__review {
     display: flex;
+    flex-wrap: wrap;
     gap: 2%;
     margin-bottom: rem(45);
 
@@ -392,12 +392,17 @@
       padding: 1.4vw 4vw;
       justify-content: center;
       font-size: 1.5vw;
+      background: var(--color-white-bg);
+
+      @include hover{
+        background-color: var(--color-white-bg-hover);
+        color: var(--color-black);
+      }
 
       @include tablet {
         padding: rem(20) rem(40);
         font-size: 1.5rem;
         width: 20%;
-        background: rgb(244, 244, 245);
       }
 
       @include mobile-m {
@@ -424,13 +429,8 @@
   }
 
   &__button {
-    width: 100%;
     font-size: 2vw !important;
     padding: 2vw rem(50) !important;
-
-
-
-    @include tablet {}
 
     @include mobile {
       padding: rem(22) rem(10) !important;

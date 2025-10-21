@@ -18,13 +18,13 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: url('@/images/footer/back.png') 0 0 / cover no-repeat;
+      background: url('/static/pages/back.png') 0 0 / cover no-repeat;
       z-index: -1;
       pointer-events: none;
       border-radius: 40px 40px 0px 0px;
 
       @include mobile {
-        background: url('@/images/footer/back.png') 0 0 / cover no-repeat;
+        background: url('/static/pages/back.png') 0 0 / cover no-repeat;
       }
 
 
@@ -114,7 +114,7 @@
   &__inst-text {
     color: rgb(128, 128, 128);
     font-family: var(--font-family-accent);
-    font-size: 0.9vw;
+    font-size: fluid(12, 8);
     font-weight: 400;
 
     @include tablet {

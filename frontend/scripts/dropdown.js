@@ -31,16 +31,6 @@ export function initDropdown({ containerSelector, placeholder, options, onSelect
         }
     });
 
-    const createCheckmark = () => {
-        const el = document.createElement('span');
-        el.classList.add('checkmark');
-        el.innerHTML = `
-            <svg width="17" height="12" viewBox="0 0 17 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M16 1L6 11L1 6" stroke="#0060DF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>`;
-        return el;
-    };
-
     options.forEach(({ label: text, value }, index) => {
         const li = document.createElement('li');
         li.textContent = text;
@@ -49,11 +39,9 @@ export function initDropdown({ containerSelector, placeholder, options, onSelect
         li.addEventListener('click', () => {
             menu.querySelectorAll('li.selected').forEach(el => {
                 el.classList.remove('selected');
-                el.querySelector('.checkmark')?.remove();
             });
             
             li.classList.add('selected');
-            li.appendChild(createCheckmark());
             toggle.classList.remove('is-placeholder');
             label.textContent = text;
             menu.classList.add('visually-hidden');
@@ -66,7 +54,6 @@ export function initDropdown({ containerSelector, placeholder, options, onSelect
         
         if (!isUsingPlaceholder && index === 0) {
             li.classList.add('selected');
-            li.appendChild(createCheckmark());
             if (typeof onSelect === 'function') onSelect(value);
         }
     });

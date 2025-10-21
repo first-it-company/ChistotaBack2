@@ -3,7 +3,8 @@
 .team {
   padding-top: rem(100);
   padding-bottom: rem(80);
-  padding-inline: 40px;
+  padding-inline: rem(40);
+  overflow: hidden;
 
   @include tablet {
     padding-top: rem(50);
@@ -38,6 +39,8 @@
     height: 65vh;
   }
 
+
+
   .splide__track,
   .splide__list {
     height: 100%;
@@ -53,15 +56,30 @@
 
     &-experience {
       display: none;
-      font-size: 16px;
+      font-size: rem(16);
       line-height: normal;
       align-items: center;
       border-radius: rem(150);
       gap: rem(8);
-      padding: 1vw 2vw;
-      background: #F5F8FC;
+      padding: 16px 18px;
+      background: var(--color-white-bg);
       text-transform: uppercase;
       width: fit-content;
+
+      &-mobile{
+        position: absolute;
+        left: rem(6);
+        bottom: rem(6);
+        font-size: rem(12);
+        line-height: normal;
+        align-items: center;
+        border-radius: rem(14);
+        gap: rem(8);
+        padding: rem(8) rem(8) rem(8) rem(12);
+        background: var(--color-white-bg);
+        text-transform: uppercase;
+        width: fit-content;
+      }
 
       &-label {
         color: var(--color-blue);
@@ -69,20 +87,26 @@
     }
 
     &-name {
-      font-size: 2.5vw;
+      font-size: fluid(28, 18);
+      font-weight: 500;
     }
 
     &-post {
       font-family: var(--font-family-accent);
-      font-size: 1.5vw;
+      font-size: fluid(20, 16);
       color: var(--color-gray-300);
+
+      @include mobile{
+        color: var(--color-gray-200);
+      }
     }
 
     &-description {
       font-family: var(--font-family-accent);
-      font-size: 1rem;
+      font-size: fluid(18, 16);
+      font-weight: 400;
       color: var(--color-gray-200);
-      margin-top: rem(20);
+      margin-top: rem(32);
     }
   }
 
@@ -142,14 +166,14 @@
   }
 
   &__slide-name {
-    font-size: rem(24);
-    font-weight: 600;
+    font-size: fluid(24, 18);
+    font-weight: 400;
     color: var(--color-black);
   }
 
   &__slide-post {
     font-family: var(--font-family-accent);
-    font-size: 1.2rem;
+    font-size: fluid(20, 16);
     color: var(--color-gray-200);
   }
 
@@ -159,11 +183,12 @@
     }
 
     &__splide {
-      height: 35vh;
     }
 
     &__splide-slide {
       height: 80%;
+      position: relative;
+
 
       &.is-active {
         height: 80%;

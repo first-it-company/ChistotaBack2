@@ -2,7 +2,7 @@ import { defineConfig } from 'vite';
 import { resolve } from 'path';
 
 export default defineConfig({
-  base: '/static/pages/',
+  base: '',
   build: {
     manifest: true,
     outDir: resolve('../pages/static/pages/'),
@@ -11,6 +11,12 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'scripts/main.js'),
       },
+        output: {
+            entryFileNames: '[name].js',
+            chunkFileNames: '[name].js',
+            assetFileNames: '[name].[ext]',
+            manualChunks: undefined
+        }
     },
   },
   resolve: {
@@ -19,15 +25,10 @@ export default defineConfig({
     },
   },
   publicDir: 'public',
-  server: {
-    origin: 'http://localhost:5173',
-    port: 5173,
-    strictPort: true,
-    hmr: {
-      protocol: 'ws',
-      host: 'localhost',
-      port: 5173,
+    server: {
+        port: 5173,
+        strictPort: true,
+        cors: true,
     }
-  }
 });
 
