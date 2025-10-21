@@ -1,0 +1,33 @@
+@use "../helpers" as *;
+
+.breadcrumbs {
+  margin-bottom: rem(10);
+  padding-inline: fluid(40, 16);
+
+  &__list{
+    display: flex;
+    gap: rem(10);
+  }
+
+  &__item{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    position: relative;
+    font-size: rem(12);
+    color: var(--color-gray-200);
+
+    &:last-child{
+      color: var(--color-gray-300);
+      pointer-events: none;
+    }
+
+    &:not(:last-child){
+      &:after{
+        position: absolute;
+        right: -8px;
+        content: "/";
+      }
+    }
+  }
+}

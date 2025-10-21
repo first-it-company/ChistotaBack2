@@ -60,6 +60,7 @@
                      width="437"
                      height="560"
                 >
+              {% if emp.experience %}
               <div class="team__info-experience-mobile visible-mobile">
                   <svg width="16"
                        height="16"
@@ -73,6 +74,7 @@
                   <span class="team__info-experience-value">{{ emp.experience }}</span>
                   <span class="team__info-experience-unit">лет</span>
               </div>
+              {% endif %}
             <div class="team__slide-info">
               <p class="team__slide-name">{{ emp.name }}</p>
               <p class="team__slide-post">{{ emp.position }}</p>
