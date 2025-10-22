@@ -102,10 +102,9 @@
 
   &__button{
     z-index: 100;
+    padding-block: rem(20);
+    width: fit-content;
 
-    @include mobile{
-
-    }
   }
 
   &__inst{
