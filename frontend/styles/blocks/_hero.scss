@@ -17,9 +17,6 @@
     margin: 0;
   }
 
-  @include laptop {}
-
-
   @include tablet {
     padding: 0;
     padding-bottom: rem(90);
@@ -164,7 +161,7 @@
     top: 4.5vw;
     width: 100%;
     max-width: 100%;
-    height: 100%;
+    height: 90vh;
     display: flex;
     align-items: center;
 
@@ -310,15 +307,28 @@
   }
 
   &__header {
-    font-size: fluid(70, 28);
+    font-size: 3vw;
     font-weight: 600;
     text-transform: uppercase;
     color: var(--color-black);
     margin-bottom: rem(12);
     line-height: normal;
 
+    @include laptop{
+      font-size: rem(40);
+    }
+
     @include tablet {
       height: auto;
+      font-size: rem(55);
+    }
+
+    @include mobile{
+      font-size: rem(32);
+    }
+
+    @include mobile-s {
+      font-size: rem(27);
     }
 
      &-print {
@@ -422,11 +432,11 @@
   }
 
   &__button {
-    padding: 2vw rem(50) !important;
+    //padding: 2vw rem(50) !important;
     width: 100%;
 
     @include mobile {
-      padding: rem(22) rem(10) !important;
+      //padding: rem(22) rem(10) !important;
       font-size: rem(20) !important;
     }
 
