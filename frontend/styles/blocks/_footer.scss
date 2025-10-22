@@ -116,16 +116,8 @@
   &__inst-text {
     color: rgb(128, 128, 128);
     font-family: var(--font-family-accent);
-    font-size: fluid(12, 8);
+    font-size: fluid(18, 14);
     font-weight: 400;
-
-    @include tablet {
-      font-size: 12px;
-    }
-
-    @include mobile {
-      font-size: 9px;
-    }
   }
 
 
