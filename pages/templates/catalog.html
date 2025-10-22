@@ -1,19 +1,5 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="breadcrumbs">
-    <ul class="breadcrumbs__list">
-        <li class="breadcrumbs__item">
-            <a class="breadcrumbs__link" href="{% url 'home' %}">
-                Главная
-            </a>
-        </li>
-        <li class="breadcrumbs__item">
-            <a class="breadcrumbs__link" href="{% url 'catalog' %}">
-                Услуги
-            </a>
-        </li>
-    </ul>
-</div>
   {% include 'partials/service.html' with is_catalog=True %}
     {% if additional_services %}
       <section class="extra-services">

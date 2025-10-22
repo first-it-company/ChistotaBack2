@@ -1,25 +1,6 @@
 {% extends 'base.html' %}
 {% load static number_filters %}
 {% block content %}
-<div class="breadcrumbs">
-    <ul class="breadcrumbs__list">
-        <li class="breadcrumbs__item">
-            <a class="breadcrumbs__link" href="{% url 'home' %}">
-                Главная
-            </a>
-        </li>
-        <li class="breadcrumbs__item">
-            <a class="breadcrumbs__link" href="{% url 'catalog' %}">
-                Услуги
-            </a>
-        </li>
-        <li class="breadcrumbs__item">
-            <a class="breadcrumbs__link">
-                {{ service.scope.name }}
-            </a>
-        </li>
-    </ul>
-</div>
   <section class="service-detail">
     <h1 class="h5 gradient service-detail__info-header visible-mobile"
         style="order: 1">{{ service.scope.name }}</h1>
