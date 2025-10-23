@@ -155,10 +155,11 @@ export function initHeroSlider() {
     }
 
     const videos = document.querySelectorAll('.hero__splide-slide video');
-    videos.forEach(video => {
+    videos.forEach((video, index) => {
         video.muted = true;
         video.playsInline = true;
-        video.preload = 'none';
+        // Для первых двух видео устанавливаем агрессивную предзагрузку
+        video.preload = index < 2 ? 'auto' : 'none';
     });
 
     function addCustomArrowHandlers() {
