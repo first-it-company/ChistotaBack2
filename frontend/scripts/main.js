@@ -1,5 +1,4 @@
-console.time('⏱️ Total main.js execution');
-console.time('⏱️ Imports');
+import '../styles/main.scss';
 import { initTypewriterHero } from './typewriterHero.js';
 import { initTypewriterCta } from './typewritterCta.js';
 import { initCasesSlider, updateSliderWithFilter } from './casesSwiper.js';
@@ -23,14 +22,50 @@ import { initFooterReviewSlider } from './footerReviewSlider.js';
 
 import './videoManager.js'; // Инициализируем менеджер видео
 
-console.timeEnd('⏱️ Imports');
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const words = ["Порядок", "Комфорт", "Свежесть", "Чистота"];
+    let index = 0;
+
+    const container = document.querySelector('.preloader');
+
+
+    const text = document.createElement('p');
+    const dot = document.createElement('span');
+    text.appendChild(dot);
+    text.append(words[0]);
+    container.appendChild(text);
+
+
+    function updateText() {
+        if (index < words.length - 1) {
+            setTimeout(() => {
+                index++;
+                text.innerHTML = `<span></span>${words[index]}`;
+                updateText();
+            }, 550);
+        }
+    }
+
+    setTimeout(() => {
+        updateText();
+    }, 550);
+
+
+
+    setTimeout(() => {
+        container.classList.add('exit');
+    }, 3000);
+
+    setTimeout(() => {
+        container.style.display = 'none';
+    }, 3800);
+});
+
 
 document.addEventListener('DOMContentLoaded', async () => {
-    console.time('⏱️ DOMContentLoaded');
-    console.time('⏱️ initHeroSlider');
     initHeroSlider();
-    console.timeEnd('⏱️ initHeroSlider');
-    console.time('⏱️ Other inits');
     initTypewriterHero();
     initTypewriterCta();
     initCasesSlider();
@@ -73,16 +108,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             console.error('Error parsing dropdown config:', e);
         }
     });
-
-    // await loader();
-    // document.getElementById('loader-overlay').style.display = 'none';
-    // const content = document.getElementById('main');
-    // content.classList.remove('blurred');
-    // content.classList.add('loaded');
-
-    console.timeEnd('⏱️ Other inits');
-
-    console.timeEnd('⏱️ DOMContentLoaded');
 });
 
 // FAQ Animation
@@ -111,5 +136,3 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-import '../styles/main.scss';
-console.timeEnd('⏱️ Total main.js execution');

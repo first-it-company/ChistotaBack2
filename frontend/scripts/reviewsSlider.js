@@ -2,25 +2,19 @@ import MomentumSlider from "momentum-slider";
 
 // Функция для инициализации одного слайдера
 function initSingleReviewsSlider(containerSelector, prevBtnSelector, nextBtnSelector, currentIndicatorSelector) {
-    console.log(`Инициализация слайдера для ${containerSelector}`);
-    
     const slidersContainer = document.querySelector(containerSelector);
     if (!slidersContainer) {
-        console.warn(`Контейнер ${containerSelector} не найден`);
         return;
     }
 
     const sliderWrapper = slidersContainer.querySelector('.reviews__slider-wrapper');
     if (!sliderWrapper) {
-        console.warn(`Обертка слайдера не найдена в ${containerSelector}`);
         return;
     }
 
     const slides = sliderWrapper.querySelectorAll('.reviews__swiper-slide');
-    console.log(`Найдено ${slides.length} слайдов в ${containerSelector}`);
 
     if (slides.length === 0) {
-        console.warn(`Нет слайдов в ${containerSelector}`);
         return;
     }
 
@@ -78,9 +72,7 @@ function initSingleReviewsSlider(containerSelector, prevBtnSelector, nextBtnSele
         }
         
         msImages = new MomentumSlider(getSliderConfig(mobileMediaQuery.matches));
-        console.log(`Слайдер ${containerSelector} успешно инициализирован`);
     } catch (error) {
-        console.error(`Ошибка при инициализации слайдера ${containerSelector}:`, error);
         return;
     }
 
@@ -113,7 +105,6 @@ function initSingleReviewsSlider(containerSelector, prevBtnSelector, nextBtnSele
         });
     }
 
-    // Инициализация индикаторов
     const formatNumber = (num) => num.toString().padStart(2, '0');
     if (currentSlideIndicator && slides.length > 0) {
         currentSlideIndicator.innerHTML = `${formatNumber(1)}/<span>${formatNumber(slides.length)}</span>`;
@@ -128,8 +119,7 @@ function initSingleReviewsSlider(containerSelector, prevBtnSelector, nextBtnSele
 }
 
 export function initReviewsSlider() {
-    console.log('Начало инициализации всех слайдеров');
-    
+
     try {
         // VL.ru слайдер
         initSingleReviewsSlider(
