@@ -22,9 +22,10 @@ import { initCustomSelect } from './customSelect.js';
 import { initFooterReviewSlider } from './footerReviewSlider.js';
 
 import './videoManager.js'; // Инициализируем менеджер видео
-
-document.addEventListener('DOMContentLoaded', async () => {
+document.addEventListener('DOMContentLoaded', () => {
     initHeroSlider();
+});
+document.addEventListener('DOMContentLoaded', async () => {
     initTypewriterHero();
     initTypewriterCta();
     initCasesSlider();

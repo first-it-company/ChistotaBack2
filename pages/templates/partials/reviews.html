@@ -21,14 +21,14 @@
             src="{% static "pages/icons/VL.png" %}"
             alt="VL.ru"
             class="hero__review-logo"
-            width="32" height="32"
+            width="32" height="32" loading="lazy"
           >
           <span> {% if vl_data.average_rating %}{{ vl_data.average_rating }}{% else %} 5.0{% endif %}</span>
           <img
             src="{% static "pages/icons/star.svg" %}"
             alt=""
             class=""
-            width="20" height="20"
+            width="20" height="20" loading="lazy"
           >
         </button>
       </div>
@@ -38,7 +38,7 @@
             src="{% static 'pages/icons/arrow-left.svg' %}"
             alt="Назад"
             class="controls__img"
-            width="24" height="24"
+            width="24" height="24" loading="lazy"
           >
         </button>
 
@@ -49,7 +49,7 @@
             src="{% static 'pages/icons/arrow-right.svg' %}"
             alt="Вперед"
             class="controls__img"
-            width="24" height="24"
+            width="24" height="24" loading="lazy"
           >
         </button>
       </div>
@@ -74,13 +74,13 @@
                   </div>
                 </div>
                 <div class="reviews__user-commas">
-                  <img src="{% static 'pages/icons/commas.svg' %}" alt="" class="reviews__commas" width="48" height="48">
+                  <img src="{% static 'pages/icons/commas.svg' %}" alt="" class="reviews__commas" width="48" height="48" loading="lazy">
                 </div>
               </div>
               <div class="reviews__content">
                 {% if review.link.image %}
                 <div class="reviews__photo-wrapper">
-                  <img src="{{ review.link.image }}" alt="" class="reviews__photo" width="288" height="152">
+                  <img src="{{ review.link.image }}" alt="" class="reviews__photo" width="288" height="152" loading="lazy">
                 </div>
                 {% endif %}
                 <div class="reviews__body-wrapper">
@@ -88,7 +88,7 @@
                     <p class="reviews__score">{{ review.rating_display }}</p>
                     <div class="reviews__stars">
                       {% for i in "12345"|make_list %}
-                      <img src="{% static 'pages/icons/star.svg' %}" class="reviews__stars_img" width="20" height="20" 
+                      <img src="{% static 'pages/icons/star.svg' %}" class="reviews__stars_img" width="20" height="20" loading="lazy"
                         style="opacity:{% if forloop.counter <= review.rating %}1{% else %}0.3{% endif %}">
                       {% endfor %}
                     </div>
@@ -126,7 +126,7 @@
             src="{% static "pages/icons/star.svg" %}"
             alt=""
             class=""
-            width="20" height="20"
+            width="20" height="20" loading="lazy"
           >
         </button>
       </div>
@@ -136,7 +136,7 @@
             src="{% static 'pages/icons/arrow-left.svg' %}"
             alt="Назад"
             class="controls__img"
-            width="24" height="24"
+            width="24" height="24" loading="lazy"
           >
         </button>
 
@@ -172,13 +172,13 @@
                   </div>
                 </div>
                 <div class="reviews__user-commas">
-                  <img src="{% static 'pages/icons/commas.svg' %}" alt="" class="reviews__commas" width="48" height="48">
+                  <img src="{% static 'pages/icons/commas.svg' %}" alt="" class="reviews__commas" width="48" height="48" loading="lazy">
                 </div>
               </div>
               <div class="reviews__content">
                 {% if review.link.image %}
                 <div class="reviews__photo-wrapper">
-                  <img src="{{ review.link.image }}" alt="" class="reviews__photo" width="288" height="152">
+                  <img src="{{ review.link.image }}" alt="" class="reviews__photo" width="288" height="152" loading="lazy">
                 </div>
                 {% endif %}
                 <div class="reviews__body-wrapper">
@@ -186,7 +186,7 @@
                     <p class="reviews__score">{{ review.rating_display }}</p>
                     <div class="reviews__stars">
                       {% for i in "12345"|make_list %}
-                      <img src="{% static 'pages/icons/star.svg' %}" class="reviews__stars_img" width="20" height="20" 
+                      <img src="{% static 'pages/icons/star.svg' %}" class="reviews__stars_img" width="20" height="20"  loading="lazy"
                         style="opacity:{% if forloop.counter <= review.rating %}1{% else %}0.3{% endif %}">
                       {% endfor %}
                     </div>

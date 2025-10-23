@@ -158,7 +158,7 @@ export function initHeroSlider() {
     videos.forEach(video => {
         video.muted = true;
         video.playsInline = true;
-        video.preload = 'metadata';
+        video.preload = 'none';
     });
 
     function addCustomArrowHandlers() {
