@@ -232,16 +232,10 @@ export function initHeroSlider() {
 
     splide.on('mounted', () => {
         addCustomArrowHandlers();
-
-        // Сразу загружаем первое видео агрессивно
-        setTimeout(() => {
-            playActiveVideo();
-            // Через 500мс начинаем предзагрузку соседних
-            setTimeout(() => {
-                preloadNearbyVideos();
-            }, 500);
-        }, 100);
+        playActiveVideo(); // без setTimeout
+        setTimeout(preloadNearbyVideos, 500);
     });
+
 
     splide.on('destroy', () => {
         stopAllVideos();
