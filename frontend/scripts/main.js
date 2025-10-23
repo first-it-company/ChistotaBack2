@@ -22,9 +22,30 @@ import { initCustomSelect } from './customSelect.js';
 import { initFooterReviewSlider } from './footerReviewSlider.js';
 
 import './videoManager.js'; // Инициализируем менеджер видео
-document.addEventListener('DOMContentLoaded', () => {
+
+function earlyVideoPreload() {
+    const videos = document.querySelectorAll('.hero__splide-slide video');
+    if (videos.length === 0) return;
+
+    [0, 1].forEach(index => {
+        const video = videos[index];
+        if (video) {
+            video.preload = 'auto';
+            video.load();
+        }
+    });
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+        earlyVideoPreload();
+        initHeroSlider();
+    });
+} else {
+    earlyVideoPreload();
     initHeroSlider();
-});
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
     initTypewriterHero();
     initTypewriterCta();
