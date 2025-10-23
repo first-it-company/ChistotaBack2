@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 import os
+import mimetypes
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,10 +25,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-go9w%!m)9&61rp3r)wd0-u^d6*^9mn_+qa4lnglxmhg=_2t*99'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = os.getenv('DEBUG', 'True') == 'True'
 DEBUG = 'False'
 ALLOWED_HOSTS = ['127.0.0.1', '85.209.9.241', 'localhost']
 
+mimetypes.add_type("video/mp4", ".mp4", True)
+mimetypes.add_type("video/webm", ".webm", True)
+mimetypes.add_type("video/ogg", ".ogv", True)
 
 INSTALLED_APPS = [
     'django.contrib.admin',

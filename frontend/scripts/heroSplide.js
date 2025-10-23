@@ -3,7 +3,6 @@ import '@splidejs/splide/css';
 import { videoManager } from './videoManager.js';
 
 function syncHeroHeight() {
-
     const heroBody = document.querySelector('.hero__body');
     const heroSplide = document.querySelector('.hero__splide');
 
@@ -104,7 +103,8 @@ export function initHeroSlider() {
         try {
             if (signal.aborted) return;
 
-            await videoManager.loadVideo(activeVideo);
+            // Агрессивная загрузка для активного видео
+            await videoManager.loadVideo(activeVideo, true);
 
             if (signal.aborted) {
                 console.log('Загрузка отменена');
@@ -143,28 +143,34 @@ export function initHeroSlider() {
         const totalSlides = splide.length;
 
         const indicesToLoad = [
-            currentIndex,
-            (currentIndex + 1) % totalSlides,
-            (currentIndex - 1 + totalSlides) % totalSlides
+            (currentIndex + 1) % totalSlides,  // Следующее
+            (currentIndex - 1 + totalSlides) % totalSlides  // Предыдущее
         ];
 
         const videos = document.querySelectorAll('.hero__splide-slide video');
         indicesToLoad.forEach(index => {
             const video = videos[index];
-            if (video && !videoManager.isLoading(video)) {
-                videoManager.loadVideo(video).catch(err => {
+            if (video && !videoManager.isLoading(video) && !videoManager.isLoaded(video)) {
+                // Фоновая загрузка БЕЗ aggressive режима
+                videoManager.loadVideo(video, false).catch(err => {
                     console.warn('Preload failed for video', index, err);
                 });
             }
         });
     }
+
     console.time('🎬 Video setup');
     const videos = document.querySelectorAll('.hero__splide-slide video');
     videos.forEach((video, index) => {
         video.muted = true;
         video.playsInline = true;
-        // Для первых двух видео устанавливаем агрессивную предзагрузку
-        video.preload = index < 2 ? 'auto' : 'none';
+
+        // Первое видео загружаем агрессивно, остальные - по требованию
+        if (index === 0) {
+            video.preload = 'auto';
+        } else {
+            video.preload = 'metadata';  // Загружаем только метаданные
+        }
     });
     console.timeEnd('🎬 Video setup');
 
@@ -226,9 +232,14 @@ export function initHeroSlider() {
 
     splide.on('mounted', () => {
         addCustomArrowHandlers();
-        preloadNearbyVideos();
+
+        // Сразу загружаем первое видео агрессивно
         setTimeout(() => {
             playActiveVideo();
+            // Через 500мс начинаем предзагрузку соседних
+            setTimeout(() => {
+                preloadNearbyVideos();
+            }, 500);
         }, 100);
     });
 
@@ -242,12 +253,15 @@ export function initHeroSlider() {
             abortController.abort();
         }
     });
+
     console.time('🎬 Splide mount');
     splide.mount();
     console.timeEnd('🎬 Splide mount');
+
     console.time('🎬 syncHeroHeight');
     syncHeroHeight();
     console.timeEnd('🎬 syncHeroHeight');
+
     console.timeEnd('🎬 Hero Slider Init');
     return splide;
 }
