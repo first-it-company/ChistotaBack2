@@ -1,32 +1,46 @@
 // Глобальный менеджер видео для предотвращения множественных загрузок
 class VideoManager {
     constructor() {
-        this.loadingVideos = new Set();
+        this.loadingVideos = new Map(); // Используем Map для хранения промисов
         this.loadedVideos = new Set();
     }
 
-    async loadVideo(video) {
+    async loadVideo(video, aggressive = false) {
         const src = video.src || video.getAttribute('src');
+
+        if (!src) {
+            console.error('❌ No video src attribute!');
+            return Promise.reject(new Error('No src'));
+        }
+
         const videoName = src.split('/').pop();
 
-        console.log(`📹 [${videoName}] Starting load, readyState: ${video.readyState}`);
-        console.time(`📹 Video load: ${videoName}`);
-
-        if (this.loadedVideos.has(src) || this.loadingVideos.has(src)) {
-            console.log(`✅ [${videoName}] Already loaded/loading`);
+        // Если уже загружен - возвращаем сразу
+        if (this.loadedVideos.has(src)) {
+            console.log(`✅ [${videoName}] Already loaded`);
             return Promise.resolve();
         }
 
+        // Если уже идет загрузка - возвращаем существующий промис
+        if (this.loadingVideos.has(src)) {
+            console.log(`⏳ [${videoName}] Already loading, waiting...`);
+            return this.loadingVideos.get(src);
+        }
+
+        // Проверяем readyState
         if (video.readyState >= 2) {
             this.loadedVideos.add(src);
             console.log(`✅ [${videoName}] Already ready (readyState: ${video.readyState})`);
             return Promise.resolve();
         }
 
-        this.loadingVideos.add(src);
+        console.log(`📹 [${videoName}] Starting load (aggressive: ${aggressive}), readyState: ${video.readyState}`);
+        console.time(`📹 Video load: ${videoName}`);
 
-        return new Promise((resolve, reject) => {
+        // Создаем промис загрузки
+        const loadPromise = new Promise((resolve, reject) => {
             const startTime = performance.now();
+            let progressCheckInterval = null;
 
             const onLoadedData = () => {
                 cleanup();
@@ -38,56 +52,99 @@ class VideoManager {
                 resolve();
             };
 
+            const onCanPlay = () => {
+                // Дополнительная проверка на canplay
+                if (video.readyState >= 3) {
+                    onLoadedData();
+                }
+            };
+
             const onError = (error) => {
                 cleanup();
                 console.timeEnd(`📹 Video load: ${videoName}`);
-                console.warn(`❌ [${videoName}] Error:`, error);
+                console.error(`❌ [${videoName}] Error:`, error);
                 this.loadingVideos.delete(src);
-                resolve();
-            };
-
-            const onProgress = (e) => {
-                if (video.buffered.length > 0) {
-                    const buffered = video.buffered.end(0);
-                    const duration = video.duration;
-                    const percent = duration ? ((buffered / duration) * 100).toFixed(1) : 0;
-                    console.log(`📊 [${videoName}] Progress: ${percent}%, buffered: ${buffered.toFixed(1)}s`);
-                }
+                reject(error);
             };
 
             const cleanup = () => {
                 video.removeEventListener('loadeddata', onLoadedData);
+                video.removeEventListener('canplay', onCanPlay);
+                video.removeEventListener('canplaythrough', onLoadedData);
                 video.removeEventListener('error', onError);
-                video.removeEventListener('progress', onProgress);
+                if (progressCheckInterval) {
+                    clearInterval(progressCheckInterval);
+                }
             };
 
+            // Слушаем несколько событий для надежности
             video.addEventListener('loadeddata', onLoadedData, { once: true });
+            video.addEventListener('canplay', onCanPlay, { once: true });
+            video.addEventListener('canplaythrough', onLoadedData, { once: true });
             video.addEventListener('error', onError, { once: true });
-            video.addEventListener('progress', onProgress); // Отслеживаем прогресс
 
-            setTimeout(() => {
-                if (this.loadingVideos.has(src)) {
-                    console.warn(`⏱️ [${videoName}] Timeout after 8s, readyState: ${video.readyState}`);
-                    onError(new Error('Timeout'));
+            // Периодически проверяем прогресс загрузки
+            progressCheckInterval = setInterval(() => {
+                if (video.buffered.length > 0) {
+                    const buffered = video.buffered.end(0);
+                    const duration = video.duration;
+                    if (duration > 0) {
+                        const percent = ((buffered / duration) * 100).toFixed(1);
+                        console.log(`📊 [${videoName}] Progress: ${percent}%, buffered: ${buffered.toFixed(1)}s/${duration.toFixed(1)}s`);
+                    }
                 }
-            }, 8000);
+            }, 1000);
 
-            console.log(`🔄 [${videoName}] Calling video.load(), current src: ${video.src || 'EMPTY'}`);
+            // Увеличиваем timeout до 15 секунд для медленных соединений
+            const timeout = setTimeout(() => {
+                if (this.loadingVideos.has(src)) {
+                    console.warn(`⏱️ [${videoName}] Timeout after 15s, readyState: ${video.readyState}, networkState: ${video.networkState}`);
 
-            // КРИТИЧНО: Проверьте что src установлен
-            if (!video.src && !video.getAttribute('src')) {
-                console.error(`❌ [${videoName}] No src attribute!`);
-                onError(new Error('No src'));
+                    // Если видео частично загружено (readyState >= 1), считаем успехом
+                    if (video.readyState >= 1) {
+                        console.log(`⚠️ [${videoName}] Partially loaded, continuing...`);
+                        onLoadedData();
+                    } else {
+                        onError(new Error('Timeout'));
+                    }
+                }
+            }, 15000);
+
+            // Проверяем, что src установлен
+            if (!video.hasAttribute('src') && video.children.length === 0) {
+                cleanup();
+                clearTimeout(timeout);
+                onError(new Error('No src attribute or source elements'));
                 return;
             }
 
-            video.load();
+            console.log(`🔄 [${videoName}] Calling video.load()`);
 
-            // Дополнительная проверка через 100ms
+            try {
+                video.load();
+            } catch (e) {
+                cleanup();
+                clearTimeout(timeout);
+                onError(e);
+                return;
+            }
+
+            // Проверка через 200ms
             setTimeout(() => {
-                console.log(`🔍 [${videoName}] After 100ms, readyState: ${video.readyState}, networkState: ${video.networkState}`);
-            }, 100);
+                console.log(`🔍 [${videoName}] After 200ms, readyState: ${video.readyState}, networkState: ${video.networkState}`);
+
+                // Если networkState = 3 (NETWORK_NO_SOURCE), это ошибка
+                if (video.networkState === 3) {
+                    console.error(`❌ [${videoName}] NETWORK_NO_SOURCE - проверьте путь к файлу!`);
+                    onError(new Error('NETWORK_NO_SOURCE'));
+                }
+            }, 200);
         });
+
+        // Сохраняем промис
+        this.loadingVideos.set(src, loadPromise);
+
+        return loadPromise;
     }
 
     isLoaded(video) {
@@ -99,7 +156,31 @@ class VideoManager {
         const src = video.src || video.getAttribute('src');
         return this.loadingVideos.has(src);
     }
+
+    // Метод для предварительной проверки доступности видео
+    async checkVideoAccessibility(url) {
+        try {
+            const response = await fetch(url, {
+                method: 'HEAD',
+                mode: 'cors'
+            });
+
+            if (!response.ok) {
+                console.error(`❌ Video not accessible: ${url}, status: ${response.status}`);
+                return false;
+            }
+
+            const acceptRanges = response.headers.get('Accept-Ranges');
+            if (acceptRanges !== 'bytes') {
+                console.warn(`⚠️ Server doesn't support Range requests for ${url}`);
+            }
+
+            return true;
+        } catch (error) {
+            console.error(`❌ Error checking video accessibility: ${url}`, error);
+            return false;
+        }
+    }
 }
 
-// Создаем единственный экземпляр менеджера
-export const videoManager = new VideoManager(); 
+export const videoManager = new VideoManager();
