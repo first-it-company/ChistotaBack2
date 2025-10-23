@@ -7,24 +7,32 @@ class VideoManager {
 
     async loadVideo(video) {
         const src = video.src || video.getAttribute('src');
-        
-        // Если видео уже загружено или загружается, не загружаем снова
+        const videoName = src.split('/').pop();
+
+        console.log(`📹 [${videoName}] Starting load, readyState: ${video.readyState}`);
+        console.time(`📹 Video load: ${videoName}`);
+
         if (this.loadedVideos.has(src) || this.loadingVideos.has(src)) {
+            console.log(`✅ [${videoName}] Already loaded/loading`);
             return Promise.resolve();
         }
 
-        // Если видео уже имеет данные, считаем его загруженным
         if (video.readyState >= 2) {
             this.loadedVideos.add(src);
+            console.log(`✅ [${videoName}] Already ready (readyState: ${video.readyState})`);
             return Promise.resolve();
         }
 
-        // Добавляем в список загружающихся
         this.loadingVideos.add(src);
 
         return new Promise((resolve, reject) => {
+            const startTime = performance.now();
+
             const onLoadedData = () => {
                 cleanup();
+                const duration = (performance.now() - startTime).toFixed(2);
+                console.timeEnd(`📹 Video load: ${videoName}`);
+                console.log(`✅ [${videoName}] Loaded! Duration: ${duration}ms, readyState: ${video.readyState}`);
                 this.loadingVideos.delete(src);
                 this.loadedVideos.add(src);
                 resolve();
@@ -32,31 +40,53 @@ class VideoManager {
 
             const onError = (error) => {
                 cleanup();
+                console.timeEnd(`📹 Video load: ${videoName}`);
+                console.warn(`❌ [${videoName}] Error:`, error);
                 this.loadingVideos.delete(src);
-                console.warn('Video load error:', src, error);
-                resolve(); // Разрешаем промис даже при ошибке
+                resolve();
+            };
+
+            const onProgress = (e) => {
+                if (video.buffered.length > 0) {
+                    const buffered = video.buffered.end(0);
+                    const duration = video.duration;
+                    const percent = duration ? ((buffered / duration) * 100).toFixed(1) : 0;
+                    console.log(`📊 [${videoName}] Progress: ${percent}%, buffered: ${buffered.toFixed(1)}s`);
+                }
             };
 
             const cleanup = () => {
                 video.removeEventListener('loadeddata', onLoadedData);
                 video.removeEventListener('error', onError);
+                video.removeEventListener('progress', onProgress);
             };
 
             video.addEventListener('loadeddata', onLoadedData, { once: true });
             video.addEventListener('error', onError, { once: true });
+            video.addEventListener('progress', onProgress); // Отслеживаем прогресс
 
-            // Timeout для предотвращения зависания
             setTimeout(() => {
                 if (this.loadingVideos.has(src)) {
-                    console.warn('Video load timeout:', src);
+                    console.warn(`⏱️ [${videoName}] Timeout after 8s, readyState: ${video.readyState}`);
                     onError(new Error('Timeout'));
                 }
             }, 8000);
 
-            // Загружаем видео только если оно еще не начало загружаться
-            if (video.readyState === 0) {
-                video.load();
+            console.log(`🔄 [${videoName}] Calling video.load(), current src: ${video.src || 'EMPTY'}`);
+
+            // КРИТИЧНО: Проверьте что src установлен
+            if (!video.src && !video.getAttribute('src')) {
+                console.error(`❌ [${videoName}] No src attribute!`);
+                onError(new Error('No src'));
+                return;
             }
+
+            video.load();
+
+            // Дополнительная проверка через 100ms
+            setTimeout(() => {
+                console.log(`🔍 [${videoName}] After 100ms, readyState: ${video.readyState}, networkState: ${video.networkState}`);
+            }, 100);
         });
     }
 

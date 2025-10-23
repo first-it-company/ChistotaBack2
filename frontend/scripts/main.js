@@ -1,5 +1,5 @@
-import '../styles/main.scss';
-
+console.time('⏱️ Total main.js execution');
+console.time('⏱️ Imports');
 import { initTypewriterHero } from './typewriterHero.js';
 import { initTypewriterCta } from './typewritterCta.js';
 import { initCasesSlider, updateSliderWithFilter } from './casesSwiper.js';
@@ -23,30 +23,14 @@ import { initFooterReviewSlider } from './footerReviewSlider.js';
 
 import './videoManager.js'; // Инициализируем менеджер видео
 
-function earlyVideoPreload() {
-    const videos = document.querySelectorAll('.hero__splide-slide video');
-    if (videos.length === 0) return;
-
-    [0, 1].forEach(index => {
-        const video = videos[index];
-        if (video) {
-            video.preload = 'auto';
-            video.load();
-        }
-    });
-}
-
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-        earlyVideoPreload();
-        initHeroSlider();
-    });
-} else {
-    earlyVideoPreload();
-    initHeroSlider();
-}
+console.timeEnd('⏱️ Imports');
 
 document.addEventListener('DOMContentLoaded', async () => {
+    console.time('⏱️ DOMContentLoaded');
+    console.time('⏱️ initHeroSlider');
+    initHeroSlider();
+    console.timeEnd('⏱️ initHeroSlider');
+    console.time('⏱️ Other inits');
     initTypewriterHero();
     initTypewriterCta();
     initCasesSlider();
@@ -64,6 +48,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     initVideoModal();
     initCustomSelect();
     initFooterReviewSlider();
+
+
 
     if (document.querySelector('[data-service-splide-left]')) {
         import('./serviceCarousel.js').then(({ initServiceCarouselLeft }) => initServiceCarouselLeft());
@@ -93,6 +79,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     // const content = document.getElementById('main');
     // content.classList.remove('blurred');
     // content.classList.add('loaded');
+
+    console.timeEnd('⏱️ Other inits');
+
+    console.timeEnd('⏱️ DOMContentLoaded');
 });
 
 // FAQ Animation
@@ -121,3 +111,5 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+import '../styles/main.scss';
+console.timeEnd('⏱️ Total main.js execution');
