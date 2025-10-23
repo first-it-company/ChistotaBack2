@@ -35,11 +35,25 @@
           sizes="180x180"
           href="{% static "pages/icons/favicons/favicon.png" %}">
     <link rel="canonical" href="https://www.chistota-dv.ru/">
+      <script>
+          // Выполнится мгновенно, до загрузки main.js
+          (function() {
+              const videos = document.querySelectorAll('.hero__splide-slide video');
+              videos.forEach((video, index) => {
+                  video.muted = true;
+                  video.playsInline = true;
+                  video.preload = index < 2 ? 'auto' : 'none';
+                  if (index < 2) {
+                      video.load();
+                  }
+              });
+          })();
+      </script>
     <script>window.gisReviewsData = {{ gis_reviews_json|safe }};</script>
-      <script src="{% static 'pages/main.js' %}" type="module" defer></script>
-      <link rel="stylesheet" href="{% static 'pages/main.css' %}"/>
-<!--          <script type="module" src="http://localhost:5173/@vite/client"></script>-->
-<!--          <script type="module" src="http://localhost:5173/scripts/main.js"></script>-->
+<!--      <script src="{% static 'pages/main.js' %}" type="module" defer></script>-->
+<!--      <link rel="stylesheet" href="{% static 'pages/main.css' %}"/>-->
+          <script type="module" src="http://localhost:5173/@vite/client"></script>
+          <script type="module" src="http://localhost:5173/scripts/main.js"></script>
   </head>
   <body id='top'>
     <div id="loader-overlay">

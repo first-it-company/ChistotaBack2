@@ -3,6 +3,7 @@ import '@splidejs/splide/css';
 import { videoManager } from './videoManager.js';
 
 function syncHeroHeight() {
+
     const heroBody = document.querySelector('.hero__body');
     const heroSplide = document.querySelector('.hero__splide');
 
@@ -24,6 +25,8 @@ function syncHeroHeight() {
 }
 
 export function initHeroSlider() {
+    console.time('🎬 Hero Slider Init');
+
     const sliderElement = document.querySelector('.hero__splide');
 
     if (!sliderElement || !sliderElement.querySelector('.splide__slide')) {
@@ -35,6 +38,7 @@ export function initHeroSlider() {
         existingSlider.splide.destroy(true);
     }
 
+    console.time('🎬 Splide instance creation');
     const splide = new Splide('.hero__splide', {
         type: 'slide',
         rewind: true,
@@ -56,6 +60,7 @@ export function initHeroSlider() {
             },
         }
     });
+    console.timeEnd('🎬 Splide instance creation');
 
     let currentVideo = null;
     let debounceTimer = null;
@@ -153,7 +158,7 @@ export function initHeroSlider() {
             }
         });
     }
-
+    console.time('🎬 Video setup');
     const videos = document.querySelectorAll('.hero__splide-slide video');
     videos.forEach((video, index) => {
         video.muted = true;
@@ -161,6 +166,7 @@ export function initHeroSlider() {
         // Для первых двух видео устанавливаем агрессивную предзагрузку
         video.preload = index < 2 ? 'auto' : 'none';
     });
+    console.timeEnd('🎬 Video setup');
 
     function addCustomArrowHandlers() {
         const btnPrev = document.getElementById('heroBtnPrev');
@@ -236,9 +242,12 @@ export function initHeroSlider() {
             abortController.abort();
         }
     });
-
+    console.time('🎬 Splide mount');
     splide.mount();
+    console.timeEnd('🎬 Splide mount');
+    console.time('🎬 syncHeroHeight');
     syncHeroHeight();
-
+    console.timeEnd('🎬 syncHeroHeight');
+    console.timeEnd('🎬 Hero Slider Init');
     return splide;
 }
