@@ -24,8 +24,6 @@ function syncHeroHeight() {
 }
 
 export function initHeroSlider() {
-    console.time('🎬 Hero Slider Init');
-
     const sliderElement = document.querySelector('.hero__splide');
 
     if (!sliderElement || !sliderElement.querySelector('.splide__slide')) {
@@ -37,7 +35,6 @@ export function initHeroSlider() {
         existingSlider.splide.destroy(true);
     }
 
-    console.time('🎬 Splide instance creation');
     const splide = new Splide('.hero__splide', {
         type: 'slide',
         rewind: true,
@@ -59,7 +56,6 @@ export function initHeroSlider() {
             },
         }
     });
-    console.timeEnd('🎬 Splide instance creation');
 
     let currentVideo = null;
     let debounceTimer = null;
@@ -69,25 +65,12 @@ export function initHeroSlider() {
         const allVideos = document.querySelectorAll('.hero__splide-slide video');
         allVideos.forEach(video => {
             video.pause();
-            video.currentTime = 0;
+            video.classList.remove('playing');
         });
     }
 
     async function playActiveVideo() {
-        if (debounceTimer) {
-            clearTimeout(debounceTimer);
-            debounceTimer = null;
-        }
-
-        if (abortController) {
-            abortController.abort();
-        }
-
         const currentSlideIndex = splide.index;
-        abortController = new AbortController();
-        const signal = abortController.signal;
-
-        stopAllVideos();
 
         const activeSlide = splide.Components.Slides.getAt(currentSlideIndex)?.slide;
         if (!activeSlide) return;
@@ -97,33 +80,16 @@ export function initHeroSlider() {
 
         if (currentVideo && currentVideo !== activeVideo) {
             currentVideo.pause();
-            currentVideo.currentTime = 0;
+            currentVideo.classList.remove('playing');
         }
 
         try {
-            if (signal.aborted) return;
-
-            // Агрессивная загрузка для активного видео
-            await videoManager.loadVideo(activeVideo, true);
-
-            if (signal.aborted) {
-                console.log('Загрузка отменена');
-                return;
-            }
-
-            if (splide.index !== currentSlideIndex) {
-                console.log('Слайд изменился, пропускаем воспроизведение');
-                return;
-            }
-
-            activeVideo.play().catch(err => console.warn('Video autoplay failed:', err));
+            await videoManager.loadVideo(activeVideo);
+            await activeVideo.play();
+            activeVideo.classList.add('playing');
             currentVideo = activeVideo;
         } catch (err) {
-            if (err.name === 'AbortError') {
-                console.log('Загрузка видео отменена');
-            } else {
-                console.warn('Video loading failed:', err);
-            }
+            console.warn('Video playback failed:', err);
         }
     }
 
@@ -143,36 +109,28 @@ export function initHeroSlider() {
         const totalSlides = splide.length;
 
         const indicesToLoad = [
-            (currentIndex + 1) % totalSlides,  // Следующее
-            (currentIndex - 1 + totalSlides) % totalSlides  // Предыдущее
+            currentIndex,
+            (currentIndex + 1) % totalSlides,
+            (currentIndex - 1 + totalSlides) % totalSlides
         ];
 
         const videos = document.querySelectorAll('.hero__splide-slide video');
         indicesToLoad.forEach(index => {
             const video = videos[index];
-            if (video && !videoManager.isLoading(video) && !videoManager.isLoaded(video)) {
-                // Фоновая загрузка БЕЗ aggressive режима
-                videoManager.loadVideo(video, false).catch(err => {
+            if (video && !videoManager.isLoading(video)) {
+                videoManager.loadVideo(video).catch(err => {
                     console.warn('Preload failed for video', index, err);
                 });
             }
         });
     }
 
-    console.time('🎬 Video setup');
     const videos = document.querySelectorAll('.hero__splide-slide video');
-    videos.forEach((video, index) => {
+    videos.forEach(video => {
         video.muted = true;
         video.playsInline = true;
-
-        // Первое видео загружаем агрессивно, остальные - по требованию
-        if (index === 0) {
-            video.preload = 'auto';
-        } else {
-            video.preload = 'metadata';  // Загружаем только метаданные
-        }
+        video.preload = 'metadata';
     });
-    console.timeEnd('🎬 Video setup');
 
     function addCustomArrowHandlers() {
         const btnPrev = document.getElementById('heroBtnPrev');
@@ -232,10 +190,11 @@ export function initHeroSlider() {
 
     splide.on('mounted', () => {
         addCustomArrowHandlers();
-        playActiveVideo(); // без setTimeout
-        setTimeout(preloadNearbyVideos, 500);
+        preloadNearbyVideos();
+        setTimeout(() => {
+            playActiveVideo();
+        }, 100);
     });
-
 
     splide.on('destroy', () => {
         stopAllVideos();
@@ -248,14 +207,8 @@ export function initHeroSlider() {
         }
     });
 
-    console.time('🎬 Splide mount');
     splide.mount();
-    console.timeEnd('🎬 Splide mount');
-
-    console.time('🎬 syncHeroHeight');
     syncHeroHeight();
-    console.timeEnd('🎬 syncHeroHeight');
 
-    console.timeEnd('🎬 Hero Slider Init');
     return splide;
 }

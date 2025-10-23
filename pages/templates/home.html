@@ -172,7 +172,7 @@
               {% for video in videos %}
                 <li class="hero__splide-slide splide__slide">
                   <div class="hero__splide-slide-inner">
-                    <video src="{{ video.video.url }}" muted playsinline loop>
+                    <video src="{{ video.video.url }}" preload="metadata" muted playsinline loop>
                     </video>
                   </div>
                 </li>
@@ -308,4 +308,8 @@
   {% include 'partials/cta-request.html' %}
   {% include 'partials/reviews.html' %}
   {% include 'partials/faq.html' with with_border=True %}
+
+<div class="preloader">
+    <div class="wave"></div>
+</div>
 {% endblock %}
