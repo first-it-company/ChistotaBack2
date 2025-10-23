@@ -13,7 +13,8 @@
                 alt="Instagram"
                 class="about__inst hidden-mobile"
                 width="116"
-                height="48">
+                height="48"
+                loading="lazy">
             </a>
             {% endif %}
             {% if telegram_url %}
@@ -22,7 +23,8 @@
                 alt="Telegram"
                 class="about__tg hidden-mobile"
                 width="111"
-                height="48">
+                height="48"
+                loading="lazy">
             </a>
             {% endif %}
             {% if vk_url %}
@@ -31,7 +33,8 @@
                 alt="VK"
                 class="about__vk hidden-mobile"
                 width="100"
-                height="48">
+                height="48"
+                loading="lazy">
             </a>
             {% endif %}
             {% if instagram_url %}
@@ -40,7 +43,8 @@
                 alt="Instagram"
                 class="about__inst visible-mobile"
                 width="81"
-                height="29">
+                height="29"
+                loading="lazy">
             </a>
             {% endif %}
             {% if telegram_url %}
@@ -49,7 +53,8 @@
                 alt="Telegram"
                 class="about__tg visible-mobile"
                 width="68"
-                height="29">
+                height="29"
+                loading="lazy">
             </a>
             {% endif %}
             {% if vk_url %}
@@ -58,7 +63,8 @@
                 alt="VK"
                 class="about__vk visible-mobile"
                 width="65"
-                height="29">
+                height="29"
+                loading="lazy">
             </a>
             {% endif %}
         </div>
@@ -76,7 +82,7 @@
                 {% endfor %}
                 {% for log in logo %}
                 <div class="carousel__slide">
-                    <img src="{{ log.photo.url }}">
+                    <img src="{{ log.photo.url }}" loading="lazy">
                 </div>
                 {% endfor %}
             </div>

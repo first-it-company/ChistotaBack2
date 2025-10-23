@@ -185,11 +185,11 @@ def service_detail(request, slug: str):
     scope_services_for_orders = ScopeServices.objects.filter(
         id__in=used_orders_scope_ids
     )
+    contact = Contact.objects.first()
     order_info = OrderInfo.objects.first()
     orders = Order.objects.all()
     questions = QuestionAnswer.objects.all()
 
-    # Получаем ссылки на социальные сети
     social_networks = {
         "instagram_url": (
             SocialNetwork.objects.filter(name="instagram").first().url
@@ -229,6 +229,7 @@ def service_detail(request, slug: str):
         {
             "service": service,
             "order_info": order_info,
+            "contact": contact,
             "orders": orders,
             "gis_reviews_json": gis_reviews_json,
             "questions": questions,
