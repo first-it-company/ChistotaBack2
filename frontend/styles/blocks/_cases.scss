@@ -1,10 +1,7 @@
 @use "../helpers" as *;
 
 .cases {
-  border-top: 1px solid var(--color-gray-100);
-
   &__inner {
-
     padding-top: rem(80);
     padding-bottom: rem(80);
     padding-inline: 40px;

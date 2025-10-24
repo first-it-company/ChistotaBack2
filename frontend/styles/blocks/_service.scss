@@ -27,11 +27,15 @@
 
   &__header {
     margin-bottom: rem(26);
-    font-size: fluid(50, 36);
+    font-size: 3vw;
     line-height: 0.8;
     text-transform: uppercase;
     color: var(--color-black);
     font-weight: 700;
+
+    @include tablet{
+      font-size: fluid(50, 30);
+    }
 
     @include tablet {
       margin-bottom: rem(20);
@@ -156,7 +160,10 @@
       width: 48%;
       gap: rem(40);
       padding: rem(25);
-      min-height: rem(480);
+
+      @include laptop{
+        min-height: rem(400);
+      }
 
       @include tablet {
         flex-direction: column;
@@ -296,43 +303,57 @@
   }
 
   &__button {
-    width: 100%;
-    border-radius: 0.7vw;
     background: var(--color-blue);
-    padding: 0.2vw 1vw;
     color: var(--color-white);
     font-weight: 500;
     text-wrap: nowrap;
     text-transform: uppercase;
+
+    padding-inline: 3vw;
 
     @include hover {
       color: var(--color-white);
     }
 
     @include tablet {
-      border-radius: 16px;
+      padding-inline: rem(25);
       width: 100%;
+    }
+
+    &-wrapper{
+      @include mobile{
+        width: 100%;
+      }
     }
   }
 
   &__button-arrow {
     @include reset-button;
     background-color: var(--color-blue);
-    border-radius: 0.7vw;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
     aspect-ratio: 1;
-    transition: all 0.3s ease;
+
+    padding-block: 1.4vw;
+    font-size: 1.3vw;
+    border-radius: 0.8vw;
+
+    @include tablet{
+      padding: rem(14) rem(14);
+      border-radius: rem(14);
+    }
 
     svg{
-      width: 2vw;
-      height: 2vw;
+      transform: rotate(0);
+      transition-duration: 0.2s;
+      width: 3vw;
+      height: 3vw;
 
-      @include tablet {
-        width: 40px;
-        height: 40px;
+      @include tablet{
+        width: auto;
+        height:auto;
       }
     }
 

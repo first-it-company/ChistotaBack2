@@ -102,9 +102,15 @@
 
   &__button{
     z-index: 100;
-    padding-block: rem(20);
-    width: fit-content;
+    width: 30%;
 
+    @include tablet{
+      width: 50%;
+    }
+
+    @include mobile{
+      width: 80%;
+    }
   }
 
   &__inst{

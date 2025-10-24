@@ -9,18 +9,12 @@ function syncHeroHeight() {
     if (!heroBody || !heroSplide) return;
 
     const setHeight = () => {
-        const bodyHeight = heroBody.offsetHeight;
-        heroSplide.style.height = `${bodyHeight}px`;
+        heroSplide.style.height = `${heroBody.offsetHeight}px`;
     };
 
     setHeight();
     window.addEventListener('resize', setHeight);
-
-    const observer = new ResizeObserver(() => {
-        setHeight();
-    });
-
-    observer.observe(heroBody);
+    new ResizeObserver(setHeight).observe(heroBody);
 }
 
 export function initHeroSlider() {
@@ -28,11 +22,6 @@ export function initHeroSlider() {
 
     if (!sliderElement || !sliderElement.querySelector('.splide__slide')) {
         return;
-    }
-
-    const existingSlider = document.querySelector('.hero__splide');
-    if (existingSlider && existingSlider.splide) {
-        existingSlider.splide.destroy(true);
     }
 
     const splide = new Splide('.hero__splide', {
@@ -58,21 +47,17 @@ export function initHeroSlider() {
     });
 
     let currentVideo = null;
-    let debounceTimer = null;
-    let abortController = null;
+    let playTimeout = null;
 
     function stopAllVideos() {
-        const allVideos = document.querySelectorAll('.hero__splide-slide video');
-        allVideos.forEach(video => {
+        document.querySelectorAll('.hero__splide-slide video').forEach(video => {
             video.pause();
             video.classList.remove('playing');
         });
     }
 
     async function playActiveVideo() {
-        const currentSlideIndex = splide.index;
-
-        const activeSlide = splide.Components.Slides.getAt(currentSlideIndex)?.slide;
+        const activeSlide = splide.Components.Slides.getAt(splide.index)?.slide;
         if (!activeSlide) return;
 
         const activeVideo = activeSlide.querySelector('video');
@@ -88,51 +73,36 @@ export function initHeroSlider() {
             await activeVideo.play();
             activeVideo.classList.add('playing');
             currentVideo = activeVideo;
-        } catch (err) {
-            console.warn('Video playback failed:', err);
-        }
+        } catch (err) {}
     }
 
     function playActiveVideoDebounced() {
-        if (debounceTimer) {
-            clearTimeout(debounceTimer);
-        }
+        clearTimeout(playTimeout);
         stopAllVideos();
-
-        debounceTimer = setTimeout(() => {
-            playActiveVideo();
-        }, 150);
+        playTimeout = setTimeout(playActiveVideo, 150);
     }
 
     function preloadNearbyVideos() {
         const currentIndex = splide.index;
         const totalSlides = splide.length;
-
-        const indicesToLoad = [
-            currentIndex,
-            (currentIndex + 1) % totalSlides,
-            (currentIndex - 1 + totalSlides) % totalSlides
-        ];
-
         const videos = document.querySelectorAll('.hero__splide-slide video');
-        indicesToLoad.forEach(index => {
-            const video = videos[index];
-            if (video && !videoManager.isLoading(video)) {
-                videoManager.loadVideo(video).catch(err => {
-                    console.warn('Preload failed for video', index, err);
-                });
-            }
-        });
+
+        [currentIndex, (currentIndex + 1) % totalSlides, (currentIndex - 1 + totalSlides) % totalSlides]
+            .forEach(index => {
+                const video = videos[index];
+                if (video && !videoManager.isLoading(video)) {
+                    videoManager.loadVideo(video).catch(() => {});
+                }
+            });
     }
 
-    const videos = document.querySelectorAll('.hero__splide-slide video');
-    videos.forEach(video => {
+    document.querySelectorAll('.hero__splide-slide video').forEach(video => {
         video.muted = true;
         video.playsInline = true;
         video.preload = 'auto';
     });
 
-    function addCustomArrowHandlers() {
+    function setupCustomArrows() {
         const btnPrev = document.getElementById('heroBtnPrev');
         const btnNext = document.getElementById('heroBtnNext');
         const counterEl = document.getElementById('heroCurrent');
@@ -140,71 +110,43 @@ export function initHeroSlider() {
         const updateUI = () => {
             const index = splide.index;
             const endIndex = splide.Components.Controller.getEnd();
-            const current = index + 1;
-            const total = endIndex + 1;
-
-            const formattedCurrent = String(current).padStart(2, '0');
-            const formattedTotal = String(total).padStart(2, '0');
 
             if (counterEl) {
-                counterEl.innerHTML = `${formattedCurrent}<span>/${formattedTotal}</span>`;
+                counterEl.innerHTML = `${String(index + 1).padStart(2, '0')}<span>/${String(endIndex + 1).padStart(2, '0')}</span>`;
             }
 
-            if (btnPrev) {
-                btnPrev.classList.toggle('is-disabled', index === 0);
-            }
-
-            if (btnNext) {
-                btnNext.classList.toggle('is-disabled', index === endIndex);
-            }
+            btnPrev?.classList.toggle('is-disabled', index === 0);
+            btnNext?.classList.toggle('is-disabled', index === endIndex);
         };
 
-        if (btnPrev) {
-            btnPrev.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                splide.go('<');
-            });
-        }
+        btnPrev?.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            splide.go('<');
+        });
 
-        if (btnNext) {
-            btnNext.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                splide.go('>');
-            });
-        }
+        btnNext?.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            splide.go('>');
+        });
 
         splide.on('move.end', updateUI);
         splide.on('updated', updateUI);
         updateUI();
     }
 
-    splide.on('move', () => {
-        playActiveVideoDebounced();
-    });
-
-    splide.on('move.end', () => {
-        preloadNearbyVideos();
-    });
-
+    splide.on('move', playActiveVideoDebounced);
+    splide.on('move.end', preloadNearbyVideos);
     splide.on('mounted', () => {
-        addCustomArrowHandlers();
+        setupCustomArrows();
         preloadNearbyVideos();
-        setTimeout(() => {
-            playActiveVideo();
-        }, 100);
+        setTimeout(playActiveVideo, 100);
     });
-
     splide.on('destroy', () => {
         stopAllVideos();
         currentVideo = null;
-        if (debounceTimer) {
-            clearTimeout(debounceTimer);
-        }
-        if (abortController) {
-            abortController.abort();
-        }
+        clearTimeout(playTimeout);
     });
 
     splide.mount();

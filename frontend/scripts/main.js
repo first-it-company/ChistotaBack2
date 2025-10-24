@@ -15,12 +15,45 @@ import { initServiceSlider } from "./serviceSplide";
 import { initModal } from "./modal.js";
 import { initFormFeedback } from "./form.js";
 import { initModalSuccess } from "./modalSuccess.js";
-// import { loader } from "./loader"
 import { initVideoModal } from './videoModal.js';
 import { initCustomSelect } from './customSelect.js';
 import { initFooterReviewSlider } from './footerReviewSlider.js';
 
-import './videoManager.js'; // Инициализируем менеджер видео
+import './videoManager.js';
+
+document.addEventListener('DOMContentLoaded', () => {
+    const words = ["Порядок", "Комфорт", "Свежесть", "Чистота"];
+
+    let index = 0;
+
+    const container = document.querySelector('.preloader');
+    const text = document.createElement('p');
+    const dot = document.createElement('span');
+
+    text.appendChild(dot);
+    text.append(words[0]);
+    container.appendChild(text);
+
+    function updateText() {
+        if (index < words.length - 1) {
+            setTimeout(() => {
+                index++;
+                text.innerHTML = `<span></span>${words[index]}`;
+                updateText();
+            }, 550);
+        }
+    }
+    setTimeout(() => {
+        updateText();
+    }, 550);
+
+    setTimeout(() => {
+        container.classList.add('exit');
+    }, 2000);
+    setTimeout(() => {
+        container.style.display = 'none';
+    }, 2800);
+});
 
 document.addEventListener('DOMContentLoaded', async () => {
     initHeroSlider();
@@ -68,7 +101,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
 });
 
-// FAQ Animation
+
 document.addEventListener('DOMContentLoaded', () => {
   const faqItems = document.querySelectorAll('.faq__item');
   

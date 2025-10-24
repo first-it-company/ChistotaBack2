@@ -76,16 +76,14 @@
   }
 
   &__button {
-    padding: 2vw 6vw;
-    //width: rem(399);
+    padding-inline: 6vw;
     background-color: rgb(0, 96, 223);
     color: var(--color-white);
-
-    @include tablet {
-      padding: rem(24) rem(40);
-    }
+    text-wrap: nowrap;
+    flex-shrink: 0;
 
     @include mobile {
+      padding-inline: rem(40);
       width: 100%;
     }
   }
