@@ -432,19 +432,15 @@
   }
 
   &__button {
-    //padding: 2vw rem(50) !important;
     width: 100%;
 
     @include mobile {
-      //padding: rem(22) rem(10) !important;
       font-size: rem(20)
     }
 
     &--adv{
       width: fit-content;
       align-self: center;
-      padding-block: fluid(33, 10) !important;
-
       @include mobile {
         width: 100%;
       }
