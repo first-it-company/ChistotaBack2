@@ -255,14 +255,12 @@
   }
 
   &__button {
-    padding: 2vw;
-    line-height: rem(17);
+
     text-wrap: nowrap;
     width: 100%;
 
     @include tablet {
-      width: 60%;
-      padding: rem(20) rem(35);
+
     }
 
     @include mobile {

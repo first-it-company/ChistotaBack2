@@ -28,7 +28,7 @@
             src="{% static "pages/icons/star.svg" %}"
             alt=""
             class=""
-            width="20" height="20" loading="lazy"
+            width="32" height="32" loading="lazy"
           >
         </button>
       </div>
@@ -38,7 +38,7 @@
             src="{% static 'pages/icons/arrow-left.svg' %}"
             alt="Назад"
             class="controls__img"
-            width="24" height="24" loading="lazy"
+            width="100%" height="100%" loading="lazy"
           >
         </button>
 
@@ -49,7 +49,7 @@
             src="{% static 'pages/icons/arrow-right.svg' %}"
             alt="Вперед"
             class="controls__img"
-            width="24" height="24" loading="lazy"
+            width="100%" height="100%" loading="lazy"
           >
         </button>
       </div>
@@ -88,7 +88,7 @@
                     <p class="reviews__score">{{ review.rating_display }}</p>
                     <div class="reviews__stars">
                       {% for i in "12345"|make_list %}
-                      <img src="{% static 'pages/icons/star.svg' %}" class="reviews__stars_img" width="20" height="20" loading="lazy"
+                      <img src="{% static 'pages/icons/star.svg' %}" class="reviews__stars_img" width="100%" height="100%" loading="lazy"
                         style="opacity:{% if forloop.counter <= review.rating %}1{% else %}0.3{% endif %}">
                       {% endfor %}
                     </div>
@@ -126,7 +126,7 @@
             src="{% static "pages/icons/star.svg" %}"
             alt=""
             class=""
-            width="20" height="20" loading="lazy"
+            width="32" height="32" loading="lazy"
           >
         </button>
       </div>
@@ -136,7 +136,7 @@
             src="{% static 'pages/icons/arrow-left.svg' %}"
             alt="Назад"
             class="controls__img"
-            width="24" height="24" loading="lazy"
+            width="100%" height="100%" loading="lazy"
           >
         </button>
 
@@ -147,7 +147,7 @@
             src="{% static 'pages/icons/arrow-right.svg' %}"
             alt="Вперед"
             class="controls__img"
-            width="24" height="24"
+            width="100%" height="100%"
           >
         </button>
       </div>
@@ -186,7 +186,7 @@
                     <p class="reviews__score">{{ review.rating_display }}</p>
                     <div class="reviews__stars">
                       {% for i in "12345"|make_list %}
-                      <img src="{% static 'pages/icons/star.svg' %}" class="reviews__stars_img" width="20" height="20"  loading="lazy"
+                      <img src="{% static 'pages/icons/star.svg' %}" class="reviews__stars_img" width="100%" height="100%"  loading="lazy"
                         style="opacity:{% if forloop.counter <= review.rating %}1{% else %}0.3{% endif %}">
                       {% endfor %}
                     </div>
