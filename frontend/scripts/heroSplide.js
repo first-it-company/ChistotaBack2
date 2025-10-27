@@ -19,6 +19,7 @@ function syncHeroHeight() {
 
 export function initHeroSlider() {
     const sliderElement = document.querySelector('.hero__splide');
+    const videos = document.querySelectorAll('.hero__splide-slide video');
 
     if (!sliderElement || !sliderElement.querySelector('.splide__slide')) {
         return;
@@ -85,8 +86,6 @@ export function initHeroSlider() {
     function preloadNearbyVideos() {
         const currentIndex = splide.index;
         const totalSlides = splide.length;
-        const videos = document.querySelectorAll('.hero__splide-slide video');
-
         [currentIndex, (currentIndex + 1) % totalSlides, (currentIndex - 1 + totalSlides) % totalSlides]
             .forEach(index => {
                 const video = videos[index];
@@ -96,10 +95,10 @@ export function initHeroSlider() {
             });
     }
 
-    document.querySelectorAll('.hero__splide-slide video').forEach(video => {
+    videos.forEach((video, index) => {
         video.muted = true;
         video.playsInline = true;
-        video.preload = 'auto';
+        video.preload = index === 0 ? 'auto' : 'metadata';
     });
 
     function setupCustomArrows() {
@@ -138,11 +137,24 @@ export function initHeroSlider() {
 
     splide.on('move', playActiveVideoDebounced);
     splide.on('move.end', preloadNearbyVideos);
-    splide.on('mounted', () => {
+    splide.on('mounted', async () => {
         setupCustomArrows();
+
+        const firstSlide = splide.Components.Slides.getAt(0)?.slide;
+        const firstVideo = firstSlide?.querySelector('video');
+
+        if (firstVideo) {
+            try {
+                await videoManager.loadVideo(firstVideo);
+                await firstVideo.play();
+                firstVideo.classList.add('playing');
+                currentVideo = firstVideo;
+            } catch {}
+        }
+
         preloadNearbyVideos();
-        setTimeout(playActiveVideo, 100);
     });
+
     splide.on('destroy', () => {
         stopAllVideos();
         currentVideo = null;
