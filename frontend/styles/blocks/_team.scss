@@ -36,10 +36,8 @@
   }
 
   &__splide {
-    height: fluid(500, 300)
+    height: clamp(320px, 25vw, 560px);
   }
-
-
 
   .splide__track,
   .splide__list {
@@ -48,7 +46,7 @@
 
   &__info {
     display: flex;
-    width: rem(320);
+    width: 20vw;
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
@@ -57,7 +55,7 @@
 
     &-experience {
       display: none;
-      font-size: rem(16);
+      font-size: clamp(12px, 0.7vw, 20px);
       line-height: normal;
       align-items: center;
       border-radius: rem(150);
@@ -71,7 +69,6 @@
         position: absolute;
         left: rem(6);
         bottom: rem(6);
-        font-size: rem(12);
         line-height: normal;
         align-items: center;
         border-radius: rem(14);
@@ -88,13 +85,15 @@
     }
 
     &-name {
-      font-size: fluid(28, 18);
+      font-size: clamp(18px, 1.5vw, 40px);
       font-weight: 500;
+
+
     }
 
     &-post {
       font-family: var(--font-family-accent);
-      font-size: fluid(20, 16);
+      font-size: clamp(12px, 1vw, 38px);
       color: var(--color-gray-300);
 
       @include mobile{
@@ -104,7 +103,7 @@
 
     &-description {
       font-family: var(--font-family-accent);
-      font-size: fluid(18, 16);
+      font-size: clamp(18px, 1vw, 28px);
       font-weight: 400;
       color: var(--color-gray-200);
       margin-top: rem(32);
@@ -138,7 +137,7 @@
     gap: rem(16);
 
     &-counter {
-      font-size: 1rem;
+      font-size: clamp(18px, 1vw, 28px);
       color: var(--color-black);
       font-weight: 600;
 
@@ -167,15 +166,23 @@
   }
 
   &__slide-name {
-    font-size: fluid(24, 18);
+    font-size: clamp(20px, 1.5vw, 44px);
     font-weight: 400;
     color: var(--color-black);
+
+    @include tablet {
+      font-size: rem(18);
+    }
   }
 
   &__slide-post {
     font-family: var(--font-family-accent);
-    font-size: fluid(20, 16);
+    font-size: clamp(12px, 1vw, 38px);
     color: var(--color-gray-200);
+
+    @include tablet {
+      font-size: rem(16);
+    }
   }
 
   @include tablet {

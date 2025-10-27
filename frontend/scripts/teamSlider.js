@@ -15,7 +15,7 @@ export function initTeamSlider() {
     arrows: false,
     pagination: false,
     trimSpace: false,
-    fixedWidth: 400,
+    fixedWidth: 480,
 
     breakpoints: {
       1440: {
