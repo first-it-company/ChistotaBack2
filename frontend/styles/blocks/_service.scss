@@ -324,6 +324,16 @@
       @include mobile{
         width: 100%;
       }
+
+      @include hover {
+        color: var(--color-white);
+
+        .service__button-arrow{
+          svg {
+            transform: rotate(45deg);
+          }
+        }
+      }
     }
   }
 
@@ -354,12 +364,6 @@
       @include tablet{
         width: auto;
         height:auto;
-      }
-    }
-
-    &:hover {
-      svg {
-        transform: rotate(45deg);
       }
     }
 
