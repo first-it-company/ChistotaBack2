@@ -40,12 +40,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 index++;
                 text.innerHTML = `<span></span>${words[index]}`;
                 updateText();
-            }, 550);
+            }, 300);
         }
     }
     setTimeout(() => {
         updateText();
-    }, 550);
+    }, 300);
 
     setTimeout(() => {
         container.classList.add('exit');

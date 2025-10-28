@@ -81,10 +81,9 @@ class Services(models.Model):
         blank=True
     )
     desc = models.TextField(verbose_name="Описание")
-    color = models.CharField(max_length=50, verbose_name="Цвет")
     gradient = models.TextField(
-        verbose_name="Градиент",
-        help_text = "linear-gradient(0deg, #53647A, #53647A), rgba(83, 100, 122, 0.4) 55%, rgba(0, 96, 223, 0.4) 100%);"
+        verbose_name="Цвет карточки",
+        help_text = "От светлого к темному: gradient-1, gradient-2, gradient-3, gradient-4"
     )
     time_work = models.CharField(max_length=150, verbose_name="Часы работы")
     square = models.CharField(max_length=150, verbose_name="Площадь работы")

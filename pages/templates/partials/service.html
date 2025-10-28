@@ -25,8 +25,7 @@
     </div>
     <div class="service__cards-wrapper">
       {% for service in services %}
-        <div class="service__card"
-             style="background: {{ service.color }} {{ service.gradient }}">
+        <div class="service__card {{ service.gradient }}">
           <div class="service__card-wrapper">
             <div class="service__card-body">
               <div class="service__card-main">
