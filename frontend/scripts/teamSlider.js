@@ -10,21 +10,22 @@ export function initTeamSlider() {
     rewind: false,
     perPage: 1,
     perMove: 1,
-    gap: 24,
+    gap: "24rem",
     padding: 0,
     arrows: false,
     pagination: false,
     trimSpace: false,
-    fixedWidth: 480,
+    fixedWidth: '430rem',
 
     breakpoints: {
       1440: {
-          fixedWidth: 300,
+          fixedWidth: '300rem',
           perPage: 1,
           padding: { right: '50%' },
       },
       768: {
-          fixedWidth: 260,
+          gap: "8rem",
+          fixedWidth: '260rem',
           padding: { right: 'auto' },
       },
       520: {

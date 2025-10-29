@@ -6,24 +6,23 @@
   @include tablet {
     background: none;
     background-color: rgb(242, 246, 250);
-    border-radius: rem(32);
-
+    border-radius: 32rem;
   }
 
   &__inner {
-    padding-inline: 5vw;
-    padding-top: rem(70);
-    padding-bottom: rem(90);
+    padding-inline: 70rem;
+    padding-top: 70rem;
+    padding-bottom: 90rem;
     display: flex;
     justify-content: space-between;
-    gap: 1rem;
+    gap: 16rem;
 
     @include tablet {
       flex-direction: column;
       padding-top: 0;
-      padding-bottom: rem(20);
+      padding-bottom: 20rem;
 
-      gap: rem(25);
+      gap: 25rem;
 
 
       &.container {
@@ -37,34 +36,32 @@
   }
 
   &__socials-logo {
-    width: 3vw;
-    height: 3vw;
+    width: 50rem;
+    height: 50rem;
 
     @include tablet {
-      width: 40px;
-      height: 40px;
+      width: 40rem;
+      height: 40rem;
     }
   }
-
-
 
   &__main {
     width: 82%;
     display: flex;
     flex-direction: column;
-    gap: rem(67);
+    gap: 67rem;
 
     @include tablet {
       background: url("/static/pages/images/cta/background-m.png") 0 0 / cover no-repeat;
       width: 100%;
-      padding-inline: rem(20);
-      row-gap: rem(40);
-      padding-block: rem(40);
-      border-radius: rem(32);
+      padding-inline: 20rem;
+      row-gap: 40rem;
+      padding-block: 40rem;
+      border-radius: 32rem;
     }
 
     @include mobile {
-      padding-inline: 16px;
+      padding-inline: 16rem;
     }
   }
 
@@ -75,19 +72,19 @@
 
   &__header {
     font-weight: 600;
-    font-size: 3vw;
-    letter-spacing: -0.03em;
+    font-size: 44rem;
+    letter-spacing: -0.03rem;
     text-transform: uppercase;
-    margin-bottom: rem(24);
+    margin-bottom: 24rem;
     max-width: 80%;
 
     @include laptop {
-      font-size: rem(40);
+      font-size: 38rem;
     }
 
     @include tablet {
       max-width: 100%;
-      font-size: rem(36);
+      font-size: 36rem;
       line-height: normal;
       letter-spacing: normal;
     }
@@ -95,12 +92,12 @@
 
   &__subheader {
     font-weight: 400;
-    font-size: 1.5vw;
+    font-size: 24rem;
     font-family: var(--font-family-accent);
     color: var(--color-white);
 
     @include tablet {
-      font-size: rem(20);
+      font-size: 20rem;
     }
   }
 
@@ -108,46 +105,46 @@
   &__socials {
     &-title {
       font-weight: 400;
-      font-size: 1.5vw;
+      font-size: 24rem;
       font-family: var(--font-family-accent);
       color: var(--color-gray-100);
-      margin-bottom: 1.5vw;
+      margin-bottom: 24rem;
       max-width: 80%;
 
       @include tablet {
         max-width: 100%;
-        font-size: rem(20);
-        margin-bottom: 20px;
+        font-size: 20rem;
+        margin-bottom: 20rem;
       }
     }
 
     &-logo {
       @include mobile {
-        width: 40px;
-        height: 40px;
+        width: 40rem;
+        height: 40rem;
       }
     }
 
     &-wrapper {
       display: flex;
-      column-gap: rem(28);
+      column-gap: 28rem;
 
       @include mobile {
-        column-gap: rem(24);
+        column-gap: 24rem;
       }
     }
   }
 
   &__form {
-    max-width: 42vw;
+    max-width: 676rem;
     background-color: var(--color-white);
-    padding: rem(40);
-    border: 1px solid var(--color-blue);
-    border-radius: rem(20);
+    padding: 40rem;
+    border: 1rem solid var(--color-blue);
+    border-radius: 20rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 1vw;
+    gap: 14rem;
 
     height: 100%;
     position: relative;
@@ -155,39 +152,31 @@
 
 
     @include laptop {
-      row-gap: rem(24);
+      row-gap: 24rem;
     }
 
     @include tablet {
       max-width: 100%;
       width: 100%;
       position: relative;
-      top: rem(15);
-      padding: rem(32) rem(16);
+      top: 15rem;
+      padding: 32rem 16rem;
       padding-top: 0;
       border: none;
       background-color: rgb(242, 246, 250);
-      border-radius: 32px;
+      border-radius: 32rem;
     }
-
-
-
-
 
     &-title {
       font-weight: 600;
-      font-size: 2vw;
+      font-size: 32rem;
       letter-spacing: -0.03em;
       text-transform: uppercase;
       color: var(--color-black);
       text-align: left;
 
       @include tablet {
-        font-size: 2rem;
-      }
-
-      @include mobile {
-        font-size: 1.5rem;
+        font-size: 30rem;
       }
     }
   }
@@ -195,35 +184,32 @@
   &__fields {
     display: flex;
     flex-wrap: wrap;
-    column-gap: 24px;
-    row-gap: 32px;
-
-
-
+    column-gap: 24rem;
+    row-gap: 32rem;
 
     @include laptop {
       min-width: 100%;
-      gap: rem(16)
+      gap: 16rem;
     }
 
     @include tablet {
-      gap: rem(24)
+      gap: 24rem;
     }
 
     @include mobile {
-      gap: 12px;
+      gap: 12rem;
     }
 
     .faq__cell-input,
     .faq__cell-input--long {
       border: none;
-      border-bottom: 1px solid rgb(223, 223, 223);
+      border-bottom: 1rem solid rgb(223, 223, 223);
       border-radius: 0;
 
       @include hover {
         transition-duration: var(--transition-duration);
         border: none;
-        border-bottom: 1px solid var(--color-blue);
+        border-bottom: 1rem solid var(--color-blue);
       }
 
       &:focus {
@@ -232,16 +218,16 @@
 
       &:focus-visible {
         border: none;
-        border-bottom: 1px solid var(--color-blue);
+        border-bottom: 1rem solid var(--color-blue);
       }
 
       @include tablet {
-        border-radius: 8px !important;
+        border-radius: 8rem !important;
         border: none;
 
         @include hover {
           border: none;
-          outline: 1px solid var(--color-blue);
+          outline: 1rem solid var(--color-blue);
         }
 
         &:focus {
@@ -250,17 +236,17 @@
         }
 
         &:focus-visible {
-          outline: 1px solid var(--color-blue);
+          outline: 1rem solid var(--color-blue);
         }
 
       }
     }
 
     .faq__cell-input--long {
-      height: 40px;
+      height: 40rem;
 
       @include tablet {
-        height: 100px;
+        height: 100rem;
       }
     }
 
@@ -270,7 +256,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 1rem;
+    gap: 16rem;
 
     @include laptop {
       flex-direction: column;
@@ -278,13 +264,11 @@
   }
 
   &__cell {
-    border-bottom: 1px solid var(--color-gray-100);
+    border-bottom: 1rem solid var(--color-gray-100);
 
     &--long {
       width: 100%;
     }
-
-
 
     @include laptop {
       width: 100%;
@@ -292,8 +276,8 @@
 
     &-input {
       border: none;
-      width: rem(285);
-      height: rem(40);
+      width: 285rem;
+      height: 40rem;
       display: flex;
       align-items: center;
 
@@ -303,10 +287,10 @@
       }
 
       &::placeholder {
-        font-size: rem(18);
+        font-size: 18rem;
 
         @include mobile {
-          font-size: rem(16);
+          font-size: 16rem;
         }
       }
 
@@ -317,13 +301,12 @@
       @include laptop {
         width: 100%;
       }
-
     }
   }
 
   &__price {
     font-weight: 500;
-    font-size: rem(24);
+    font-size: 24rem;
     text-transform: uppercase;
     color: var(--color-black);
     text-wrap: nowrap;
@@ -332,7 +315,7 @@
   &__policy {
     display: flex;
     align-items: center;
-    gap: rem(12);
+    gap: 12rem;
 
     @include mobile {
       align-items: flex-start;
@@ -344,8 +327,8 @@
     text-wrap: nowrap;
 
     @include tablet {
-      line-height: rem(17);
-      padding-block: rem(19);
+      line-height: 17rem;
+      padding-block: 19rem;
     }
   }
 

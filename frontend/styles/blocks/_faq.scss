@@ -1,22 +1,22 @@
 @use "../helpers" as *;
 
 .faq {
-  padding-top: rem(100);
-  padding-bottom: rem(100);
-  margin-bottom: -25px;
+  padding-top: 100rem;
+  padding-bottom: 100rem;
+  margin-bottom: -25rem;
 
   @include tablet {
-    padding: rem(60) 0;
+    padding: 60rem 0;
   }
 
   &__inner {
     display: flex;
-    column-gap: rem(40);
-    padding-inline: 40px;
+    column-gap: 40rem;
+    padding-inline: 40rem;
 
     @include tablet {
       flex-direction: column;
-      padding-inline: 20px;
+      padding-inline: 20rem;
 
       &.container {
         padding-inline: 0;
@@ -28,7 +28,7 @@
     display: flex;
     flex-direction: column;
     width: 49%;
-    gap: rem(40);
+    gap: 40rem;
 
 
     @include tablet {
@@ -45,47 +45,40 @@
     display: flex;
     flex-direction: column;
     line-height: normal;
-    gap: rem(32);
+    gap: 32rem;
     width: 80%;
     color: var(--color-black);
 
 
     @include tablet {
       width: 100%;
-      gap: rem(24);
+      gap: 24rem;
       order: 1;
-      margin-bottom: rem(32);
-      padding-inline: rem(20);
+      margin-bottom: 32rem;
+      padding-inline: 20rem;
     }
   }
 
   &__header {
     @include tablet {
-      font-size: rem(40);
+      font-size: 40rem;
     }
   }
 
   &__subheader {
     color: var(--color-gray-300);
-    font-size: 1.5vw;
+    font-size: 24rem;
 
-    @include tablet {
-      font-size: 1.5rem;
-    }
-
-    @include mobile {
-      font-size: rem(14);
-    }
   }
 
   &__socials-wrapper {
     display: flex;
-    gap: rem(24);
+    gap: 24rem;
 
     @include tablet {
       order: 2;
-      padding-inline: rem(20);
-      margin-bottom: rem(32);
+      padding-inline: 20rem;
+      margin-bottom: 32rem;
     }
   }
 
@@ -102,24 +95,24 @@
   &__form {
     position: relative;
     z-index: 100;
-    border-radius: rem(20);
-    padding: rem(40);
+    border-radius: 20rem;
+    padding: 40rem;
     background-color: #F5F8FC;
     opacity: 1;
     width: 100%;
 
     @include laptop {
-      padding: rem(16);
+      padding: 16rem
     }
 
     @include tablet {
-      gap: rem(20);
+      gap: 20rem;
       max-height: 100%;
     }
 
     &-title {
-      font-size: rem(32);
-      margin-bottom: rem(30);
+      font-size: 32rem;
+      margin-bottom:30rem;
       text-transform: uppercase;
       font-weight: 600;
     }
@@ -127,19 +120,18 @@
 
   &__fields {
     display: flex;
-    gap: rem(16);
+    gap: 16rem;
     flex-wrap: wrap;
     width: 100%;
-    margin-bottom: rem(24);
+    margin-bottom: 24rem;
 
     @include laptop {
       width: auto;
-      margin-bottom: rem(24);
+      margin-bottom: 24rem;
     }
 
     @include tablet {
       justify-content: flex-start;
-
     }
 
     @include mobile-s {
@@ -149,13 +141,13 @@
 
   &__row {
     display: flex;
-    gap: 1rem;
+    gap: 16rem;
     width: 100%;
 
   }
 
   &__row.long {
-    height: 100px;
+    height: 100rem;
   }
 
   &__cell {
@@ -168,7 +160,7 @@
     }
 
     @include mobile-s {
-      width: rem(163);
+      width: 163rem;
     }
 
     &--long {
@@ -179,27 +171,27 @@
 
   &__cell-input {
     width: 100%;
-    height: 3vw;
-    border-radius: rem(8);
-    padding: 0.5vw 0.7vw;
+    height: 44rem;
+    border-radius: 8rem;
+    padding: 16rem 16rem;
     font-family: var(--font-family-accent);
     font-weight: 400;
-    font-size: 1.2vw;
-    border: 1px solid transparent;
+    font-size: 18rem;
+    border: 1rem solid transparent;
 
     @include tablet {
-      height: 40px;
-      font-size: rem(18);
-      padding: rem(8) rem(12);
+      height: 40rem;
+      font-size: 18rem;
+      padding: 8rem 12rem;
     }
 
     @include mobile {
-      font-size: rem(16);
+      font-size: 16rem;
     }
 
     @include hover {
       transition-duration: var(--transition-duration);
-      border: 1px solid var(--color-blue);
+      border: 1rem solid var(--color-blue);
     }
 
     &:focus {
@@ -207,20 +199,16 @@
     }
 
     &:focus-visible {
-      outline: 1px solid var(--color-blue);
+      outline: 1rem solid var(--color-blue);
     }
 
     &::placeholder {
       font-weight: 400;
-      font-size: 1.2vw;
+      font-size: 18rem;
       color: var(--color-gray-250);
 
-      @include tablet {
-        font-size: rem(18);
-      }
-
       @include mobile {
-        font-size: rem(16);
+        font-size: 18rem;
       }
     }
 
@@ -238,7 +226,7 @@
 
     &--textarea{
       resize: none;
-      height: rem(80);
+      height: 80rem;
     }
   }
 
@@ -246,32 +234,26 @@
   &__action {
     display: flex;
     align-items: center;
-    gap: rem(20);
+    gap: 20rem;
 
     @include tablet {
       flex-direction: column;
-      gap: rem(24);
+      gap: 24rem;
     }
   }
 
   &__button {
-
     text-wrap: nowrap;
     width: 100%;
 
-    @include tablet {
-
-    }
-
     @include mobile {
-
       width: 100%;
     }
   }
 
   &__price {
     font-weight: 500;
-    font-size: 1.5vw;
+    font-size: 20rem;
     text-transform: uppercase;
     color: var(--color-black);
   }
@@ -280,25 +262,25 @@
     width: 49%;
     display: flex;
     flex-direction: column;
-    gap: rem(24);
+    gap: 24rem;
 
 
     @include tablet {
       width: 100%;
-      padding-inline: rem(20);
-      margin-bottom: rem(32);
+      padding-inline: 20rem;
+      margin-bottom: 32rem;
       order: 3;
-      gap: rem(16);
+      gap: 16rem;
     }
   }
 
   &__item {
-    border-bottom: 1px solid var(--color-gray-200);
-    padding: rem(16) 0 rem(24) 0;
+    border-bottom: 1rem solid var(--color-gray-200);
+    padding: 16rem 0 24rem 0;
 
     &[open] {
       .faq__content {
-        max-height: rem(1000);
+        max-height: 1000rem;
         opacity: 1;
       }
 
@@ -321,29 +303,24 @@
     list-style: none;
     cursor: pointer;
     position: relative;
-    padding-right: 1rem;
+    padding-right: 16rem;
     outline: none;
     font-weight: 500;
-    font-size: 1.5vw;
+    font-size: 24rem;
     text-transform: uppercase;
     color: var(--color-black);
 
-    @include laptop {
-      font-size: rem(18);
-    }
-
     @include tablet {
-      font-size: rem(24);
+      font-size: 22rem;
     }
-
 
     &::after {
       content: '';
       position: absolute;
       right: 0;
       top: 50%;
-      width: rem(24);
-      height: rem(24);
+      width: 24rem;
+      height: 24rem;
       background-image: url('data:image/svg+xml;utf8,<svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 5.5V19.5" stroke="%232A2A2A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /><path d="M5 12.5H19" stroke="%232A2A2A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>');
       background-size: contain;
       background-repeat: no-repeat;
@@ -356,20 +333,17 @@
   &__content {
     font-family: var(--font-family-accent);
     font-weight: 400;
-    font-size: 1.2vw;
-    margin-top: rem(16);
+    font-size: 18rem;
+    margin-top: 16rem;
     max-height: 0;
     overflow: hidden;
     opacity: 0;
     transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
 
     @include tablet {
-      font-size: rem(18);
+      font-size: 18rem;
     }
   }
-
-
-
 }
 
 // Кастомный select
@@ -399,23 +373,19 @@
   &__placeholder {
     color: var(--color-gray-250);
     font-weight: 400;
-    font-size: 1.2vw;
+    font-size: 16rem;
     font-family: var(--font-family-accent);
 
     &.has-value {
       color: var(--color-black);
     }
-
-    @include mobile {
-      font-size: 16px;
-    }
   }
 
   &__arrow {
-    width: rem(12);
-    height: rem(12);
-    border-right: 2px solid var(--color-gray-250);
-    border-bottom: 2px solid var(--color-gray-250);
+    width: 12rem;
+    height: 12rem;
+    border-right: 2rem solid var(--color-gray-250);
+    border-bottom: 2rem solid var(--color-gray-250);
     transform: rotate(45deg);
     transition: transform 0.3s ease;
 
@@ -431,16 +401,16 @@
     left: 0;
     right: 0;
     background: var(--color-white);
-    border: 1px solid var(--color-blue);
+    border: 1rem solid var(--color-blue);
     border-top: none;
     border-radius: 0 0 rem(8) rem(8);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4rem 6rem rgba(0, 0, 0, 0.1);
     z-index: 1000;
-    max-height: rem(200);
+    max-height: 200rem;
     overflow-y: auto;
     opacity: 0;
     visibility: hidden;
-    transform: translateY(-10px);
+    transform: translateY(-10rem);
     transition: all 0.3s ease;
 
     &.is-open {
@@ -451,10 +421,10 @@
   }
 
   &__option {
-    padding: 0.8vw 0.8vw;
+    padding: 10rem 10rem;
     font-family: var(--font-family-accent);
     font-weight: 400;
-    font-size: 1.2vw;
+    font-size: 20rem;
     color: var(--color-black);
     cursor: pointer;
     transition: background-color 0.2s ease;
@@ -476,18 +446,11 @@
 }
 
 .faq__socials-logo {
-
-  width: 3vw;
-  height: 3vw;
-
-  @include tablet {
-    width: 50px;
-    height: 50px;
-  }
+  width: 44rem;
+  height: 44rem;
 
   @include mobile {
     width: 40px;
     height: 40px;
   }
-
 }

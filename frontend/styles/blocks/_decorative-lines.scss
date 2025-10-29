@@ -10,25 +10,25 @@
   z-index: 0;
 
   &__item{
-    height: rem(30);
+    height: 30rem;
     position: absolute;
-    border-radius: rem(20);
+    border-radius: 20rem;
     &:first-child{
       width: 97%;
       background-color: var(--color-blue-200);
-      bottom: rem(-6);
+      bottom: -6rem;
       z-index: 0;
     }
     &:nth-child(2){
       width: 94%;
       background-color: var(--color-blue-100);
-      bottom: rem(-12);
+      bottom: -12rem;
       z-index: -1;
     }
     &:last-child{
       width: 91%;
       z-index: -2;
-      bottom: rem(-18);
+      bottom: -18rem;
       background-color: var(--color-blue-50);
     }
   }
@@ -40,7 +40,7 @@
     &.cta__lines{
       .decorative-lines{
         @include tablet{
-          bottom: rem(-18);
+          bottom: -18rem;
         }
       }
     }

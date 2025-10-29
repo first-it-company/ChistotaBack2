@@ -10,20 +10,19 @@
 
   &__logo {
     flex-shrink: 0;
-    width: 16vw;
+    width: 200rem;
 
     @include tablet {
-      width: 170px;
+      width: 170rem;
     }
-
   }
 
   &__contacts-logo {
-    width: 2vw;
+    width: 32rem;
 
     @include tablet {
-      width: 40px;
-      height: 40px;
+      width: 40rem;
+      height: 40rem;
     }
   }
 
@@ -34,19 +33,19 @@
   &__body {
     &-inner {
       display: flex;
-      padding-block: 1vw;
-      padding-inline: 40px;
-      gap: rem(80);
+      padding-block: 20rem;
+      padding-inline: 40rem;
+      gap: 80rem;
       align-items: center;
-      border-radius: 12px;
+      border-radius: 12rem;
 
       @include tablet {
-        padding: 20px;
+        padding: 20rem;
         justify-content: space-between;
       }
 
       @include mobile {
-        padding-inline: 16px;
+        padding-inline: 16rem;
       }
     }
   }
@@ -59,7 +58,7 @@
 
     @include burger {
       width: 100%;
-      height: rem(420);
+      height: 420rem;
       background-color: var(--color-white);
       position: fixed;
       inset: 0;
@@ -67,10 +66,10 @@
       flex-direction: column;
       align-items: flex-start;
       justify-content: space-between;
-      margin-top: rem(65);
-      padding: rem(40);
-      padding-inline: rem(20);
-      border-radius: 0 0 rem(20) rem(20);
+      margin-top: 65rem;
+      padding: 40rem;
+      padding-inline: 20rem;
+      border-radius: 0 0 20rem 20rem;
       border: 1px solid #E5E5E5;
 
       &:not(.is-active) {
@@ -82,36 +81,30 @@
 
   &__menu-link {
     font-family: Noah;
-    font-size: 1.5vw;
+    font-size: 24rem;
     font-weight: 400;
     text-wrap: nowrap;
-
-    @include tablet {
-      font-size: 1.5rem;
-    }
   }
 
   &__menu {
-    //margin-right: auto;
-
     &-list {
       display: flex;
-      column-gap: rem(40);
-      font-size: rem(24);
+      column-gap: 40rem;
+      font-size: 24rem;
 
       @include laptop {
-        column-gap: rem(25);
+        column-gap: 25rem;
       }
 
       @include tablet {
-        column-gap: rem(18);
-        font-size: rem(16);
+        column-gap: 18rem;
+        font-size: 16rem;
       }
 
       @include burger {
         flex-direction: column;
-        gap: rem(24);
-        font-size: rem(24);
+        gap: 24rem;
+        font-size: 24rem;
       }
     }
   }
@@ -119,17 +112,17 @@
   &__contacts {
     display: flex;
     align-items: center;
-    column-gap: rem(24);
+    column-gap: 24rem;
     margin-left: auto;
 
     @include tablet {
-      column-gap: rem(12);
+      column-gap: 12rem;
     }
 
     @include burger {
       justify-content: space-between;
       width: 100%;
-      gap: rem(24);
+      gap: 24rem;
     }
 
     @include mobile-s {
@@ -139,29 +132,29 @@
     &-wrapper {
       display: flex;
       align-items: center;
-      column-gap: rem(12);
+      column-gap: 12rem;
       flex-shrink: 0;
 
       @include mobile-s {
-        gap: rem(18);
+        gap: 18rem;
       }
     }
 
 
     &-link {
-      font-size: 1.6vw;
+      font-size: 20rem;
       text-wrap: nowrap;
 
       @include tablet {
-        font-size: rem(16);
+        font-size: 16rem;
       }
 
       @include burger {
-        font-size: rem(24);
+        font-size: 24rem;
       }
 
       @include mobile-s {
-        font-size: rem(18);
+        font-size: 18rem;
       }
     }
   }

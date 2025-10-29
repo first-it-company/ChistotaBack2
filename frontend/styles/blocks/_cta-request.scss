@@ -1,14 +1,14 @@
 @use "../helpers" as *;
 
 .cta-request {
-  padding: rem(60) 0;
+  padding: 60rem 0;
 
   @include tablet {
-    padding: rem(40) 0;
+    padding: 40rem 0;
   }
 
   &__wrapper {
-    border-radius: rem(40);
+    border-radius: 40rem;
     background: rgb(42, 42, 42);
     background-size: cover;
     background-repeat: no-repeat;
@@ -18,52 +18,52 @@
   }
 
   &__inner {
-    padding-block: rem(80);
-    padding-inline: 5.6vw;
+    padding-block: 80rem;
+    padding-inline: 80rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background: url("/static/pages/images/cta-request/background.png") 0 0 / cover no-repeat;
 
     @include tablet {
-      padding: 60px;
+      padding: 60rem;
       align-items: flex-start;
       flex-direction: column;
-      row-gap: rem(60);
+      row-gap: 60rem;
     }
 
     @include mobile {
-      padding-inline: 16px;
+      padding-inline: 16rem;
     }
   }
 
   &__header {
     font-weight: 600;
-    font-size: 5vw;
+    font-size: 80rem;
     text-transform: uppercase;
     color: var(--color-white);
     line-height: normal;
 
     @include laptop {
-      font-size: rem(54);
+      font-size: 54rem;
     }
 
     @include tablet {
-      font-size: rem(72);
+      font-size: 72rem;
     }
 
     @include mobile {
-      font-size: rem(40);
+      font-size: 40rem;
     }
   }
 
   &__action {
     display: flex;
     flex-direction: column;
-    row-gap: 1.5vw;
+    row-gap: 28rem;
 
     @include tablet {
-      row-gap: 20px;
+      row-gap: 20rem;
       width: 100%;
       flex-direction: row;
       justify-content: space-between;
@@ -76,14 +76,14 @@
   }
 
   &__button {
-    padding-inline: 6vw;
+    padding-inline: 80rem;
     background-color: rgb(0, 96, 223);
     color: var(--color-white);
     text-wrap: nowrap;
     flex-shrink: 0;
 
     @include mobile {
-      padding-inline: rem(40);
+      padding-inline: 40rem;
       width: 100%;
     }
 
@@ -94,27 +94,25 @@
 
   &__contacts {
     display: flex;
-    column-gap: rem(32);
+    column-gap: 32rem;
     justify-content: flex-end;
     width: 100%;
 
     @include mobile {
       justify-content: flex-start;
-      column-gap: rem(32);
+      column-gap: 32rem;
     }
 
     &-item {
       display: flex;
       justify-content: center;
-      width: 3vw;
-      height: 3vw;
+      width: 50rem;
+      height: 50rem;
 
       @include tablet {
-        width: 40px;
-        height: 40px;
+        width: 40rem;
+        height: 40rem;
       }
-
-      @include hover {}
     }
   }
 }

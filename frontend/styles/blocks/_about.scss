@@ -2,7 +2,7 @@
 
 .about{
   width: 100%;
-  padding-block: 80px;
+  padding-block: 80rem;
 
   @include tablet{
     padding-top: 0;
@@ -14,17 +14,17 @@
     flex-direction: column;
     text-align: center;
     align-items: center;
-    border-radius: rem(25);
+    border-radius: 25rem;
     overflow: hidden;
-    padding: rem(72) rem(16);
+    padding: 72rem 26rem;
     background-color: var(--color-black) ;
 
     @include tablet{
-      padding-block: rem(60);
+      padding-block: 60rem;
     }
 
     @include mobile{
-      border-radius: 32px;
+      border-radius: 32rem;
     }
 
     &::after {
@@ -43,29 +43,29 @@
   }
 
   &__header{
-    font-size: 9vw;
+    font-size: 140rem;
     font-weight: 500;
     text-transform: uppercase;
     background: linear-gradient(143deg, #16437f 0%, #fff 26.44%, #fff 65.38%, #243040 100%);
     background-clip: text;
-    margin-bottom: rem(32);
+    margin-bottom: 44rem;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     z-index: 101;
 
     @include laptop{
-      font-size: rem(96);
-      margin-bottom: rem(10);
+      font-size: 96rem;
+      margin-bottom: 10rem;
     }
 
     @include tablet{
-      font-size: rem(76);
+      font-size: 76rem;
     }
 
     @include mobile{
-      font-size: rem(48);
+      font-size: 60rem;
       line-height: normal;
-      margin-bottom: rem(32);
+      margin-bottom:32rem;
     }
 
     &-inner{
@@ -74,25 +74,22 @@
   }
 
   &__subheader{
-    font-size: 1.5vw;
+    font-size: 24rem;
     font-family: var(--font-family-accent);
     width: 50%;
     color: var(--color-white);
-    margin-bottom: rem(100);
+    margin-bottom: 64rem;
     line-height: normal;
 
-    @include laptop{
-      margin-bottom: rem(80);
-    }
-
     @include tablet{
-      font-size: rem(20);
+      margin-bottom: 40rem;
+      font-size: 20rem;
     }
 
     @include mobile{
       max-width: 100%;
       width: 97%;
-      margin-bottom: rem(43);
+      margin-bottom: 30rem;
     }
 
     span{
@@ -117,13 +114,14 @@
     position:absolute ;
     top: 48%;
     left: 13%;
+    width: 113rem;
 
     @include laptop{
       top: 54%
     }
 
     @include tablet{
-      width: rem(81);
+      width: 81rem;
     }
 
     @include mobile{
@@ -138,13 +136,14 @@
     position:absolute;
     left: 41%;
     top: 0;
+    width: 96rem;
 
     @include laptop{
       top: -15%
     }
 
     @include tablet{
-      width: rem(68);
+      width: 68rem;
     }
 
     @include mobile{
@@ -157,6 +156,7 @@
     position: absolute;
     right: 6%;
     top: 9%;
+    width: 94rem;
 
     @include laptop{
       right: 2%;
@@ -164,7 +164,7 @@
     }
 
     @include tablet{
-      width: rem(65);
+      width: 65rem;
     }
 
     @include mobile{

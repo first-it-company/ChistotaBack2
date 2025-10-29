@@ -13,18 +13,18 @@
   text-align: center;
 
 
-  padding-block: 1.4vw;
-  font-size: 1.3vw;
-  border-radius: 0.8vw;
+  padding-block: 20rem;
+  font-size: 18rem;
+  border-radius: 16rem;
 
   @include tablet{
-    padding: rem(22) rem(22);
-    font-size: fluid(24, 20);
-    border-radius: rem(14);
+    padding: 22rem 22rem;
+    font-size: 24rem;
+    border-radius: 14rem;
   }
 
   @include mobile-s{
-    font-size: rem(16);
+    font-size: 16rem;
   }
 
   @include hover {
@@ -52,21 +52,19 @@
     border-radius: 0.8vw;
 
     @include tablet{
-      padding: rem(22) rem(22);
-      border-radius: rem(14);
+      padding: 22rem 22rem;
+      border-radius: 14rem;
     }
 
 
     .arrow-container {
       display: block;
-      width: 1.2vw;
-      height: 1.2vw;
+      width: 18rem;
+      height: 18rem;
       position: relative;
       overflow: hidden;
 
       @include tablet{
-        width: rem(18);
-        height: rem(18);
       }
     }
 
@@ -137,8 +135,16 @@
   &__wrapper {
     display: grid;
     grid-template-columns: 1fr min-content;
-    column-gap: fluid(18, 8);
+    column-gap: 12rem;
     align-items: stretch;
+
+    @include tablet{
+      column-gap: 10rem;
+    }
+
+    @include mobile{
+      column-gap: 6rem;
+    }
 
     .button:hover+.button--arrow {
       .arrow-container::before {

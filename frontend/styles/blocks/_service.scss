@@ -10,7 +10,7 @@
 
     &--catalog {
       text-align: left;
-      margin-bottom: rem(70);
+      margin-bottom: 70rem;
 
       .service__header {
         text-align: left;
@@ -19,61 +19,61 @@
         font-weight: 700;
 
         @include tablet {
-          font-size: rem(32);
+          font-size: 32rem;
         }
       }
     }
   }
 
   &__header {
-    margin-bottom: rem(26);
-    font-size: 3vw;
+    margin-bottom: 26rem;
+    font-size: 50rem;
     line-height: 0.8;
     text-transform: uppercase;
     color: var(--color-black);
     font-weight: 700;
 
     @include tablet{
-      font-size: fluid(50, 30);
+      font-size: 30rem
     }
 
     @include tablet {
-      margin-bottom: rem(20);
+      margin-bottom: 20rem
     }
   }
 
   &__subheader {
     font-family: var(--font-family-accent);
     font-weight: 400;
-    font-size: 1.5vw;
-    margin-bottom: rem(47);
+    font-size: 24rem;
+    margin-bottom: 60rem;
 
     @include tablet {
-      margin-bottom: rem(32);
-      font-size: rem(20);
+      margin-bottom: 40rem;
+      font-size: 20rem;
     }
   }
 
   &__inner {
-    padding-bottom: rem(100);
-    padding-inline: 40px;
+    padding-bottom: 100rem;
+    padding-inline: 40rem;
 
     @include tablet {
-      padding-bottom: rem(90);
-      padding-inline: 20px;
+      padding-bottom: 90rem;
+      padding-inline: 20rem;
     }
 
     @include mobile {
-      padding-inline: 16px;
-      padding-bottom: rem(45);
+      padding-inline: 16rem;
+      padding-bottom: 45rem;
     }
   }
 
   &__cards-wrapper {
     position: relative;
     --card-height: auto;
-    --base-gap: 10px;
-    --overlap-offset: -7px;
+    --base-gap: 10rem;
+    --overlap-offset: -7rem;
     --cards-count: 4;
     --total-gap: calc(var(--base-gap) * (var(--cards-count) - 1));
     --base-scale: 0.98;
@@ -84,33 +84,33 @@
     z-index: 100;
 
     @include tablet {
-      padding-inline: 1px;
+      padding-inline: 1rem;
     }
   }
 
   &__card {
     position: sticky;
-    top: rem(75);
+    top: 75rem;
     width: 100%;
     height: var(--card-height);
     //background: rgb(42, 42, 42) linear-gradient(141.39deg, rgba(0, 96, 223, 0.4) -30%,rgba(42, 42, 42, 0) 115.644%);
     //background: rgba(83, 100, 122) linear-gradient(98.51deg, rgba(0, 96, 223, 0.4) 0%, rgba(83, 100, 122, 0.4) 45%, rgba(83, 100, 122, 0.4) 55%, rgba(0, 96, 223, 0.4) 100%);
 
     //border: 1px solid var(--color-blue);
-    border-radius: rem(40);
-    padding: 1vw;
+    border-radius: 40rem;
+    padding: 14rem;
     transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
     transform-origin: center top;
     box-sizing: border-box;
 
     @include tablet {
-      padding: 30px;
-      border-radius: rem(30);
+      padding: 30rem;
+      border-radius: 30rem;
     }
 
     @include mobile {
-      padding: 8px;
-      border-radius: rem(24);
+      padding: 8rem;
+      border-radius: 24rem;
     }
 
     &:not(:first-child) {
@@ -129,40 +129,22 @@
 
         }
       }
-
-
-    }
-
-    &:nth-child(1) {}
-
-    &:nth-child(2) {
-
-      //background: linear-gradient(180.00deg, rgb(0, 96, 223),rgb(51, 128, 229) 100%),rgb(42, 42, 42);
-    }
-
-    &:nth-child(3) {
-      //box-shadow: 0 -9px 0 -1px var(--color-blue-200);
-    }
-
-    &:nth-child(4) {
-      //background: linear-gradient(180.00deg, rgb(0, 96, 223),rgb(51, 128, 229) 100%),rgb(42, 42, 42);
     }
 
     @include tablet {
-      top: rem(90);
+      top: 90rem;
     }
-
-
 
     &-body {
       display: flex;
       justify-content: space-between;
       width: 48%;
-      gap: rem(40);
-      padding: rem(25);
+      gap: 40rem;
+      padding: 25rem;
+      min-height: 400rem;
+
 
       @include laptop{
-        min-height: rem(400);
       }
 
       @include tablet {
@@ -177,46 +159,50 @@
     &-main {
       width: 100%;
       display: flex;
-      gap: 16px;
+      gap: 16rem;
       flex-direction: column;
       justify-content: space-between;
 
       @include tablet {
         width: 100%;
-        padding: fluid(24, 16);
+        padding: 24rem;
+      }
+
+      @include mobile {
+        padding: 16rem;
       }
 
     }
 
     &-header {
       font-weight: 500;
-      font-size: 2.5vw;
-      margin-bottom: rem(16);
+      font-size: 40rem;
+      margin-bottom: 16rem;
       color: var(--color-white);
       line-height: normal;
 
       @include tablet {
-        margin-bottom: rem(24);
-        font-size: rem(36);
+        margin-bottom:24rem;
+        font-size: 36rem;
       }
 
       @include mobile {
-        font-size: rem(28);
-        margin-bottom: 2px;
+        font-size: 28rem;
+        margin-bottom: 2rem;
       }
     }
 
     &-subheader {
       font-weight: 400;
-      font-size: 1.5vw;
-      margin-bottom: rem(25);
+      font-size: 24rem;
+      margin-bottom: 32rem;
       font-family: var(--font-family-accent);
       line-height: normal;
       color: var(--color-white);
 
       @include laptop {
-        font-size: rem(20);
-        margin-bottom: rem(24);
+        font-size: 20rem;
+        margin-bottom: 24rem;
       }
 
       @include tablet {
@@ -237,30 +223,29 @@
 
     &-features {
       display: flex;
-      column-gap: rem(15);
+      column-gap: 15rem;
 
       .card-features {
         color: var(--color-white);
         background: rgba(255, 255, 255, 0.3);
-        padding: 0.7vw;
-        font-size: 1vw;
+        padding: 10rem 20rem 10rem 10rem;
+        font-size: 16rem;
         border: none;
 
         @include tablet {
-          font-size: rem(12);
-          padding: rem(8) rem(12);
+          font-size: 12rem;
+          padding: 8rem 12rem 8rem 8rem;
         }
       }
 
       @include tablet {
-        margin-bottom: rem(32);
-
+        margin-bottom: 32rem;
       }
     }
 
 
     &-img {
-      border-radius: rem(20);
+      border-radius: 20rem;
 
       @include laptop {
         width: 95%;
@@ -277,26 +262,26 @@
 
   &__pricing {
     display: flex;
-    column-gap: rem(23);
+    column-gap: 23rem;
     align-items: center;
 
     @include container {
       flex-direction: column-reverse;
       align-items: flex-start;
-      gap: rem(32);
+      gap: 32rem;
     }
 
     @include tablet {
-      margin-bottom: rem(16);
-      gap: rem(20);
+      margin-bottom: 16rem;
+      gap: 20rem;
       justify-content: center;
     }
   }
 
   &__price {
     font-weight: 500;
-    line-height: rem(17);
-    font-size: rem(24);
+    line-height: 17rem;
+    font-size: 24rem;
     color: var(--color-black);
     text-transform: uppercase;
     text-wrap: nowrap;
@@ -309,14 +294,14 @@
     text-wrap: nowrap;
     text-transform: uppercase;
 
-    padding-inline: 3vw;
+    padding-inline: 45rem;
 
     @include hover {
       color: var(--color-white);
     }
 
     @include tablet {
-      padding-inline: rem(25);
+      padding-inline: 25rem;
       width: 100%;
     }
 
@@ -346,20 +331,19 @@
     height: 100%;
     aspect-ratio: 1;
 
-    padding-block: 1.4vw;
-    font-size: 1.3vw;
-    border-radius: 0.8vw;
+    padding-block: 20rem;
+    border-radius: 16rem;
 
     @include tablet{
-      padding: rem(14) rem(14);
-      border-radius: rem(14);
+      padding: 14rem;
+      border-radius: 12rem;
     }
 
     svg{
       transform: rotate(0);
       transition-duration: 0.2s;
-      width: 3vw;
-      height: 3vw;
+      width: 40rem;
+      height: 40rem;
 
       @include tablet{
         width: auto;
@@ -368,28 +352,28 @@
     }
 
     @include tablet {
-      border-radius: 16px;
+      border-radius: 16rem;
     }
   }
 
   &__progress {
     background-color: var(--color-gray-100);
-    border-radius: 50px;
+    border-radius: 50rem;
 
     &-wrapper {
       display: none;
-      padding-inline: rem(50);
-      padding-top: rem(30);
+      padding-inline: 50rem;
+      padding-top: 30rem;
 
       @include tablet {
-        padding-top: rem(15);
+        padding-top: 15rem;
       }
     }
 
     &-bar {
       background: var(--color-blue);
-      border-radius: rem(10);
-      height: rem(8);
+      border-radius: 10rem;
+      height: 8rem;
       transition: width 400ms ease;
       width: 0;
     }
@@ -398,17 +382,12 @@
   &__splide {
     transform-origin: center top;
 
-
     &-wrap {
-      height: fluid(600,200);
-      width: 100%;
-      transform: translateZ(0);
-      isolation: isolate;
-      margin: 0!important;
+
     }
 
     &-slide {
-      border-radius: rem(20);
+      border-radius: 20rem;
     }
   }
 
@@ -425,17 +404,27 @@
     position: relative;
     width: 50%;
     overflow: hidden;
-    border-radius: rem(30);
-    padding: 1vw;
+    aspect-ratio: 1.5;
+    height: 100%;
+    border-radius: 30rem;
+    padding: 14rem;
     background: var(--color-white);
+
+    transform: translateZ(0);
+    isolation: isolate;
+    margin: 0!important;
 
 
     @include tablet {
       width: 100%;
-      margin: rem(20) 0;
-      padding: rem(10);
-      aspect-ratio: 1.4;
-      border-radius: rem(24);
+      margin: 20rem 0;
+      padding: 10rem;
+      max-height: 35vh;
+      border-radius: 24rem;
+    }
+
+    @include mobile-m {
+      max-height: 20vh;
     }
   }
 
@@ -457,7 +446,7 @@
   }
 
   &__card-img {
-    border-radius: rem(20);
+    border-radius: 20rem;
     width: 100%;
     height: 100%;
     object-fit: cover;

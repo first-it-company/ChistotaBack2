@@ -11,15 +11,7 @@
   }
 
   &__label {
-    font-size: 1.2vw;
-
-    @include tablet{
-      font-size: rem(20);
-    }
-
-    @include mobile{
-      font-size: rem(16);
-    }
+    font-size: 16rem;
   }
 
   &__toggle{
@@ -30,7 +22,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    column-gap: 1rem;
+    column-gap: 16rem;
 
     &.is-placeholder {
       color: var(--color-gray-250);
@@ -39,10 +31,10 @@
     &.dropdown__label {
       flex-grow: 1;
       text-align: left;
-      font-size: rem(18);
+      font-size: 18rem;
 
       @include mobile{
-      font-size: rem(16);
+      font-size: 16rem;
       }
     }
 
@@ -58,20 +50,20 @@
     left: 0;
     right: 0;
     z-index: 10;
-    border: 1px solid var(--color-gray-50);
-    border-radius: rem(10);
-    margin-top: rem(16);
+    border: 1rem solid var(--color-gray-50);
+    border-radius: 10rem;
+    margin-top: 16rem;
 
     li {
       cursor: pointer;
       text-align: left;
-      margin: rem(6) rem(6);
-      padding: rem(10) rem(12);
+      margin: 6rem;
+      padding: 10rem 12rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       color: var(--color-gray-200);
-      border-radius: 8px;
+      border-radius: 8rem;
 
       @include hover{
         background-color: var(--color-white-bg);
@@ -86,8 +78,8 @@
   }
 
   &__icon {
-    width: 18px;
-    height: 10px;
+    width: 18rem;
+    height: 10rem;
     background-repeat: no-repeat;
     background-position: center;
     transition: transform 0.5s ease, background-image 0.1s ease;

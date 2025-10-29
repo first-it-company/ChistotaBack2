@@ -2,15 +2,15 @@
 
 .carousel {
   &__wrapper {
-    margin-bottom: rem(36);
+    margin-bottom: 36rem;
     width: 100%;
     overflow: hidden;
 
     @include tablet{
-      bottom: rem(60);
+      bottom: 60rem;
     }
     @include mobile{
-      bottom: rem(75);
+      bottom: 75rem;
 
     }
   }
@@ -18,20 +18,15 @@
   &__track {
     display: flex;
     align-items: center;
-    gap: rem(20);
+    gap: 20rem;
     width: max-content;
   }
 
   &__slide{
     img{
-      max-height: 3vw;
-      width: auto;
-
       @include tablet {
-      max-height: rem(50);
+        width: 80%;
+      }
     }
-    }
-
-
   }
 }

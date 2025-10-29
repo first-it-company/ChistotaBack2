@@ -1,87 +1,93 @@
 @use "../helpers" as *;
 
 .hero {
-  padding-block: rem(40);
-  gap: rem(25);
+  padding-block: 40rem;
+  gap: 25rem;
   display: flex;
   align-items: start;
   width: 100%;
   position: relative;
-  left: 40px;
   margin: 0 auto;
 
   @include tablet {
     flex-direction: column;
     left: 0;
-    padding: 2.5rem 20px;
+    padding: 40rem 20rem;
     margin: 0;
   }
 
   @include tablet {
     padding: 0;
-    padding-bottom: rem(90);
+    padding-bottom: 90rem;
   }
 
   &__advantages {
-    border-radius: 40px;
+    border-radius: 40rem;
     background: rgb(42, 42, 42);
     background-repeat: no-repeat;
     background-size: cover;
-    padding: 2.3vw 2.2vw;
+    padding: 34rem 32rem;
     z-index: 180;
     display: flex;
     flex-direction: column;
-    gap: rem(8);
+    gap: 8rem;
     color: var(--color-gray-300);
     background-image: url("/static/pages/images/hero/advantages-back.png");
     text-align: center;
 
     @include tablet {
-      padding: 20px;
+      padding: 32rem 20rem;
     }
 
     @include mobile {
-      border-radius: 20px;
-      padding: 32px 16px;
+      border-radius: 20rem;
     }
 
     &-header {
       color: rgb(255, 255, 255);
-      font-size: fluid(42, 28);
+      font-size: 42rem;
       font-weight: 600;
       text-transform: uppercase;
-      margin-bottom: 1.5rem;
+      margin-bottom: 24rem;
+
+      @include tablet {
+        font-size: 30rem
+      }
+
+      @include mobile {
+        font-size: 28rem
+      }
     }
 
     &-wrapper {
       display: flex;
       gap: 2%;
-      margin-bottom: rem(60);
+      margin-bottom: 60rem;
 
       @include mobile {
         flex-direction: column;
-        gap: rem(16);
+        gap: 26rem;
         margin-bottom: 2rem;
       }
     }
 
     &-links {
       justify-content: center;
-      margin-top: 2rem;
+      margin-top: 32rem;
     }
 
     &-mobile {
-      padding-top: rem(32);
-      padding-inline: rem(20);
+      padding-top: 32rem;
+      padding-inline: 20rem;
       display: flex;
       flex-direction: column;
-      row-gap: rem(8);
+      row-gap: 8rem;
       width: 100%;
       height: 80%;
     }
 
     &-item {
-      padding: rem(5);
+      padding: 5rem;
       width: 32%;
       display: flex;
       flex-direction: column;
@@ -98,22 +104,22 @@
 
     &-title {
       width: fit-content;
-      font-size: 0.8vw;
-      padding: 0.8vw 1vw;
+      font-size: 12rem;
+      padding: 12rem 14rem;
       background: rgba(255, 255, 255, 0.3);
-      border-radius: rem(150);
+      border-radius: 150rem;
       color: var(--color-white);
       text-transform: uppercase;
       text-wrap: nowrap;
 
       @include tablet {
-        padding: rem(8) rem(12);
-        font-size: rem(12);
+        padding: 8rem 12rem;
+        font-size: 12rem;
       }
 
       @include mobile {
-        padding: rem(12) rem(20);
-        font-size: rem(10);
+        padding: 12rem 20rem;
+        font-size: 10rem;
       }
     }
 
@@ -122,43 +128,43 @@
       justify-content: space-between;
       align-items: center;
       flex-direction: column;
-      margin-bottom: 1rem;
+      margin-bottom: 16rem;
     }
 
     &-value {
-      font-size: 1vw;
+      font-size: 15rem;
       color: rgba(255, 255, 255, 0.6);
       line-height: 1;
 
       @include tablet {
-        font-size: rem(18);
+        font-size: 18rem;
       }
 
       span {
-        font-size: 4vw;
+        font-size: 60rem;
         font-weight: 600;
         color: white;
 
         @include tablet {
-          font-size: rem(40);
+          font-size: 40rem;
           font-weight: 500;
         }
       }
     }
 
     &-label {
-      font-size: 1vw;
+      font-size: 16rem;
       color: white;
 
       @include tablet {
-        font-size: rem(18);
+        font-size: 18rem;
       }
     }
   }
 
   &__splide {
     position: sticky !important;
-    top: 4.5vw;
+    top: 65rem;
     width: 100%;
     max-width: 100%;
     height: 90vh;
@@ -166,7 +172,7 @@
     align-items: center;
 
     @include tablet {
-      padding: 0 rem(20);
+      padding: 0 20rem;
       height: 100% !important;
     }
 
@@ -220,7 +226,7 @@
           width: 100%;
           height: 100%;
           object-fit: cover;
-          border-radius: rem(20);
+          border-radius: 20rem;
         }
       }
 
@@ -231,23 +237,16 @@
           transform: scale(1);
           opacity: 1;
         }
-
-
       }
-
-
     }
-
-
   }
 
   &__main {
+    padding-left: 40rem;
     display: flex;
     flex-direction: column;
-    //justify-content: space-between;
-    gap: 50px;
-    //min-width: rem(514);
-    min-width: 50vw;
+    gap: 50rem;
+    min-width: 722rem;
     position: relative;
 
     @include laptop {}
@@ -256,14 +255,11 @@
       height: 100%;
       z-index: 190;
       min-width: 100%;
-      padding-inline: rem(20);
-
-
-
+      padding-inline: 20rem;
     }
 
     @include mobile {
-      padding-inline: rem(16);
+      padding-inline: 16rem;
     }
 
     &-mobile {
@@ -271,19 +267,18 @@
     }
 
     &-slide {
-      width: 100vw !important;
+      width: 1444rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
-
   }
 
   &__body {
     display: flex;
     flex-direction: column;
-    border-radius: 20px;
-    padding: 2vw 2.2vw;
+    border-radius: 20rem;
+    padding-top: 28rem;
 
     @include container {}
 
@@ -293,8 +288,8 @@
       height: 100%;
       gap: 0;
       justify-content: space-between;
-      padding-top: rem(32);
-      padding-bottom: rem(20);
+      padding-top: 32rem;
+      padding-bottom: 20rem;
       position: relative;
       z-index: 2;
     }
@@ -307,28 +302,28 @@
   }
 
   &__header {
-    font-size: 3vw;
+    font-size: 44rem;
     font-weight: 600;
     text-transform: uppercase;
     color: var(--color-black);
-    margin-bottom: rem(12);
+    margin-bottom: 12rem;
     line-height: normal;
 
     @include laptop{
-      font-size: rem(40);
+      font-size: 40rem;
     }
 
     @include tablet {
       height: auto;
-      font-size: rem(55);
+      font-size: 55rem;
     }
 
-    @include mobile{
-      font-size: rem(32);
+    @include mobile-m{
+      font-size: 32rem;
     }
 
     @include mobile-s {
-      font-size: rem(27);
+      font-size: 27rem;
     }
 
      &-print {
@@ -344,26 +339,26 @@
 
   &__subheader2 {
     color: var(--color-gray);
-    font-size: 1vw;
+    font-size: 20rem;
     font-weight: 400;
-    margin-bottom: rem(16);
+    margin-bottom: 16rem;
 
     //@media (max-width: 1850px) {
     //  font-size: rem(24);
     //}
 
     @include tablet {
-      font-size: 1rem;
+      font-size: 16rem;
     }
 
     @include mobile {
-      font-size: rem(14);
+      font-size: 14rem;
     }
   }
 
   &__subheader {
-    margin-bottom: 3vw;
-    font-size: 2vw;
+    margin-bottom: 44rem;
+    font-size: 30rem;
     font-family: var(--font-family-accent);
 
     //@media (max-width: 1850px) {
@@ -374,12 +369,12 @@
 
     @include tablet {
 
-      font-size: 2rem;
-      margin-bottom: 40px;
+      font-size: 32rem;
+      margin-bottom: 40rem;
     }
 
     @include mobile {
-      font-size: rem(20);
+      font-size: 20rem;
     }
   }
 
@@ -387,14 +382,14 @@
     display: flex;
     flex-wrap: wrap;
     gap: 2%;
-    margin-bottom: rem(45);
+    margin-bottom: 45rem;
 
     .review-button {
       width: 32%;
-      padding: 1.4vw 4vw;
+      padding: 21rem 60rem;
       justify-content: center;
       align-items: center;
-      font-size: 1.5vw;
+      font-size: 22rem;
       background: var(--color-white-bg);
 
       @include hover{
@@ -403,30 +398,29 @@
       }
 
       @include tablet {
-        padding: rem(20) rem(40);
-        font-size: 1.5rem;
+        padding: 20rem 40rem;
+        font-size: 22rem;
         width: 20%;
       }
 
       @include mobile-m {
-        font-size: 1rem;
+        font-size: 16rem;
         width: 32%;
-        padding: rem(10) rem(20);
-
+        padding: 10rem 20rem;
       }
     }
 
     @include tablet {
-      margin-bottom: 40px;
+      margin-bottom: 40rem;
     }
 
     &-logo {
-      margin-right: 8px;
+      margin-right: 8rem;
 
-      @media (max-width: 420px) {
-        margin-right: 4px;
-        width: 24px;
-        height: 24px;
+      @media (max-width: 420rem) {
+        margin-right: 4rem;
+        width: 24rem;
+        height: 24rem;
       }
     }
   }
@@ -434,29 +428,29 @@
   &__button {
     &--adv{
       @include mobile-s{
-        font-size: 14px !important;
+        font-size: 14rem !important;
       }
     }
 
     &-wrap {
-      padding-inline: rem(20);
-      padding-bottom: rem(20);
+      padding-inline: 20rem;
+      padding-bottom: 20rem;
     }
 
     &--mobile {
       position: absolute;
       z-index: 100;
-      bottom: rem(20);
+      bottom: 20rem;
       width: 100%;
-      padding-inline: rem(20);
+      padding-inline: 20rem;
     }
   }
 
   &__mobile-extra {
     display: flex;
     flex-direction: column;
-    row-gap: rem(24);
-    margin-bottom: rem(100);
+    row-gap: 24rem;
+    margin-bottom: 100rem;
   }
 
   &__mobile-video {
@@ -474,32 +468,32 @@
     height: 100%;
     background: rgba(0, 0, 0, 0.3);
     z-index: 1;
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(8rem);
   }
 }
 
 
 .splide__pagination {
-  gap: rem(8);
-  bottom: -45px !important;
+  gap: 8rem;
+  bottom: -45rem !important;
 }
 
 .splide__pagination__page {
-  width: rem(8);
+  width: 8rem;
   aspect-ratio: 1;
   opacity: 1 !important;
-  border-radius: rem(5) !important;
+  border-radius: 5rem !important;
   transition: width 0.4s cubic-bezier(0.65, 0, 0.35, 1),
     background-color 0.4s ease !important;
 
   &.is-active {
-    width: rem(40);
+    width: 40rem;
     background-color: var(--color-blue) !important;
   }
 }
 
 .hero__slide-arrows {
-  gap: 3vw !important;
+  gap: 45rem !important;
   position: absolute;
   top: 6%;
   left: 51%;
@@ -512,12 +506,12 @@
 
   @include container {
     .controls__button {
-      padding: 1vw 1.8vw;
+      padding: 15rem 25rem;
     }
 
     @include tablet {
       .controls__button {
-        padding: rem(16) rem(32);
+        padding: 16rem 32rem;
       }
     }
 
@@ -528,10 +522,9 @@
 
     @include tablet {
       display: flex;
-      top: rem(60);
-      right: rem(20);
+      top: 60rem;
+      right: 20rem;
       transform: none;
-
     }
   }
 }

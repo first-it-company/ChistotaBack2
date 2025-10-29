@@ -8,7 +8,6 @@ export function initServiceCarouselLeft() {
         focus: 'center',
         pagination: false,
         arrows: false,
-        gap: 8,
         autoWidth: true,
         autoScroll: {
             speed: 0.8,
@@ -28,7 +27,6 @@ export function initServiceCarouselRight() {
         focus: 'center',
         pagination: false,
         arrows: false,
-        gap: 8,
         autoWidth: true,
         autoScroll: {
             speed: -0.8,

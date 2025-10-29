@@ -20,15 +20,15 @@
           <img
             src="{% static "pages/icons/VL.png" %}"
             alt="VL.ru"
-            class="hero__review-logo"
-            width="32" height="32" loading="lazy"
+            class="reviews__links-img"
+            width="100%" height="100%" loading="lazy"
           >
           <span> {% if vl_data.average_rating %}{{ vl_data.average_rating }}{% else %} 5.0{% endif %}</span>
           <img
             src="{% static "pages/icons/star.svg" %}"
             alt=""
-            class=""
-            width="32" height="32" loading="lazy"
+            class="reviews__links-stars"
+            width="100%" height="100%" loading="lazy"
           >
         </button>
       </div>
@@ -68,19 +68,19 @@
                   </div>
                   <div class="reviews__user">
                     <div class="reviews__user-bottom">
-                      <p class="reviews__user-name">{{ review.author_name }}</p>
+                      <p class="reviews__user-name">{{ review.author_name|truncatechars:18 }}</p>
                       <p class="reviews__user-service">{{ review.service }}</p>
                     </div>
                   </div>
                 </div>
                 <div class="reviews__user-commas">
-                  <img src="{% static 'pages/icons/commas.svg' %}" alt="" class="reviews__commas" width="48" height="48" loading="lazy">
+                  <img src="{% static 'pages/icons/commas.svg' %}" alt="" class="reviews__commas" width="100%" height="100%" loading="lazy">
                 </div>
               </div>
               <div class="reviews__content">
                 {% if review.link.image %}
                 <div class="reviews__photo-wrapper">
-                  <img src="{{ review.link.image }}" alt="" class="reviews__photo" width="288" height="152" loading="lazy">
+                  <img src="{{ review.link.image }}" alt="" class="reviews__photo" width="100%" height="100%" loading="lazy">
                 </div>
                 {% endif %}
                 <div class="reviews__body-wrapper">
@@ -88,7 +88,7 @@
                     <p class="reviews__score">{{ review.rating_display }}</p>
                     <div class="reviews__stars">
                       {% for i in "12345"|make_list %}
-                      <img src="{% static 'pages/icons/star.svg' %}" class="reviews__stars_img" width="100%" height="100%" loading="lazy"
+                      <img src="{% static 'pages/icons/star.svg' %}" class="reviews__links-stars" width="100%" height="100%" loading="lazy"
                         style="opacity:{% if forloop.counter <= review.rating %}1{% else %}0.3{% endif %}">
                       {% endfor %}
                     </div>
@@ -110,23 +110,23 @@
       <div class="reviews__links">
         <button class="review-button" onclick="window.open('https://go.2gis.com/0UnDt', '_blank')">
           <span>2GIS</span>
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg width="100%" height="100%" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M13 1L1 13" stroke="#939393" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
             <path d="M13 10V1H4" stroke="#939393" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
           <span class="reviews__counts">{% if gis_data.count%}({{ gis_data.count }}) {% else %} (0){% endif %}</span>
           <img
             src="{% static "pages/icons/2gis.png" %}"
+            class="reviews__links-img"
             alt="2gis"
-            class="hero__review-logo"
-            width="32" height="32"
+            width="100%" height=100%"
           >
           <span> {% if gis_data.average_rating %}{{ gis_data.average_rating }}{% else %} 5.0{% endif %}</span>
           <img
             src="{% static "pages/icons/star.svg" %}"
             alt=""
-            class=""
-            width="32" height="32" loading="lazy"
+            class="reviews__links-stars"
+            width="100%" height="100%" loading="lazy"
           >
         </button>
       </div>
@@ -162,7 +162,7 @@
               <div class="reviews__user-wrapper">
                 <div class="reviews__user-info">
                   <div class="reviews__img-wrapper">
-                    <img src="{{ review.photo }}" alt="" class="reviews__img" width="64" height="64">
+                    <img src="{{ review.photo }}" alt="" class="reviews__img" width="100%" height="100%">
                   </div>
                   <div class="reviews__user">
                     <div class="reviews__user-bottom">
@@ -172,7 +172,7 @@
                   </div>
                 </div>
                 <div class="reviews__user-commas">
-                  <img src="{% static 'pages/icons/commas.svg' %}" alt="" class="reviews__commas" width="48" height="48" loading="lazy">
+                  <img src="{% static 'pages/icons/commas.svg' %}" alt="" class="reviews__commas" width="100%" height="100%" loading="lazy">
                 </div>
               </div>
               <div class="reviews__content">
@@ -186,7 +186,7 @@
                     <p class="reviews__score">{{ review.rating_display }}</p>
                     <div class="reviews__stars">
                       {% for i in "12345"|make_list %}
-                      <img src="{% static 'pages/icons/star.svg' %}" class="reviews__stars_img" width="100%" height="100%"  loading="lazy"
+                      <img src="{% static 'pages/icons/star.svg' %}" class="reviews__links-stars" width="100%" height="100%"  loading="lazy"
                         style="opacity:{% if forloop.counter <= review.rating %}1{% else %}0.3{% endif %}">
                       {% endfor %}
                     </div>

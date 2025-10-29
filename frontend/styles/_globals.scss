@@ -6,8 +6,29 @@ html {
   }
 }
 
+html {font-size: calc(1vw / 14.4)}
+
+@media screen and (max-width: 990px) {
+  html {font-size: calc(1vw / 9.9)}
+}
+
+@media screen and (max-width: 1299.98px) {
+  html {font-size: calc(1vw / 12.99)}
+}
+
+@media screen and (max-width: 768.98px) {
+  html {font-size: calc(1vw / 7.68)}
+}
+
+@media screen and (max-width: 590.98px) {
+  html {font-size: calc(1vw / 5.99)}
+}
+
+@media screen and (max-width: 391.98px) {
+  html {font-size: calc(1vw / 3.92)}
+}
+
 body {
-  @include fluid-text(18, 14);
   font-family: var(--font-family);
   display: flex;
   flex-direction: column;
@@ -59,15 +80,20 @@ h5 {
 
 .h5 {
   font-weight: 600;
-  font-size: fluid(50, 30);
+  font-size: 50rem;
   line-height: 1.3;
   letter-spacing: -0.03em;
   text-transform: uppercase;
   color: var(--color-black);
 
   @include tablet {
+    font-size: 40rem;
     line-height: normal;
     letter-spacing: normal;
+  }
+
+  @include mobile{
+    font-size: 30rem;
   }
 }
 
