@@ -1,13 +1,13 @@
 @use '../helpers' as *;
 
 .burger-button{
-  width: rem(24);
-  height: rem(24);
+  width: 24rem;
+  height: 24rem;
   display: none;
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-end;
-  padding: rem(5) rem(4);
+  padding: 5rem 4rem;
   color: var(--color-blue);
   background-color: transparent;
   border: none;
@@ -28,14 +28,14 @@
       }
       &:last-child{
         rotate: -45deg;
-        translate: -2px -7px;
+        translate: -2rem -7rem;
       }
     }
   }
 
   &__line{
     width: 100%;
-    height: rem(1);
+    height: 1rem;
     background-color: currentColor;
     border-radius: 1rem;
     transition-duration: var(--transition-duration);

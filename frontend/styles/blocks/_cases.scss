@@ -2,18 +2,18 @@
 
 .cases {
   &__inner {
-    padding-top: rem(80);
-    padding-bottom: rem(80);
-    padding-inline: 40px;
+    padding-top: 80rem;
+    padding-bottom: 80rem;
+    padding-inline: 40rem;
     display: flex;
     flex-direction: column;
-    row-gap: rem(48);
+    row-gap: 48rem;
 
 
     @include tablet {
-      padding-block: rem(40);
-      row-gap: rem(32);
-      padding-inline: 20px;
+      padding-block: 40rem;
+      row-gap: 32rem;
+      padding-inline: 20rem;
     }
   }
 
@@ -49,17 +49,17 @@
       flex-wrap: wrap;
       flex-direction: column;
       align-items: flex-start;
-      gap: rem(24);
+      gap: 24rem;
     }
   }
 
   &__subtitle {
     max-width: 50%;
-    font-size: 1.5vw;
+    font-size: 24rem;
 
     @include tablet {
       max-width: 45%;
-      font-size: rem(20);
+      font-size: 20rem;
     }
 
     @include mobile {
@@ -80,19 +80,19 @@
   }
 
   &__dropdown {
-    padding: 1vw 2vw;
+    padding: 18rem 20rem;
     border: 1px solid transparent;
-    border-radius: rem(14);
+    border-radius: 14rem;
     font-weight: 400;
-    font-size: 1.2vw;
+    font-size: 16rem;
     color: var(--color-black);
     background-color: var(--color-white-bg);
-    width: 279px;
+    width: 279rem;
     font-family: var(--font-family-accent);
 
     @include tablet {
-      padding: 1rem 2rem;
-      font-size: rem(20);
+      padding: 16rem 32rem;
+      font-size: 20rem;
     }
 
     &:focus {
@@ -115,18 +115,18 @@
     }
 
     @include tablet {
-      padding-bottom: -8px;
+      padding-bottom: -8rem;
     }
   }
 
   &__slider-container {
     display: flex;
     flex-direction: column;
-    gap: rem(32);
+    gap: 32rem;
 
     @include mobile {
       order: 2;
-      gap: rem(16);
+      gap: 16rem;
     }
   }
 
@@ -162,14 +162,14 @@
   }
 
   &__button {
-    height: rem(55);
+    height: 55rem;
 
     @include mobile {
       width: 100%;
     }
 
     &--arrow {
-      min-width: rem(55);
+      min-width: 55rem;
       aspect-ratio: 1;
     }
 

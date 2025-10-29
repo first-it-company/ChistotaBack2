@@ -31,7 +31,7 @@
               <div class="service__card-main">
                 <div>
                   <h6 class="service__card-header">{{ service.scope.name }}</h6>
-                  <p class="service__card-subheader">{{ service.desc }}</p>
+                  <p class="service__card-subheader">{{ service.desc|truncatechars:250 }}</p>
                   <div class="service__card-features">
                     <div class="card-features">
                       <img src="data:image/svg+xml,%3csvg%20width='16'%20height='16'%20viewBox='0%200%2016%2016'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M14.6668%207.99992C14.6668%2011.6799%2011.6802%2014.6666%208.00016%2014.6666C4.32016%2014.6666%201.3335%2011.6799%201.3335%207.99992C1.3335%204.31992%204.32016%201.33325%208.00016%201.33325C11.6802%201.33325%2014.6668%204.31992%2014.6668%207.99992Z'%20stroke='%23FFFFFF'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3cpath%20d='M10.4734%2010.1199L8.40675%208.88659C8.04675%208.67326%207.75342%208.15992%207.75342%207.73992V5.00659'%20stroke='%23FFFFFF'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/svg%3e"
@@ -67,7 +67,14 @@
             <div class="service__splide-wrap">
               <div class="service__image">
                 {% with first_photo=service.photos.first %}
-                  {% if first_photo %}<img src="{{ first_photo.photo.url }}" alt="" class="service__card-img">{% endif %}
+                  {% if first_photo %}
+                  <img src="{{ first_photo.photo.url }}"
+                       alt=""
+                       class="service__card-img"
+                       width="{{ first_photo.photo.width }}rem"
+                       height="{{ first_photo.photo.height }}rem"
+                  >
+                  {% endif %}
                 {% endwith %}
               </div>
             </div>

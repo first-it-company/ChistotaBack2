@@ -3,24 +3,24 @@
 .card-features {
   display: flex;
   align-items: center;
-  font-size: fluid(16, 14);
+  font-size: 16rem;
   font-weight: 500;
   line-height: normal;
-  border-radius: rem(150);
-  gap: rem(6);
-  padding: 0.5vw 1vw;
+  border-radius: 150rem;
+  gap: 6rem;
+  padding: 8rem 10rem;
   background: #F5F8FC;
 
   @include tablet {
-    padding: 12px 22px;
+    padding: 12rem 22rem;
   }
 
   @include mobile {
-    padding: 11px 14px;
+    padding: 11rem 14rem;
     text-wrap: nowrap;
   }
 
   @include mobile-s {
-    padding: 6px 8px;
+    padding: 6rem 8rem;
   }
 }

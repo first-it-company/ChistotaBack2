@@ -77,12 +77,12 @@
             <div class="carousel__track">
                 {% for log in logo %}
                 <div class="carousel__slide">
-                    <img src="{{ log.photo.url }}">
+                    <img src="{{ log.photo.url }}" loading="lazy" width="{{ log.photo.width }}rem" height="{{ log.photo.height }}rem">
                 </div>
                 {% endfor %}
                 {% for log in logo %}
                 <div class="carousel__slide">
-                    <img src="{{ log.photo.url }}" loading="lazy">
+                    <img src="{{ log.photo.url }}" loading="lazy" width="{{ log.photo.width }}rem" height="{{ log.photo.height }}rem">
                 </div>
                 {% endfor %}
             </div>

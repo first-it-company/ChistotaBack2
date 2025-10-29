@@ -4,25 +4,34 @@
   @include reset-button;
   display: flex;
   align-items: center;
-  column-gap: rem(8);
-  padding: rem(16) rem(12);
-  border-radius: rem(14);
+  column-gap: 8rem;
+  padding: 16rem 12rem;
+  border-radius: 14rem;
   background-color: var(--color-white);
-  font-size: fluid(20, 18);
+  font-size: 20rem;
   font-weight: 500;
   position: relative;
 
   svg{
-    width: 14px;
-    height: 14px;
+    width: 12rem;
+    height: 12rem;
+  }
+
+  @include tablet{
+    font-size: 18rem;
+  }
+
+  &__star{
+    width: 14rem;
+    height: 14rem;
   }
 
   @include tablet {
-    font-size: rem(20);
+    font-size: 20rem;
   }
 
   @include mobile {
-    font-size: rem(14);
+    font-size: 14rem;
   }
 
   @include hover{

@@ -5,47 +5,43 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: rem(24);
+    margin-bottom: 24rem;
 
     @include tablet {
       flex-direction: column;
       align-items: flex-start;
-      gap: rem(16);
-      margin-bottom: rem(16);
-      line-height: rem(23);
+      gap: 16rem;
+      margin-bottom: 16rem;
+      line-height: 23rem;
     }
   }
 
   &__header {
     font-weight: 500;
-    font-size: 1.5vw;
+    font-size: 24rem;
     text-transform: uppercase;
     color: var(--color-black);
 
-    @include tablet {
-      font-size: rem(26);
-    }
-
     @include mobile {
-      font-size: rem(18);
+      font-size: 20rem;
     }
   }
 
   &__features {
-    padding: 0.8vw 1vw;
+    padding: 10rem 22rem 10rem 10rem;
     color: var(--color-blue);
 
 
     &-wrapper {
       display: flex;
       align-items: center;
-      column-gap: 1vw;
+      column-gap: 14rem;
     }
   }
 
   &__image {
     object-fit: cover;
-    border-radius: rem(20);
+    border-radius: 20rem;
     aspect-ratio: 636 / 370;
     width: 100%;
 
@@ -57,6 +53,4 @@
       aspect-ratio: 236/320;
     }
   }
-
-
 }

@@ -1,42 +1,46 @@
 @use "../helpers" as *;
 
 .team {
-  padding-top: rem(100);
-  padding-bottom: rem(80);
-  padding-inline: rem(40);
+  padding-top: 100rem;
+  padding-bottom: 80rem;
+  padding-inline: 40rem;
   overflow: hidden;
 
   @include tablet {
-    padding-top: rem(50);
-    padding-bottom: rem(60);
-    padding-inline: 20px;
+    padding-top: 50rem;
+    padding-bottom: 60rem;
+    padding-inline: 20rem;
   }
 
   &__header-wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: rem(52);
+    margin-bottom: 52rem;
 
     @include tablet {
-      margin-bottom: rem(20);
+      margin-bottom: 20rem;
     }
   }
 
   &__layout {
     display: grid;
     grid-template-columns: 1fr 3fr;
-    gap: rem(40);
+    gap: 40rem;
     align-items: center;
 
     @include tablet {
       grid-template-columns: 1fr;
-      gap: rem(20);
+      gap: 20rem;
     }
   }
 
   &__splide {
-    height: clamp(320px, 25vw, 560px);
+    height: 560rem;
+
+    @include tablet{
+      height: 300rem;
+    }
   }
 
   .splide__track,
@@ -46,7 +50,7 @@
 
   &__info {
     display: flex;
-    width: 20vw;
+    width: 322rem;
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
@@ -55,25 +59,34 @@
 
     &-experience {
       display: none;
-      font-size: clamp(12px, 0.7vw, 20px);
+      font-size: 20rem;
       line-height: normal;
       align-items: center;
-      border-radius: rem(150);
-      gap: rem(8);
-      padding: 16px 18px;
+      border-radius: 150rem;
+      gap: 8rem;
+      padding: 16rem 18rem;
       background: var(--color-white-bg);
       text-transform: uppercase;
       width: fit-content;
 
+      svg{
+        width: 14rem;
+        height: 14rem;
+        aspect-ratio: 1;
+        flex-shrink: 0;
+      }
+
       &-mobile{
         position: absolute;
-        left: rem(6);
-        bottom: rem(6);
+        left:6rem;
+        bottom: 6rem;
         line-height: normal;
+        display: flex;
         align-items: center;
-        border-radius: rem(14);
-        gap: rem(8);
-        padding: rem(8) rem(8) rem(8) rem(12);
+        border-radius: 14rem;
+        font-size: 12rem;
+        gap: 8rem;
+        padding: 8rem 12rem 8rem 8rem;
         background: var(--color-white-bg);
         text-transform: uppercase;
         width: fit-content;
@@ -85,28 +98,31 @@
     }
 
     &-name {
-      font-size: clamp(18px, 1.5vw, 40px);
+      font-size: 28rem;
       font-weight: 500;
 
-
+      @include tablet{
+        font-size: 18rem;
+      }
     }
 
     &-post {
       font-family: var(--font-family-accent);
-      font-size: clamp(12px, 1vw, 38px);
+      font-size: 20rem;
       color: var(--color-gray-300);
 
       @include mobile{
         color: var(--color-gray-200);
+        font-size: 16rem;
       }
     }
 
     &-description {
       font-family: var(--font-family-accent);
-      font-size: clamp(18px, 1vw, 28px);
+      font-size: 18rem;
       font-weight: 400;
       color: var(--color-gray-200);
-      margin-top: rem(32);
+      margin-top: 32rem;
     }
   }
 
@@ -124,7 +140,7 @@
   }
 
   &__img {
-    border-radius: rem(20);
+    border-radius: 20rem;
     object-fit: cover;
     width: 100%;
     height: 100%;
@@ -134,10 +150,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: rem(16);
+    gap: 16rem;
 
     &-counter {
-      font-size: clamp(18px, 1vw, 28px);
+      font-size: 16rem;
       color: var(--color-black);
       font-weight: 600;
 
@@ -162,26 +178,26 @@
   &__slide-info {
     display: block;
     text-align: left;
-    margin-top: rem(12);
+    margin-top: 12rem;
   }
 
   &__slide-name {
-    font-size: clamp(20px, 1.5vw, 44px);
+    font-size: 28rem;
     font-weight: 400;
     color: var(--color-black);
 
     @include tablet {
-      font-size: rem(18);
+      font-size: 18rem
     }
   }
 
   &__slide-post {
     font-family: var(--font-family-accent);
-    font-size: clamp(12px, 1vw, 38px);
+    font-size: 20rem;
     color: var(--color-gray-200);
 
     @include tablet {
-      font-size: rem(16);
+      font-size: 16rem
     }
   }
 
