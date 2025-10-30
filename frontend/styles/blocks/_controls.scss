@@ -9,7 +9,7 @@
   &__button {
     border: 1px solid var(--color-blue);
     border-radius: 70rem;
-    padding: 16rem 28rem;
+    padding: 12rem 24rem;
     background-color: var(--color-blue);
 
     @include hover {
@@ -39,9 +39,9 @@
     line-height: 1.8;
     color: var(--color-black);
 
-    @include container {
-      font-size: 16rem;
-    }
+    //@include container {
+    //  font-size: 16rem;
+    //}
 
     span {
       color: var(--color-gray-200);

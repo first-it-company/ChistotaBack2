@@ -38,3 +38,24 @@ export function initServiceCarouselRight() {
     splide.mount({ AutoScroll });
     return splide;
 }
+
+
+
+// export function initAboutCarousel() {
+//     const splide = new Splide('[data-about-splide]', {
+//         type: 'loop',
+//         drag: 'free',
+//         focus: 'center',
+//         pagination: false,
+//         arrows: false,
+//         autoWidth: true,
+//         autoScroll: {
+//             speed: 0.8,
+//             pauseOnHover: false,
+//             pauseOnFocus: false,
+//         },
+//     });
+//
+//     splide.mount({ AutoScroll });
+//     return splide;
+// }

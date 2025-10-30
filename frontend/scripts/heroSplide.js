@@ -29,7 +29,7 @@ export function initHeroSlider() {
         type: 'slide',
         rewind: true,
         width: '100%',
-        fixedWidth: '47%',
+        fixedWidth: '50%',
         perMove: 1,
         arrows: false,
         pagination: false,
@@ -41,7 +41,7 @@ export function initHeroSlider() {
         },
         breakpoints: {
             768: {
-                fixedWidth: '60%',
+                fixedWidth: '50%',
                 gap: '10px',
             },
         }

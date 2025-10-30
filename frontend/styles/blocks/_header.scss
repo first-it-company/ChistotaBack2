@@ -81,7 +81,7 @@
 
   &__menu-link {
     font-family: Noah;
-    font-size: 24rem;
+    font-size: 20rem;
     font-weight: 400;
     text-wrap: nowrap;
   }
@@ -89,12 +89,8 @@
   &__menu {
     &-list {
       display: flex;
-      column-gap: 40rem;
-      font-size: 24rem;
-
-      @include laptop {
-        column-gap: 25rem;
-      }
+      column-gap: 28rem;
+      font-size: 20rem;
 
       @include tablet {
         column-gap: 18rem;
