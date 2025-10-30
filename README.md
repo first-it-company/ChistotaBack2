@@ -63,7 +63,7 @@ python manage.py runserver
 
 - URL: http://85.209.9.241
 - Админ-панель:
-логин: chistotaRoot17
-пароль: chistotaPassword71
+логин: root
+пароль: chistotaroot
 
 
