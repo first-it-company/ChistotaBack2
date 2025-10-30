@@ -1,7 +1,7 @@
 import Typewriter from 'typewriter-effect/dist/core';
 
 export function initTypewriterHero() {
-    const words = ['чисто', 'уютно', 'порядок', 'свежо'];
+    const words = ['чисто', 'уютно', 'свежо'];
 
     const elements = document.querySelectorAll('.hero__header-print');
     if (!elements.length) return;

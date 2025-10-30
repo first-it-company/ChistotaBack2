@@ -51,6 +51,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         import('./serviceCarousel.js').then(({ initServiceCarouselRight }) => initServiceCarouselRight());
     }
 
+
+
     document.querySelectorAll('[data-dropdown-config]').forEach(element => {
         try {
             const config = JSON.parse(element.dataset.dropdownConfig);

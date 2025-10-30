@@ -195,6 +195,11 @@
       }
     }
 
+    &-star{
+      width: 20rem;
+      height: 20rem;
+    }
+
     &-logo {
       margin-right: 8rem;
       width: 32rem;
@@ -264,6 +269,11 @@
       align-items: center;
       gap: 8rem;
       color: var(--color-white);
+
+      img{
+        width: 12rem;
+        height: 12rem;
+      }
 
       @include tablet {
         font-size: 18rem;

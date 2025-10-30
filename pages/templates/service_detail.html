@@ -37,7 +37,7 @@
           </div>
         </div>
       </div>
-      <button class="button service-detail__info-button modal-open">Заказать</button>
+        {% include 'partials/contact-request-form.html' with with_header=False %}
     </div>
     {% if service.photos.all %}
       <div class="service-detail__slider splide" id="service-detail-splide">
