@@ -1,50 +1,50 @@
 @use "../helpers" as *;
 
 .contacts {
-  padding-inline: rem(40);
+  padding-inline: 40rem;
 
   @include tablet {
-    padding-inline: rem(16);
+    padding-inline: 16rem;
   }
 
   &__header {
-    margin-top: rem(40);
-    margin-bottom: rem(12);
-    font-size: 3.2vw;
+    margin-top: 40rem;
+    margin-bottom: 12rem;
+    font-size: 70rem;
     line-height: 0.8;
     text-transform: uppercase;
     color: var(--color-black);
     font-weight: 600;
 
     @include tablet {
-      font-size: rem(36);
+      font-size:36rem;
     }
   }
 
   &__description {
     font-family: var(--font-family-accent);
     font-weight: 400;
-    font-size: 1.5vw;
-    margin-bottom: rem(52);
+    font-size: 24rem;
+    margin-bottom: 52rem;
   }
 
   &__main {
     display: flex;
-    gap: rem(24);
-    margin-bottom: rem(24);
-    margin-top: rem(52);
+    gap: 24rem;
+    margin-bottom: 24rem;
+    margin-top: 52rem;
 
     @include tablet {
       flex-direction: column-reverse;
-      margin-bottom: rem(16);
-      gap: rem(16);
+      margin-bottom: 16rem;
+      gap: 16rem;
     }
 
     &-first {
-      margin-bottom: rem(32);
+      margin-bottom: 32rem;
 
       @include tablet {
-        margin-bottom: rem(20);
+        margin-bottom: 20rem;
       }
     }
   }
@@ -52,49 +52,50 @@
   &__card {
     flex-grow: 1;
     border: 1px solid var(--color-gray-100);
-    border-radius: rem(24);
-    padding: rem(40);
+    border-radius: 24rem;
+    padding:40rem;
 
     @include tablet {
-      font-size: rem(20);
-      padding: rem(20);
-      border-radius: rem(16);
+      font-size: 20rem;
+      padding: 20rem;
+      border-radius: 16rem;
     }
 
     &-info {
       &-content {
-        font-size: rem(20);
+        font-size: 20rem;
         font-weight: 500;
 
         @include tablet {
-          font-size: rem(16);
+          font-size: 16rem;
         }
       }
 
       &-label {
         font-family: var(--font-family-accent);
-        margin-bottom: rem(16);
+        margin-bottom: 16rem;
+        font-size: 16rem;
 
         @include tablet {
-          font-size: rem(14);
-          margin-bottom: rem(20);
+          font-size: 14rem;
+          margin-bottom: 20rem;
         }
       }
     }
 
     &-header {
-      margin-bottom: rem(12);
+      margin-bottom: 12rem;
       color: var(--color-black);
 
       @include tablet {
-        margin-bottom: rem(6);
+        margin-bottom: 6rem;
       }
     }
 
     &-company-details {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      column-gap: rem(16);
+      column-gap: 16rem;
 
       @include mobile {
         grid-template-columns: repeat(2, 1fr);
@@ -106,19 +107,19 @@
     }
 
     &-socials {
-      margin-top: rem(32);
+      margin-top: 32rem;
     }
   }
 
   &__map {
     flex-basis: 60%;
-    border-radius: rem(32);
+    border-radius: 32rem;
     overflow: hidden;
     background: #eeeeee;
 
     @include tablet {
-      min-height: rem(358);
-      border-radius: rem(20);
+      min-height: 358rem;
+      border-radius: 20rem;
     }
   }
 }

@@ -15,7 +15,7 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        max-width: rem(640);
+        max-width: 640rem;
 
         @include tablet {
         max-width: 100%;
@@ -31,10 +31,10 @@
 
     &__content {
         position: relative;
-        border: 1px solid var(--color-blue);
+        border: 1rem solid var(--color-blue);
         background: var(--color-white);
-        padding: rem(40);
-        border-radius: rem(20);
+        padding: 40rem;
+        border-radius: 20rem;
         align-items: center;
         z-index: 10;
 
@@ -42,17 +42,17 @@
         flex-direction: column;
 
         @include tablet{
-            padding: rem(32) rem(20);
+            padding: 32rem 20rem;
         }
     }
 
     &__close-button{
         @include reset-button;
         position: absolute;
-        right: rem(10);
-        top: rem(10);
-        padding: rem(20);
-        border-radius: rem(8);
+        right: 10rem;
+        top: 10rem;
+        padding: 20rem;
+        border-radius: 8rem;
         background-color: var(--color-gray-50);
 
         @include hover{
@@ -69,8 +69,8 @@
             position: absolute;
             left: 50%;
             top: 50%;
-            width: rem(20);
-            height: rem(2);
+            width: 20rem;
+            height: 2rem;
             background-color: var(--color-blue);
             transform-origin: center;
             border-radius: 100%;
@@ -85,17 +85,17 @@
         }
 
         @include tablet{
-            right: rem(0);
-            top: rem(-45);
+            right: 0;
+            top: -45rem;
         }
     }
 
     &__image{
-        margin-bottom: rem(40);
+        margin-bottom: 40rem;
     }
 
     &__header{
-        margin-bottom: rem(32);
+        margin-bottom: 32rem;
         color: var(--color-black);
         text-align: center;
 
@@ -105,22 +105,22 @@
     }
 
     &__title{
-        font-size: rem(24);
+        font-size: 24rem;
         font-weight: 500;
         text-transform: uppercase;
     }
 
     &__subtitle{
-        font-size: rem(20);
+        font-size: 20rem;
 
         @include tablet{
-            font-size: rem(18);
+            font-size: 18rem;
         }
     }
 
     &__button{
-        max-height: rem(55);
-        font-size: rem(24);
+        max-height: 55rem;
+        font-size: 24rem;
         width: 100%;
     }
 }

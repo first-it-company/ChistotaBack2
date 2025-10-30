@@ -22,10 +22,10 @@
   &__close-button {
     @include reset-button;
     position: absolute;
-    right: rem(10);
-    top: rem(10);
-    padding: rem(20);
-    border-radius: rem(8);
+    right: 10rem;
+    top: 10rem;
+    padding: 20rem;
+    border-radius: 8rem;
     background-color: var(--color-gray-50);
 
     @include hover {
@@ -42,8 +42,8 @@
       position: absolute;
       left: 50%;
       top: 50%;
-      width: rem(20);
-      height: rem(2);
+      width: 20rem;
+      height: 2rem;
       background-color: var(--color-blue);
       transform-origin: center;
       border-radius: 100%;
@@ -70,64 +70,60 @@
 
   &__content {
     position: relative;
-    border: 1px solid var(--color-blue);
+    border: 1rem solid var(--color-blue);
     background: var(--color-white);
-    padding: rem(40);
-    border-radius: rem(20);
+    padding: 40rem;
+    border-radius: 20rem;
     z-index: 10;
 
     display: flex;
     flex-direction: column;
-    row-gap: rem(40);
+    row-gap: 40rem;
 
     @include tablet {
-      padding: rem(32) rem(20);
+      padding:32rem 20rem;
     }
   }
 
   &__header {
     display: flex;
     flex-direction: column;
-    row-gap: rem(16);
+    row-gap: 16rem;
   }
 
   &__title {
     font-weight: 500;
-    font-size: 1.5vw;
+    font-size: 24rem;
     text-transform: uppercase;
     color: var(--color-black);
 
-    @include tablet {
-      font-size: 1.5rem;
-    }
-
     @include mobile {
-      font-size: rem(20);
+      font-size: 20rem;
     }
   }
 
   &__subtitle {
-    font-size: 1.3vw;
+    font-size: 21rem;
     color: var(--color-black);
 
     @include tablet {
-      font-size: rem(16);
+      font-size: 16rem;
     }
 
     @include mobile {
-      font-size: rem(12);
+      font-size: 12rem;
     }
   }
 
   &__form {
     display: flex;
     flex-direction: column;
-    gap: rem(24);
+    gap: 24rem;
   }
 
   &__fields {
     display: flex;
-    gap: rem(16);
+    gap: 16rem;
     flex-wrap: wrap;
     width: 100%;
 
@@ -142,7 +138,7 @@
     // Используем стили из FAQ для полей в модальном окне
     .faq__row {
       display: flex;
-      gap: 1rem;
+      gap: 16rem;
       width: 100%;
     }
 
@@ -150,7 +146,7 @@
       width: 100%;
 
       @include mobile-s {
-        width: rem(163);
+        width: 163rem;
 
         &:nth-child(5) {
           width: 100% !important;
@@ -178,22 +174,22 @@
 
     @include tablet {
       flex-direction: column;
-      gap: rem(24);
+      gap: 24rem;
     }
 
     .faq__button {
-      padding: 1.2vw 2vw;
+      padding: 22rem 28rem;
       width: 100%;
       text-wrap: nowrap;
 
       @include tablet {
         width: 60%;
-        padding: rem(20) rem(32);
+        padding: 20rem 32rem;
       }
 
       @include mobile {
         width: 100%;
-        padding: rem(12) rem(16);
+        padding: 12rem 16rem;
       }
     }
   }
@@ -231,27 +227,27 @@
     width: 90%;
     max-width: 800px;
     background: #000;
-    border-radius: rem(20);
+    border-radius: 20rem;
     overflow: hidden;
     z-index: 1;
-    padding: rem(40) 0; // Добавляем отступы сверху и снизу
+    padding: 40rem 0; // Добавляем отступы сверху и снизу
 
     @include mobile {
       width: 95%;
-      padding: rem(20) 0; // Уменьшаем отступы на мобильных
+      padding: 20rem 0; // Уменьшаем отступы на мобильных
     }
   }
 
   &__close {
     position: absolute;
-    top: rem(10); // Уменьшаем отступ сверху для кнопки
-    right: rem(20);
-    width: rem(40);
-    height: rem(40);
+    top: 10rem; // Уменьшаем отступ сверху для кнопки
+    right: 20rem;
+    width: 40rem;
+    height: 40rem;
     border: none;
     background: rgba(255, 255, 255, 0.2);
     color: #fff;
-    font-size: rem(24);
+    font-size: 24rem;
     border-radius: 50%;
     cursor: pointer;
     z-index: 2;

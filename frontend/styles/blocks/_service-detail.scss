@@ -2,8 +2,8 @@
 
 .service-detail {
   display: flex;
-  gap: rem(44);
-  padding: rem(80) rem(40);
+  gap: 44rem;
+  padding: 80rem 40rem;
   height:80vh;
 
   @include tablet{
@@ -12,19 +12,23 @@
 
   @media (max-width: rem(768)) {
     flex-direction: column-reverse;
-    padding: rem(40) rem(16);
-    gap: rem(20);
+    padding: 40rem 16rem;
+    gap: 20rem;
   }
 
   &__info {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: fluid(40, 20);
+    gap: 40rem;
+
+    @include tablet{
+      gap: 20rem;
+    }
 
     &-button{
       align-self: flex-start;
-      padding-inline: 10vw;
+      padding-inline: 150rem;
 
       @include mobile{
         width: 100%;
@@ -32,29 +36,29 @@
     }
 
     &-description {
-      font-size: 1.35vw;
+      font-size: 20rem;
       color: var(--color-black);
 
       @media (max-width: rem(768)) {
-        font-size: rem(16);
+        font-size: 16rem;
       }
     }
 
     &-features {
       display: flex;
-      gap: rem(15);
-      margin-top: rem(20);
+      gap: 15rem;
+      margin-top: 20rem;
     }
 
     &-feature {
       background-color: #f5f8fc;
       padding: .5vw 1vw;
-      border-radius: rem(140);
+      border-radius: 140rem;
       display: flex;
       align-items: center;
-      gap: rem(8);
+      gap: 8rem;
       text-transform: uppercase;
-      font-size: rem(16);
+      font-size: 16rem;
     }
   }
 
@@ -67,7 +71,7 @@
     }
 
     .splide__track {
-      border-radius: rem(10);
+      border-radius: 10rem;
       overflow: hidden;
     }
 
@@ -76,7 +80,7 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
-        border-radius: rem(10);
+        border-radius: 10rem;
       }
     }
 
@@ -95,8 +99,8 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: rem(20);
-      margin-top: rem(20);
+      gap: 20rem;
+      margin-top: 20rem;
 
       @media (max-width: rem(768)) {
         justify-content: center;
@@ -105,7 +109,7 @@
 
 
     &-counter {
-      font-size: rem(18);
+      font-size: 18rem;
       font-weight: 600;
       color: var(--color-black);
     }

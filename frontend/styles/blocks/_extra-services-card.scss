@@ -4,13 +4,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: rem(30);
-  padding: rem(28) rem(20);
-  border-radius: 20px;
+  gap: 30rem;
+  padding: 28rem 20rem;
+  border-radius: 20rem;
   transition: background-color 0.2s ease-in-out;
 
   @include tablet {
-    gap: rem(8);
+    gap: 8rem;
   }
 
   &:hover {
@@ -19,20 +19,20 @@
 
   &__header {
     color: var(--color-black);
-    font-size: rem(32);
+    font-size: 32rem;
     font-weight: 500;
-    margin-bottom: rem(4);
+    margin-bottom: 4rem;
 
     @include tablet {
-      font-size: rem(24);
+      font-size: 24rem;
     }
   }
 
   &__description {
-    font-size: rem(20);
+    font-size: 20rem;
 
     @include tablet {
-      font-size: rem(14);
+      font-size: 14rem;
     }
   }
 
@@ -40,7 +40,7 @@
     flex-shrink: 0;
     display: flex;
     align-items: center;
-    gap: rem(16);
+    gap: 16rem;
   }
 
   &__button-text {
@@ -48,7 +48,7 @@
     flex-wrap: nowrap;
     color: var(--color-blue);
     text-transform: uppercase;
-    font-size: rem(20);
+    font-size: 20rem;
     font-weight: 500;
 
     @include tablet {
@@ -58,12 +58,12 @@
 
   &__button-icon {
     flex-shrink: 0;
-    padding: rem(8);
+    padding: 8rem;
     border-radius: 50%;
     background-color: #0060DF1A;
     transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
-    width: rem(60);
-    height: rem(60);
+    width: 60rem;
+    height: 60rem;
 
     path {
       stroke: var(--color-blue);
@@ -71,8 +71,8 @@
     }
 
     @include tablet {
-      width: rem(48);
-      height: rem(48);
+      width: 48rem;
+      height: 48rem;
     }
   }
 
