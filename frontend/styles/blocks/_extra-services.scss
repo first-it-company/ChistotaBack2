@@ -1,18 +1,31 @@
 @use "../helpers" as *;
 
 .extra-services {
-  padding-inline: rem(40);
-  padding-bottom: rem(60);
-  border-bottom: 1px solid #DFDFDF;
+  padding-inline: 40rem;
+  padding-top: 40rem;
+  padding-bottom: 60rem;
+  border-bottom: 1rem solid #DFDFDF;
+
+  @include tablet{
+    padding-top: 32rem;
+  }
 
   @include tablet {
-    padding-inline: rem(16);
-    padding-bottom: rem(50);
-    margin-top: rem(16);
+    padding-inline: 16rem;
+    padding-bottom: 50rem;
+    margin-top: 16rem;
   }
 }
 
 .extra-services__header {
   color: var(--color-black);
-  font-size: fluid(50, 28) !important;
+  font-size: 50rem;
+
+  @include tablet {
+    font-size: 40rem;
+  }
+
+  @include mobile {
+    font-size: 36rem;
+  }
 }

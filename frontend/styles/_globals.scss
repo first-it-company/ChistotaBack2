@@ -59,10 +59,10 @@ main {
 }
 
 .input-error {
-  border: 1px solid var(--color-blue) !important;
+  border: 1rem solid var(--color-blue) !important;
 
   &:focus-visible {
-    outline: 1px solid var(--color-blue) !important;
+    outline: 1rem solid var(--color-blue) !important;
   }
 }
 
@@ -100,7 +100,7 @@ h5 {
 .p1 {
   font-family: var(--font-family-accent);
   font-weight: 400;
-  font-size: rem(24);
+  font-size: 24rem;
   color: var(--color-gray-200);
 
   span {
@@ -110,8 +110,12 @@ h5 {
 
 .p2 {
   font-weight: 500;
-  font-size: rem(24);
+  font-size: 24rem;
   text-transform: uppercase;
+}
+
+.p3 {
+  font-size: 24rem;
 }
 
 a,
