@@ -12,7 +12,6 @@ from .models import (
     QuestionAnswer,
     ScopeServices,
     ServiceInclusion,
-    ServicePhoto,
     Services,
     SocialNetwork,
     VideoMain,
@@ -39,7 +38,6 @@ admin.site.register(Contact)
 admin.site.register(Feedback)
 admin.site.register(VideoMain)
 admin.site.register(Employee)
-admin.site.register(ServicePhoto)
 admin.site.register(Logo)
 admin.site.register(SocialNetwork)
 admin.site.register(CompanyDetails)

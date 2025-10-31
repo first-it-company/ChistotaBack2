@@ -66,16 +66,14 @@
             </div>
             <div class="service__splide-wrap">
               <div class="service__image">
-                {% with first_photo=service.photos.first %}
-                  {% if first_photo %}
-                  <img src="{{ first_photo.photo.url }}"
+                  {% if service.photo %}
+                  <img src="{{ service.photo.url }}"
                        alt=""
                        class="service__card-img"
-                       width="{{ first_photo.photo.width }}rem"
-                       height="{{ first_photo.photo.height }}rem"
+                       width="{{ service.photo.width }}rem"
+                       height="{{ service.photo.height }}rem"
                   >
                   {% endif %}
-                {% endwith %}
               </div>
             </div>
           </div>
