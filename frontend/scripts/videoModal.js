@@ -36,6 +36,11 @@ export function initVideoModal() {
         video.style.cursor = 'pointer';
         video.addEventListener('click', () => openVideoModal(video));
     });
+
+    document.querySelectorAll('.service-detail__video video').forEach(video => {
+        video.style.cursor = 'pointer';
+        video.addEventListener('click', () => openVideoModal(video));
+    });
     
     // Обработчики закрытия
     closeBtn.addEventListener('click', closeVideoModal);

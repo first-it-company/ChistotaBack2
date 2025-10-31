@@ -21,7 +21,10 @@
     flex: 1;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     gap: 40rem;
+    //height: 700px;
+    //height: 100%;
 
     @include tablet{
       gap: 20rem;
@@ -73,6 +76,20 @@
     width: 30%;
     border-radius: 20rem;
     overflow: hidden;
+    flex-shrink: 0;
+
+    @include tablet{
+      width: 35%;
+    }
+
+    @include mobile{
+      width: 100%;
+      height: 80vh;
+    }
+
+    @include mobile-m{
+      height: 60vh;
+    }
 
     video{
       width: 100%;

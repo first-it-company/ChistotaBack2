@@ -37,13 +37,20 @@
           </div>
         </div>
       </div>
-        {% include 'partials/contact-request-form.html' with with_header=False %}
+        <div class="faq__form-wrapper decorative-lines__wrapper">
+            {% include 'partials/contact-request-form.html' with with_header=False %}
+            <div class="decorative-lines">
+                <span class="decorative-lines__item"></span>
+                <span class="decorative-lines__item"></span>
+                <span class="decorative-lines__item"></span>
+            </div>
+        </div>
     </div>
       {% if service.video %}
       <div class="service-detail__video">
           <video
               src="{{ service.video.url }}"
-              preload="metadata"
+              preload="auto"
               muted
               autoplay
               playsinline
