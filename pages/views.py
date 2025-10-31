@@ -46,8 +46,8 @@ def home(request):
     orders = Order.objects.all()
     questions = QuestionAnswer.objects.all()
     contact = Contact.objects.first()
-    videos = VideoMain.objects.all()
-    employee = Employee.objects.all()
+    videos = VideoMain.objects.all().order_by('order')
+    employee = Employee.objects.all().order_by('order')
     logo = Logo.objects.all()
 
     # Получаем ссылки на социальные сети
@@ -317,7 +317,7 @@ def about_us(request):
     questions = QuestionAnswer.objects.all()
     contact = Contact.objects.first()
     company_details = CompanyDetails.objects.first()
-    employee = Employee.objects.all()
+    employee = Employee.objects.all().order_by('order')
     logo = Logo.objects.all()
 
     social_networks = {

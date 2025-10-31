@@ -68,6 +68,19 @@
     }
   }
 
+  &__video{
+    height: 100%;
+    width: 30%;
+    border-radius: 20rem;
+    overflow: hidden;
+
+    video{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
   &__slider {
     max-width: 50%;
     flex: 1;

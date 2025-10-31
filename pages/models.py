@@ -55,19 +55,6 @@ class ScopeServices(models.Model):
         return self.name
 
 
-class ServicePhoto(models.Model):
-    photo = ProcessedImageField(
-        upload_to="services",
-        format="WEBP",
-        options={"quality": 80},
-        verbose_name="Фото",
-    )
-
-    class Meta:
-        verbose_name = "Фотография услуги"
-        verbose_name_plural = "Фотографии услуг"
-
-
 class Services(models.Model):
     scope = models.ForeignKey(
         ScopeServices, on_delete=models.CASCADE, verbose_name="Сфера"
@@ -87,8 +74,25 @@ class Services(models.Model):
     )
     time_work = models.CharField(max_length=150, verbose_name="Часы работы")
     square = models.CharField(max_length=150, verbose_name="Площадь работы")
-    order = models.IntegerField(verbose_name="порядок")
-    photos = models.ManyToManyField(ServicePhoto, verbose_name="Фотографии")
+    order = models.IntegerField(
+        default=1,
+        verbose_name="порядок",
+    )
+
+    photo = ProcessedImageField(
+        upload_to="services",
+        format="WEBP",
+        options={"quality": 80},
+        verbose_name="Фото",
+        null = True,
+        blank=True,
+    )
+
+    video = models.FileField(
+        upload_to="videos",
+        null = True,
+        blank=True,
+    )
 
     class Meta:
         verbose_name = "Услуга"
@@ -249,6 +253,10 @@ class Feedback(models.Model):
 class VideoMain(models.Model):
     name = models.TextField(verbose_name="Заголовок к видео")
     video = models.FileField(upload_to="videos")
+    order = models.IntegerField(
+        verbose_name="Порядок",
+        default=1,
+    )
 
     class Meta:
         verbose_name = "Видео на главном экране"
@@ -271,6 +279,10 @@ class Employee(models.Model):
     experience = models.PositiveSmallIntegerField(
         blank=True, null=True, verbose_name="Стаж"
     )
+    order = models.IntegerField(
+        default=1,
+        verbose_name="Порядок"
+    )
 
     class Meta:
         verbose_name = "Сотрудник компании"
@@ -278,7 +290,6 @@ class Employee(models.Model):
 
     def __str__(self):
         return self.name
-
 
 class Logo(models.Model):
     photo = ProcessedImageField(

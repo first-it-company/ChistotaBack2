@@ -39,39 +39,52 @@
       </div>
         {% include 'partials/contact-request-form.html' with with_header=False %}
     </div>
-    {% if service.photos.all %}
-      <div class="service-detail__slider splide" id="service-detail-splide">
-        <div class="splide__track">
-          <ul class="splide__list">
-            {% for photo in service.photos.all %}
-              <li class="splide__slide">
-                <img src="{{ photo.photo.url }}"
-                     alt="{{ service.scope.name }} - Фото {{ forloop.counter }}">
-              </li>
-            {% endfor %}
-          </ul>
-        </div>
-        <div class="service-detail__slider-controls controls">
-          <button class="service-detail__slider-button-prev controls__button controls__prev hidden-tablet"
-                  id="service-detail-prev">
-            <img src="{% static 'pages/icons/arrow-left.svg' %}"
-                 alt="Предыдущий"
-                 class="controls__img"
-                 width="24"
-                 height="24">
-          </button>
-          <div class="service-detail__slider-counter" id="service-detail-counter"></div>
-          <button class="service-detail__slider-button-next controls__button controls__next hidden-tablet"
-                  id="service-detail-next">
-            <img src="{% static 'pages/icons/arrow-right.svg' %}"
-                 alt="Следующий"
-                 class="controls__img"
-                 width="24"
-                 height="24">
-          </button>
-        </div>
+      {% if service.video %}
+      <div class="service-detail__video">
+          <video
+              src="{{ service.video.url }}"
+              preload="metadata"
+              muted
+              autoplay
+              playsinline
+              loop
+          >
+          </video>
       </div>
-    {% endif %}
+
+      {% else %}
+        {% if service.photo %}
+          <div class="service-detail__slider splide" id="service-detail-splide">
+            <div class="splide__track">
+              <ul class="splide__list">
+                  <li class="splide__slide">
+                    <img src="{{ service.photo.url }}"
+                         alt="{{ service.scope.name }} - Фото {{ forloop.counter }}">
+                  </li>
+              </ul>
+            </div>
+            <div class="service-detail__slider-controls controls">
+              <button class="service-detail__slider-button-prev controls__button controls__prev hidden-tablet"
+                      id="service-detail-prev">
+                <img src="{% static 'pages/icons/arrow-left.svg' %}"
+                     alt="Предыдущий"
+                     class="controls__img"
+                     width="24"
+                     height="24">
+              </button>
+              <div class="service-detail__slider-counter" id="service-detail-counter"></div>
+              <button class="service-detail__slider-button-next controls__button controls__next hidden-tablet"
+                      id="service-detail-next">
+                <img src="{% static 'pages/icons/arrow-right.svg' %}"
+                     alt="Следующий"
+                     class="controls__img"
+                     width="24"
+                     height="24">
+              </button>
+            </div>
+          </div>
+        {% endif %}
+  {% endif %}
   </section>
   {% if service.inclusions.all %}
     <section class="service-included">
