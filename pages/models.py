@@ -291,6 +291,23 @@ class Employee(models.Model):
     def __str__(self):
         return self.name
 
+    def experience_display(self):
+        if self.experience is None:
+            return
+
+        n = self.experience
+        if 11 <= n % 100 <= 14:
+            word = "лет"
+        else:
+            last_digit = n % 10
+            if last_digit == 1:
+                word = "год"
+            elif last_digit in (2, 3, 4):
+                word = "года"
+            else:
+                word = "лет"
+        return f"{n} {word}"
+
 class Logo(models.Model):
     photo = ProcessedImageField(
         upload_to="logo", format="WEBP", options={"quality": 80}, verbose_name="Лого"
