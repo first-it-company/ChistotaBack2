@@ -1,4 +1,6 @@
 {% load number_filters %}
+{% load static %}
+
 <section class="service"
          {% if is_catalog %}style="padding-block: 40rem;"{% endif %}>
   <div id="service" class="service__inner">
@@ -25,32 +27,32 @@
     </div>
     <div class="service__cards-wrapper">
       {% for service in services %}
-        <div class="service__card {{ service.gradient }}">
+        <div class="service__card">
           <div class="service__card-wrapper">
             <div class="service__card-body">
               <div class="service__card-main">
-                <div>
                   <h6 class="service__card-header">{{ service.scope.name }}</h6>
                   <p class="service__card-subheader">{{ service.desc|truncatechars:250 }}</p>
                   <div class="service__card-features">
                     <div class="card-features">
-                      <img src="data:image/svg+xml,%3csvg%20width='16'%20height='16'%20viewBox='0%200%2016%2016'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M14.6668%207.99992C14.6668%2011.6799%2011.6802%2014.6666%208.00016%2014.6666C4.32016%2014.6666%201.3335%2011.6799%201.3335%207.99992C1.3335%204.31992%204.32016%201.33325%208.00016%201.33325C11.6802%201.33325%2014.6668%204.31992%2014.6668%207.99992Z'%20stroke='%23FFFFFF'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3cpath%20d='M10.4734%2010.1199L8.40675%208.88659C8.04675%208.67326%207.75342%208.15992%207.75342%207.73992V5.00659'%20stroke='%23FFFFFF'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/svg%3e"
-                           alt=""
-                           class=""
-                           width="20"
-                           height="20">
-                      <span>{{ service.time_work }} ч</span>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M22 12C22 17.52 17.52 22 12 22C6.48 22 2 17.52 2 12C2 6.48 6.48 2 12 2C17.52 2 22 6.48 22 12Z" stroke="#525252" stroke-width="1.8" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M15.7099 15.18L12.6099 13.33C12.0699 13.01 11.6299 12.24 11.6299 11.61V7.51001" stroke="#525252" stroke-width="1.8" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span>{{ service.time_work }} ч</span>
                     </div>
                     <div class="card-features">
-                      <img src="data:image/svg+xml,%3csvg%20width='16'%20height='16'%20viewBox='0%200%2016%2016'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M7.99996%202C4.68798%202%202%204.68798%202%207.99996M7.99996%2013.9999C11.3119%2013.9999%2013.9999%2011.3119%2013.9999%207.99996'%20stroke='%23FFFFFF'%20stroke-miterlimit='10'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3cpath%20d='M10.7358%205.26396L13.5198%202.47998'%20stroke='%23FFFFFF'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3cpath%20d='M5.26416%2010.736L2.48018%2013.52'%20stroke='%23FFFFFF'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3cpath%20d='M7.80029%208.20009L8.40029%207.6001'%20stroke='%23FFFFFF'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3cpath%20d='M14%204.89798V2H11.1021'%20stroke='%23FFFFFF'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3cpath%20d='M1.99997%2011.102V14H4.89795'%20stroke='%23FFFFFF'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/svg%3e"
-                           alt=""
-                           class=""
-                           width="20"
-                           height="20">
-                      <span>до {{ service.square|space_thousands }} м2</span>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M11.9999 3C7.03197 3 3 7.03197 3 11.9999M11.9999 20.9999C16.9679 20.9999 20.9999 16.9679 20.9999 11.9999" stroke="#525252" stroke-width="1.8" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M16.1035 7.89619L20.2795 3.72021" stroke="#525252" stroke-width="1.8" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M7.89648 16.1038L3.72051 20.2798" stroke="#525252" stroke-width="1.8" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M11.6992 12.2999L12.5992 11.3999" stroke="#525252" stroke-width="1.8" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M20.9993 7.34697V3H16.6523" stroke="#525252" stroke-width="1.8" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M3.00069 16.653V21H7.34766" stroke="#525252" stroke-width="1.8" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span>до {{ service.square|space_thousands }} м2</span>
                     </div>
                   </div>
-                </div />
                 <div class="service__pricing">
                   <div class="button__wrapper service__button-wrapper">
                     <a href="{{ service.get_absolute_url }}" class="button service__button">подробнее</a>
@@ -73,6 +75,16 @@
                        width="{{ service.photo.width }}rem"
                        height="{{ service.photo.height }}rem"
                   >
+                  {% endif %}
+
+                  {% if service.is_popular == True %}
+                  <div class="service__popular">
+                      <img
+                              src="{% static 'pages/images/hero/popular.svg'  %}"
+                              alt="Хит"
+                              width="100%" height="100%" loading="lazy"
+                      >
+                  </div>
                   {% endif %}
               </div>
             </div>

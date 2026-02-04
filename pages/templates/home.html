@@ -3,209 +3,135 @@
 {% block content %}
   <div class="overflow-wrapper">
     <section class="hero">
-      <div class="hero__main">
-        <div class="hero__body">
-          <div class="hero__header-inner">
-            <h3 class="hero__header splitting-text" data-splitting>
-              С нами у вас
-                <br>
-                всегда <span class="hero__header-print"></span>
-            </h3>
-            <p class="hero__subheader">Клининговая компания №1 в Приморском крае</p>
-            <div class="hero__review">
-              <button class="review-button"
-                      onclick="window.open('https://www.vl.ru/chistota-dv', '_blank')">
-                <img src="{% static "pages/icons/VL.png" %}"
-                     alt="VL.ru"
-                     class="hero__review-logo"
-                     width="100%"
-                     height="100%">
-                <span>
-                  {% if vl_data.average_rating %}
-                    {{ vl_data.average_rating }}
-                  {% else %}
-                    5.0
-                  {% endif %}
-                </span>
-                <img src="{% static "pages/icons/star.svg" %}"
-                     alt=""
-                     class="review-button__star"
-                  width="100%"
-                  height="100%"
-                  >
-              </button>
-              <button class="review-button"
-                      onclick="window.open('https://yandex.ru/maps/-/CHWKmQ7K', '_blank')">
-                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAI6SURBVHgB7ZexbhNBEIb/2dhFpIBSunAk0yPFJUiWODeQAgmK0CPxAMAT4PACgEQJEj0uUkY0uQIJSjd0SDiQwqUF6Y67YWbB512T892R87nhl07y3u7q/2Z2dqwjLCjqtQMY3DVEdxjooAIReMSgUUTRwWY4Gftzf8TB9naSXHrChEdYoYjx3JgfBxROpymANeetY6HsogZpRgyd9RXC6AsbeU3mKvVSTwvDQasTc/ML1iAm7ps4aQ6wLiW22Hk3a56617ARfk0fuv8YeaK9e/6eVjt7rdw0s+zsefRRng/p2Ow/ALYuYymAA2n3T06XLe8Y5IjfPJsPxJwUIsu8d9OLmIevkKd8gIUs0N5+5loPbvIN/P4dLgxgIZwsUGvH1sZfksipez0dJm7mLgwgWYBzlucVo/dOoz8aojIAVTJ8PTeTSL0sSPRGqt8DLqjCAHz0Fjj7PodwIqbeLX9twfSXAlDzrCy4xaegOVfPUwMlxArg9gJJu/03E8OZaZnoVfTzxg6X2iCpN07649tXvaMpq+JHMJPWggu0pDGtBEBT7TaYIu25UgAL4bZYbc8Lt2D1ANqeP39Kx+d2xlUCWLmFJ+25foCK9B9AAPgEaxLJx0qDGYdEeIiS4pdPwbP7/4+dkOU+URS0A2I6xhoU0cYV0wxPQ2Z+gZqlnpvheGyLsGEaAz0P1CR79uKpvy0AheOpIdOvIxPqoV7q+RtmcUHQ6cRJPJCv5K5M7qIS8YkWu4R7qEfuzvwC6o3pQznqsqgAAAAASUVORK5CYII="
-                     alt="Яндекс"
-                     class="hero__review-logo"
-                     width="100%"
-                     height="100%">
-                <span>
-                  {% if yandex_data.average_rating > 1 %}
-                    {{ yandex_data.average_rating }}
-                  {% else %}
-                    5.0
-                  {% endif %}
-                </span>
-                <img src="{% static "pages/icons/star.svg" %}"
-                     alt=""
-                     class="review-button__star"
-                  width="100%"
-                  height="100%">
-              </button>
-              <button class="review-button"
-                      onclick="window.open('https://2gis.ru/vladivostok/firm/70000001066603671', '_blank')">
-                <img src="{% static "pages/icons/2gis.png" %}"
-                     alt="2gis"
-                     class="hero__review-logo"
-                  width="100%"
-                  height="100%">
-                <span>
-                  {% if gis_data.average_rating %}
-                    {{ gis_data.average_rating }}
-                  {% else %}
-                    5.0
-                  {% endif %}
-                </span>
-                <img src="{% static "pages/icons/star.svg" %}"
-                     alt=""
-                     class="review-button__star"
-                      width="100%"
-                      height="100%">
-              </button>
-            </div>
-          </div>
-            <div class="hero__subheader-wrapper">
-              <p class="hero__subheader2">Профессиональный клининг для дома и офиса с гарантией качества.</p>
-              <div class="hero__button-wrapper button__wrapper">
-                <button class="button hero__button modal-open">Заказать уборку</button>
-                <button class="hero__button--arrow button--arrow modal-open">
-                  <span class="arrow-container"></span>
-                  <svg width="100%"
-                       height="100%"
-                       viewBox="0 0 17 17"
-                       fill="none"
-                       xmlns="http://www.w3.org/2000/svg"
-                       style="display: none">
-                    <path d="M15.5713 8.5H1.42915" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
-                    <path d="M8.50022 15.5711L15.5713 8.5L8.50022 1.42893" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
-                </button>
-              </div>
-            </div>
-        </div>
-        <div class="hero__advantages">
-          <h2 class="hero__advantages-header">Клининговая компания №1 в Приморском крае</h2>
-          <div class="hero__advantages-wrapper">
-            <div class="hero__advantages-item">
-              <div class="hero__advantages-info">
-                <p class="hero__advantages-value">
-                  <span>+{{ about_main.cnt_people }}</span> чел
-                </p>
-                <p class="hero__advantages-label">в команде</p>
-              </div>
-              <p class="hero__advantages-title">Успех гарантирован</p>
-            </div>
-            <div class="hero__advantages-item">
-              <div class="hero__advantages-info">
-                <p class="hero__advantages-value">
-                  <span>+{{ about_main.cnt_year }}</span> лет
-                </p>
-                <p class="hero__advantages-label">В этой сфере</p>
-              </div>
-              <p class="hero__advantages-title">Работаем с 2019 г</p>
-            </div>
-            <div class="hero__advantages-item">
-              <div class="hero__advantages-info">
-                <p class="hero__advantages-value">
-                  <span>+{{ about_main.cnt_square|space_thousands }}к</span> м2
-                </p>
-                <p class="hero__advantages-label">Вычищаем/мес</p>
-              </div>
-              <p class="hero__advantages-title">В надежных руках</p>
-            </div>
-          </div>
-          <button class="button hero__button--adv modal-open">Рассчитать стоимость</button>
-          <div class="hero__advantages-links cta__socials-wrapper">
-            {% if instagram_url %}
-              <a href="{{ instagram_url }}" class="cta__socials-logo" target="_blank">
-                <img src="{% static "pages/icons/instagram.svg" %}"
-                     alt="Instagram"
-                     class="cta__logo"
-                     width="100%"
-                     height="100%" loading="lazy">
-              </a>
-            {% endif %}
-            {% if telegram_url %}
-              <a href="{{ telegram_url }}" class="cta__socials-logo" target="_blank">
-                <img src="{% static "pages/icons/telegram.svg" %}"
-                     alt="Telegram"
-                     class="cta__logo"
-                  width="100%"
-                  height="100%">
-              </a>
-            {% endif %}
-            {% if vk_url %}
-              <a href="{{ vk_url }}" class="cta__socials-logo" target="_blank">
-                <img src="{% static "pages/icons/vk.svg" %}"
-                     alt="Вконтакте"
-                     class="cta__logo"
-                  width="100%"
-                  height="100%">
-              </a>
-            {% endif %}
-            {% if whatsapp_url %}
-              <a href="{{ whatsapp_url }}" class="cta__socials-logo" target="_blank">
-                <img src="{% static "pages/icons/whatsapp.svg" %}"
-                     alt="WhatsApp"
-                     class="cta__logo"
-                  width="100%"
-                  height="100%">
-              </a>
-            {% endif %}
-          </div>
-        </div>
-      </div>
-      <div class="hero__splide splide">
-        <div class="hero__splide-track splide__track">
-          {% if videos %}
-            <ul class="splide__list">
-              {% for video in videos %}
-                <li class="hero__splide-slide splide__slide">
-                  <div class="hero__splide-slide-inner">
-                    <video src="{{ video.video.url }}" preload="auto" muted playsinline loop autoplay>
-                    </video>
+        <div class="hero__inner">
+            <div class="hero__top">
+                <div class="hero__main">
+                    <div class="hero__body">
+                  <div class="hero__header-inner">
+                    <h3 class="hero__header splitting-text" data-splitting>
+                      С нами у вас
+                        <br>
+                        всегда <span class="hero__header-print"></span>
+                    </h3>
+                    <p class="hero__subheader">Клининговая компания №1 в Приморском крае</p>
+                    <div class="hero__review">
+                      <a class="review-button" href="https://www.vl.ru/chistota-dv" target="_blank">
+                            <img src="{% static 'pages/icons/VL.png' %}"
+                                 alt="VL.ru"
+                                 class="hero__review-logo"
+                            >
+                            <span>
+                              {% if vl_data.average_rating %}{{ vl_data.average_rating }}{% else %}5.0{% endif %}
+                            </span>
+                            <img src="{% static 'pages/icons/star.svg' %}"
+                                 alt=""
+                                 class="review-button__star"
+                            >
+                      </a>
+                      <a class="review-button" href="https://yandex.ru/maps/-/CHWKmQ7K" target="_blank">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAI6SURBVHgB7ZexbhNBEIb/2dhFpIBSunAk0yPFJUiWODeQAgmK0CPxAMAT4PACgEQJEj0uUkY0uQIJSjd0SDiQwqUF6Y67YWbB512T892R87nhl07y3u7q/2Z2dqwjLCjqtQMY3DVEdxjooAIReMSgUUTRwWY4Gftzf8TB9naSXHrChEdYoYjx3JgfBxROpymANeetY6HsogZpRgyd9RXC6AsbeU3mKvVSTwvDQasTc/ML1iAm7ps4aQ6wLiW22Hk3a56617ARfk0fuv8YeaK9e/6eVjt7rdw0s+zsefRRng/p2Ow/ALYuYymAA2n3T06XLe8Y5IjfPJsPxJwUIsu8d9OLmIevkKd8gIUs0N5+5loPbvIN/P4dLgxgIZwsUGvH1sZfksipez0dJm7mLgwgWYBzlucVo/dOoz8aojIAVTJ8PTeTSL0sSPRGqt8DLqjCAHz0Fjj7PodwIqbeLX9twfSXAlDzrCy4xaegOVfPUwMlxArg9gJJu/03E8OZaZnoVfTzxg6X2iCpN07649tXvaMpq+JHMJPWggu0pDGtBEBT7TaYIu25UgAL4bZYbc8Lt2D1ANqeP39Kx+d2xlUCWLmFJ+25foCK9B9AAPgEaxLJx0qDGYdEeIiS4pdPwbP7/4+dkOU+URS0A2I6xhoU0cYV0wxPQ2Z+gZqlnpvheGyLsGEaAz0P1CR79uKpvy0AheOpIdOvIxPqoV7q+RtmcUHQ6cRJPJCv5K5M7qIS8YkWu4R7qEfuzvwC6o3pQznqsqgAAAAASUVORK5CYII="
+                             alt="Яндекс"
+                             class="hero__review-logo"
+                        >
+                        <span>
+                          {% if yandex_data.average_rating > 1 %}{{ yandex_data.average_rating }}{% else %}5.0{% endif %}
+                        </span>
+                        <img src="{% static 'pages/icons/star.svg' %}"
+                             alt=""
+                             class="review-button__star">
+                      </a>
+                      <a class="review-button" href="https://2gis.ru/vladivostok/firm/70000001066603671" target="_blank">
+                        <img src="{% static 'pages/icons/2gis.png' %}"
+                             alt="2gis"
+                             class="hero__review-logo"
+                        >
+                        <span>
+                          {% if gis_data.average_rating %}{{ gis_data.average_rating }}{% else %}5.0{% endif %}
+                        </span>
+                        <img src="{% static 'pages/icons/star.svg' %}"
+                             alt=""
+                             class="review-button__star"
+                        >
+                      </a>
+                    </div>
                   </div>
-                </li>
-              {% endfor %}
-            </ul>
-          {% endif %}
-          <div class="hero__slide-arrows controls hidden-mobile">
-            <button id="heroBtnPrev"
-                    class="cases__controls-prev hero__controls-prev controls__button controls__prev is-disabled">
-              <img src="{% static 'pages/icons/arrow-left.svg' %}"
-                   alt="Назад"
-                   class="controls__img"
-                   width="100%"
-                   height="100%" loading="lazy">
-            </button>
-            <p id="heroCurrent" class="hero__controls-current controls__current"></p>
-            <button id="heroBtnNext"
-                    class="cases__controls-next hero__controls-next controls__button controls__next">
-              <img src="{% static 'pages/icons/arrow-right.svg' %}"
-                   alt="Вперед"
-                   class="controls__img"
-                   width="100%"
-                   height="100%" loading="lazy">
-            </button>
-          </div>
+                    <div class="hero__subheader-wrapper">
+                      <div class="hero__button-wrapper button__wrapper">
+                        <button class="button hero__button modal-open">Заказать уборку</button>
+                        <button class="hero__button--arrow button--arrow modal-open">
+                          <span class="arrow-container"></span>
+                          <svg width="100%"
+                               height="100%"
+                               viewBox="0 0 17 17"
+                               fill="none"
+                               xmlns="http://www.w3.org/2000/svg"
+                               style="display: none">
+                            <path d="M15.5713 8.5H1.42915" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M8.50022 15.5711L15.5713 8.5L8.50022 1.42893" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                          </svg>
+                        </button>
+                      </div>
+                        <p class="hero__subheader2">
+                            Качественный клининг для дома и офиса.
+                        </p>
+                    </div>
+                </div>
+                </div>
+                <div class="hero__image">
+                    <img
+                        src="{% static 'pages/images/hero/hero-bg.png' %}" alt="Команда Чистота"
+                        fetchpriority="high" decoding="async"
+                    >
+                </div>
+            </div>
+            <div class="hero__bottom">
+                <h2 class="hero__bottom-subtitle">
+                    Клининговая компания <span class="gradient"> У №1 в Приморском крае<span>
+                </h2>
+                <div class="hero__advantages">
+                    <div class="hero__advantages-card">
+                        <div class="hero__advantages-card-left">
+                            <h2 class="hero__advantages-number">
+                                50
+                            </h2>
+                            <span>чел</span>
+                        </div>
+                        <div class="hero__advantages-card-right">
+                            <p>в команде</p>
+                            <span>Успех гарантирован</span>
+                        </div>
+                    </div>
+                    <div class="hero__advantages-card">
+                        <div class="hero__advantages-card-left">
+                            <h2 class="hero__advantages-number">
+                                50
+                            </h2>
+                            <span>чел</span>
+                        </div>
+                        <div class="hero__advantages-card-right">
+                            <p>в команде</p>
+                            <span>Успех гарантирован</span>
+                        </div>
+                    </div>
+                    <div class="hero__advantages-card">
+                        <div class="hero__advantages-card-left">
+                            <h2 class="hero__advantages-number">
+                                50
+                            </h2>
+                            <span>чел</span>
+                        </div>
+                        <div class="hero__advantages-card-right">
+                            <p>в команде</p>
+                            <span>Успех гарантирован</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
   </div>
     {% include 'partials/about.html' %}
-  {% include 'partials/service.html' %}
+    {% include 'partials/service.html' %}
   <section class="other-carousel">
     <h2 class="other-carousel__title splitting-text" data-splitting>А также...</h2>
     <div class="other-carousel__wrapper">
@@ -306,9 +232,10 @@
     </div>
   </section>
   {% include 'partials/team.html' %}
-  {% include 'partials/cases.html' with is_two_rows=True %}
+  {% include 'partials/cases_new.html'%}
   {% include 'partials/cta-request.html' %}
-  {% include 'partials/reviews.html' %}
+  {% include 'partials/reviews_new.html' %}
+    {% include 'partials/cta-accent.html' %}
   {% include 'partials/faq.html' with with_border=True %}
 
 <div class="preloader">

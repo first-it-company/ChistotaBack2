@@ -1,300 +1,68 @@
 @use "../helpers" as *;
 
 .reviews{
-  overflow: hidden;
   position: relative;
   width: 100%;
 
   &__inner{
     padding-top: 60rem;
     padding-bottom: 100rem;
-    padding-inline: 40rem;
-    overflow-x: hidden;
+    padding-left: 40rem;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 32rem;
 
     @include tablet{
       padding-top: 60rem;
       padding-bottom: 80rem;
       padding-inline: 20rem;
     }
-
-    @include tablet{
-      display: flex;
-      flex-direction: column;
-    }
-  }
-
-  &__user-commas{
-
-    @include tablet {
-      width: 30rem;
-    }
-  }
-
-  &__title{
-    display: flex;
-    flex-direction: column;
-    gap: 25rem;
-    align-items: start;
-    margin-bottom: 40rem;
-
-    @include tablet{
-      flex-direction: column;
-      gap: 24rem;
-      margin-bottom: 24rem;
-      width: 100%;
-    }
-  }
-
-  &__counts{
-    font-family: Noah, sans-serif;
-    color: var(--color-gray-200);
-    font-size:18rem;
-    font-weight: 400;
-    margin-right: 8rem;
-
-    @include tablet{
-      font-size: 16rem;
-    }
-  }
-  &__commas{
-    height: 34rem;
-    width: 30rem;
-  }
-
-
-  &__subheader{
-    @include laptop{
-      font-size: 20rem;
-    }
-  }
-
-  &__extra{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    @include tablet{
-      width: 100%;
-      justify-content: flex-start;
-      order: 2;
-      margin-bottom: 32rem;
-    }
-
-    &-wrapper{
-      display: flex;
-      column-gap: 17rem;
-    }
-  }
-
-  &__subheader {
-    font-size: 24rem;
-
-    @include tablet {
-      font-size: 20rem;
-    }
-  }
-
-  &__swiper{
-    overflow: visible;
-    margin: 0 !important;
-
-    &-slide{
-      background-color: var(--color-white-bg);
-      border-radius: 20rem;
-      padding: 20rem;
-      width: 520rem;
-      transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
-
-      @include tablet{
-        width: 75vw;
-        height: fit-content;
-        min-height: 320rem;
-        padding: 20rem 26rem;
-      }
-
-      @include mobile {
-        padding: 16rem;
-      }
-
-      &-inner{
-        display: flex;
-        flex-direction: column;
-        gap: 15rem;
-        height: 100%;
-      }
-    }
-
-    &-wrapper{
-      overflow: visible;
-      align-items: center;
-      column-gap: 24rem;
-      margin-bottom: 40rem;
-    }
-
-    &-inner{
-      overflow: visible;
-    }
-  }
-
-
-  &__user{
-
-    &-wrapper{
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      @include tablet{
-        margin-bottom: 0;
-      }
-    }
-
-    &-info{
-      display: flex;
-      align-items: center;
-      column-gap: 16rem;
-
-    }
-
-    &-top{
-      display: flex;
-      align-items: center;
-      column-gap: 8rem;
-      margin-bottom: 12rem;
-
-      @include tablet{
-        margin-bottom: 0;
-      }
-    }
-
-    &-bottom{
-      display: flex;
-      align-items: flex-end;
-      column-gap:8rem;
-      line-height: normal;
-
-      @include tablet{
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8rem;
-      }
-    }
-
-
-    &-name{
-      font-weight: 400;
-      font-size: 24rem;
-      color: var(--color-black);
-
-      @include tablet{
-        font-size: 18rem;
-      }
-    }
-
-    &-service{
-      font-family: var(--font-family-accent);
-      font-weight: 400;
-      font-size: 24rem;
-      color: var(--color-gray-200);
-
-      @include tablet{
-        font-size: 14rem;
-      }
-    }
-  }
-  &__score{
-    font-weight: 500;
-    font-size: 18rem;
-    text-transform: uppercase;
-    color: var(--color-black);
-
-    @include tablet{
-      font-size: 18rem;
-    }
   }
 
   &__body{
-    font-family: var(--font-family-accent);
-    font-weight: 400;
-    font-size: 18rem;
-    color: var(--color-black);
-    display: -webkit-box;
-    -webkit-line-clamp: 5;
-    -webkit-box-orient: vertical;
+    display: flex;
+    position: relative;
+    margin-right: -20rem;
+  }
+
+  &__main{
+    display: flex;
+    gap: 16rem;
+    height: 700rem;
     overflow: hidden;
-    line-height: 1.4;
-    max-height: calc(1.4em * 5);
-    word-break: break-word;
+    position: relative;
 
-    @include tablet{
-      order: 1;
-      font-size: 20rem;
-      -webkit-line-clamp: 4;
-      max-height: calc(1.4em * 4);
-    }
-
-    &-wrapper{
-      display: flex;
-      flex-direction: column;
-
-      @include tablet{
-        display: contents;
-      }
+    &:after{
+      content: "";
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.628151) 37.79%, rgba(255, 255, 255, 0.933395) 72.78%, #FFFFFF 100%);
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 200rem;
     }
   }
 
-  &__button{
+  &__column{
     display: flex;
-    align-items: center;
-    column-gap: 16rem;
-    border: 1px solid var(--color-blue);
-    background-color: transparent;
-    border-radius: 14rem;
-    padding: 8rem 12rem;
-    width: 260rem;
-    height: 56rem;
-
-    @include hover{
-      background-color: var(--color-blue-hover);
-      transition-duration: var(--transition-duration);
-    }
-
-    @include tablet{
-      order: 3;
-    }
-
-    &-title{
-      font-weight: 400;
-      font-size: 20rem;
-      color: var(--color-blue);
-    }
+    flex-direction: column;
+    gap: 16rem;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
   }
-  &__stars{
+
+  &__image{
     display: flex;
+    justify-self: right;
+    position: sticky;
+    top: 35rem;
+    height: fit-content;
   }
 
-  &__img{
-    border-radius: 8rem;
-    aspect-ratio: 1;
-    object-fit: cover;
-    flex-shrink: 0;
-
-    &-wrapper{
-      width: 40rem;
-      height: 40rem;
-
-      img{
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-
-      @include tablet{
-        width: 36em;
-        height: 36rem;
-      }
-    }
+  &__header{
+    display: flex;
+    flex-direction: column;
+    gap: 40rem;
   }
 
   &__links{
@@ -312,42 +80,119 @@
     }
   }
 
-  &__content{
+  &__card{
+    width: 440rem;
+    height: fit-content;
+    padding: 20rem;
+    background-color: var(--color-white-bg);
+    border-radius: 24rem;
     display: flex;
-    width: 100%;
-    justify-content: space-between;
-    gap: 20rem;
+    flex-direction: column;
+    gap: 16rem;
 
-    @include tablet{
-      flex-direction: column;
-      gap: 16rem;
-      height: 100%;
+    &-header{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    &-user-img{
+      width: 32rem;
+      height: 32rem;
+      border-radius: 28rem;
+
+      img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    &-body{
+      display: flex;
+      gap: 20rem;
+    }
+
+    &-name{
+      font-family: var(--font-family);
+      font-size: 20rem;
+      font-weight: 400;
+    }
+
+    &-service{
+      font-size: 16rem;
+      font-weight: 400;
+      color: var(--color-gray-200);
+    }
+
+    &-text{
+      font-size: 16rem;
+      font-weight: 400;
+    }
+
+    &-img{
+      border-radius: 12rem;
+      overflow: hidden;
+      width: 190rem;
+      height: 150rem;
+      flex-shrink: 0;
+
+      img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    &-left{
+      display: flex;
+      align-items: center;
+      gap: 12rem;
+
+      &-wrap{
+        display: flex;
+        flex-direction: column;
+
+      }
+    }
+
+    &-right{
+      display: flex;
+      gap: 4rem;
+      font-size: 16rem;
+      font-weight: 400;
+      align-items: center;
     }
   }
 
-  &__photo {
-    width: 100%;
-    height: 100%;
-    border-radius: 20rem;
-    object-fit: cover;
+  &__controls{
+    display: flex;
+    align-items: center;
+    gap: 12rem;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+  }
 
-    &-wrapper {
-      width: 45%;
-      aspect-ratio: 180/134;
-      flex-shrink: 0;
+  &__control-button{
+    border: 1px solid transparent;
+    border-radius: 50%;
+    background-color: var(--color-blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48rem;
+    height: 48rem;
+    stroke: var(--color-white);
 
-      @include tablet{
-        max-width: 280rem;
-        max-height: 152rem;
+    &.is-disabled{
+      background-color: var(--color-white);
+      border: 1px solid var(--color-blue);
 
-        min-width: auto;
-        min-height: auto;
-      }
-
-      @include tablet{
-        order: 0;
-        width: 100%;
-        aspect-ratio: 265/134;
+      svg{
+        stroke: var(--color-blue);
       }
     }
   }

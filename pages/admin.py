@@ -7,7 +7,6 @@ from .models import (
     Employee,
     Feedback,
     Logo,
-    Order,
     OrderInfo,
     QuestionAnswer,
     ScopeServices,
@@ -32,7 +31,6 @@ admin.site.register(AboutMain)
 admin.site.register(ScopeServices)
 admin.site.register(Services, ServicesAdmin)
 admin.site.register(OrderInfo)
-admin.site.register(Order)
 admin.site.register(QuestionAnswer)
 admin.site.register(Contact)
 admin.site.register(Feedback)

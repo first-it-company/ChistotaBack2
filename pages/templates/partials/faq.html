@@ -3,63 +3,9 @@
          class="faq"
          {% if with_border %}style="border-top: 1px solid var(--color-gray-100);"{% endif %}>
   <div class="faq__inner">
-    <div class="faq__body">
-      <div class="faq__title">
-        <h5 class="faq__header h5 splitting-text" data-splitting>
-          Будем <span class="">на связи!</span>
-        </h5>
-        <p class="faq__subheader p1">
-          Также как выбранный нами инновационный путь не даёт нам иного выбора, кроме определения инновационных методов управления процессами.
-        </p>
-      </div>
-      <div class="faq__socials-wrapper">
-          {% if instagram_url %}
-        <a href="{{ instagram_url }}"
-           class="faq__socials-logo">
-          <img src="{% static "pages/icons/instagram.svg" %}"
-               alt="Instagram"
-               class="faq__logo"
-               width="100%"
-               height="100%">
-        </a>
-          {% endif %}
-          {% if vk_url %}
-        <a href="{{ vk_url }}" target="_blank" class="faq__socials-logo">
-          <img src="{% static "pages/icons/vk.svg" %}"
-               alt="Вконтакте"
-               class="faq__logo"
-               width="100%"
-               height="100%">
-        </a>
-          {% endif %}
-          {% if telegram_url %}
-        <a href="{{ telegram_url }}" target="_blank" class="faq__socials-logo">
-          <img src="{% static "pages/icons/telegram.svg" %}"
-               alt="Telegram"
-               class="faq__logo"
-               width="100%"
-               height="100%">
-        </a>
-          {% endif %}
-          {% if whatsapp_url %}
-        <a href="{{ whatsapp_url }}" target="_blank" class="faq__socials-logo">
-          <img src="{% static "pages/icons/whatsapp.svg" %}"
-               alt="whatsapp"
-               class="faq__logo"
-               width="100%"
-               height="100%">
-        </a>
-          {% endif %}
-      </div>
-      <div class="faq__form-wrapper decorative-lines__wrapper">
-        {% include 'partials/contact-request-form.html' with with_header=False %}
-        <div class="decorative-lines">
-          <span class="decorative-lines__item"></span>
-          <span class="decorative-lines__item"></span>
-          <span class="decorative-lines__item"></span>
-        </div>
-      </div>
-    </div>
+      <h5 class="faq__header h5 gradient" >
+          Частые вопросы
+      </h5>
     <div class="faq__questions">
       {% for quest in questions %}
         <details class="faq__item">

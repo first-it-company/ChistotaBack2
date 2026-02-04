@@ -11,28 +11,23 @@
   text-transform: uppercase;
   border: none;
   text-align: center;
-
-
   padding-block: 20rem;
   font-size: 18rem;
   border-radius: 16rem;
 
   @include tablet{
-    padding: 22rem 22rem;
-    font-size: 24rem;
+    padding: 14rem 20rem;
+    font-size: 20rem;
     border-radius: 14rem;
   }
 
-  @include mobile-s{
-    font-size: 16rem;
+  @include mobile{
+    font-size: 18rem;
   }
 
   @include hover {
     transition-duration: var(--transition-duration);
     background-color: var(--color-blue-hover);
-  }
-
-  &--service{
   }
 
   &--arrow {
@@ -56,16 +51,12 @@
       border-radius: 14rem;
     }
 
-
     .arrow-container {
       display: block;
       width: 18rem;
       height: 18rem;
       position: relative;
       overflow: hidden;
-
-      @include tablet{
-      }
     }
 
     .arrow-container::before,

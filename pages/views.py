@@ -11,7 +11,6 @@ from .models import (
     Employee,
     Feedback,
     Logo,
-    Order,
     OrderInfo,
     QuestionAnswer,
     ScopeServices,
@@ -38,12 +37,7 @@ def home(request):
     about_main = AboutMain.objects.first()
     services = Services.objects.all().order_by("order")
     scope_services = ScopeServices.objects.all()
-    used_orders_scope_ids = Order.objects.values_list("scope", flat=True).distinct()
-    scope_services_for_orders = ScopeServices.objects.filter(
-        id__in=used_orders_scope_ids
-    )
     order_info = OrderInfo.objects.first()
-    orders = Order.objects.all()
     questions = QuestionAnswer.objects.all()
     contact = Contact.objects.first()
     videos = VideoMain.objects.all().order_by('order')
@@ -92,7 +86,6 @@ def home(request):
             "services": services,
             "scope_services": scope_services,
             "order_info": order_info,
-            "orders": orders,
             "gis_reviews_json": gis_reviews_json,
             "questions": questions,
             "contact": contact,
@@ -107,7 +100,6 @@ def home(request):
                 "count": counts["yandex"],
             },
             "employee": employee,
-            "scope_services_for_orders": scope_services_for_orders,
             "logo": logo,
             "reviews": reviews_for_slider,
             **social_networks,
@@ -181,13 +173,8 @@ def catalog(request):
 
 def service_detail(request, slug: str):
     service = get_object_or_404(Services, slug=slug)
-    used_orders_scope_ids = Order.objects.values_list("scope", flat=True).distinct()
-    scope_services_for_orders = ScopeServices.objects.filter(
-        id__in=used_orders_scope_ids
-    )
     contact = Contact.objects.first()
     order_info = OrderInfo.objects.first()
-    orders = Order.objects.all()
     questions = QuestionAnswer.objects.all()
 
     social_networks = {
@@ -230,7 +217,6 @@ def service_detail(request, slug: str):
             "service": service,
             "order_info": order_info,
             "contact": contact,
-            "orders": orders,
             "gis_reviews_json": gis_reviews_json,
             "questions": questions,
             "gis_data": {
@@ -242,7 +228,6 @@ def service_detail(request, slug: str):
                 "average_rating": ratings["yandex"],
                 "count": counts["yandex"],
             },
-            "scope_services_for_orders": scope_services_for_orders,
             "reviews": reviews_for_slider,
             **social_networks,
         },
@@ -254,7 +239,6 @@ def contacts(request):
     contact = Contact.objects.first()
     company_details = CompanyDetails.objects.first()
 
-# Получаем ссылки на социальные сети
     social_networks = {
         "instagram_url": (
             SocialNetwork.objects.filter(name="instagram").first().url

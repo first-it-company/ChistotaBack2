@@ -25,9 +25,10 @@
 
   &__layout {
     display: grid;
-    grid-template-columns: 1fr 3fr;
+    grid-template-columns: 1fr;
     gap: 40rem;
     align-items: center;
+    position: relative;
 
     @include tablet {
       grid-template-columns: 1fr;
@@ -49,99 +50,82 @@
   }
 
   &__info {
+    position: absolute;
+    right: 0;
+    top: -20rem;
+    background-color: var(--color-white);
+    z-index: 10;
+    padding-left: 10rem;
+    padding-bottom: 3rem;
+    border-radius: 10rem;
     display: flex;
-    width: 300rem;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
-    text-align: left;
-    color: var(--color-black);
+    align-items: flex-end;
+    gap: 80rem;
 
-    &-experience {
-      display: none;
-      font-size: 20rem;
-      line-height: normal;
-      align-items: center;
-      border-radius: 150rem;
-      gap: 8rem;
-      padding: 16rem 18rem;
-      background: var(--color-white-bg);
-      text-transform: uppercase;
-      width: fit-content;
-
-      svg{
-        width: 14rem;
-        height: 14rem;
-        aspect-ratio: 1;
-        flex-shrink: 0;
-      }
-
-      &-mobile{
-        position: absolute;
-        left:6rem;
-        bottom: 6rem;
-        line-height: normal;
-        display: flex;
-        align-items: center;
-        border-radius: 14rem;
-        font-size: 12rem;
-        gap: 8rem;
-        padding: 8rem 12rem 8rem 8rem;
-        background: var(--color-white-bg);
-        text-transform: uppercase;
-        width: fit-content;
-      }
-
-      &-label {
-        color: var(--color-blue);
-      }
+    &-advantages{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40rem;
     }
 
-    &-name {
-      font-size: 28rem;
-      font-weight: 500;
+    &-card{
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
 
-      @include tablet{
-        font-size: 18rem;
-      }
-    }
-
-    &-post {
-      font-family: var(--font-family-accent);
-      font-size: 20rem;
-      color: var(--color-gray-300);
-
-      @include mobile{
-        color: var(--color-gray-200);
+      span{
         font-size: 16rem;
+        font-weight: 400;
+        margin-bottom: 16rem;
+        line-height: 1;
       }
     }
 
-    &-description {
-      font-family: var(--font-family-accent);
-      font-size: 18rem;
-      font-weight: 400;
-      color: var(--color-gray-200);
-      margin-top: 32rem;
+    &-tag{
+      padding: 6rem 16rem;
+      background-color: #F5F8FC;
+      border-radius: 150rem;
+      font-size: 12rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      color: var(--color-blue);
+      border: 1rem solid rgba(0, 96, 223, 0.12)
+    }
+
+    &-title{
+      line-height: 1;
+      color: var(--color-black);
+      font-size: 60rem;
+      font-weight: 600;
     }
   }
 
   .team__splide-list {
-    align-items: flex-start;
+    align-items: flex-end;
   }
 
   &__splide-slide {
-    height: 80%;
-    transition: height 0.3s ease-in-out;
+    height: 75%;
+    transition: height 0.3s ease-in-out, width 0.3s ease-in-out, transform 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    width: 350rem;
 
     &.is-active {
       height: 100%;
     }
   }
 
-  &__img {
+  &__splide-img{
+    width: 100%;
+    height: 520rem;
     border-radius: 20rem;
+    overflow: hidden;
+  }
+
+  &__img {
     object-fit: cover;
+    object-position: top;
     width: 100%;
     height: 100%;
   }
@@ -156,6 +140,7 @@
       font-size: 16rem;
       color: var(--color-black);
       font-weight: 600;
+      width: 75rem;
 
       span {
         color: var(--color-gray-200);

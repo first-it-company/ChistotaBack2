@@ -11,7 +11,10 @@
 
   &__inner {
     display: flex;
-    column-gap: 40rem;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    gap: 32rem;
     padding-inline: 40rem;
 
     @include tablet {
@@ -259,7 +262,7 @@
   }
 
   &__questions {
-    width: 49%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 24rem;
