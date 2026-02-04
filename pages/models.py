@@ -59,6 +59,7 @@ class Services(models.Model):
     scope = models.ForeignKey(
         ScopeServices, on_delete=models.CASCADE, verbose_name="Сфера"
     )
+
     slug = models.SlugField(
         max_length=255,
         unique=True,
@@ -67,16 +68,29 @@ class Services(models.Model):
         editable=False,
         blank=True
     )
-    desc = models.TextField(verbose_name="Описание")
-    gradient = models.TextField(
-        verbose_name="Цвет карточки",
-        help_text = "От светлого к темному: gradient-1, gradient-2, gradient-3, gradient-4"
+    desc = models.TextField(
+        verbose_name="Описание"
     )
-    time_work = models.CharField(max_length=150, verbose_name="Часы работы")
-    square = models.CharField(max_length=150, verbose_name="Площадь работы")
+
+    time_work = models.CharField(
+        max_length=150,
+        verbose_name="Часы работы"
+    )
+
+    square = models.CharField(
+        max_length=150,
+        verbose_name="Площадь работы"
+    )
+
     order = models.IntegerField(
         default=1,
         verbose_name="порядок",
+    )
+
+    is_popular = models.BooleanField(
+        default=True,
+        verbose_name="Хит?",
+        help_text='Отображать тег "Хит" или нет'
     )
 
     photo = ProcessedImageField(
@@ -164,28 +178,6 @@ class OrderInfo(models.Model):
 
     def __str__(self):
         return f"Кол-во выполненных заказов: {self.cnt_order}"
-
-
-class Order(models.Model):
-    scope = models.ForeignKey(
-        ScopeServices, on_delete=models.CASCADE, verbose_name="Сфера"
-    )
-    entity = models.CharField(
-        max_length=150,
-        verbose_name="Сущность",
-        help_text="Например, юр.лицо или физ.лицо",
-    )
-    square = models.CharField(max_length=150, verbose_name="Площадь работы")
-    photo = ProcessedImageField(
-        upload_to="orders", format="WEBP", options={"quality": 80}, verbose_name="Фото"
-    )
-
-    class Meta:
-        verbose_name = "Заказ"
-        verbose_name_plural = "Заказы"
-
-    def __str__(self):
-        return self.scope.name
 
 
 class QuestionAnswer(models.Model):

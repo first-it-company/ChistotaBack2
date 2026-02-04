@@ -8,14 +8,12 @@ export function initTeamSlider() {
   const splide = new Splide(splideElement, {
     type: 'slide',
     rewind: false,
-    perPage: 1,
     perMove: 1,
     gap: "24rem",
-    padding: 0,
     arrows: false,
     pagination: false,
     trimSpace: false,
-    fixedWidth: '300rem',
+    autoWidth: true,
 
     breakpoints: {
       1440: {

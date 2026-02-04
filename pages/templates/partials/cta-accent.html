@@ -1,0 +1,37 @@
+{% load static %}
+<section class="cta-accent">
+    <div class="cta-accent__inner">
+        <h2 class="h5">
+            С нами у вас
+            <span class="gradient">всегда ЧИСТо</span>
+        </h2>
+        <div class="cta-accent__content">
+            <div class="cta-accent__main">
+                <div class="cta-accent__subtitle">
+                    <p>
+                        Компания «Чистота ДВ» занимается клинигом любого уровня сложности.
+                    </p>
+                    <p>
+                        Уже более 20 лет наша фирма приносит чистоту и уют в дома и офисы: довольными остались свыше
+                        <span>25 000 человек!</span>
+                    </p>
+                </div>
+                <div class="cta__lines decorative-lines__wrapper">
+                    {% include 'partials/contact-request-form.html' with with_header=False %}
+                    <div class="decorative-lines">
+                        <span class="decorative-lines__item"></span>
+                        <span class="decorative-lines__item"></span>
+                        <span class="decorative-lines__item"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="cta-accent__img">
+                <img
+                    src="{% static 'pages/images/cta/cta-team.png' %}"
+                    alt="Команда"
+                    loading="lazy"
+                >
+            </div>
+        </div>
+    </div>
+</section>

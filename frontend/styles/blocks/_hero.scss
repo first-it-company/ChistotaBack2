@@ -1,242 +1,97 @@
 @use "../helpers" as *;
 
 .hero {
-  padding-block: 30rem;
-  gap: 25rem;
-  display: flex;
-  align-items: start;
-  width: 100%;
-  position: relative;
-  margin: 0 auto;
+  padding-top: 30rem;
+  background-color: var(--color-white-bg);
+  overflow-x: hidden;
 
   @include tablet {
-    flex-direction: column;
-    left: 0;
-    padding: 40rem 20rem;
-    margin: 0;
+    padding-top: 32rem;
   }
 
-  @include tablet {
-    padding: 0;
-    padding-bottom: 90rem;
+  &__inner{
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__top{
+    margin-bottom: 50rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    position: relative;
+
+    @include mobile-m{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      margin-bottom: 0;
+    }
+  }
+
+  &__bottom{
+    background-color: var(--color-white);
+    padding: 52rem 40rem;
+    border-radius: 60rem 60rem 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 24rem;
+    position: relative;
+    margin-top: -50rem;
+
+    @include tablet{
+      padding: 16rem;
+      border-radius: 36rem 36rem 0 0;
+    }
+
+    &-subtitle{
+      font-size: 42rem;
+      color: var(--color-black);
+      text-transform: uppercase;
+      text-align: center;
+
+      @include tablet{
+        display: none;
+      }
+    }
+  }
+
+  &__image{
+    flex-shrink: 0;
+    position: absolute;
+    right: 0;
+    bottom: -50rem;
+    z-index: 0;
+
+    @include mobile{
+      right: -30rem;
+    }
+
+    @include mobile-m {
+      position: relative;
+      bottom: 0;
+      right: auto;
+    }
+
+    img{
+      max-width: 700rem !important;
+      width: 100% !important;
+
+      @include tablet {
+        max-width: 680rem !important;
+      }
+
+      @include mobile{
+        max-width: 500rem !important;
+      }
+    }
   }
 
   &__subheader-wrapper{
     display: flex;
     flex-direction: column;
-    gap: 16rem;
-  }
-
-  &__advantages {
-    border-radius: 40rem;
-    background: rgb(42, 42, 42);
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding: 34rem 32rem;
-    z-index: 180;
-    display: flex;
-    flex-direction: column;
-    gap: 8rem;
-    color: var(--color-gray-300);
-    background-image: url("/static/pages/images/hero/advantages-back.png");
-    text-align: center;
-
-    @include tablet {
-      padding: 32rem 20rem;
-    }
-
-    @include mobile {
-      border-radius: 20rem;
-    }
-
-    &-header {
-      color: rgb(255, 255, 255);
-      font-size: 42rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      margin-bottom: 24rem;
-
-      @include tablet {
-        font-size: 30rem
-      }
-
-      @include mobile {
-        font-size: 28rem
-      }
-    }
-
-    &-wrapper {
-      display: flex;
-      gap: 2%;
-      margin-bottom: 60rem;
-
-      @include mobile {
-        flex-direction: column;
-        gap: 26rem;
-        margin-bottom: 2rem;
-      }
-    }
-
-    &-links {
-      justify-content: center;
-      margin-top: 32rem;
-    }
-
-    &-mobile {
-      padding-top: 32rem;
-      padding-inline: 20rem;
-      display: flex;
-      flex-direction: column;
-      row-gap: 8rem;
-      width: 100%;
-      height: 80%;
-    }
-
-    &-item {
-      padding: 5rem;
-      width: 32%;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition-duration: var(--transition-duration);
-      align-items: center;
-
-
-      @include tablet {
-        width: 100%;
-        height: 100%;
-      }
-    }
-
-    &-title {
-      width: fit-content;
-      font-size: 12rem;
-      padding: 12rem 14rem;
-      background: rgba(255, 255, 255, 0.3);
-      border-radius: 150rem;
-      color: var(--color-white);
-      text-transform: uppercase;
-      text-wrap: nowrap;
-
-      @include tablet {
-        padding: 8rem 12rem;
-        font-size: 12rem;
-      }
-
-      @include mobile {
-        padding: 12rem 20rem;
-        font-size: 10rem;
-      }
-    }
-
-    &-info {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-direction: column;
-      margin-bottom: 16rem;
-    }
-
-    &-value {
-      font-size: 15rem;
-      color: rgba(255, 255, 255, 0.6);
-      line-height: 1;
-
-      @include tablet {
-        font-size: 18rem;
-      }
-
-      span {
-        font-size: 60rem;
-        font-weight: 600;
-        color: white;
-
-        @include tablet {
-          font-size: 40rem;
-          font-weight: 500;
-        }
-      }
-    }
-
-    &-label {
-      font-size: 16rem;
-      color: white;
-
-      @include tablet {
-        font-size: 18rem;
-      }
-    }
-  }
-
-  &__splide {
-    position: sticky !important;
-    top: 65rem;
-    width: 100%;
-    max-width: 100%;
-    height: 90vh;
-    display: flex;
-    align-items: center;
-
-    @include tablet {
-      padding: 0 20rem;
-      height: 100% !important;
-    }
-
-    &__list {
-      display: flex;
-      align-items: flex-end;
-      overflow: hidden;
-      height: 100%;
-    }
-
-    &-track {
-      overflow: hidden;
-      position: relative;
-      height: 100%;
-    }
-
-    &-slide {
-      width: 50%;
-      flex-shrink: 0;
-      display: flex;
-      justify-content: center;
-      align-items: flex-end;
-      z-index: 1;
-
-      @include tablet {
-        width: 70%;
-      }
-
-      .hero__splide-slide-inner {
-        width: 100%;
-        height: 100%;
-        transform: scale(0.858);
-        transform-origin: bottom center;
-        transition: transform 0.3s cubic-bezier(0.65, 0, 0.35, 1),
-          opacity 0.3s ease-in-out;
-        will-change: transform, opacity;
-
-        @include mobile {
-          transform: scale(1);
-        }
-
-        video {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          border-radius: 20rem;
-        }
-      }
-
-      &.is-active {
-        z-index: 2;
-
-        .hero__splide-slide-inner {
-          transform: scale(1);
-          opacity: 1;
-        }
-      }
-    }
+    gap: 12rem;
   }
 
   &__main {
@@ -244,10 +99,9 @@
     display: flex;
     flex-direction: column;
     gap: 50rem;
-    min-width: 722rem;
+    min-width: 688rem;
     position: relative;
-
-    @include laptop {}
+    z-index: 1;
 
     @include tablet {
       height: 100%;
@@ -259,17 +113,6 @@
     @include mobile {
       padding-inline: 16rem;
     }
-
-    &-mobile {
-      width: 100%;
-    }
-
-    &-slide {
-      width: 1444rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
   }
 
   &__body {
@@ -277,27 +120,115 @@
     flex-direction: column;
     justify-content: space-between;
     border-radius: 20rem;
-    height: 80vh;
-    min-height: 550rem;
+    gap: 60rem;
 
     @include tablet {
-      min-height: auto;
-      padding-inline: 0;
-      width: 100%;
-      height: 100%;
-      gap: 0;
+      gap: 40rem;
+    }
+  }
+
+  &__advantages{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12rem;
+
+    @include mobile-m{
+      grid-template-columns: repeat(1, 1fr);
+    }
+
+    &-card{
+      padding: 40rem;
+      background-color: var(--color-white-bg);
+      border-radius: 20rem;
+      display: flex;
+      align-items: center;
       justify-content: space-between;
-      padding-top: 32rem;
-      padding-bottom: 20rem;
-      position: relative;
-      z-index: 2;
-    }
 
-    @include mobile {
-      padding-bottom: 0;
-      background: none;
-    }
+      @include tablet{
+        padding: 30rem;
+      }
 
+      @include mobile{
+        border-radius: 20rem;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 24rem;
+      }
+
+      @include mobile-m {
+        flex-direction: row;
+      }
+
+      &-left{
+        display: flex;
+        align-items: flex-end;
+
+        h2{
+          font-size: 80rem;
+          color: var(--color-black);
+          font-weight: 600;
+          line-height: 1;
+
+          @include tablet{
+            font-size: 60rem;
+          }
+        }
+
+        span{
+          font-size: 16rem;
+          font-weight: 400;
+          color: rgba(42, 42, 42, 0.6);
+
+        }
+      }
+
+      &-right{
+        display: flex;
+        flex-direction: column;
+        gap: 12rem;
+        align-items: flex-end;
+
+        @include mobile{
+          align-items: flex-start;
+        }
+
+        @include mobile-m {
+          align-items: flex-end;
+        }
+
+        p{
+          font-size: 16rem;
+          margin-bottom: 0;
+          font-weight: 400;
+
+          @include mobile{
+            font-size: 14rem;
+          }
+        }
+
+        span{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 12rem 16rem;
+          background-color: var(--color-blue);
+          border-radius: 150rem;
+          text-transform: uppercase;
+          font-size: 12rem;
+          color: var(--color-white);
+
+          @include tablet{
+            padding: 6rem 12rem;
+            font-size: 14rem;
+          }
+
+          @include mobile{
+            font-size: 10rem;
+          }
+
+        }
+      }
+    }
   }
 
   &__header {
@@ -310,11 +241,11 @@
 
     @include tablet {
       height: auto;
-      font-size: 75rem;
+      font-size: 50rem;
     }
 
     @include mobile{
-      font-size: 50rem;
+      font-size: 36rem;
     }
     @include mobile-s {
       font-size: 36rem;
@@ -337,10 +268,6 @@
     font-weight: 400;
     margin-bottom: 16rem;
 
-    //@media (max-width: 1850px) {
-    //  font-size: rem(24);
-    //}
-
     @include tablet {
       font-size: 16rem;
     }
@@ -351,23 +278,16 @@
   }
 
   &__subheader {
-    margin-bottom: 44rem;
+    margin-bottom: 24rem;
     font-size: 30rem;
     font-family: var(--font-family-accent);
 
-    //@media (max-width: 1850px) {
-    //  font-size: rem(16);
-    //  margin-bottom: rem(50);
-    //}
-
-
-    @include tablet {
-
-      font-size: 32rem;
-      margin-bottom: 40rem;
+    @include laptop{
+      margin-bottom: 18rem;
+      font-size: 22rem;
     }
 
-    @include mobile {
+    @include tablet{
       font-size: 20rem;
     }
   }
@@ -375,16 +295,18 @@
   &__review {
     display: flex;
     flex-wrap: wrap;
-    gap: 2%;
-    margin-bottom: 45rem;
+    gap: 32rem;
+
+    @include tablet{
+      gap: 12rem;
+    }
 
     .review-button {
-      width: 32%;
-      padding: 21rem 60rem;
       justify-content: center;
+      gap: 10rem;
+      background-color: transparent;
       align-items: center;
       font-size: 22rem;
-      background: var(--color-white-bg);
 
       @include hover{
         background-color: var(--color-white-bg-hover);
@@ -392,20 +314,13 @@
       }
 
       @include tablet {
-        padding: 20rem 40rem;
-        font-size: 22rem;
-        width: 20%;
-      }
-
-      @include mobile-m {
+        padding: 5rem;
         font-size: 16rem;
-        width: 32%;
-        padding: 10rem 20rem;
       }
-    }
 
-    @include tablet {
-      margin-bottom: 40rem;
+      @include mobile {
+        border: none;
+      }
     }
 
     &-logo {
@@ -420,108 +335,24 @@
   }
 
   &__button {
-    &--adv{
-      @include mobile-s{
-        font-size: 14rem !important;
+    width: 50%;
+
+    @include mobile{
+      width: 70%;
+    }
+
+    @include mobile-m {
+      width: 100%;
+    }
+
+    &-wrapper {
+      display: flex !important;
+      gap: 10rem;
+      width: 100%;
+
+      @include mobile-m {
+        width: 100%;
       }
     }
-
-    &-wrap {
-      padding-inline: 20rem;
-      padding-bottom: 20rem;
-    }
-
-    &--mobile {
-      position: absolute;
-      z-index: 100;
-      bottom: 20rem;
-      width: 100%;
-      padding-inline: 20rem;
-    }
-  }
-
-  &__mobile-extra {
-    display: flex;
-    flex-direction: column;
-    row-gap: 24rem;
-    margin-bottom: 100rem;
-  }
-
-  &__mobile-video {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 0;
-  }
-
-  &__overlay {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.3);
-    z-index: 1;
-    backdrop-filter: blur(8rem);
-  }
-}
-
-
-.splide__pagination {
-  gap: 8rem;
-  bottom: -45rem !important;
-}
-
-.splide__pagination__page {
-  width: 8rem;
-  aspect-ratio: 1;
-  opacity: 1 !important;
-  border-radius: 5rem !important;
-  transition: width 0.4s cubic-bezier(0.65, 0, 0.35, 1),
-    background-color 0.4s ease !important;
-
-  &.is-active {
-    width: 40rem;
-    background-color: var(--color-blue) !important;
-  }
-}
-
-.hero__slide-arrows {
-  gap: 14rem !important;
-  position: absolute;
-  top: 7%;
-  right: 10%;
-  transform: translateY(-50%);
-  z-index: 10;
-
-  @include container{
-    right: 5.5%;
-  }
-
-  @media (max-width: 1680px) {
-  }
-
-  //@include container {
-  //  .controls__button {
-  //    padding: 15rem 25rem;
-  //  }
-  //
-  //  @include tablet {
-  //    .controls__button {
-  //      padding: 16rem 32rem;
-  //    }
-  //  }
-  //
-  //}
-
-  &--mobile {
-    display: none;
-    //
-    //@include tablet {
-    //  display: flex;
-    //  top: 60rem;
-    //  right: 20rem;
-    //  transform: none;
-    //}
   }
 }

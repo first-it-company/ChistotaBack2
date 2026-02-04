@@ -1,0 +1,55 @@
+@use "../helpers" as *;
+
+.cta-accent {
+
+  &__inner {
+    background-color: #F7F8FA;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    gap: 32rem;
+    padding-top: 80rem;
+    padding-inline: 40rem;
+    border-radius: 60rem 60rem 0 0;
+
+    .faq__form{
+      background-color: var(--color-white);
+    }
+
+    .faq__cell-input, .faq__cell-input--long{
+      background-color: #F7F8FA;
+    }
+  }
+
+  &__subtitle{
+    font-size: 20rem;
+    font-weight: 400;
+
+    span{
+      font-weight: 700;
+    }
+  }
+
+  &__main{
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 32rem;
+  }
+
+  &__content{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 80rem;
+    justify-content: space-between;
+  }
+
+  &__img{
+    width: 700rem;
+    img{
+      width: 100%;
+    }
+  }
+}

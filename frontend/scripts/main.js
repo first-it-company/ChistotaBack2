@@ -4,30 +4,23 @@ import { initTypewriterCta } from './typewritterCta.js';
 import { initCasesSlider, updateSliderWithFilter } from './casesSwiper.js';
 import { initBrandsCarousel } from './brandsCarousel.js';
 import { initDropdown } from './dropdown.js'
-import { initReviewsSlider } from './reviewsSlider.js';
 import { initScrollWordAnimation } from'./splittingHeaders';
 import { initHeader } from'./header.js';
 import { initExpandableText } from "./serviceCardText";
-import { initHeroSlider } from "./heroSplide";
 import { initTeamSlider } from "./teamSlider";
 import { initServiceSliders } from "./serviceSlider";
 import { initServiceSlider } from "./serviceSplide";
 import { initModal } from "./modal.js";
 import { initFormFeedback } from "./form.js";
 import { initModalSuccess } from "./modalSuccess.js";
-import { initVideoModal } from './videoModal.js';
 import { initCustomSelect } from './customSelect.js';
 import { initFooterReviewSlider } from './footerReviewSlider.js';
 
-import './videoManager.js';
-
 document.addEventListener('DOMContentLoaded', async () => {
-    initHeroSlider();
     initTypewriterHero();
     initTypewriterCta();
     initCasesSlider();
     initBrandsCarousel();
-    initReviewsSlider();
     initScrollWordAnimation();
     initHeader();
     initExpandableText();
@@ -37,7 +30,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     initModal();
     initFormFeedback();
     initModalSuccess();
-    initVideoModal();
     initCustomSelect();
     initFooterReviewSlider();
 
@@ -88,10 +80,104 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 300);
       } else {
         item.setAttribute('open', '');
-        content.style.maxHeight = content.scrollHeight + 'px';
+        content.style.maxHeight = content.scrollHeight + 'rem';
         content.style.opacity = '1';
       }
     });
   });
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+    const button = document.querySelector('[data-cases-button]');
+    const rows = document.querySelectorAll('.cases__row');
+    const VISIBLE_COUNT = 3;
+
+    const hide = () => {
+        rows.forEach((row, i) => {
+            row.style.display = i < VISIBLE_COUNT ? '' : 'none';
+        });
+    };
+
+    const show = () => {
+        rows.forEach((row) => {
+            row.style.display = '';
+        });
+    };
+
+    let isExpanded = false;
+
+    if (rows.length > VISIBLE_COUNT) {
+        hide();
+    } else {
+        button.style.display = 'none';
+    }
+
+    button.addEventListener('click', () => {
+        isExpanded = !isExpanded;
+
+        if (isExpanded) {
+            show();
+            button.textContent = 'Скрыть все';
+        } else {
+            hide();
+            button.textContent = 'Показать ещё';
+        }
+    });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const main       = document.querySelector('.reviews__main');
+    const columns    = main.querySelectorAll('.reviews__column');
+    const [upBtn, downBtn] = main.querySelectorAll('.reviews__control-button');
+
+    if (!main || !columns.length || !upBtn || !downBtn) return;
+
+    const VISIBLE_H  = 700;
+    let offset       = 0;
+    let maxOffset    = 0;
+
+    function calcMax() {
+        const tallest = Math.max(...[...columns].map(c => c.scrollHeight));
+        maxOffset = Math.max(0, tallest - VISIBLE_H);
+    }
+
+    function getStep() {
+        const card = columns[0]?.querySelector('.reviews__card');
+        if (!card) return 200;
+        return card.offsetHeight + parseInt(getComputedStyle(card).marginBottom || 0);
+    }
+
+    function applyOffset() {
+        columns.forEach(col => {
+            col.style.transform = `translateY(-${offset}rem)`;
+        });
+        updateButtons();
+    }
+
+    function updateButtons() {
+        upBtn.classList.toggle('is-disabled',   offset <= 0);
+        downBtn.classList.toggle('is-disabled', offset >= maxOffset);
+    }
+
+    upBtn.addEventListener('click', () => {
+        offset = Math.max(0, offset - getStep());
+        applyOffset();
+    });
+
+    downBtn.addEventListener('click', () => {
+        offset = Math.min(maxOffset, offset + getStep());
+        applyOffset();
+    });
+
+    Promise.all(
+        [...main.querySelectorAll('img')].map(img =>
+            img.complete ? Promise.resolve() : new Promise(r => { img.onload = r; img.onerror = r; })
+        )
+    ).then(() => { calcMax(); applyOffset(); });
+
+    window.addEventListener('resize', () => {
+        calcMax();
+        offset = Math.min(offset, maxOffset);
+        applyOffset();
+    });
+});
