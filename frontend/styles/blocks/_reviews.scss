@@ -30,8 +30,9 @@
     display: flex;
     gap: 16rem;
     height: 700rem;
-    overflow: hidden;
+    overflow-y: hidden;
     position: relative;
+    flex-shrink: 0;
 
     &:after{
       content: "";

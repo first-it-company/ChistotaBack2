@@ -15,6 +15,7 @@
   }
 
   &__top{
+    align-items: end;
     margin-bottom: 50rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -58,11 +59,16 @@
   }
 
   &__image{
-    flex-shrink: 0;
-    position: absolute;
-    right: 0;
-    bottom: -50rem;
     z-index: 0;
+    width: 100% !important;
+
+    @include tablet {
+      max-width: 680rem !important;
+    }
+
+    @include mobile{
+      max-width: 500rem !important;
+    }
 
     @include mobile{
       right: -30rem;
@@ -75,16 +81,7 @@
     }
 
     img{
-      max-width: 700rem !important;
-      width: 100% !important;
-
-      @include tablet {
-        max-width: 680rem !important;
-      }
-
-      @include mobile{
-        max-width: 500rem !important;
-      }
+      width: 100%;
     }
   }
 
