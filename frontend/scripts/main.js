@@ -90,11 +90,18 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', () => {
     const button = document.querySelector('[data-cases-button]');
     const rows = document.querySelectorAll('.cases__row');
-    const VISIBLE_COUNT = 3;
+
+    const getVisibleCount = () => {
+        const width = window.innerWidth;
+        if (width <= 590) return 1;
+        if (width <= 990) return 2;
+        return 3;
+    };
 
     const hide = () => {
+        const visibleCount = getVisibleCount();
         rows.forEach((row, i) => {
-            row.style.display = i < VISIBLE_COUNT ? '' : 'none';
+            row.style.display = i < visibleCount ? '' : 'none';
         });
     };
 
@@ -104,13 +111,25 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
+    const updateButton = () => {
+        const visibleCount = getVisibleCount();
+        if (rows.length > visibleCount) {
+            button.style.display = '';
+        } else {
+            button.style.display = 'none';
+        }
+    };
+
     let isExpanded = false;
 
-    if (rows.length > VISIBLE_COUNT) {
-        hide();
-    } else {
-        button.style.display = 'none';
-    }
+    const init = () => {
+        updateButton();
+        if (!isExpanded && rows.length > getVisibleCount()) {
+            hide();
+        }
+    };
+
+    init();
 
     button.addEventListener('click', () => {
         isExpanded = !isExpanded;
@@ -122,6 +141,13 @@ document.addEventListener('DOMContentLoaded', () => {
             hide();
             button.textContent = 'Показать ещё';
         }
+    });
+
+    window.addEventListener('resize', () => {
+        if (!isExpanded) {
+            hide();
+        }
+        updateButton();
     });
 });
 
