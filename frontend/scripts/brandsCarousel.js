@@ -1,29 +1,32 @@
-import { gsap } from "gsap";
+import { Splide } from '@splidejs/splide';
+import { AutoScroll } from 'https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-auto-scroll/dist/js/splide-extension-auto-scroll.esm.js';
+import '@splidejs/splide/css';
 
-export function initBrandsCarousel() {
-    const track = document.querySelector('.carousel__track');
-    if (!track) return;
+export default function initBrandsCarousel() {
+    const carouselElement = document.querySelector('[data-brands-carousel]');
 
-    const logos = Array.from(track.querySelectorAll('.carousel__slide'));
-    
-    if (logos.length === 0) {
-        console.warn('no slides found');
-        return;
+    if (!carouselElement) {
+        return null;
     }
 
-    logos.forEach(logo => track.appendChild(logo.cloneNode(true)));
+    const splide = new Splide('[data-brands-carousel]', {
+        type: 'loop',
+        drag: 'free',
+        focus: 'center',
+        pagination: false,
+        arrows: false,
+        gap: 40,
+        autoWidth: true,
+        autoScroll: {
+            speed: 0.8,
+            pauseOnHover: false,
+            pauseOnFocus: false,
+        },
+        breakpoints: {
 
-    while (track.scrollWidth < window.innerWidth * 2) {
-        logos.forEach(logo => track.appendChild(logo.cloneNode(true)));
-    }
-
-    gsap.to(track, {
-        x: `-=${track.scrollWidth / 2}`,
-        duration: 100,
-        ease: "linear",
-        repeat: -1,
-        modifiers: {
-            x: gsap.utils.unitize(x => parseFloat(x) % (track.scrollWidth / 2))
         }
     });
+
+    splide.mount({ AutoScroll });
+    return splide;
 }

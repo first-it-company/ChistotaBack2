@@ -3,6 +3,11 @@ import '@fancyapps/ui/dist/fancybox.css';
 
 export function initCaseFancybox() {
     const container = document.querySelector("[data-case-fancybox]");
+
+    if (!container) {
+        return null;
+    }
+
     const item = container.querySelector('[data-case-item]');
 
     if (!item) {

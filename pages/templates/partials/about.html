@@ -73,18 +73,25 @@
             <br class="hidden-mobile">
             С 2020 года создаем идеальную чистоту <span>для домов</span> и <span>бизнеса</span>, используя профессиональные методы и премиальную химию.
         </p>
-        <div class="carousel__wrapper">
-            <div class="carousel__track">
-                {% for log in logo %}
-                <div class="carousel__slide">
-                    <img src="{{ log.photo.url }}" loading="lazy" width="{{ log.photo.width }}rem" height="{{ log.photo.height }}rem">
-                </div>
-                {% endfor %}
-                {% for log in logo %}
-                <div class="carousel__slide">
-                    <img src="{{ log.photo.url }}" loading="lazy" width="{{ log.photo.width }}rem" height="{{ log.photo.height }}rem">
-                </div>
-                {% endfor %}
+        <div class="splide carousel__wrapper" data-brands-carousel>
+            <div class="splide__track">
+                <ul class="splide__list carousel__track">
+                    {% for log in logo %}
+                    <li class="splide__slide">
+                        <img src="{{ log.photo.url }}" loading="lazy" width="{{ log.photo.width }}rem" height="{{ log.photo.height }}rem">
+                    </li>
+                    {% endfor %}
+                    {% for log in logo %}
+                    <li class="splide__slide">
+                        <img src="{{ log.photo.url }}" loading="lazy" width="{{ log.photo.width }}rem" height="{{ log.photo.height }}rem">
+                    </li>
+                    {% endfor %}
+                    {% for log in logo %}
+                    <li class="splide__slide">
+                        <img src="{{ log.photo.url }}" loading="lazy" width="{{ log.photo.width }}rem" height="{{ log.photo.height }}rem">
+                    </li>
+                    {% endfor %}
+                </ul>
             </div>
         </div>
         <button class="about__button button modal-open">Заказать уборку</button>

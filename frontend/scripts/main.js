@@ -1,7 +1,7 @@
 import '../styles/main.scss';
 import { initTypewriterHero } from './typewriterHero.js';
 import { initTypewriterCta } from './typewritterCta.js';
-import { initBrandsCarousel } from './brandsCarousel.js';
+import initBrandsCarousel from './brandsCarousel.js';
 import { initScrollWordAnimation } from'./splittingHeaders';
 import { initHeader } from'./header.js';
 import { initExpandableText } from "./serviceCardText";
