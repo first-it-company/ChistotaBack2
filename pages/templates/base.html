@@ -6,8 +6,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Чистота</title>
-<!--    <link rel="stylesheet"-->
-<!--          href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">-->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="Чистота ДВ">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -26,22 +24,21 @@
     <meta name="author" content="Чистота ДВ">
     <meta name="copyright" content="© 2025 ЧИСТОТА ДВ">
     <title>Услуги клининга во Владивостоке — профессиональная уборка квартир и офисов</title>
-    <link rel="icon" sizes="32x32" href="{% static "pages/favicon.svg" %}">
+    <link rel="icon" sizes="32x32" href="{% static 'pages/favicon.svg' %}">
     <link rel="icon"
           sizes="32x32"
-          href="{% static "pages/icons/favicons/favicon.svg" %}"
+          href="{% static 'pages/icons/favicons/favicon.svg' %}"
           type="image/svg+xml">
     <link rel="apple-touch-icon"
           sizes="180x180"
-          href="{% static "pages/icons/favicons/favicon.png" %}">
+          href="{% static 'pages/icons/favicons/favicon.png' %}">
     <link rel="canonical" href="https://www.chistota-dv.ru/">
-    <script>window.gisReviewsData = {{ gis_reviews_json|safe }};</script>
-<!--      <link rel="stylesheet" href="{% static 'pages/main.css' %}"/>-->
-<!--      <script src="{% static 'pages/main.js' %}" type="module" defer></script>-->
 
-      <script type="module" src="http://localhost:5173/@vite/client"></script>
-      <script type="module" src="http://localhost:5173/scripts/main.js"></script>
+      <link rel="stylesheet" href="{% static 'pages/main.css' %}"/>
+      <script src="{% static 'pages/main.js' %}" type="module" defer></script>
 
+<!--      <script type="module" src="http://localhost:5173/@vite/client"></script>-->
+<!--      <script type="module" src="http://localhost:5173/scripts/main.js"></script>-->
   </head>
   <body id='top'>
     {% include 'partials/header.html' %}
