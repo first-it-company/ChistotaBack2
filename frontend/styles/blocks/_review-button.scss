@@ -12,31 +12,32 @@
   font-weight: 500;
   position: relative;
   border: 1rem solid var( --color-gray-50);
+  flex-shrink: 0;
 
-  svg{
-    width: 12rem;
-    height: 12rem;
-  }
 
   @include tablet{
     font-size: 18rem;
   }
 
-  &__star{
-    width: 14rem;
-    height: 14rem;
-  }
-
-  @include tablet {
-    font-size: 20rem;
-  }
-
   @include mobile {
     font-size: 14rem;
+    padding: 10rem 14rem;
+    column-gap: 12rem;
   }
 
   @include hover{
     background-color: var(--color-blue-hover);
     color: var(--color-white);
+  }
+
+  svg{
+    width: 12rem;
+    height: 12rem;
+    flex-shrink: 0;
+  }
+
+  &__star {
+    width: 14rem;
+    height: 14rem;
   }
 }

@@ -22,7 +22,7 @@
                             src="{% static 'pages/icons/VL.png' %}"
                             alt="VL.ru"
                             class="reviews__links-img"
-                            width="100%" height="100%" loading="lazy"
+                            loading="lazy"
                     >
                     <span>{% if gis_data.average_rating %}{{ gis_data.average_rating }}{% else %} 5.0{% endif %}</span>
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -45,7 +45,6 @@
                             src="{% static 'pages/icons/Yandex.png' %}"
                             alt="Яндекс"
                             class="hero__review-logo"
-                            width="32" height="32"
                     >
                     <span>{% if gis_data.average_rating %}{{ gis_data.average_rating }}{% else %} 5.0{% endif %}</span>
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -68,371 +67,113 @@
                             src="{% static 'pages/icons/2gis.png' %}"
                             class="reviews__links-img"
                             alt="2gis"
-                            width="100%" height=100%"
                     >
                     <span>{% if gis_data.average_rating %}{{ gis_data.average_rating }}{% else %} 5.0{% endif %}</span>
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M11.4416 2.9252L12.9083 5.85853C13.1083 6.26686 13.6416 6.65853 14.0916 6.73353L16.7499 7.1752C18.4499 7.45853 18.8499 8.69186 17.6249 9.90853L15.5583 11.9752C15.2083 12.3252 15.0166 13.0002 15.1249 13.4835L15.7166 16.0419C16.1833 18.0669 15.1083 18.8502 13.3166 17.7919L10.8249 16.3169C10.3749 16.0502 9.63326 16.0502 9.17492 16.3169L6.68326 17.7919C4.89992 18.8502 3.81659 18.0585 4.28326 16.0419L4.87492 13.4835C4.98326 13.0002 4.79159 12.3252 4.44159 11.9752L2.37492 9.90853C1.15826 8.69186 1.54992 7.45853 3.24992 7.1752L5.90826 6.73353C6.34992 6.65853 6.88326 6.26686 7.08326 5.85853L8.54992 2.9252C9.34992 1.33353 10.6499 1.33353 11.4416 2.9252Z" fill="#F9CB2D"/>
                     </svg>
                 </a>
-
             </div>
         </div>
         <div class="reviews__body">
             <div class="reviews__main">
                 <div class="reviews__column">
+                    {% for review in reviews %}
+                    {% if review.provider == 'vlru' %}
                     <div class="reviews__card">
                         <div class="reviews__card-header">
                             <div class="reviews__card-left">
                                 <div class="reviews__card-user-img">
-                                    <img src="{% static 'pages/icons/profile.svg' %}"
-                                        alt="" class="cta__logo" loading="lazy"
+                                    {% if review.photo%}
+                                    <img src="{{ review.photo }}"
+                                         alt="" loading="lazy"
                                     >
+                                    {% else %}
+                                    <img src="{% static 'pages/icons/profile.svg' %}"
+                                        alt="" class="reviews__card-user-dummy" loading="lazy"
+                                    >
+                                    {% endif %}
                                 </div>
                                 <div class="reviews__card-left-wrap">
                                     <p class="reviews__card-name">
-                                        Анна
+                                        {{ review.author_name|truncatechars:18 }}
                                     </p>
                                     <span class="reviews__card-service">
-                                        Послеремонтная уборка
+                                        {{ review.service }}
                                     </span>
                                 </div>
                             </div>
                             <div class="reviews__card-right">
-                                <span>5.0</span>
+                                <span>{{ review.rating_display }}</span>
                                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M10.2974 2.63248L11.6174 5.27248C11.7974 5.63998 12.2774 5.99248 12.6824 6.05998L15.0749 6.45748C16.6049 6.71248 16.9649 7.82248 15.8624 8.91748L14.0024 10.7775C13.6874 11.0925 13.5149 11.7 13.6124 12.135L14.1449 14.4375C14.5649 16.26 13.5974 16.965 11.9849 16.0125L9.74243 14.685C9.33743 14.445 8.66993 14.445 8.25743 14.685L6.01493 16.0125C4.40993 16.965 3.43493 16.2525 3.85493 14.4375L4.38743 12.135C4.48493 11.7 4.31243 11.0925 3.99743 10.7775L2.13743 8.91748C1.04243 7.82248 1.39493 6.71248 2.92493 6.45748L5.31743 6.05998C5.71493 5.99248 6.19493 5.63998 6.37493 5.27248L7.69493 2.63248C8.41493 1.19998 9.58493 1.19998 10.2974 2.63248Z" fill="#F9CB2D"/>
                                 </svg>
                             </div>
                         </div>
                         <div class="reviews__card-body">
+                            {% if review.link.image %}
                             <div class="reviews__card-img">
-                                <img src="{% static 'pages/images/cases/rusgidro.png' %}"
+                                <img src="{{ review.link.image }}"
                                      alt="" class="cta__logo" loading="lazy"
                                 >
                             </div>
+                            {% endif %}
                             <p class="reviews__card-text">
-                                Заказывали уборку после переезда — квартира засияла! Спасибо за бережное отношение к моей техникЗаказывали уборку после переезда — квартира засияла! Спасибо за бережное отношение к
+                                {{ review.review_text|truncatechars:300 }}
                             </p>
                         </div>
                     </div>
-                    <div class="reviews__card">
-                        <div class="reviews__card-header">
-                            <div class="reviews__card-left">
-                                <div class="reviews__card-user-img">
-                                    <img src="{% static 'pages/icons/profile.svg' %}"
-                                         alt="" class="cta__logo" loading="lazy"
-                                    >
-                                </div>
-                                <div class="reviews__card-left-wrap">
-                                    <p class="reviews__card-name">
-                                        Анна
-                                    </p>
-                                    <span class="reviews__card-service">
-                                        Послеремонтная уборка
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="reviews__card-right">
-                                <span>5.0</span>
-                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M10.2974 2.63248L11.6174 5.27248C11.7974 5.63998 12.2774 5.99248 12.6824 6.05998L15.0749 6.45748C16.6049 6.71248 16.9649 7.82248 15.8624 8.91748L14.0024 10.7775C13.6874 11.0925 13.5149 11.7 13.6124 12.135L14.1449 14.4375C14.5649 16.26 13.5974 16.965 11.9849 16.0125L9.74243 14.685C9.33743 14.445 8.66993 14.445 8.25743 14.685L6.01493 16.0125C4.40993 16.965 3.43493 16.2525 3.85493 14.4375L4.38743 12.135C4.48493 11.7 4.31243 11.0925 3.99743 10.7775L2.13743 8.91748C1.04243 7.82248 1.39493 6.71248 2.92493 6.45748L5.31743 6.05998C5.71493 5.99248 6.19493 5.63998 6.37493 5.27248L7.69493 2.63248C8.41493 1.19998 9.58493 1.19998 10.2974 2.63248Z" fill="#F9CB2D"/>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="reviews__card-body">
-                            <p class="reviews__card-text">
-                                Заказывали уборку после переезда — квартира засияла! Спасибо за бережное отношение к моей техникЗаказывали уборку после переезда — квартира засияла! Спасибо за бережное отношение к
-                            </p>
-                        </div>
-                    </div>
-                    <div class="reviews__card">
-                        <div class="reviews__card-header">
-                            <div class="reviews__card-left">
-                                <div class="reviews__card-user-img">
-                                    <img src="{% static 'pages/icons/profile.svg' %}"
-                                         alt="" class="cta__logo" loading="lazy"
-                                    >
-                                </div>
-                                <div class="reviews__card-left-wrap">
-                                    <p class="reviews__card-name">
-                                        Анна
-                                    </p>
-                                    <span class="reviews__card-service">
-                                        Послеремонтная уборка
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="reviews__card-right">
-                                <span>5.0</span>
-                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M10.2974 2.63248L11.6174 5.27248C11.7974 5.63998 12.2774 5.99248 12.6824 6.05998L15.0749 6.45748C16.6049 6.71248 16.9649 7.82248 15.8624 8.91748L14.0024 10.7775C13.6874 11.0925 13.5149 11.7 13.6124 12.135L14.1449 14.4375C14.5649 16.26 13.5974 16.965 11.9849 16.0125L9.74243 14.685C9.33743 14.445 8.66993 14.445 8.25743 14.685L6.01493 16.0125C4.40993 16.965 3.43493 16.2525 3.85493 14.4375L4.38743 12.135C4.48493 11.7 4.31243 11.0925 3.99743 10.7775L2.13743 8.91748C1.04243 7.82248 1.39493 6.71248 2.92493 6.45748L5.31743 6.05998C5.71493 5.99248 6.19493 5.63998 6.37493 5.27248L7.69493 2.63248C8.41493 1.19998 9.58493 1.19998 10.2974 2.63248Z" fill="#F9CB2D"/>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="reviews__card-body">
-                            <p class="reviews__card-text">
-                                Заказывали уборку после переезда — квартира засияла! Спасибо за бережное отношение к моей техникЗаказывали уборку после переезда — квартира засияла! Спасибо за бережное отношение к
-                            </p>
-                        </div>
-                    </div>
-                    <div class="reviews__card">
-                        <div class="reviews__card-header">
-                            <div class="reviews__card-left">
-                                <div class="reviews__card-user-img">
-                                    <img src="{% static 'pages/icons/profile.svg' %}"
-                                         alt="" class="cta__logo" loading="lazy"
-                                    >
-                                </div>
-                                <div class="reviews__card-left-wrap">
-                                    <p class="reviews__card-name">
-                                        Анна
-                                    </p>
-                                    <span class="reviews__card-service">
-                                        Послеремонтная уборка
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="reviews__card-right">
-                                <span>5.0</span>
-                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M10.2974 2.63248L11.6174 5.27248C11.7974 5.63998 12.2774 5.99248 12.6824 6.05998L15.0749 6.45748C16.6049 6.71248 16.9649 7.82248 15.8624 8.91748L14.0024 10.7775C13.6874 11.0925 13.5149 11.7 13.6124 12.135L14.1449 14.4375C14.5649 16.26 13.5974 16.965 11.9849 16.0125L9.74243 14.685C9.33743 14.445 8.66993 14.445 8.25743 14.685L6.01493 16.0125C4.40993 16.965 3.43493 16.2525 3.85493 14.4375L4.38743 12.135C4.48493 11.7 4.31243 11.0925 3.99743 10.7775L2.13743 8.91748C1.04243 7.82248 1.39493 6.71248 2.92493 6.45748L5.31743 6.05998C5.71493 5.99248 6.19493 5.63998 6.37493 5.27248L7.69493 2.63248C8.41493 1.19998 9.58493 1.19998 10.2974 2.63248Z" fill="#F9CB2D"/>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="reviews__card-body">
-                            <div class="reviews__card-img">
-                                <img src="{% static 'pages/images/cases/rusgidro.png' %}"
-                                     alt="" class="cta__logo" loading="lazy"
-                                >
-                            </div>
-                            <p class="reviews__card-text">
-                                Заказывали уборку после переезда — квартира засияла! Спасибо за бережное отношение к моей техникЗаказывали уборку после переезда — квартира засияла! Спасибо за бережное отношение к
-                            </p>
-                        </div>
-                    </div>
-                    <div class="reviews__card">
-                        <div class="reviews__card-header">
-                            <div class="reviews__card-left">
-                                <div class="reviews__card-user-img">
-                                    <img src="{% static 'pages/icons/profile.svg' %}"
-                                         alt="" class="cta__logo" loading="lazy"
-                                    >
-                                </div>
-                                <div class="reviews__card-left-wrap">
-                                    <p class="reviews__card-name">
-                                        Анна
-                                    </p>
-                                    <span class="reviews__card-service">
-                                        Послеремонтная уборка
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="reviews__card-right">
-                                <span>5.0</span>
-                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M10.2974 2.63248L11.6174 5.27248C11.7974 5.63998 12.2774 5.99248 12.6824 6.05998L15.0749 6.45748C16.6049 6.71248 16.9649 7.82248 15.8624 8.91748L14.0024 10.7775C13.6874 11.0925 13.5149 11.7 13.6124 12.135L14.1449 14.4375C14.5649 16.26 13.5974 16.965 11.9849 16.0125L9.74243 14.685C9.33743 14.445 8.66993 14.445 8.25743 14.685L6.01493 16.0125C4.40993 16.965 3.43493 16.2525 3.85493 14.4375L4.38743 12.135C4.48493 11.7 4.31243 11.0925 3.99743 10.7775L2.13743 8.91748C1.04243 7.82248 1.39493 6.71248 2.92493 6.45748L5.31743 6.05998C5.71493 5.99248 6.19493 5.63998 6.37493 5.27248L7.69493 2.63248C8.41493 1.19998 9.58493 1.19998 10.2974 2.63248Z" fill="#F9CB2D"/>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="reviews__card-body">
-                            <p class="reviews__card-text">
-                                Заказывали уборку после переезда — квартира засияла! Спасибо за бережное отношение к моей техникЗаказывали уборку после переезда — квартира засияла! Спасибо за бережное отношение к
-                            </p>
-                        </div>
-                    </div>
-                    <div class="reviews__card">
-                        <div class="reviews__card-header">
-                            <div class="reviews__card-left">
-                                <div class="reviews__card-user-img">
-                                    <img src="{% static 'pages/icons/profile.svg' %}"
-                                         alt="" class="cta__logo" loading="lazy"
-                                    >
-                                </div>
-                                <div class="reviews__card-left-wrap">
-                                    <p class="reviews__card-name">
-                                        Анна
-                                    </p>
-                                    <span class="reviews__card-service">
-                                        Послеремонтная уборка
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="reviews__card-right">
-                                <span>5.0</span>
-                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M10.2974 2.63248L11.6174 5.27248C11.7974 5.63998 12.2774 5.99248 12.6824 6.05998L15.0749 6.45748C16.6049 6.71248 16.9649 7.82248 15.8624 8.91748L14.0024 10.7775C13.6874 11.0925 13.5149 11.7 13.6124 12.135L14.1449 14.4375C14.5649 16.26 13.5974 16.965 11.9849 16.0125L9.74243 14.685C9.33743 14.445 8.66993 14.445 8.25743 14.685L6.01493 16.0125C4.40993 16.965 3.43493 16.2525 3.85493 14.4375L4.38743 12.135C4.48493 11.7 4.31243 11.0925 3.99743 10.7775L2.13743 8.91748C1.04243 7.82248 1.39493 6.71248 2.92493 6.45748L5.31743 6.05998C5.71493 5.99248 6.19493 5.63998 6.37493 5.27248L7.69493 2.63248C8.41493 1.19998 9.58493 1.19998 10.2974 2.63248Z" fill="#F9CB2D"/>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="reviews__card-body">
-                            <div class="reviews__card-img">
-                                <img src="{% static 'pages/images/cases/rusgidro.png' %}"
-                                     alt="" class="cta__logo" loading="lazy"
-                                >
-                            </div>
-                            <p class="reviews__card-text">
-                                Заказывали уборку после переезда — квартира засияла! Спасибо за бережное отношение к моей техникЗаказывали уборку после переезда — квартира засияла! Спасибо за бережное отношение к
-                            </p>
-                        </div>
-                    </div>
+                    {% endif %}
+                    {% endfor %}
                 </div>
                 <div class="reviews__column">
+                    {% for review in reviews %}
+                    {% if review.provider == '2gis' %}
                     <div class="reviews__card">
                         <div class="reviews__card-header">
                             <div class="reviews__card-left">
                                 <div class="reviews__card-user-img">
-                                    <img src="{% static 'pages/icons/profile.svg' %}"
-                                         alt="" class="cta__logo" loading="lazy"
+                                    {% if review.photo%}
+                                    <img src="{{ review.photo }}"
+                                         alt="" loading="lazy"
                                     >
+                                    {% else %}
+                                    <img src="{% static 'pages/icons/profile.svg' %}"
+                                         alt="" class="reviews__card-user-dummy" loading="lazy"
+                                    >
+                                    {% endif %}
                                 </div>
                                 <div class="reviews__card-left-wrap">
                                     <p class="reviews__card-name">
-                                        Анна
+                                        {{ review.author_name|truncatechars:18 }}
                                     </p>
                                     <span class="reviews__card-service">
-                                        Послеремонтная уборка
+                                        {{ review.service }}
                                     </span>
                                 </div>
                             </div>
                             <div class="reviews__card-right">
-                                <span>5.0</span>
+                                <span>{{ review.rating_display }}</span>
                                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M10.2974 2.63248L11.6174 5.27248C11.7974 5.63998 12.2774 5.99248 12.6824 6.05998L15.0749 6.45748C16.6049 6.71248 16.9649 7.82248 15.8624 8.91748L14.0024 10.7775C13.6874 11.0925 13.5149 11.7 13.6124 12.135L14.1449 14.4375C14.5649 16.26 13.5974 16.965 11.9849 16.0125L9.74243 14.685C9.33743 14.445 8.66993 14.445 8.25743 14.685L6.01493 16.0125C4.40993 16.965 3.43493 16.2525 3.85493 14.4375L4.38743 12.135C4.48493 11.7 4.31243 11.0925 3.99743 10.7775L2.13743 8.91748C1.04243 7.82248 1.39493 6.71248 2.92493 6.45748L5.31743 6.05998C5.71493 5.99248 6.19493 5.63998 6.37493 5.27248L7.69493 2.63248C8.41493 1.19998 9.58493 1.19998 10.2974 2.63248Z" fill="#F9CB2D"/>
                                 </svg>
                             </div>
                         </div>
                         <div class="reviews__card-body">
+                            {% if review.link.image %}
                             <div class="reviews__card-img">
-                                <img src="{% static 'pages/images/cases/rusgidro.png' %}"
+                                <img src="{{ review.link.image }}"
                                      alt="" class="cta__logo" loading="lazy"
                                 >
                             </div>
+                            {% endif %}
                             <p class="reviews__card-text">
-                                Заказывали уборку после переезда — квартира засияла! Спасибо за бережное отношение к моей техникЗаказывали уборку после переезда — квартира засияла! Спасибо за бережное отношение к
+                                {{ review.review_text|truncatechars:300 }}
                             </p>
                         </div>
                     </div>
-                    <div class="reviews__card">
-                        <div class="reviews__card-header">
-                            <div class="reviews__card-left">
-                                <div class="reviews__card-user-img">
-                                    <img src="{% static 'pages/icons/profile.svg' %}"
-                                         alt="" class="cta__logo" loading="lazy"
-                                    >
-                                </div>
-                                <div class="reviews__card-left-wrap">
-                                    <p class="reviews__card-name">
-                                        Анна
-                                    </p>
-                                    <span class="reviews__card-service">
-                                        Послеремонтная уборка
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="reviews__card-right">
-                                <span>5.0</span>
-                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M10.2974 2.63248L11.6174 5.27248C11.7974 5.63998 12.2774 5.99248 12.6824 6.05998L15.0749 6.45748C16.6049 6.71248 16.9649 7.82248 15.8624 8.91748L14.0024 10.7775C13.6874 11.0925 13.5149 11.7 13.6124 12.135L14.1449 14.4375C14.5649 16.26 13.5974 16.965 11.9849 16.0125L9.74243 14.685C9.33743 14.445 8.66993 14.445 8.25743 14.685L6.01493 16.0125C4.40993 16.965 3.43493 16.2525 3.85493 14.4375L4.38743 12.135C4.48493 11.7 4.31243 11.0925 3.99743 10.7775L2.13743 8.91748C1.04243 7.82248 1.39493 6.71248 2.92493 6.45748L5.31743 6.05998C5.71493 5.99248 6.19493 5.63998 6.37493 5.27248L7.69493 2.63248C8.41493 1.19998 9.58493 1.19998 10.2974 2.63248Z" fill="#F9CB2D"/>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="reviews__card-body">
-                            <p class="reviews__card-text">
-                                Заказывали уборку после переезда — квартира засияла! Спасибо за бережное отношение к моей техникЗаказывали уборку после переезда — квартира засияла! Спасибо за бережное отношение к
-                            </p>
-                        </div>
-                    </div>
-                    <div class="reviews__card">
-                        <div class="reviews__card-header">
-                            <div class="reviews__card-left">
-                                <div class="reviews__card-user-img">
-                                    <img src="{% static 'pages/icons/profile.svg' %}"
-                                         alt="" class="cta__logo" loading="lazy"
-                                    >
-                                </div>
-                                <div class="reviews__card-left-wrap">
-                                    <p class="reviews__card-name">
-                                        Анна
-                                    </p>
-                                    <span class="reviews__card-service">
-                                        Послеремонтная уборка
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="reviews__card-right">
-                                <span>5.0</span>
-                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M10.2974 2.63248L11.6174 5.27248C11.7974 5.63998 12.2774 5.99248 12.6824 6.05998L15.0749 6.45748C16.6049 6.71248 16.9649 7.82248 15.8624 8.91748L14.0024 10.7775C13.6874 11.0925 13.5149 11.7 13.6124 12.135L14.1449 14.4375C14.5649 16.26 13.5974 16.965 11.9849 16.0125L9.74243 14.685C9.33743 14.445 8.66993 14.445 8.25743 14.685L6.01493 16.0125C4.40993 16.965 3.43493 16.2525 3.85493 14.4375L4.38743 12.135C4.48493 11.7 4.31243 11.0925 3.99743 10.7775L2.13743 8.91748C1.04243 7.82248 1.39493 6.71248 2.92493 6.45748L5.31743 6.05998C5.71493 5.99248 6.19493 5.63998 6.37493 5.27248L7.69493 2.63248C8.41493 1.19998 9.58493 1.19998 10.2974 2.63248Z" fill="#F9CB2D"/>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="reviews__card-body">
-                            <p class="reviews__card-text">
-                                Заказывали уборку после переезда — квартира засияла! Спасибо за бережное отношение к моей техникЗаказывали уборку после переезда — квартира засияла! Спасибо за бережное отношение к
-                            </p>
-                        </div>
-                    </div>
-                    <div class="reviews__card">
-                        <div class="reviews__card-header">
-                            <div class="reviews__card-left">
-                                <div class="reviews__card-user-img">
-                                    <img src="{% static 'pages/icons/profile.svg' %}"
-                                         alt="" class="cta__logo" loading="lazy"
-                                    >
-                                </div>
-                                <div class="reviews__card-left-wrap">
-                                    <p class="reviews__card-name">
-                                        Анна
-                                    </p>
-                                    <span class="reviews__card-service">
-                                        Послеремонтная уборка
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="reviews__card-right">
-                                <span>5.0</span>
-                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M10.2974 2.63248L11.6174 5.27248C11.7974 5.63998 12.2774 5.99248 12.6824 6.05998L15.0749 6.45748C16.6049 6.71248 16.9649 7.82248 15.8624 8.91748L14.0024 10.7775C13.6874 11.0925 13.5149 11.7 13.6124 12.135L14.1449 14.4375C14.5649 16.26 13.5974 16.965 11.9849 16.0125L9.74243 14.685C9.33743 14.445 8.66993 14.445 8.25743 14.685L6.01493 16.0125C4.40993 16.965 3.43493 16.2525 3.85493 14.4375L4.38743 12.135C4.48493 11.7 4.31243 11.0925 3.99743 10.7775L2.13743 8.91748C1.04243 7.82248 1.39493 6.71248 2.92493 6.45748L5.31743 6.05998C5.71493 5.99248 6.19493 5.63998 6.37493 5.27248L7.69493 2.63248C8.41493 1.19998 9.58493 1.19998 10.2974 2.63248Z" fill="#F9CB2D"/>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="reviews__card-body">
-                            <p class="reviews__card-text">
-                                Заказывали уборку после переезда — квартира засияла! Спасибо за бережное отношение к моей техникЗаказывали уборку после переезда — квартира засияла! Спасибо за бережное отношение к
-                            </p>
-                        </div>
-                    </div>
-                    <div class="reviews__card">
-                        <div class="reviews__card-header">
-                            <div class="reviews__card-left">
-                                <div class="reviews__card-user-img">
-                                    <img src="{% static 'pages/icons/profile.svg' %}"
-                                         alt="" class="cta__logo" loading="lazy"
-                                    >
-                                </div>
-                                <div class="reviews__card-left-wrap">
-                                    <p class="reviews__card-name">
-                                        Анна
-                                    </p>
-                                    <span class="reviews__card-service">
-                                        Послеремонтная уборка
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="reviews__card-right">
-                                <span>5.0</span>
-                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M10.2974 2.63248L11.6174 5.27248C11.7974 5.63998 12.2774 5.99248 12.6824 6.05998L15.0749 6.45748C16.6049 6.71248 16.9649 7.82248 15.8624 8.91748L14.0024 10.7775C13.6874 11.0925 13.5149 11.7 13.6124 12.135L14.1449 14.4375C14.5649 16.26 13.5974 16.965 11.9849 16.0125L9.74243 14.685C9.33743 14.445 8.66993 14.445 8.25743 14.685L6.01493 16.0125C4.40993 16.965 3.43493 16.2525 3.85493 14.4375L4.38743 12.135C4.48493 11.7 4.31243 11.0925 3.99743 10.7775L2.13743 8.91748C1.04243 7.82248 1.39493 6.71248 2.92493 6.45748L5.31743 6.05998C5.71493 5.99248 6.19493 5.63998 6.37493 5.27248L7.69493 2.63248C8.41493 1.19998 9.58493 1.19998 10.2974 2.63248Z" fill="#F9CB2D"/>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="reviews__card-body">
-                            <p class="reviews__card-text">
-                                Заказывали уборку после переезда — квартира засияла! Спасибо за бережное отношение к моей техникЗаказывали уборку после переезда — квартира засияла! Спасибо за бережное отношение к
-                            </p>
-                        </div>
-                    </div>
+                    {% endif %}
+                    {% endfor %}
                 </div>
                 <div class="reviews__controls">
                     <button class="reviews__control-button">

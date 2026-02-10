@@ -34,6 +34,10 @@
     font-weight: 600;
     line-height: 120%;
 
+    @include mobile-s{
+      font-size: 44rem;
+    }
+
     &:after{
       content: "";
       position: absolute;
@@ -97,6 +101,10 @@
       right: -56rem;
       top: 50%;
       transform: translateY(-50%);
+
+      @include laptop{
+        right: 0;
+      }
 
       @include tablet {
         display: none;

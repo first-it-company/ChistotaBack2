@@ -145,12 +145,22 @@
       width: 32rem;
       height: 32rem;
       border-radius: 28rem;
+      overflow: hidden;
+
+      @include mobile{
+        width: 28rem;
+        height: 18rem;
+      }
 
       img{
         width: 100%;
         height: 100%;
         object-fit: cover;
       }
+    }
+
+    &-user-dummy{
+      object-fit: contain !important;
     }
 
     &-body{
@@ -167,17 +177,26 @@
       font-family: var(--font-family);
       font-size: 20rem;
       font-weight: 400;
+
+      @include mobile{
+        font-size: 16rem;
+      }
     }
 
     &-service{
       font-size: 16rem;
       font-weight: 400;
       color: var(--color-gray-200);
+
+      @include mobile{
+        font-size: 14rem;
+      }
     }
 
     &-text{
-      font-size: 16rem;
+      font-size: 13rem;
       font-weight: 400;
+      word-break: break-word;
     }
 
     &-img{
@@ -186,6 +205,7 @@
       width: 190rem;
       height: 150rem;
       flex-shrink: 0;
+
 
       @include tablet{
         width: 100%;

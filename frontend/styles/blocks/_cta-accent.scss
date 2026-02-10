@@ -1,9 +1,8 @@
 @use "../helpers" as *;
 
 .cta-accent {
-
   &__inner {
-    background-color: #F7F8FA;
+    background-color: var(--color-white-bg-2);
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -12,19 +11,50 @@
     padding-top: 80rem;
     padding-inline: 40rem;
     border-radius: 60rem 60rem 0 0;
+    overflow-x: hidden;
+    position: relative;
+
+    @include tablet {
+      padding-top: 52rem;
+      padding-inline: 20rem;
+      border-radius: 36rem 36rem 0 0;
+      gap: 20rem;
+    }
+
+    @include mobile{
+      padding-bottom: 20rem;
+    }
+
+    @include mobile-m{
+      padding-inline: 16rem;
+      padding-bottom: 40rem;
+    }
 
     .faq__form{
       background-color: var(--color-white);
     }
 
     .faq__cell-input, .faq__cell-input--long{
-      background-color: #F7F8FA;
+      background-color: var(--color-white-bg-2);
     }
+
   }
 
   &__subtitle{
     font-size: 20rem;
     font-weight: 400;
+
+    > * {
+      margin: 0;
+    }
+
+    @include tablet {
+      font-size: 16rem;
+    }
+
+    @include mobile-m{
+      order: 1;
+    }
 
     span{
       font-weight: 700;
@@ -36,18 +66,58 @@
     display: flex;
     flex-direction: column;
     gap: 32rem;
+
+    @include mobile-m{
+      display: contents;
+    }
+  }
+
+  .cta__lines{
+    @include mobile-m{
+      order: 3;
+      margin-inline: -16rem;
+    }
   }
 
   &__content{
     width: 100%;
     display: grid;
     grid-template-columns: 1.5fr 1fr;
-    gap: 80rem;
+    gap: 16rem;
     justify-content: space-between;
+
+    @include laptop{
+      gap: 0;
+    }
+
+    @include mobile-m{
+     display: flex;
+      flex-direction: column;
+    }
   }
 
   &__img{
     width: 700rem;
+
+    @include tablet{
+      width: 600rem;
+    }
+
+    @include mobile{
+      position: absolute;
+      bottom: 0;
+      right: -10%;
+      width: 450rem;
+    }
+
+    @include mobile-m{
+      order: 2;
+      position: relative;
+      width: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
     img{
       width: 100%;
     }

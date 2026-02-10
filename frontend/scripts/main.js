@@ -15,6 +15,7 @@ import { initFormFeedback } from "./form.js";
 import { initModalSuccess } from "./modalSuccess.js";
 import { initCustomSelect } from './customSelect.js';
 import { initFooterReviewSlider } from './footerReviewSlider.js';
+import { initReviewsScroll } from './reviewsScroll.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
     initTypewriterHero();
@@ -32,8 +33,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     initModalSuccess();
     initCustomSelect();
     initFooterReviewSlider();
-
-
+    initReviewsScroll();
 
     if (document.querySelector('[data-service-splide-left]')) {
         import('./serviceCarousel.js').then(({ initServiceCarouselLeft }) => initServiceCarouselLeft());
@@ -42,7 +42,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (document.querySelector('[data-service-splide-right]')) {
         import('./serviceCarousel.js').then(({ initServiceCarouselRight }) => initServiceCarouselRight());
     }
-
 
 
     document.querySelectorAll('[data-dropdown-config]').forEach(element => {
@@ -148,62 +147,5 @@ document.addEventListener('DOMContentLoaded', () => {
             hide();
         }
         updateButton();
-    });
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-    const main       = document.querySelector('.reviews__main');
-    const columns    = main.querySelectorAll('.reviews__column');
-    const [upBtn, downBtn] = main.querySelectorAll('.reviews__control-button');
-
-    if (!main || !columns.length || !upBtn || !downBtn) return;
-
-    const VISIBLE_H  = 700;
-    let offset       = 0;
-    let maxOffset    = 0;
-
-    function calcMax() {
-        const tallest = Math.max(...[...columns].map(c => c.scrollHeight));
-        maxOffset = Math.max(0, tallest - VISIBLE_H);
-    }
-
-    function getStep() {
-        const card = columns[0]?.querySelector('.reviews__card');
-        if (!card) return 200;
-        return card.offsetHeight + parseInt(getComputedStyle(card).marginBottom || 0);
-    }
-
-    function applyOffset() {
-        columns.forEach(col => {
-            col.style.transform = `translateY(-${offset}rem)`;
-        });
-        updateButtons();
-    }
-
-    function updateButtons() {
-        upBtn.classList.toggle('is-disabled',   offset <= 0);
-        downBtn.classList.toggle('is-disabled', offset >= maxOffset);
-    }
-
-    upBtn.addEventListener('click', () => {
-        offset = Math.max(0, offset - getStep());
-        applyOffset();
-    });
-
-    downBtn.addEventListener('click', () => {
-        offset = Math.min(maxOffset, offset + getStep());
-        applyOffset();
-    });
-
-    Promise.all(
-        [...main.querySelectorAll('img')].map(img =>
-            img.complete ? Promise.resolve() : new Promise(r => { img.onload = r; img.onerror = r; })
-        )
-    ).then(() => { calcMax(); applyOffset(); });
-
-    window.addEventListener('resize', () => {
-        calcMax();
-        offset = Math.min(offset, maxOffset);
-        applyOffset();
     });
 });
