@@ -46,7 +46,7 @@
       height: 2rem;
       background-color: var(--color-blue);
       transform-origin: center;
-      border-radius: 100%;
+      border-radius: 50px;
     }
 
     &::before {
@@ -135,7 +135,6 @@
       justify-content: space-between;
     }
 
-    // Используем стили из FAQ для полей в модальном окне
     .faq__row {
       display: flex;
       gap: 16rem;
@@ -144,6 +143,7 @@
 
     .faq__cell {
       width: 100%;
+
 
       @include mobile-s {
         width: 163rem;
@@ -158,8 +158,9 @@
       }
     }
 
-    .faq__cell-input {
-      // Наследуем все стили из FAQ
+    .faq__cell-input,
+    .faq__cell-input--long{
+      border: 1px solid var(--color-gray-100);
     }
 
     .policy {
@@ -191,95 +192,6 @@
         width: 100%;
         padding: 12rem 16rem;
       }
-    }
-  }
-
-}
-
-
-.modal-video {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1000;
-
-  &.active {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  &__overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    cursor: pointer;
-  }
-
-  &__content {
-    position: relative;
-    width: 90%;
-    max-width: 800px;
-    background: #000;
-    border-radius: 20rem;
-    overflow: hidden;
-    z-index: 1;
-    padding: 40rem 0; // Добавляем отступы сверху и снизу
-
-    @include mobile {
-      width: 95%;
-      padding: 20rem 0; // Уменьшаем отступы на мобильных
-    }
-  }
-
-  &__close {
-    position: absolute;
-    top: 10rem; // Уменьшаем отступ сверху для кнопки
-    right: 20rem;
-    width: 40rem;
-    height: 40rem;
-    border: none;
-    background: rgba(255, 255, 255, 0.2);
-    color: #fff;
-    font-size: 24rem;
-    border-radius: 50%;
-    cursor: pointer;
-    z-index: 2;
-    transition: background-color 0.3s;
-
-    &:hover {
-      background: rgba(255, 255, 255, 0.3);
-    }
-  }
-
-  &__player {
-    position: relative;
-    padding-top: 100%; // Уменьшаем высоту с 177.78% до 150%
-    max-height: 80vh; // Уменьшаем максимальную высоту до 80% от высоты экрана
-    margin: 0 auto;
-    width: 90%; // Добавляем ширину контейнера
-
-    @include tablet {
-      width: 85%;
-    }
-
-    @include mobile {
-      width: 90%;
-    }
-
-    video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
     }
   }
 }

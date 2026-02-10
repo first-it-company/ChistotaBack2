@@ -143,13 +143,14 @@
   }
 
   &__row {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 16rem;
     width: 100%;
-
   }
 
   &__row.long {
+    grid-template-columns: 1fr;
     height: 100rem;
   }
 
@@ -160,10 +161,6 @@
       &:nth-child(5) {
         width: 100% !important;
       }
-    }
-
-    @include mobile-s {
-      width: 163rem;
     }
 
     &--long {
