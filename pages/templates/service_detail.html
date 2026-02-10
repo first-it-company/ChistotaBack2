@@ -1,12 +1,10 @@
 {% extends 'base.html' %}
 {% load static number_filters %}
 {% block content %}
-  <section class="service-detail">
-    <h1 class="h5 gradient service-detail__info-header visible-mobile"
-        style="order: 1">{{ service.scope.name }}</h1>
+  <section class="service-detail" data-case-fancybox>
     <div class="service-detail__info">
-      <div>
-        <h1 class="h5 gradient service-detail__info-header hidden-mobile">{{ service.scope.name }}</h1>
+      <div class="service-detail__info-wrapper">
+        <h1 class="h5 gradient service-detail__info-header">{{ service.scope.name }}</h1>
         <p class="service-detail__info-description">{{ service.desc }}</p>
         <div class="service-detail__info-features">
           <div class="slider__features service-detail__info-feature">
@@ -47,7 +45,7 @@
         </div>
     </div>
       {% if service.video %}
-      <div class="service-detail__video">
+      <div class="service-detail__video" data-case-item >
           <video
               src="{{ service.video.url }}"
               preload="auto"
@@ -58,39 +56,15 @@
           >
           </video>
       </div>
-
       {% else %}
-        {% if service.photo %}
-          <div class="service-detail__slider splide" id="service-detail-splide">
-            <div class="splide__track">
-              <ul class="splide__list">
-                  <li class="splide__slide">
-                    <img src="{{ service.photo.url }}"
-                         alt="{{ service.scope.name }} - Фото {{ forloop.counter }}">
-                  </li>
-              </ul>
-            </div>
-            <div class="service-detail__slider-controls controls">
-              <button class="service-detail__slider-button-prev controls__button controls__prev hidden-tablet"
-                      id="service-detail-prev">
-                <img src="{% static 'pages/icons/arrow-left.svg' %}"
-                     alt="Предыдущий"
-                     class="controls__img"
-                     width="24"
-                     height="24">
-              </button>
-              <div class="service-detail__slider-counter" id="service-detail-counter"></div>
-              <button class="service-detail__slider-button-next controls__button controls__next hidden-tablet"
-                      id="service-detail-next">
-                <img src="{% static 'pages/icons/arrow-right.svg' %}"
-                     alt="Следующий"
-                     class="controls__img"
-                     width="24"
-                     height="24">
-              </button>
-            </div>
-          </div>
-        {% endif %}
+    {% if service.photo %}
+      <div class="service-detail__image" data-case-item>
+          <img
+            src="{{ service.photo.url }}"
+            alt="Фотография {{ service.scope.name }}"
+          >
+      </div>
+    {% endif %}
   {% endif %}
   </section>
   {% if service.inclusions.all %}
@@ -106,8 +80,9 @@
       </ul>
     </section>
   {% endif %}
-  {% include 'partials/cases.html' with is_two_rows=False %}
+  {% include 'partials/cases.html'%}
   {% include 'partials/cta-request.html' %}
   {% include 'partials/reviews.html' %}
+    {% include 'partials/cta-accent.html' %}
   {% include 'partials/faq.html' with with_border=True %}
 {% endblock %}

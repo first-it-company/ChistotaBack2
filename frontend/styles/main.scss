@@ -7,7 +7,6 @@
 @use './blocks/header';
 @use './blocks/hero';
 @use './blocks/button';
-@use './blocks/ms';
 @use './blocks/about';
 @use './blocks/carousel';
 @use 'blocks/service';
@@ -23,7 +22,7 @@
 @use './blocks/faq';
 @use './blocks/policy';
 @use './blocks/footer';
-@use './blocks/word';
+@use 'blocks/word';
 @use './blocks/burger-button';
 @use './blocks/controls';
 @use './blocks/team';
