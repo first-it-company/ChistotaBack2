@@ -94,7 +94,7 @@
                     </div>
                   </div>
                   <div class="reviews__body">
-                    <span>{{ review.review_text }}</span>
+                    <span>{{ review.review_text|truncatechars:50 }}</span>
                   </div>
                 </div>
               </div>
@@ -203,105 +203,5 @@
         </div>
       </div>
     </div>
-
-    <!-- Yandex -->
-    <!-- <div class="reviews__extra-3"> -->
-    <!--   <div class="reviews__links"> -->
-    <!--     <button class="review-button" onclick="window.open('https://yandex.ru/maps/-/CHWKmQ7K', '_blank')"> -->
-    <!--       <span>Yandex</span> -->
-    <!--       <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"> -->
-    <!--         <path d="M13 1L1 13" stroke="#939393" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> -->
-    <!--         <path d="M13 10V1H4" stroke="#939393" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> -->
-    <!--       </svg> -->
-    <!--       <span class="reviews__counts">{% if yandex_data.count%}({{ yandex_data.count }}) {% else %} (0){% endif %}</span> -->
-    <!--       <img -->
-    <!--         src="{% static "pages/icons/Yandex.png" %}" -->
-    <!--         alt="Яндекс" -->
-    <!--         class="hero__review-logo" -->
-    <!--         width="32" height="32" -->
-    <!--       > -->
-    <!--       <span> {% if yandex_data.average_rating > 1 %}{{ yandex_data.average_rating }}{% else %} 5.0{% endif %}</span> -->
-    <!--       <img -->
-    <!--         src="{% static "pages/icons/star.svg" %}" -->
-    <!--         alt="" -->
-    <!--         class="" -->
-    <!--         width="20" height="20" -->
-    <!--       > -->
-    <!--     </button> -->
-    <!--   </div> -->
-    <!--   <div class="controls hidden-tablet"> -->
-    <!--     <button class="reviews__controls-prev-3 controls__button controls__prev"> -->
-    <!--       <img -->
-    <!--         src="{% static 'pages/icons/arrow-left.svg' %}" -->
-    <!--         alt="Назад" -->
-    <!--         class="controls__img" -->
-    <!--         width="24" height="24" -->
-    <!--       > -->
-    <!--     </button> -->
-    <!---->
-    <!--     <p class="reviews__controls-current-3 controls__current"></p> -->
-    <!---->
-    <!--     <button class="reviews__controls-next-3 controls__button controls__next"> -->
-    <!--       <img -->
-    <!--         src="{% static 'pages/icons/arrow-right.svg' %}" -->
-    <!--         alt="Вперед" -->
-    <!--         class="controls__img" -->
-    <!--         width="24" height="24" -->
-    <!--       > -->
-    <!--     </button> -->
-    <!--   </div> -->
-    <!-- </div> -->
-    <!-- <div class="reviews__slider-container"> -->
-    <!--   <div class="ms-slide__container-3"> -->
-    <!--     <div class="reviews__slider-wrapper"> -->
-    <!--       {% for review in reviews %} -->
-    <!--       {% if review.provider == 'yandex' %} -->
-    <!--       <div class="reviews__swiper-slide"> -->
-    <!--         <div class="reviews__swiper-slide-inner"> -->
-    <!--           <div class="reviews__user-wrapper"> -->
-    <!--             <div class="reviews__user-info"> -->
-    <!--               <div class="reviews__img-wrapper"> -->
-    <!--                 <img src="{{ review.photo }}" alt="" class="reviews__img" width="64" height="64"> -->
-    <!--               </div> -->
-    <!--               <div class="reviews__user"> -->
-    <!--                 <div class="reviews__user-bottom"> -->
-    <!--                   <p class="reviews__user-name">{{ review.author_name }}</p> -->
-    <!--                   <p class="reviews__user-service">{{ review.service }}</p> -->
-    <!--                 </div> -->
-    <!--               </div> -->
-    <!--             </div> -->
-    <!--             <div class="reviews__user-commas"> -->
-    <!--               <img src="{% static 'pages/icons/commas.svg' %}" alt="" class="reviews__commas" width="48" height="48"> -->
-    <!--             </div> -->
-    <!--           </div> -->
-    <!--           <div class="reviews__content"> -->
-    <!--             {% if review.link.image %} -->
-    <!--             <div class="reviews__photo-wrapper"> -->
-    <!--               <img src="{{ review.link.image }}" alt="" class="reviews__photo" width="288" height="152"> -->
-    <!--             </div> -->
-    <!--             {% endif %} -->
-    <!--             <div class="reviews__body-wrapper"> -->
-    <!--               <div class="reviews__user-top"> -->
-    <!--                 <p class="reviews__score">{{ review.rating_display }}</p> -->
-    <!--                 <div class="reviews__stars"> -->
-    <!--                   {% for i in "12345"|make_list %} -->
-    <!--                   <img src="{% static 'pages/icons/star.svg' %}" class="reviews__stars_img" width="20" height="20"  -->
-    <!--                     style="opacity:{% if forloop.counter <= review.rating %}1{% else %}0.3{% endif %}"> -->
-    <!--                   {% endfor %} -->
-    <!--                 </div> -->
-    <!--               </div> -->
-    <!--               <div class="reviews__body"> -->
-    <!--                 <span>{{ review.review_text }}</span> -->
-    <!--               </div> -->
-    <!--             </div> -->
-    <!--           </div> -->
-    <!--         </div> -->
-    <!--       </div> -->
-    <!--       {% endif %} -->
-    <!--       {% endfor %} -->
-    <!--     </div> -->
-    <!--   </div> -->
-    <!-- </div> -->
-
   </div>
 </section>

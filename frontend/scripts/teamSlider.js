@@ -15,15 +15,17 @@ export function initTeamSlider() {
     trimSpace: false,
     autoWidth: true,
 
+
     breakpoints: {
       1440: {
-          fixedWidth: '300rem',
           perPage: 1,
           padding: { right: '50%' },
       },
+        990:{
+
+        },
       768: {
           gap: "8rem",
-          fixedWidth: '260rem',
           padding: { right: 'auto' },
       },
       520: {
