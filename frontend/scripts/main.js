@@ -19,8 +19,8 @@ import { initReviewsScroll } from './reviewsScroll.js';
 import { initCasesToggle  } from './casesToggle.js';
 import { initCaseFancybox } from './caseLightBox.js';
 import { initStackingCards } from './stackingCards.js';
-import {ScrollToPlugin} from "gsap/ScrollToPlugin";
-import {Flip} from "gsap/Flip";
+import initFaqAccordion from "@/scripts/accordion.js";
+import {initScrollReveal} from "@/scripts/fadeAnimations.js";
 
 document.addEventListener('DOMContentLoaded', async () => {
     initSmoothScroll();
@@ -39,6 +39,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     initReviewsScroll();
     initCasesToggle();
     initCaseFancybox();
+    initFaqAccordion();
+    initScrollReveal();
 
     if (document.querySelector('[data-service-splide-left]')) {
         import('./serviceCarousel.js').then(({ initServiceCarouselLeft }) => initServiceCarouselLeft());
@@ -47,30 +49,4 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (document.querySelector('[data-service-splide-right]')) {
         import('./serviceCarousel.js').then(({ initServiceCarouselRight }) => initServiceCarouselRight());
     }
-});
-
-
-document.addEventListener('DOMContentLoaded', () => {
-  const faqItems = document.querySelectorAll('.faq__item');
-  
-  faqItems.forEach(item => {
-    const summary = item.querySelector('summary');
-    const content = item.querySelector('.faq__content');
-    
-    summary.addEventListener('click', (e) => {
-      e.preventDefault();
-      
-      if (item.hasAttribute('open')) {
-        content.style.maxHeight = '0';
-        content.style.opacity = '0';
-        setTimeout(() => {
-          item.removeAttribute('open');
-        }, 300);
-      } else {
-        item.setAttribute('open', '');
-        content.style.maxHeight = content.scrollHeight + 'rem';
-        content.style.opacity = '1';
-      }
-    });
-  });
 });

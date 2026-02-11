@@ -3,16 +3,22 @@
          class="faq"
          {% if with_border %}style="border-top: 1px solid var(--color-gray-100);"{% endif %}>
   <div class="faq__inner">
-      <h5 class="faq__header h5 gradient" >
+      <h5 class="faq__header h5 gradient scroll-reveal-left">
           Частые вопросы
       </h5>
-    <div class="faq__questions">
-      {% for quest in questions %}
-        <details class="faq__item">
-          <summary class="faq__legend">{{ quest.question }}</summary>
-          <p class="faq__content">{{ quest.answer }}</p>
-        </details>
-      {% endfor %}
-    </div>
+      <div class="faq__questions">
+          {% for quest in questions %}
+          <div class="faq__item scroll-reveal-top" data-accordion>
+              <button class="faq__legend" data-accordion-button type="button">
+                  {{ quest.question }}
+                  <span class="faq__icon">
+                  </span>
+              </button>
+              <div class="faq__collapse" data-accordion-content>
+                  <p class="faq__content">{{ quest.answer }}</p>
+              </div>
+          </div>
+          {% endfor %}
+      </div>
   </div>
 </section>

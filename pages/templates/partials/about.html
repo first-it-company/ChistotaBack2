@@ -1,15 +1,15 @@
 {% load static %}
-<section id="about" class="about">
+<section id="about " class="about ">
     <div class="about__inner">
         <div class="about__header-inner">
-            <h1 class="about__header">
+            <h1 class="about__header scroll-reveal-top">
                 Нас
                 <br class="visible-mobile">
                 выбирают
             </h1>
             {% if instagram_url %}
-            <a href="{{ instagram_url }}" target="_blank">
-                <img src="{% static "pages/images/about/inst.svg" %}"
+            <a href="{{ instagram_url }}" class="scroll-reveal-top" target="_blank">
+                <img src="{% static 'pages/images/about/inst.svg' %}"
                 alt="Instagram"
                 class="about__inst hidden-mobile"
                 width="116"
@@ -18,8 +18,8 @@
             </a>
             {% endif %}
             {% if telegram_url %}
-            <a href="{{ telegram_url }}" target="_blank">
-                <img src="{% static "pages/images/about/tg.svg" %}"
+            <a href="{{ telegram_url }}" class="scroll-reveal-top"  target="_blank">
+                <img src="{% static 'pages/images/about/tg.svg' %}"
                 alt="Telegram"
                 class="about__tg hidden-mobile"
                 width="111"
@@ -28,8 +28,8 @@
             </a>
             {% endif %}
             {% if vk_url %}
-            <a href="{{ vk_url }}" target="_blank">
-                <img src="{% static "pages/images/about/VK.svg" %}"
+            <a href="{{ vk_url }}" class="scroll-reveal-top" target="_blank" >
+                <img src="{% static 'pages/images/about/VK.svg' %}"
                 alt="VK"
                 class="about__vk hidden-mobile"
                 width="100"
@@ -38,8 +38,8 @@
             </a>
             {% endif %}
             {% if instagram_url %}
-            <a href="{{ instagram_url }}" target="_blank">
-                <img src="{% static "pages/images/about/inst-m.svg" %}"
+            <a href="{{ instagram_url }}" target="_blank" class="scroll-reveal-top">
+                <img src="{% static 'pages/images/about/inst-m.svg' %}"
                 alt="Instagram"
                 class="about__inst visible-mobile"
                 width="81"
@@ -48,8 +48,8 @@
             </a>
             {% endif %}
             {% if telegram_url %}
-            <a href="{{ telegram_url }}" target="_blank">
-                <img src="{% static "pages/images/about/tg-m.svg" %}"
+            <a href="{{ telegram_url }}" target="_blank" class="scroll-reveal-top">
+                <img src="{% static 'pages/images/about/tg-m.svg' %}"
                 alt="Telegram"
                 class="about__tg visible-mobile"
                 width="68"
@@ -58,8 +58,8 @@
             </a>
             {% endif %}
             {% if vk_url %}
-            <a href="{{ vk_url }}" target="_blank">
-                <img src="{% static "pages/images/about/vk-m.svg" %}"
+            <a href="{{ vk_url }}" target="_blank" class="scroll-reveal-top">
+                <img src="{% static 'pages/images/about/vk-m.svg' %}"
                 alt="VK"
                 class="about__vk visible-mobile"
                 width="65"
@@ -68,7 +68,7 @@
             </a>
             {% endif %}
         </div>
-        <p class="about__subheader">
+        <p class="about__subheader scroll-reveal-top">
             — клининг с безупречной репутацией.
             <br class="hidden-mobile">
             С 2020 года создаем идеальную чистоту <span>для домов</span> и <span>бизнеса</span>, используя профессиональные методы и премиальную химию.

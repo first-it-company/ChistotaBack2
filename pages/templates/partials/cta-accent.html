@@ -1,13 +1,13 @@
 {% load static %}
 <section class="cta-accent">
     <div class="cta-accent__inner">
-        <h2 class="h5">
+        <h2 class="h5 scroll-reveal-top">
             С нами у вас
             <span class="gradient">всегда ЧИСТо</span>
         </h2>
         <div class="cta-accent__content">
             <div class="cta-accent__main">
-                <div class="cta-accent__subtitle">
+                <div class="cta-accent__subtitle scroll-reveal-left">
                     <p>
                         Компания «Чистота ДВ» занимается клинигом любого уровня сложности.
                     </p>
@@ -16,7 +16,7 @@
                         <span>25 000 человек!</span>
                     </p>
                 </div>
-                <div class="cta__lines decorative-lines__wrapper">
+                <div class="cta__lines decorative-lines__wrapper scroll-reveal-left">
                     {% include 'partials/contact-request-form.html' with with_header=False %}
                     <div class="decorative-lines">
                         <span class="decorative-lines__item"></span>
@@ -25,7 +25,7 @@
                     </div>
                 </div>
             </div>
-            <div class="cta-accent__img">
+            <div class="cta-accent__img scroll-reveal-right">
                 <img
                     src="{% static 'pages/images/cta/cta-team.png' %}"
                     alt="Команда"

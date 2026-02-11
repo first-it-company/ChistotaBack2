@@ -8,13 +8,13 @@
                 <div class="hero__main">
                     <div class="hero__body">
                   <div class="hero__header-inner">
-                    <h3 class="hero__header splitting-text" data-splitting>
+                    <h3 class="hero__header splitting-text scroll-reveal-left" data-splitting>
                       С нами у вас
                         <br>
                         всегда <span class="hero__header-print"></span>
                     </h3>
-                    <p class="hero__subheader">Клининговая компания №1 в Приморском крае</p>
-                    <div class="hero__review">
+                    <p class="hero__subheader scroll-reveal-left">Клининговая компания №1 в Приморском крае</p>
+                    <div class="hero__review scroll-reveal-left">
                       <a class="review-button" href="https://www.vl.ru/chistota-dv" target="_blank">
                             <img src="{% static 'pages/icons/VL.png' %}"
                                  alt="VL.ru"
@@ -55,7 +55,7 @@
                       </a>
                     </div>
                   </div>
-                    <div class="hero__subheader-wrapper">
+                    <div class="hero__subheader-wrapper scroll-reveal-left">
                       <div class="hero__button-wrapper button__wrapper">
                         <button class="button hero__button modal-open">Заказать уборку</button>
                         <button class="hero__button--arrow button--arrow modal-open">
@@ -86,10 +86,10 @@
             </div>
             <div class="hero__bottom">
                 <h2 class="hero__bottom-subtitle">
-                    Клининговая компания <span class="gradient"> У №1 в Приморском крае<span>
+                    Клининговая компания <span class="gradient"> У №1 в Приморском крае</span>
                 </h2>
                 <div class="hero__advantages">
-                    <div class="hero__advantages-card">
+                    <div class="hero__advantages-card scroll-reveal-top">
                         <div class="hero__advantages-card-left">
                             <h2 class="hero__advantages-number">
                                 50
@@ -101,19 +101,19 @@
                             <span>Успех гарантирован</span>
                         </div>
                     </div>
-                    <div class="hero__advantages-card">
+                    <div class="hero__advantages-card scroll-reveal-top">
                         <div class="hero__advantages-card-left">
                             <h2 class="hero__advantages-number">
                                 50
                             </h2>
                             <span>чел</span>
                         </div>
-                        <div class="hero__advantages-card-right">
+                        <div class="hero__advantages-card-right ">
                             <p>в команде</p>
                             <span>Успех гарантирован</span>
                         </div>
                     </div>
-                    <div class="hero__advantages-card">
+                    <div class="hero__advantages-card scroll-reveal-top">
                         <div class="hero__advantages-card-left">
                             <h2 class="hero__advantages-number">
                                 50
@@ -171,16 +171,16 @@
   <section class="cta">
     <div class="cta__inner">
       <div class="cta__main">
-        <div class="cta__title">
-          <h5 class="cta__header splitting-text" data-splitting>Закажите уборку сегодня — получите скидку 15%!</h5>
+        <div class="cta__title scroll-reveal-left">
+          <h5 class="cta__header">Закажите уборку сегодня — получите скидку 15%!</h5>
           <div class="cta__subheader">Оставьте заявку до конца недели, и наш специалист приедет в удобное время.</div>
         </div>
-        <div class="cta__socials">
+        <div class="cta__socials scroll-reveal-left">
           <p class="cta__socials-title">Подписывайся на нас в социальных сетях! Будь вкурсе всех событий</p>
           <div class="cta__socials-wrapper">
             {% if instagram_url %}
               <a href="{{ instagram_url }}" class="cta__socials-logo" target="_blank">
-                <img src="{% static "pages/icons/instagram.svg" %}"
+                <img src="{% static 'pages/icons/instagram.svg' %}"
                      alt="Instagram"
                      class="cta__logo"
                      width="100%"
@@ -190,7 +190,7 @@
             {% endif %}
             {% if telegram_url %}
               <a href="{{ telegram_url }}" class="cta__socials-logo" target="_blank">
-                <img src="{% static "pages/icons/telegram.svg" %}"
+                <img src="{% static 'pages/icons/telegram.svg' %}"
                      alt="Telegram"
                      class="cta__logo"
                       width="100%"
@@ -200,7 +200,7 @@
             {% endif %}
             {% if vk_url %}
               <a href="{{ vk_url }}" class="cta__socials-logo" target="_blank">
-                <img src="{% static "pages/icons/vk.svg" %}"
+                <img src="{% static 'pages/icons/vk.svg' %}"
                      alt="Вконтакте"
                      class="cta__logo"
                   width="100%"
@@ -210,7 +210,7 @@
             {% endif %}
             {% if whatsapp_url %}
               <a href="{{ whatsapp_url }}" class="cta__socials-logo" target="_blank">
-                <img src="{% static "pages/icons/whatsapp.svg" %}"
+                <img src="{% static 'pages/icons/whatsapp.svg' %}"
                      alt="WhatsApp"
                      class="cta__logo"
                   width="100%"
@@ -221,7 +221,7 @@
           </div>
         </div>
       </div>
-      <div class="cta__lines decorative-lines__wrapper">
+      <div class="cta__lines decorative-lines__wrapper scroll-reveal-right">
         {% include 'partials/contact-request-form.html' with with_header=True %}
         <div class="decorative-lines">
           <span class="decorative-lines__item"></span>

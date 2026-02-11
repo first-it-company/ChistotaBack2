@@ -275,22 +275,41 @@
 
   &__item {
     border-bottom: 1rem solid var(--color-gray-200);
-    padding: 16rem 0 24rem 0;
+    padding: 0;
 
-    &[open] {
+    &.is-open {
+      .faq__collapse {
+        max-height: 1000px;
+      }
+
       .faq__content {
-        max-height: 1000rem;
         opacity: 1;
+        transform: translateY(0);
       }
 
-      summary::after {
-        background-image: url('data:image/svg+xml;utf8,<svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12.5H19" stroke="%230060DF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>');
-      }
-    }
+      .faq__icon {
 
-    &[open] .faq__legend {
-      transition-duration: var(--transition-duration);
-      color: var(--color-blue);
+        &::before {
+          transform: translate(-50%, -50%) rotate(90deg);
+          opacity: 0;
+        }
+
+        &::after {
+          transform: translate(-50%, -50%) rotate(0deg);
+          background-color: var(--color-blue);
+        }
+      }
+
+      .faq__legend {
+        color: var(--color-blue);
+        padding-bottom: 16rem;
+
+        &::after {
+          opacity: 1;
+        }
+      }
+
+
     }
 
     &:last-child {
@@ -299,15 +318,23 @@
   }
 
   &__legend {
-    list-style: none;
-    cursor: pointer;
     position: relative;
-    padding-right: 16rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16rem;
+    width: 100%;
+    padding: 16rem 0 24rem 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
     outline: none;
     font-weight: 500;
     font-size: 24rem;
     text-transform: uppercase;
     color: var(--color-black);
+    text-align: left;
+    transition: color 0.3s ease, padding 0.3s ease;
 
     @include tablet {
       font-size: 22rem;
@@ -316,28 +343,66 @@
     &::after {
       content: '';
       position: absolute;
-      right: 0;
-      top: 50%;
-      width: 24rem;
-      height: 24rem;
-      background-image: url('data:image/svg+xml;utf8,<svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 5.5V19.5" stroke="%232A2A2A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /><path d="M5 12.5H19" stroke="%232A2A2A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>');
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
-      transform: translateY(-50%);
-      transition: all 0.1s ease;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1rem;
+      background-color: var(--color-blue);
+      opacity: 0;
+      transition: opacity 0.3s ease;
     }
+  }
+
+  &__icon {
+    position: relative;
+    flex-shrink: 0;
+    width: 14rem;
+    height: 14rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      background-color: var(--color-black);
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      border-radius: 5rem;
+    }
+
+    &::before {
+      width: 2rem;
+      height: 14rem;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    &::after {
+      width: 14rem;
+      height: 2rem;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  &__collapse {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
   }
 
   &__content {
     font-family: var(--font-family-accent);
     font-weight: 400;
     font-size: 18rem;
-    margin-top: 16rem;
-    max-height: 0;
-    overflow: hidden;
+    padding: 24rem 0 24rem 0;
+    margin: 0;
     opacity: 0;
-    transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    transform: translateY(-10px);
+    transition: opacity 0.2s ease 0.1s, transform 0.4s ease 0.1s;
 
     @include tablet {
       font-size: 18rem;
@@ -345,104 +410,6 @@
   }
 }
 
-// Кастомный select
-.custom-select {
-  position: relative;
-  width: 100%;
-
-  &__trigger {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    cursor: pointer;
-    transition: border-color 0.3s ease;
-    background-color: var(--color-white);
-
-    &:hover {
-      border-color: var(--color-blue);
-    }
-
-    &.is-open {
-      border-color: var(--color-blue);
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
-    }
-  }
-
-  &__placeholder {
-    color: var(--color-gray-250);
-    font-weight: 400;
-    font-size: 16rem;
-    font-family: var(--font-family-accent);
-
-    &.has-value {
-      color: var(--color-black);
-    }
-  }
-
-  &__arrow {
-    width: 12rem;
-    height: 12rem;
-    border-right: 2rem solid var(--color-gray-250);
-    border-bottom: 2rem solid var(--color-gray-250);
-    transform: rotate(45deg);
-    transition: transform 0.3s ease;
-
-    .custom-select__trigger.is-open & {
-      transform: rotate(-135deg);
-      border-color: var(--color-blue);
-    }
-  }
-
-  &__dropdown {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: var(--color-white);
-    border: 1rem solid var(--color-blue);
-    border-top: none;
-    border-radius: 0 0 rem(8) rem(8);
-    box-shadow: 0 4rem 6rem rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-    max-height: 200rem;
-    overflow-y: auto;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-10rem);
-    transition: all 0.3s ease;
-
-    &.is-open {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-  }
-
-  &__option {
-    padding: 10rem 10rem;
-    font-family: var(--font-family-accent);
-    font-weight: 400;
-    font-size: 20rem;
-    color: var(--color-black);
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-
-    &:hover {
-      background-color: var(--color-gray-50);
-    }
-
-    &:active {
-      background-color: var(--color-blue);
-      color: var(--color-white);
-    }
-
-    &.is-selected {
-      background-color: var(--color-blue);
-      color: var(--color-white);
-    }
-  }
-}
 
 .faq__socials-logo {
   width: 44rem;

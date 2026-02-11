@@ -3,8 +3,8 @@
   {% include 'partials/service.html' with is_catalog=True %}
     {% if additional_services %}
       <section class="extra-services">
-        <h2 class="h5 extra-services__header">Дополнительные Услуги</h2>
-            <div class="extra-services__cards">
+        <h2 class="h5 extra-services__header  scroll-reveal-top">Дополнительные Услуги</h2>
+            <div class="extra-services__cards ">
               {% for service in additional_services %}
                 {% include 'partials/extra-services-card.html' with service=service %}
               {% endfor %}

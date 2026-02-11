@@ -2,16 +2,16 @@
 {% load static %}
 {% block content %}
   <section class="contacts">
-    <h1 class="contacts__header">
+    <h1 class="contacts__header scroll-reveal-left">
       Контактная <span class="gradient">информация</span>
     </h1>
-    <p class="p3">
+    <p class="p3 scroll-reveal-left">
       Профессиональный клининг, который говорит сам за себя.
       <br>
       Наши услуги — это ваше время, комфорт и безупречный результат.
     </p>
     <div class="contacts__main">
-      <div class="contacts__card">
+      <div class="contacts__card scroll-reveal-left">
         <div class="contacts__main-first">
           {% if contact.address %}
             <div class="contacts__card-info">
@@ -91,14 +91,14 @@
           </div>
         </div>
       </div>
-      <div class="contacts__map">
+      <div class="contacts__map scroll-reveal-right">
         <iframe src="https://yandex.com/map-widget/v1/?um=constructor%3Aa236e0611205c6b53ac8e3db96c27cf6bdac69ba5564ac761452d3519e4cc22e&amp;source=constructor"
                 width="100%"
                 height="100%"
                 frameborder="0"></iframe>
       </div>
     </div>
-    <div class="contacts__card">
+    <div class="contacts__card scroll-reveal-top">
       <div class="h5 contacts__card-header">Реквизиты</div>
       <div class="contacts__card-company-details">
         {% if company_details.calc_account %}
