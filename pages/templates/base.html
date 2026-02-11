@@ -34,18 +34,23 @@
           href="{% static 'pages/icons/favicons/favicon.png' %}">
     <link rel="canonical" href="https://www.chistota-dv.ru/">
 
-      <link rel="stylesheet" href="{% static 'pages/main.css' %}"/>
-      <script src="{% static 'pages/main.js' %}" type="module" defer></script>
+<!--      <link rel="stylesheet" href="{% static 'pages/main.css' %}"/>-->
+<!--      <script src="{% static 'pages/main.js' %}" type="module" defer></script>-->
 
-<!--      <script type="module" src="http://localhost:5173/@vite/client"></script>-->
-<!--      <script type="module" src="http://localhost:5173/scripts/main.js"></script>-->
+      <script type="module" src="http://localhost:5173/@vite/client"></script>
+      <script type="module" src="http://localhost:5173/scripts/main.js"></script>
   </head>
   <body id='top'>
     {% include 'partials/header.html' %}
-    <main id="main" class="blurred">
-      {% block content %}{% endblock %}
-    </main>
-    {% include 'partials/footer.html' %}
+    <div id="smooth-wrapper">
+        <div id="smooth-content">
+            <main id="main" class="main">
+              {% block content %}{% endblock %}
+            </main>
+            {% include 'partials/footer.html' %}
+
+        </div>
+    </div>
     {% include "modals/modal.html" %}
     {% include "modals/modal-success.html" %}
   </body>

@@ -1,4 +1,9 @@
 import '../styles/main.scss';
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollSmoother } from "gsap/ScrollSmoother";
+gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+import initSmoothScroll from './smoothScroll.js';
 import { initTypewriterHero } from './typewriterHero.js';
 import { initTypewriterCta } from './typewritterCta.js';
 import initBrandsCarousel from './brandsCarousel.js';
@@ -13,9 +18,14 @@ import { initFooterReviewSlider } from './footerReviewSlider.js';
 import { initReviewsScroll } from './reviewsScroll.js';
 import { initCasesToggle  } from './casesToggle.js';
 import { initCaseFancybox } from './caseLightBox.js';
+import { initStackingCards } from './stackingCards.js';
+import {ScrollToPlugin} from "gsap/ScrollToPlugin";
+import {Flip} from "gsap/Flip";
 
 document.addEventListener('DOMContentLoaded', async () => {
+    initSmoothScroll();
     initTypewriterHero();
+    initStackingCards();
     initTypewriterCta();
     initBrandsCarousel();
     initScrollWordAnimation();

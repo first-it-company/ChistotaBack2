@@ -25,9 +25,9 @@
         </p>
       {% endif %}
     </div>
-    <div class="service__cards-wrapper">
+    <div class="service__cards-wrapper" data-stacking-cards>
       {% for service in services %}
-        <div class="service__card">
+        <div class="service__card" data-stacking-cards-item>
           <div class="service__card-wrapper">
             <div class="service__card-body">
               <div class="service__card-main">
@@ -66,7 +66,6 @@
                 </div>
               </div>
             </div>
-            <div class="service__splide-wrap">
               <div class="service__image">
                   {% if service.photo %}
                   <img src="{{ service.photo.url }}"
@@ -76,7 +75,6 @@
                        height="{{ service.photo.height }}rem"
                   >
                   {% endif %}
-
                   {% if service.is_popular == True %}
                   <div class="service__popular">
                       <img
@@ -87,11 +85,9 @@
                   </div>
                   {% endif %}
               </div>
-            </div>
           </div>
         </div>
       {% endfor %}
     </div>
   </div>
-</div>
 </section>

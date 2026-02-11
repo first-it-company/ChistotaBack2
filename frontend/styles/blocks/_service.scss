@@ -6,7 +6,7 @@
   }
 
   &__inner {
-    padding-block: 80rem 20rem;
+    padding-top: 80rem;
     padding-inline: 40rem;
 
     @include tablet {
@@ -59,23 +59,14 @@
     @include tablet {
       font-size: 20rem;
     }
+
+    @include mobile {
+      margin-bottom: 0;
+    }
   }
 
 
   &__cards-wrapper {
-    position: relative;
-    --card-height: auto;
-    --base-gap: 10rem;
-    --overlap-offset: -7rem;
-    --cards-count: 4;
-    --total-gap: calc(var(--base-gap) * (var(--cards-count) - 1));
-    --base-scale: 0.98;
-    --scale-step: 0.008;
-
-    width: 100%;
-    height: calc(var(--card-height) * var(--cards-count) + var(--total-gap));
-    z-index: 100;
-
     @include tablet {
       padding-inline: 1rem;
     }
@@ -84,7 +75,7 @@
   &__popular{
     position: absolute;
     top: -14rem;
-    right: 32px;
+    right: 32rem;
     z-index: 10;
     width: 72rem;
     height: 104rem;
@@ -102,57 +93,36 @@
   }
 
   &__card {
-    position: sticky;
-    top: 75rem;
+    height: 500rem;
     width: 100%;
-    height: var(--card-height);
     border-radius: 40rem;
     padding: 14rem;
-    transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-    transform-origin: center top;
+    display: flex;
     box-sizing: border-box;
     background-color: var(--color-white-bg);
-    border: 1px solid #E9EEF5;
+    border: 1rem solid #E9EEF5;
+    overflow: hidden;
 
     @include tablet {
+      height: auto;
+      min-height: 400rem;
       padding: 30rem;
       border-radius: 30rem;
     }
 
     @include mobile {
       padding: 8rem;
+      height: 100%;
       border-radius: 24rem;
     }
 
-    &:not(:first-child) {
-      margin-top: var(--base-gap);
-    }
-
-    @for $i from 1 through 5 {
-      &:nth-child(#{$i}) {
-        $scale: calc(var(--base-scale) + ($i - 1) * var(--scale-step));
-        z-index: $i;
-
-        transform: scale($scale) translateY(calc((-#{$i} - 1) * var(--overlap-offset)));
-
-        &.is-active {
-          transform: scale(calc(#{$scale} + 0.02)) translateY(calc((-#{$i} - 1) * var(--overlap-offset)));
-
-        }
-      }
-    }
-
-    @include tablet {
-      top: 90rem;
-    }
-
     &-body {
-      display: flex;
-      justify-content: space-between;
-      width: 48%;
-      gap: 40rem;
+      width: 100%;
       padding: 25rem;
-      min-height: 400rem;
+      display: flex;
+      height: 100%;
+      overflow: hidden;
+      box-sizing: border-box;
 
       @include tablet {
         flex-direction: column;
@@ -165,10 +135,13 @@
 
     &-main {
       width: 100%;
+      height: 100%;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       position: relative;
+      overflow: hidden;
+      gap: 20rem;
 
       @include tablet {
         width: 100%;
@@ -206,6 +179,7 @@
       font-family: var(--font-family-accent);
       line-height: normal;
       color: var(--color-gray-300);
+      flex: 1 1 auto;
 
       @include laptop {
         font-size: 20rem;
@@ -213,6 +187,7 @@
       }
 
       @include tablet {
+        flex: 0 0 auto;
         &.collapsed {
           display: -webkit-box;
           -webkit-line-clamp: 3;
@@ -242,10 +217,19 @@
           font-size: 12rem;
           padding: 8rem 12rem 8rem 8rem;
         }
+
+        svg{
+          width: 20rem;
+          height: 20rem;
+        }
       }
 
       @include tablet {
         margin-bottom: 32rem;
+      }
+
+      @include mobile {
+        margin-bottom: 0;
       }
     }
 
@@ -312,6 +296,7 @@
     }
 
     &-wrapper{
+
       @include mobile{
         width: 100%;
       }
@@ -362,113 +347,32 @@
     }
   }
 
-  &__progress {
-    background-color: var(--color-gray-100);
-    border-radius: 50rem;
-
-    &-wrapper {
-      display: none;
-      padding-inline: 50rem;
-      padding-top: 30rem;
-
-      @include tablet {
-        padding-top: 15rem;
-      }
-    }
-
-    &-bar {
-      background: var(--color-blue);
-      border-radius: 10rem;
-      height: 8rem;
-      transition: width 400ms ease;
-      width: 0;
-    }
-  }
-
-  &__splide {
-    transform-origin: center top;
-
-    &-wrap {
-
-    }
-
-    &-slide {
-      border-radius: 20rem;
-    }
-  }
-
   &__card-wrapper {
-    display: flex;
-    gap: 2%;
-
-    @include tablet {
-      flex-direction: column;
-    }
-  }
-
-  &__splide-wrap {
-    position: relative;
-    width: 50%;
-    overflow: hidden;
-    aspect-ratio: 1.5;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
     height: 100%;
-    border-radius: 30rem;
-    padding: 14rem;
-    background: var(--color-white);
-
-    transform: translateZ(0);
-    isolation: isolate;
-    margin: 0!important;
-
 
     @include tablet {
-      width: 100%;
-      margin: 20rem 0;
-      padding: 10rem;
-      max-height: 35vh;
-      border-radius: 24rem;
-    }
-
-    @include mobile-m {
-      max-height: 20vh;
+      grid-template-columns: 1fr;
     }
   }
 
   &__image {
-    width: 100%;
-    height: 100%;
     position: relative;
+    border-radius: 20rem;
+    height: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+
+    @include mobile {
+      height: 300rem;
+    }
 
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.5s ease;
     }
-
-    &:hover img {
-      //transform: scale(1.05);
-    }
-  }
-
-  &__card-img {
-    border-radius: 20rem;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-}
-
-@for $i from 1 through 5 {
-  .service__card:nth-child(#{$i}) .service__splide {
-    $scale: calc(var(--base-scale) + ($i - 1) * var(--scale-step));
-    $inverse-scale: calc(1 / $scale);
-    transform: scale($inverse-scale);
-  }
-
-  .service__card:nth-child(#{$i}).is-active .service__splide {
-    $scale: calc(var(--base-scale) + ($i - 1) * var(--scale-step) + 0.02);
-    $inverse-scale: calc(1 / $scale);
-    transform: scale($inverse-scale);
   }
 }
