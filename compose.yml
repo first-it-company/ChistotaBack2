@@ -1,17 +1,15 @@
 services:
   web:
-    build: .
     container_name: django_app
-    command: >
-      sh -c " python manage.py migrate &&
-              gunicorn --bind 0.0.0.0:8000 --timeout 120 --workers 3 chistota.wsgi"
+    build: .
+    entrypoint: /app/entrypoint.sh
+    ports:
+      - "8000:8000"
     volumes:
       - .:/app
       - /app/pages/static/pages
       - static_volume:/app/static
       - media_volume:/app/media
-    environment:
-      - DEBUG=False
     networks:
       - app_network
 
