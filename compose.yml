@@ -6,10 +6,10 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - .:/app
-      - /app/pages/static/pages
-      - static_volume:/app/static
-      - media_volume:/app/media
+      - './static:/app/static'
+      - './media:/app/media'
+    environment:
+      - DEBUG=False
     networks:
       - app_network
 
@@ -19,9 +19,9 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf
-      - static_volume:/app/static
-      - media_volume:/app/media
+      - './nginx.conf:/etc/nginx/nginx.conf'
+      - './static:/app/static'
+      - './media:/app/media'
     depends_on:
       - web
     networks:
@@ -29,7 +29,3 @@ services:
 
 networks:
   app_network:
-
-volumes:
-  static_volume:
-  media_volume:

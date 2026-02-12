@@ -37,12 +37,12 @@ else
   echo "No frontend directory found, skipping frontend build."
 fi
 
-# Django миграции и collectstatic
+# Django setup
 echo "Applying migrations..."
 python manage.py migrate --noinput
 
 echo "Collecting static files..."
 python manage.py collectstatic --noinput
 
-echo "Starting Django on 0.0.0.0:8000"
-python manage.py runserver 0.0.0.0:8000
+echo "Starting Gunicorn on 0.0.0.0:8000"
+gunicorn --bind 0.0.0.0:8000 --timeout 120 --workers 3 chistota.wsgi
