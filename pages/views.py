@@ -11,12 +11,10 @@ from .models import (
     Employee,
     Feedback,
     Logo,
-    OrderInfo,
     QuestionAnswer,
     ScopeServices,
     Services,
     SocialNetwork,
-    VideoMain,
     AdditionalServices
 )
 from .services import fetch_reviews_data
@@ -37,14 +35,11 @@ def home(request):
     about_main = AboutMain.objects.first()
     services = Services.objects.all().order_by("order")
     scope_services = ScopeServices.objects.all()
-    order_info = OrderInfo.objects.first()
     questions = QuestionAnswer.objects.all()
     contact = Contact.objects.first()
-    videos = VideoMain.objects.all().order_by('order')
     employee = Employee.objects.all().order_by('order')
     logo = Logo.objects.all()
 
-    # Получаем ссылки на социальные сети
     social_networks = {
         "instagram_url": (
             SocialNetwork.objects.filter(name="instagram").first().url
@@ -68,7 +63,7 @@ def home(request):
         ),
     }
 
-    # Получаем отзывы и рейтинги
+
     reviews_data = fetch_reviews_data()
     reviews_for_slider = reviews_data["reviews"]
     ratings = reviews_data["ratings"]
@@ -85,11 +80,9 @@ def home(request):
             "about_main": about_main,
             "services": services,
             "scope_services": scope_services,
-            "order_info": order_info,
             "gis_reviews_json": gis_reviews_json,
             "questions": questions,
             "contact": contact,
-            "videos": videos,
             "gis_data": {
                 "average_rating": ratings["twogis"],
                 "count": counts["twogis"],
@@ -112,6 +105,7 @@ def catalog(request):
     questions = QuestionAnswer.objects.all()
     contact = Contact.objects.first()
     additional_services = AdditionalServices.objects.all()
+    about_main = AboutMain.objects.first()
 
     # Получаем ссылки на социальные сети
     social_networks = {
@@ -154,6 +148,7 @@ def catalog(request):
             "services": services,
             "gis_reviews_json": gis_reviews_json,
             "questions": questions,
+            "about_main": about_main,
             "contact": contact,
             "additional_services": additional_services,
             "gis_data": {
@@ -174,8 +169,8 @@ def catalog(request):
 def service_detail(request, slug: str):
     service = get_object_or_404(Services, slug=slug)
     contact = Contact.objects.first()
-    order_info = OrderInfo.objects.first()
     questions = QuestionAnswer.objects.all()
+    about_main = AboutMain.objects.first()
 
     social_networks = {
         "instagram_url": (
@@ -215,8 +210,8 @@ def service_detail(request, slug: str):
         "service_detail.html",
         {
             "service": service,
-            "order_info": order_info,
             "contact": contact,
+            "about_main": about_main,
             "gis_reviews_json": gis_reviews_json,
             "questions": questions,
             "gis_data": {
@@ -238,6 +233,7 @@ def contacts(request):
     questions = QuestionAnswer.objects.all()
     contact = Contact.objects.first()
     company_details = CompanyDetails.objects.first()
+    about_main = AboutMain.objects.first()
 
     social_networks = {
         "instagram_url": (
@@ -279,6 +275,7 @@ def contacts(request):
         {
             "gis_reviews_json": gis_reviews_json,
             "questions": questions,
+            "about_main": about_main,
             "contact": contact,
             "company_details": company_details,
             "gis_data": {
@@ -297,12 +294,12 @@ def contacts(request):
 
 
 def about_us(request):
-    about_main = AboutMain.objects.first()
     questions = QuestionAnswer.objects.all()
     contact = Contact.objects.first()
     company_details = CompanyDetails.objects.first()
     employee = Employee.objects.all().order_by('order')
     logo = Logo.objects.all()
+    about_main = AboutMain.objects.first()
 
     social_networks = {
         "instagram_url": (

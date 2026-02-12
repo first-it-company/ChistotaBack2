@@ -92,7 +92,7 @@
                     <div class="hero__advantages-card scroll-reveal-top">
                         <div class="hero__advantages-card-left">
                             <h2 class="hero__advantages-number">
-                                50
+                                {{ about_main.cnt_people }}
                             </h2>
                             <span>чел</span>
                         </div>
@@ -104,25 +104,25 @@
                     <div class="hero__advantages-card scroll-reveal-top">
                         <div class="hero__advantages-card-left">
                             <h2 class="hero__advantages-number">
-                                50
+                                {{ about_main.cnt_year }}
                             </h2>
-                            <span>чел</span>
+                            <span>лет</span>
                         </div>
                         <div class="hero__advantages-card-right ">
-                            <p>в команде</p>
-                            <span>Успех гарантирован</span>
+                            <p>Опыта в этой сфере</p>
+                            <span>Работаем с 2019</span>
                         </div>
                     </div>
                     <div class="hero__advantages-card scroll-reveal-top">
                         <div class="hero__advantages-card-left">
                             <h2 class="hero__advantages-number">
-                                50
+                                {{ about_main.cnt_square }}
                             </h2>
-                            <span>чел</span>
+                            <span>тыс. м2</span>
                         </div>
                         <div class="hero__advantages-card-right">
-                            <p>в команде</p>
-                            <span>Успех гарантирован</span>
+                            <p>Вычищаем в месяц</p>
+                            <span>В надежных руках</span>
                         </div>
                     </div>
                 </div>
@@ -141,12 +141,12 @@
                     <div class="splide__slide other-carousel__slide other-carousel__button modal-open">
                         Заказать
                     </div>
-                    {% for scope in scope_services|slice:"5:10" %}
+                    {% for scope in scope_services|slice:"1:10" %}
                         <div class="other-carousel__slide splide__slide">
                             {{ scope.name }}
                         </div>
                     {% endfor %}
-                    {% for scope in scope_services|slice:"5:10" %}
+                    {% for scope in scope_services|slice:"1:10" %}
                         <div class="other-carousel__slide splide__slide">{{ scope.name }}</div>
                     {% endfor %}
                 </div>
@@ -155,13 +155,10 @@
         <div class="splide" data-service-splide-right>
             <div class="splide__track ">
                 <div class="splide__list other-carousel__list">
-                    {% for scope in scope_services|slice:"5:10" %}
+                    {% for scope in scope_services %}
                     <div class="other-carousel__slide splide__slide">
                         {{ scope.name }}
                     </div>
-                    {% endfor %}
-                    {% for scope in scope_services|slice:"5:10" %}
-                    <div class="other-carousel__slide splide__slide">{{ scope.name }}</div>
                     {% endfor %}
                 </div>
             </div>

@@ -5,7 +5,7 @@
             <h2 class="cases__title scroll-reveal-left">
                 Мы выполнили<br>
                 <span class="gradient">
-                    >8 300 заказов
+                    >{{ about_main.cnt_order }} заказов
                 </span>
             </h2>
             <p class="cases__subtitle scroll-reveal-right">
@@ -26,7 +26,7 @@
                     <div class="cases__stats">
                         <div class="cases__stats-header">
                             <h3 class="cases__stats-title">
-                                960
+                                {{ about_main.cnt_order }}
                             </h3>
                             <p class="cases__stats-subtitle">
                                 Заказов выполнили за 2025 год
@@ -117,14 +117,14 @@
                     <div class="cases__stats">
                         <div class="cases__stats-header">
                             <h3 class="cases__stats-title">
-                                960
+                                {{ about_main.clients }}% клиентов
                             </h3>
                             <p class="cases__stats-subtitle">
-                                Заказов выполнили за 2025 год
+                                Приходят к нам по рекомендации!
                             </p>
                         </div>
                         <span class="cases__stats-tag">
-                            Опыт и профессионализм
+                            Доверие в цифрах
                         </span>
                         <img
                             src="{% static '/pages/images/cases/icon-2.png' %}"

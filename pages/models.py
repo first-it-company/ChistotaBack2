@@ -1,11 +1,8 @@
-from email.policy import default
-
 from django.db import models
 from django.urls import reverse
 from imagekit.models import ProcessedImageField
 from slugify import slugify
 from transliterate import translit
-
 
 def slugify_rus(text):
     try:
@@ -16,17 +13,32 @@ def slugify_rus(text):
 class AboutMain(models.Model):
     cnt_people = models.CharField(
         max_length=50,
+        default=50,
         verbose_name="Кол-во человек в команде"
+    )
+
+    cnt_cleaners = models.CharField(
+        max_length=50,
+        default=20,
+        verbose_name="Кол-во клинеров"
+    )
+
+    cnt_managers = models.CharField(
+        max_length=50,
+        default=7,
+        verbose_name="Кол-во менеджеров"
     )
 
     cnt_year = models.CharField(
         max_length=50,
+        default=20,
         verbose_name="Кол-во лет работы в сфере"
     )
 
     cnt_square = models.CharField(
         max_length=50,
-        verbose_name="Кол-во кв.метров чистки"
+        default=20,
+        verbose_name="Кол-во тыс. кв.метров чистки"
     )
 
     cnt_reviews= models.CharField(
@@ -36,28 +48,43 @@ class AboutMain(models.Model):
         help_text="Число на странице 'О компании' в подзаголовке 'довольными остались свыше 25 000 человек!'"
     )
 
+    cnt_order = models.IntegerField(
+        default="8300",
+        verbose_name="Кол-во выполненных заказов"
+    )
+
+
+    clients = models.IntegerField(
+        default="98",
+        verbose_name="Сколько процентов клиентов приходят по рекомендации"
+    )
+
     class Meta:
-        verbose_name = "Информация о компании"
-        verbose_name_plural = "Информация о компании"
+        verbose_name = "Статистика о компании"
+        verbose_name_plural = "Статистика о компании"
 
     def __str__(self):
         return f"{self.cnt_people} | {self.cnt_year} | {self.cnt_square} | {self.cnt_reviews}"
 
 
 class ScopeServices(models.Model):
-    name = models.CharField(max_length=250, verbose_name="Название сферы услуг")
+    name = models.CharField(
+        max_length=250,
+        verbose_name="Название сферы услуг"
+    )
 
     class Meta:
-        verbose_name = "Сфера услуг"
-        verbose_name_plural = "Сферы услуг"
+        verbose_name = "Услуги для карусели"
+        verbose_name_plural = "Услуги для карусели"
 
     def __str__(self):
         return self.name
 
 
 class Services(models.Model):
-    scope = models.ForeignKey(
-        ScopeServices, on_delete=models.CASCADE, verbose_name="Сфера"
+    name = models.CharField(
+        max_length=250,
+        verbose_name="Название услуги"
     )
 
     slug = models.SlugField(
@@ -68,6 +95,7 @@ class Services(models.Model):
         editable=False,
         blank=True
     )
+
     desc = models.TextField(
         verbose_name="Описание"
     )
@@ -113,10 +141,10 @@ class Services(models.Model):
         verbose_name_plural = "Услуги"
 
     def __str__(self):
-        return self.scope.name
+        return self.name
 
     def _generate_unique_slug(self):
-        base_slug = slugify_rus(self.scope.name)
+        base_slug = slugify_rus(self.name)
         slug = base_slug
         counter = 1
         while Services.objects.filter(slug=slug).exclude(pk=self.pk).exists():
@@ -133,10 +161,9 @@ class Services(models.Model):
         super().save(*args, **kwargs)
 
 class AdditionalServices(models.Model):
-    scope = models.ForeignKey(
-        ScopeServices,
-        on_delete=models.CASCADE,
-        verbose_name="Сфера"
+    name = models.TextField(
+        max_length=150,
+        verbose_name="Название дополнительной услуги"
     )
 
     desc = models.TextField(
@@ -145,8 +172,8 @@ class AdditionalServices(models.Model):
     )
 
     class Meta:
-        verbose_name = "Дополнительная услуга"
-        verbose_name_plural = "Дополнительные услуги"
+        verbose_name = "Услуги дополнительные"
+        verbose_name_plural = "Услуги дополнительные"
 
     def __str__(self):
         return f"{self.scope.name} | {self.desc}"
@@ -158,8 +185,15 @@ class ServiceInclusion(models.Model):
         on_delete=models.CASCADE,
         verbose_name="Услуга",
     )
-    header = models.CharField(max_length=255, verbose_name="Заголовок")
-    description = models.TextField(verbose_name="Описание")
+
+    header = models.CharField(
+        max_length=255,
+        verbose_name="Заголовок"
+    )
+
+    description = models.TextField(
+        verbose_name="Описание"
+    )
 
     class Meta:
         verbose_name = "Что входит в услугу"
@@ -168,21 +202,14 @@ class ServiceInclusion(models.Model):
     def __str__(self):
         return self.header
 
-
-class OrderInfo(models.Model):
-    cnt_order = models.IntegerField(verbose_name="Кол-во выполненных заказов")
-
-    class Meta:
-        verbose_name = "Информация о заказе"
-        verbose_name_plural = "Информация о заказах"
-
-    def __str__(self):
-        return f"Кол-во выполненных заказов: {self.cnt_order}"
-
-
 class QuestionAnswer(models.Model):
-    question = models.TextField(verbose_name="Вопрос")
-    answer = models.TextField(verbose_name="Ответ")
+    question = models.TextField(
+        verbose_name="Вопрос",
+
+    )
+    answer = models.TextField(
+        verbose_name="Ответ"
+    )
 
     class Meta:
         verbose_name = "Вопрос-Ответ"
@@ -193,13 +220,34 @@ class QuestionAnswer(models.Model):
 
 
 class Contact(models.Model):
-    phone = models.CharField(max_length=50, verbose_name="Телефон", blank=True)
-    city = models.CharField(max_length=100, verbose_name="Город", blank=True)
-    address = models.CharField(max_length=255, verbose_name="Адрес", blank=True)
-    work_schedule = models.CharField(
-        max_length=255, verbose_name="График работы", blank=True
+    phone = models.CharField(
+        max_length=50,
+        verbose_name="Телефон",
+        blank=True
     )
-    email = models.EmailField(verbose_name="Электронная почта", blank=True)
+
+    city = models.CharField(
+        max_length=100,
+        verbose_name="Город",
+        blank=True
+    )
+
+    address = models.CharField(
+        max_length=255,
+        verbose_name="Адрес",
+        blank=True
+    )
+
+    work_schedule = models.CharField(
+        max_length=255,
+        verbose_name="График работы",
+        blank=True
+    )
+
+    email = models.EmailField(
+        verbose_name="Электронная почта",
+        blank=True
+    )
 
     class Meta:
         verbose_name = "Контактная информация"
@@ -213,13 +261,36 @@ class CompanyDetails(models.Model):
     calc_account = models.CharField(
         max_length=100, verbose_name="Расчётный счёт", blank=True
     )
-    TIN = models.CharField(max_length=100, verbose_name="ИНН", blank=True)
-    bank = models.CharField(max_length=100, verbose_name="Название Банка", blank=True)
-    BIC = models.CharField(max_length=100, verbose_name="БИК", blank=True)
-    correspondent_account = models.CharField(
-        max_length=100, verbose_name="Корреспондентский счёт", blank=True
+
+    TIN = models.CharField(
+        max_length=100,
+        verbose_name="ИНН",
+        blank=True
     )
-    name = models.CharField(max_length=100, verbose_name="Наименование", blank=True)
+
+    bank = models.CharField(
+        max_length=100,
+        verbose_name="Название Банка",
+        blank=True
+    )
+
+    BIC = models.CharField(
+        max_length=100,
+        verbose_name="БИК",
+        blank=True
+    )
+
+    correspondent_account = models.CharField(
+        max_length=100,
+        verbose_name="Корреспондентский счёт",
+        blank=True
+    )
+
+    name = models.CharField(
+        max_length=100,
+        verbose_name="Наименование",
+        blank=True
+    )
 
     class Meta:
         verbose_name = "Реквизиты"
@@ -230,9 +301,21 @@ class CompanyDetails(models.Model):
 
 
 class Feedback(models.Model):
-    name = models.CharField(max_length=250, verbose_name="Имя")
-    phone = models.CharField(max_length=50, verbose_name="Телефон")
-    message = models.TextField(verbose_name="Сообщение/вопрос", null=True, blank=True)
+    name = models.CharField(
+        max_length=250,
+        verbose_name="Имя"
+    )
+
+    phone = models.CharField(
+        max_length=50,
+        verbose_name="Телефон"
+    )
+
+    message = models.TextField(
+        verbose_name="Сообщение/вопрос",
+        null=True,
+        blank=True
+    )
 
     class Meta:
         verbose_name = "Заявка"
@@ -242,22 +325,6 @@ class Feedback(models.Model):
         return f"{self.name} | {self.phone}"
 
 
-class VideoMain(models.Model):
-    name = models.TextField(verbose_name="Заголовок к видео")
-    video = models.FileField(upload_to="videos")
-    order = models.IntegerField(
-        verbose_name="Порядок",
-        default=1,
-    )
-
-    class Meta:
-        verbose_name = "Видео на главном экране"
-        verbose_name_plural = "Видео на главном экране"
-
-    def __str__(self):
-        return self.name
-
-
 class Employee(models.Model):
     photo = ProcessedImageField(
         upload_to="employee",
@@ -265,12 +332,17 @@ class Employee(models.Model):
         options={"quality": 80},
         verbose_name="Фото",
     )
-    name = models.TextField(verbose_name="ФИО")
-    position = models.CharField(max_length=500, verbose_name="Должность")
-    description = models.TextField(blank=True, verbose_name="Описание")
-    experience = models.PositiveSmallIntegerField(
-        blank=True, null=True, verbose_name="Стаж"
+
+    name = models.TextField(
+        max_length=50,
+        verbose_name="ФИО"
     )
+
+    position = models.CharField(
+        max_length=50,
+        verbose_name="Должность"
+    )
+
     order = models.IntegerField(
         default=1,
         verbose_name="Порядок"
@@ -283,36 +355,30 @@ class Employee(models.Model):
     def __str__(self):
         return self.name
 
-    def experience_display(self):
-        if self.experience is None:
-            return
-
-        n = self.experience
-        if 11 <= n % 100 <= 14:
-            word = "лет"
-        else:
-            last_digit = n % 10
-            if last_digit == 1:
-                word = "год"
-            elif last_digit in (2, 3, 4):
-                word = "года"
-            else:
-                word = "лет"
-        return f"{n} {word}"
-
 class Logo(models.Model):
     photo = ProcessedImageField(
-        upload_to="logo", format="WEBP", options={"quality": 80}, verbose_name="Лого"
+        upload_to="logo",
+        format="WEBP",
+        options={"quality": 80},
+        verbose_name="Логотип"
     )
 
     class Meta:
-        verbose_name = "Лого для блока Нас Выбирают"
-        verbose_name_plural = "Лого для блока Нас Выбирают"
+        verbose_name = "Клиенты (блок 'Нас выбирают')"
+        verbose_name_plural = "Клиенты (блок 'Нас выбирают')"
 
 
 class SocialNetwork(models.Model):
-    name = models.CharField(max_length=100, verbose_name="Название соцсети")
-    url = models.URLField(verbose_name="Ссылка на соцсеть", null=True, blank=True)
+    name = models.CharField(
+        max_length=100,
+        verbose_name="Название соцсети"
+    )
+
+    url = models.URLField(
+        verbose_name="Ссылка на соцсеть",
+        null=True,
+        blank=True
+    )
 
     class Meta:
         verbose_name = "Социальная сеть"
