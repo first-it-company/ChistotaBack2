@@ -6,7 +6,7 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - './db:/app'
+      - './db.sqlite3:/app/db.sqlite3'
       - './static:/app/static'
       - './media:/app/media'
     environment:
