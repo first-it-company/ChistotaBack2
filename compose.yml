@@ -6,6 +6,7 @@ services:
     ports:
       - "8000:8000"
     volumes:
+      - './db:/app'
       - './static:/app/static'
       - './media:/app/media'
     environment:
