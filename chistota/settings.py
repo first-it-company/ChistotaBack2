@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-go9w%!m)9&61rp3r)wd0-u^d6*^9mn_+qa4lnglxmhg=_2t*99'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 ALLOWED_HOSTS = ['127.0.0.1', '85.209.9.241', 'localhost']
 
 mimetypes.add_type("video/mp4", ".mp4", True)
@@ -79,6 +79,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'pages.context_processors.debug_context',
             ],
         },
     },

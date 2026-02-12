@@ -13,7 +13,7 @@ db.sqlite3
 /media/
 /static/
 
-/node_modules/
+./node_modules/
 node_modules/
 
 logs/

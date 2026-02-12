@@ -36,11 +36,16 @@
           href="{% static 'pages/icons/favicons/favicon.png' %}">
     <link rel="canonical" href="https://www.chistota-dv.ru/">
 
-      <link rel="stylesheet" href="{% static 'pages/main.css' %}"/>
-      <script src="{% static 'pages/main.js' %}" type="module" defer></script>
 
-<!--      <script type="module" src="http://localhost:5173/@vite/client"></script>-->
-<!--      <script type="module" src="http://localhost:5173/scripts/main.js"></script>-->
+
+      {% if DEBUG %}
+          <script type="module" src="http://localhost:5173/@vite/client"></script>
+          <script type="module" src="http://localhost:5173/scripts/main.js"></script>
+      {% else %}
+          <link rel="stylesheet" href="{% static 'pages/main.css' %}"/>
+          <script src="{% static 'pages/main.js' %}" type="module" defer></script>
+      {% endif %}
+
   </head>
   <body id='top'>
     {% include 'partials/header.html' %}
