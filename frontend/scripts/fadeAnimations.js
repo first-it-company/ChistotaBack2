@@ -15,12 +15,6 @@ export function initScrollReveal() {
         onEnter: batch => gsap.to(batch, { y: 0, ...revealConfig }),
     });
 
-    gsap.set(".scroll-reveal", { opacity: 0, y: '30rem' });
-    ScrollTrigger.batch(".scroll-reveal", {
-        start: "top 75%",
-        onEnter: batch => gsap.to(batch, { y: 0, ...revealConfig }),
-    });
-
     gsap.set(".scroll-reveal-left", { opacity: 0, x: '-50rem' });
     ScrollTrigger.batch(".scroll-reveal-left", {
         start: "top 75%",

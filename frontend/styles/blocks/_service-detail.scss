@@ -2,12 +2,12 @@
 
 .service-detail {
   padding-block: 40rem 80rem;
-  height: 90vh;
-  min-height: 750rem;
+  height: 95vh;
+  min-height: 670rem;
   padding-inline: 40rem;
   display: grid;
   grid-template-columns: 2fr 1fr;
-  gap: 44rem;
+  gap: 16rem;
 
   @include tablet{
     height: auto;

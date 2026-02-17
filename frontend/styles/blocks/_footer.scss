@@ -19,13 +19,13 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: url('/static/pages/back.png') 0 0 / cover no-repeat;
+      background: url('/static/pages/back.webp') 0 0 / cover no-repeat;
       z-index: -1;
       pointer-events: none;
       border-radius: 40rem 40rem 0rem 0rem;
 
       @include mobile {
-        background: url('/static/pages/back.png') 0 0 / cover no-repeat;
+        background: url('/static/pages/back.webp') 0 0 / cover no-repeat;
       }
     }
 

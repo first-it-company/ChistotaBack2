@@ -1,7 +1,7 @@
 @use "../helpers" as *;
 
 .cta {
-  background: url("/static/pages/images/cta/background.png") 0 0 / cover no-repeat;
+  background: url("/static/pages/images/cta/background.webp") 0 0 / cover no-repeat;
 
   @include tablet {
     background: none;

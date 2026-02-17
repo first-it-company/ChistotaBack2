@@ -176,7 +176,7 @@ class AdditionalServices(models.Model):
         verbose_name_plural = "Услуги дополнительные"
 
     def __str__(self):
-        return f"{self.scope.name} | {self.desc}"
+        return f"{self.name} | {self.desc}"
 
 class ServiceInclusion(models.Model):
     service = models.ForeignKey(

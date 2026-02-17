@@ -34,8 +34,29 @@ export function initTeamSlider() {
 
   const prevButton = document.querySelector('.team__controls-prev');
   const nextButton = document.querySelector('.team__controls-next');
+  const currentSlideEl = document.querySelector('[data-team-current]');
+  const totalSlidesEl = document.querySelector('[data-team-total]');
 
-  splide.mount();
+  function updateCounter(splide) {
+        const current = splide.index + 1;
+        const total = splide.length;
+
+        if (currentSlideEl) {
+            currentSlideEl.textContent = current;
+        }
+        if (totalSlidesEl) {
+            totalSlidesEl.textContent = total;
+        }
+  }
+
+  splide.on('mounted', () => {
+        updateCounter(splide);
+  });
+
+  splide.on('move', () => {
+        updateCounter(splide);
+  });
+
   if (prevButton) {
     prevButton.addEventListener('click', () => {
       splide.go('<');
@@ -48,5 +69,6 @@ export function initTeamSlider() {
     });
   }
 
+  splide.mount();
   return splide;
 }

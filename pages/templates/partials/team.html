@@ -44,7 +44,12 @@
               <button class="team__controls-prev controls__button controls__prev">
                   <img src="{% static '/pages/icons/arrow-left.svg' %}" alt="Назад" class="controls__img" width="24" height="24">
               </button>
-              <p class="team__controls-counter">02<span>/06</span></p>
+              <div class="team__controls-counter">
+                  <p class="team_controls-current" data-team-current></p>
+                  <span>/</span>
+                  <span data-team-total>
+                  </span>
+              </div>
               <button class="team__controls-next controls__button controls__next">
                   <img src="{% static '/pages/icons/arrow-right.svg' %}" alt="Вперед" class="controls__img" width="24" height="24">
               </button>

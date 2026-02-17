@@ -41,7 +41,7 @@
     &:after{
       content: "";
       position: absolute;
-      background: url("/static/pages/images/cases/icon.png") center center no-repeat;
+      background: url("/static/pages/images/cases/icon.webp") center center no-repeat;
       width: 109rem;
       height: 109rem;
       background-size: contain;
@@ -82,7 +82,7 @@
   }
 
   &__stats{
-    background: var(--color-black) url("/static/pages/images/cta-request/background.png") center center no-repeat;
+    background: var(--color-black) url("/static/pages/images/cta-request/background.webp") center center no-repeat;
     background-size: cover;
     border-radius: 24rem;
     display: flex;

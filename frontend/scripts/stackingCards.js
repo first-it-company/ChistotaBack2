@@ -13,7 +13,7 @@ export function initStackingCards() {
     };
 
     const CARD_GAP = 30;
-    const TOP_OFFSET = 0;
+    const TOP_OFFSET = 30;
     const scaleStep = 0.025;
     const cardCount = cards.length;
 
@@ -25,7 +25,7 @@ export function initStackingCards() {
             force3D: true,
         });
 
-        const totalHeight = (CARD_HEIGHT * cards.length) + (CARD_GAP * (cards.length - 1)) + CARD_HEIGHT;
+        const totalHeight = (CARD_HEIGHT * cardCount) + (CARD_GAP * (cardCount - 1)) + CARD_HEIGHT;
         wrapper.style.minHeight = `${totalHeight}px`;
 
         const triggers = [];
@@ -34,7 +34,7 @@ export function initStackingCards() {
             const reverseIndex = cardCount - i;
             const targetScale = 1 - (reverseIndex * scaleStep);
             const startOffset = TOP_OFFSET + (i * CARD_GAP);
-            const pinDuration = CARD_HEIGHT * reverseIndex;
+            const pinDuration = CARD_HEIGHT * reverseIndex
 
             const scaleTween = gsap.to(card, {
                 scrollTrigger: {
