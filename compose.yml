@@ -19,6 +19,7 @@ services:
     ports:
       - "80:80"
     volumes:
+      - './db:/app/db.sqlite3'
       - './nginx.conf:/etc/nginx/nginx.conf'
       - './static:/app/static'
       - './media:/app/media'

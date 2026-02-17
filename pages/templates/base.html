@@ -43,7 +43,7 @@
           <script type="module" src="http://localhost:5173/@vite/client"></script>
           <script type="module" src="http://localhost:5173/scripts/main.js"></script>
       {% else %}
-          <script src="{% static 'pages/critical.js' %}"></script>
+          <script src="{% static 'pages/critical.js' %}" type="module"></script>
           <link rel="stylesheet" href="{% static 'pages/main.css' %}"/>
           <script src="{% static 'pages/main.js' %}" type="module" defer></script>
       {% endif %}
