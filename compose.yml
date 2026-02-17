@@ -8,6 +8,7 @@ services:
     volumes:
       - './static:/app/static'
       - './media:/app/media'
+      - './db.sqlite3:/app/db.sqlite3'
     environment:
       - DEBUG=False
     networks:
@@ -19,7 +20,7 @@ services:
     ports:
       - "80:80"
     volumes:
-      - './db:/app/db.sqlite3'
+
       - './nginx.conf:/etc/nginx/nginx.conf'
       - './static:/app/static'
       - './media:/app/media'
