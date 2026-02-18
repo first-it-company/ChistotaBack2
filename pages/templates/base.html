@@ -5,49 +5,73 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Чистота</title>
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="Чистота ДВ">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="Чистота ДВ">
     <meta name="msapplication-TileColor" content="#009BE5">
-
-    <meta property="og:title" content="Чистота ДВ">
-    <meta property="og:description"
-          content="Профессиональный клининг для дома и офиса с гарантией качества.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://chistota-dv.ru/">
-    <meta property="og:image" content="/og-image.jpg">
-
-    <meta name="currency" content="ruble">
     <meta name="theme-color" content="#009BE5">
-    <meta name="description"
-          content="Профессиональный клининг во Владивостоке: уборка квартир, уборка офисов, генеральная уборка, послеремонтная уборка. Надежная клининговая компания с опытом.">
     <meta name="author" content="Чистота ДВ">
-    <meta name="copyright" content="© 2025 ЧИСТОТА ДВ">
-    <title>Услуги клининга во Владивостоке — профессиональная уборка квартир и офисов</title>
+    <meta name="copyright" content="© 2026 ЧИСТОТА ДВ">
+
+    <title>{% block title %}Чистота ДВ — Клининговая компания №1 в Приморском крае{% endblock %}</title>
+    <meta name="description"
+            content="{% block description %}Чистота ДВ - профессиональный клининг во Владивостоке: уборка квартир, уборка офисов, генеральная уборка, послеремонтная уборка. Надежная клининговая компания с опытом.{% endblock %}">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{% block og_title %}Чистота ДВ — Клининговая компания №1 в Приморском крае{% endblock %}">
+    <meta property="og:description"
+          content="{% block og_description %}Чистота ДВ - профессиональный клининг во Владивостоке: уборка квартир, уборка офисов, генеральная уборка, послеремонтная уборка. Надежная клининговая компания с опытом.{% endblock %}">
+    <meta property="og:site_name" content="Чистота ДВ">
+    <meta property="og:url" content="http://85.209.9.241/">
+    <meta property="og:image" content="{% static 'pages/icons/favicons/favicon.png' %}">
+    <meta property="og:locale" content="ru_RU">
+
     <link rel="icon" sizes="32x32" href="{% static 'pages/favicon.svg' %}">
-    <link rel="icon"
-          sizes="32x32"
-          href="{% static 'pages/icons/favicons/favicon.svg' %}"
-          type="image/svg+xml">
-    <link rel="apple-touch-icon"
-          sizes="180x180"
-          href="{% static 'pages/icons/favicons/favicon.png' %}">
-    <link rel="canonical" href="https://www.chistota-dv.ru/">
+    <link rel="icon" sizes="32x32" href="{% static 'pages/icons/favicons/favicon.svg' %}" type="image/svg+xml">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'pages/icons/favicons/favicon.png' %}">
+    <link rel="canonical" href="http://85.209.9.241/">
 
+    {% if DEBUG %}
+      <script type="module" src="http://localhost:5173/@vite/client"></script>
+      <script type="module" src="http://localhost:5173/scripts/main.js"></script>
+    {% else %}
+      <link rel="stylesheet" href="{% static 'pages/main.css' %}"/>
+      <script src="{% static 'pages/main.js' %}" type="module" defer></script>
+    {% endif %}
 
+<!--    <script type="application/ld+json">-->
+<!--      {-->
+<!--          "@context": "https://schema.org",-->
+<!--          "@type": "Organization",-->
+<!--          "name": "OOO «ЧИСТОТА ДВ»",-->
+<!--          "url": "http://85.209.9.241/",-->
+<!--          "logo": "http://85.209.9.241/static/pages/icons/favicons/favicon.png",-->
+<!--          "description": "Профессиональный клининг во Владивостоке: уборка квартир, уборка офисов, генеральная уборка, послеремонтная уборка. Надежная клининговая компания с опытом.",-->
+<!--          "contactPoint": {-->
+<!--              "@type": "ContactPoint",-->
+<!--              "telephone": "+79140771005",-->
+<!--              "contactType": "sales",-->
+<!--              "areaServed": "RU",-->
+<!--              "availableLanguage": "Russian"-->
+<!--          },-->
+<!--          "sameAs": [-->
+<!--              "https://t.me/+79140771005"-->
+<!--          ]-->
+<!--      }-->
+<!--    </script>-->
 
-      {% if DEBUG %}
-          <script type="module" src="http://localhost:5173/scripts/critical.js"></script>
-          <script type="module" src="http://localhost:5173/@vite/client"></script>
-          <script type="module" src="http://localhost:5173/scripts/main.js"></script>
-      {% else %}
-          <script src="{% static 'pages/critical.js' %}" type="module"></script>
-          <link rel="stylesheet" href="{% static 'pages/main.css' %}"/>
-          <script src="{% static 'pages/main.js' %}" type="module" defer></script>
-      {% endif %}
+<!--      <script type="application/ld+json">-->
+<!--          {-->
+<!--              "@context": "https://schema.org",-->
+<!--              "@type": "WebSite",-->
+<!--              "name": "OOO «ЧИСТОТА ДВ»",-->
+<!--              "url": "http://85.209.9.241/"-->
+<!--          }-->
+<!--      </script>-->
 
+      {% block extra_head %}
+      {% endblock %}
   </head>
   <body id='top'>
     {% include 'partials/header.html' %}
@@ -62,5 +86,6 @@
     </div>
     {% include "modals/modal.html" %}
     {% include "modals/modal-success.html" %}
+    <script src="{% static 'pages/critical.js' %}" type="module"></script>
   </body>
 </html>

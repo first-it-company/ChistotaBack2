@@ -1,0 +1,9 @@
+User-agent: Yandex
+Allow: /
+Disallow: /admin/
+
+User-agent: *
+Allow: /
+Disallow: /admin/
+
+Sitemap: http://85.209.9.241/sitemap.xml

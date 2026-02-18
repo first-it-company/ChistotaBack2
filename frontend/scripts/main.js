@@ -4,7 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
-// import initSmoothScroll from './smoothScroll.js';
+import initSmoothScroll from './smoothScroll.js';
 import { initTypewriterHero } from './typewriterHero.js';
 import { initTypewriterCta } from './typewritterCta.js';
 import initBrandsCarousel from './brandsCarousel.js';
@@ -24,7 +24,7 @@ import initFaqAccordion from "@/scripts/accordion.js";
 import {initScrollReveal} from "@/scripts/fadeAnimations.js";
 
 document.addEventListener('DOMContentLoaded', async () => {
-    // initSmoothScroll();
+    initSmoothScroll();
     initTypewriterHero();
     initStackingCards();
     initTypewriterCta();

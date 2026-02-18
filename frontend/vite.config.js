@@ -10,7 +10,6 @@ export default defineConfig({
     rollupOptions: {
       input: {
           main: resolve(__dirname, 'scripts/main.js'),
-          critical: resolve(__dirname, 'scripts/critical.js'),
       },
         output: {
             entryFileNames: '[name].js',

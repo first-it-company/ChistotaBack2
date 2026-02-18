@@ -40,9 +40,9 @@
                   </div>
               </div>
           </div>
-          <div class="team__controls controls scroll-reveal-right">
+          <div class="team__controls controls scroll-reveal-right" aria-label="Назад">
               <button class="team__controls-prev controls__button controls__prev">
-                  <img src="{% static '/pages/icons/arrow-left.svg' %}" alt="Назад" class="controls__img" width="24" height="24">
+                  <img src="{% static '/pages/icons/arrow-left.svg' %}" alt="Назад" class="controls__img" width="24" height="24" loading="lazy">
               </button>
               <div class="team__controls-counter">
                   <p class="team_controls-current" data-team-current></p>
@@ -50,8 +50,8 @@
                   <span data-team-total>
                   </span>
               </div>
-              <button class="team__controls-next controls__button controls__next">
-                  <img src="{% static '/pages/icons/arrow-right.svg' %}" alt="Вперед" class="controls__img" width="24" height="24">
+              <button class="team__controls-next controls__button controls__next" aria-label="Вперед">
+                  <img src="{% static '/pages/icons/arrow-right.svg' %}" alt="Вперед" class="controls__img" width="24" height="24" loading="lazy">
               </button>
           </div>
       </div>
@@ -62,10 +62,10 @@
           <li class="team__splide-slide splide__slide">
               <div class="team__splide-img">
                   <img src="{{ emp.photo.url }}"
-                         alt=""
-                         class="team__img"
-                         width="437"
-                         height="560"
+                     alt="Фото {{ emp.name }}"
+                     class="team__img"
+                     width="437"
+                     height="560" loading="lazy"
                     >
               </div>
             <div class="team__slide-info">

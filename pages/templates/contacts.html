@@ -1,5 +1,18 @@
 {% extends 'base.html' %}
 {% load static %}
+
+{% block extra_head %}
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ContactPage",
+        "name": "Контакты — OOO «ЧИСТОТА ДВ»",
+        "description": "Свяжитесь с нами для заказа профессиональных клининговых услуг во Владивостоке: уборка квартир, уборка офисов, генеральная уборка, послеремонтная уборка",
+        "url": "http://85.209.9.241/contacts/"
+    }
+</script>
+{% endblock %}
+
 {% block content %}
   <section class="contacts">
     <h1 class="contacts__header scroll-reveal-left">
@@ -50,7 +63,7 @@
                      alt="whatsapp"
                      class=""
                      width="100%"
-                     height="100%">
+                     height="100%" loading="lazy">
               </a>
             {% endif %}
             {% if vk_url %}
@@ -59,7 +72,7 @@
                      alt="Вконтакте"
                      class=""
                      width="100%"
-                     height="100%">
+                     height="100%" loading="lazy">
               </a>
             {% endif %}
             {% if telegram_url %}
@@ -70,7 +83,7 @@
                      alt="Telegram"
                      class=""
                      width="100%"
-                     height="100%">
+                     height="100%" loading="lazy">
               </a>
             {% endif %}
             {% if instagram_url %}
@@ -81,7 +94,7 @@
                      alt="Instagram"
                      class=""
                      width="100%"
-                     height="100%">
+                     height="100%" loading="lazy">
               </a>
               <p class="footer__inst-text">
                 *Instagram — проект Meta Platforms Inc.,

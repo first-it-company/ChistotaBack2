@@ -1,5 +1,32 @@
 {% extends 'base.html' %}
 {% load static number_filters %}
+
+{% block extra_head %}
+<!--<script type="application/ld+json">-->
+<!--    {-->
+<!--        "@context": "https://schema.org",-->
+<!--        "@type": "Service",-->
+<!--        "name": "{{ service.name }}",-->
+<!--        "description": "{{ service.subtitle }}",-->
+<!--        "serviceType": "{{ service.name }}",-->
+<!--        "provider": {-->
+<!--            "@type": "Organization",-->
+<!--            "name": "OOO «ЧИСТОТА ДВ»",-->
+<!--            "url": "http://85.209.9.241/",-->
+<!--            "logo": "http://85.209.9.241/static/pages/icons/favicons/favicon.png",-->
+<!--            "address": {-->
+<!--                "@type": "PostalAddress",-->
+<!--                "streetAddress": "Улица Полетаева, 6д Советский район",-->
+<!--                "addressLocality": "Владивосток",-->
+<!--                "addressRegion": "Приморский край",-->
+<!--                "postalCode": "690041",-->
+<!--                "addressCountry": "RU"-->
+<!--            }-->
+<!--        }-->
+<!--    }-->
+<!--</script>-->
+{% endblock %}
+
 {% block content %}
   <section class="service-detail" data-case-fancybox>
     <div class="service-detail__info">
@@ -62,6 +89,7 @@
           <img
             src="{{ service.photo.url }}"
             alt="Фотография {{ service.scope.name }}"
+            loading="lazy"
           >
       </div>
     {% endif %}

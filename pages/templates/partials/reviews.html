@@ -19,10 +19,10 @@
                     {% if vl_data.count%}({{ gvl_data.count }}) {% else %} (0){% endif %}
                 </span>
                     <img
-                            src="{% static 'pages/icons/VL.png' %}"
-                            alt="VL.ru"
-                            class="reviews__links-img"
-                            loading="lazy"
+                        src="{% static 'pages/icons/VL.png' %}"
+                        alt="VL.ru"
+                        class="reviews__links-img"
+                        loading="lazy"
                     >
                     <span>{% if gis_data.average_rating %}{{ gis_data.average_rating }}{% else %} 5.0{% endif %}</span>
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -42,9 +42,9 @@
                         {% if yandex_data.count %}({{ yandex_data.count }}) {% else %} (0){% endif %}
                     </span>
                     <img
-                            src="{% static 'pages/icons/Yandex.png' %}"
-                            alt="Яндекс"
-                            class="hero__review-logo"
+                        src="{% static 'pages/icons/Yandex.png' %}"
+                        alt="Яндекс"
+                        class="hero__review-logo" loading="lazy"
                     >
                     <span>{% if gis_data.average_rating %}{{ gis_data.average_rating }}{% else %} 5.0{% endif %}</span>
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -64,9 +64,9 @@
                         {% if gis_data.count%}({{ gis_data.count }}) {% else %} (0){% endif %}
                     </span>
                     <img
-                            src="{% static 'pages/icons/2gis.png' %}"
-                            class="reviews__links-img"
-                            alt="2gis"
+                        src="{% static 'pages/icons/2gis.png' %}"
+                        class="reviews__links-img"
+                        alt="2gis" loading="lazy"
                     >
                     <span>{% if gis_data.average_rating %}{{ gis_data.average_rating }}{% else %} 5.0{% endif %}</span>
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -86,11 +86,11 @@
                                 <div class="reviews__card-user-img">
                                     {% if review.photo%}
                                     <img src="{{ review.photo }}"
-                                         alt="" loading="lazy"
+                                         alt="Фото пользователя" loading="lazy"
                                     >
                                     {% else %}
                                     <img src="{% static 'pages/icons/profile.svg' %}"
-                                        alt="" class="reviews__card-user-dummy" loading="lazy"
+                                        alt="Фото пользователя" class="reviews__card-user-dummy" loading="lazy"
                                     >
                                     {% endif %}
                                 </div>
@@ -114,7 +114,7 @@
                             {% if review.link.image %}
                             <div class="reviews__card-img">
                                 <img src="{{ review.link.image }}"
-                                     alt="" class="cta__logo" loading="lazy"
+                                     alt="Фото пользователя" class="cta__logo" loading="lazy"
                                 >
                             </div>
                             {% endif %}
@@ -135,11 +135,11 @@
                                 <div class="reviews__card-user-img">
                                     {% if review.photo%}
                                     <img src="{{ review.photo }}"
-                                         alt="" loading="lazy"
+                                         alt="Фото пользователя" loading="lazy"
                                     >
                                     {% else %}
                                     <img src="{% static 'pages/icons/profile.svg' %}"
-                                         alt="" class="reviews__card-user-dummy" loading="lazy"
+                                         alt="Фото пользователя" class="reviews__card-user-dummy" loading="lazy"
                                     >
                                     {% endif %}
                                 </div>
@@ -163,7 +163,7 @@
                             {% if review.link.image %}
                             <div class="reviews__card-img">
                                 <img src="{{ review.link.image }}"
-                                     alt="" class="cta__logo" loading="lazy"
+                                     alt="Фото для отзыва" class="cta__logo" loading="lazy"
                                 >
                             </div>
                             {% endif %}
@@ -176,13 +176,13 @@
                     {% endfor %}
                 </div>
                 <div class="reviews__controls">
-                    <button class="reviews__control-button">
+                    <button class="reviews__control-button" aria-label="Вверх">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M12 19L12 5"  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M19 12L12 5L5 12"  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </button>
-                    <button class="reviews__control-button">
+                    <button class="reviews__control-button" aria-label="Вниз">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M12 5L12 19"  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M19 12L12 19L5 12"  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>

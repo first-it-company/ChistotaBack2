@@ -78,17 +78,32 @@
                 <ul class="splide__list carousel__track">
                     {% for log in logo %}
                     <li class="splide__slide">
-                        <img src="{{ log.photo.url }}" loading="lazy" width="{{ log.photo.width }}rem" height="{{ log.photo.height }}rem">
+                        <img src="{{ log.photo.url }}"
+                             loading="lazy"
+                             width="{{ log.photo.width }}rem"
+                             height="{{ log.photo.height }}rem"
+                             alt="Логотип клиента"
+                        >
                     </li>
                     {% endfor %}
                     {% for log in logo %}
                     <li class="splide__slide">
-                        <img src="{{ log.photo.url }}" loading="lazy" width="{{ log.photo.width }}rem" height="{{ log.photo.height }}rem">
+                        <img
+                            src="{{ log.photo.url }}"
+                            loading="lazy"
+                            width="{{ log.photo.width }}rem" height="{{ log.photo.height }}rem"
+                            alt="Логотип клиента"
+                        >
                     </li>
                     {% endfor %}
                     {% for log in logo %}
                     <li class="splide__slide">
-                        <img src="{{ log.photo.url }}" loading="lazy" width="{{ log.photo.width }}rem" height="{{ log.photo.height }}rem">
+                        <img
+                            src="{{ log.photo.url }}"
+                            loading="lazy"
+                            width="{{ log.photo.width }}rem" height="{{ log.photo.height }}rem"
+                            alt="Логотип клиента"
+                        >
                     </li>
                     {% endfor %}
                 </ul>

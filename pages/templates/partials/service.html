@@ -68,7 +68,7 @@
               <div class="service__image">
                   {% if service.photo %}
                   <img src="{{ service.photo.url }}"
-                       alt=""
+                       alt="Фото услуги"
                        class="service__card-img"
                        width="{{ service.photo.width }}rem"
                        height="{{ service.photo.height }}rem"
@@ -77,9 +77,9 @@
                   {% if service.is_popular == True %}
                   <div class="service__popular">
                       <img
-                              src="{% static 'pages/images/hero/popular.svg'  %}"
-                              alt="Хит"
-                              width="100%" height="100%" loading="lazy"
+                          src="{% static 'pages/images/hero/popular.svg'  %}"
+                          alt="Хит"
+                          width="100%" height="100%" loading="lazy"
                       >
                   </div>
                   {% endif %}

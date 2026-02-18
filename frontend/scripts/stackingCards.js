@@ -13,7 +13,7 @@ export function initStackingCards() {
     };
 
     const CARD_GAP = 30;
-    const TOP_OFFSET = 30;
+    const TOP_OFFSET = 45;
     const scaleStep = 0.025;
     const cardCount = cards.length;
 

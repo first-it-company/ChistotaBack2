@@ -136,6 +136,20 @@ class Services(models.Model):
         blank=True,
     )
 
+    created_at = models.DateTimeField(
+        auto_now_add=True,
+        verbose_name="Дата создания",
+        blank=True,
+        null=True
+    )
+
+    updated_at = models.DateTimeField(
+        auto_now=True,
+        verbose_name="Дата обновления",
+        blank=True,
+        null=True
+    )
+
     class Meta:
         verbose_name = "Услуга"
         verbose_name_plural = "Услуги"

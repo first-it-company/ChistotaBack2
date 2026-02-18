@@ -1,4 +1,32 @@
 {% extends 'base.html' %}
+{% block extra_head %}
+<!--<script type="application/ld+json">-->
+<!--    {-->
+<!--        "@context": "https://schema.org",-->
+<!--        "@graph": [-->
+<!--            {% for service in services %}-->
+<!--            {-->
+<!--                "@type": "Service",-->
+<!--                "name": "{{ service.name|escapejs }}",-->
+<!--                "description": "{{ service.desc|escapejs }}",-->
+<!--                "provider": {-->
+<!--                    "@type": "Organization",-->
+<!--                    "name": "OOO «ЧИСТОТА ДВ»",-->
+<!--                    "url": "http://85.209.9.241/"-->
+<!--                },-->
+<!--                "offers": {-->
+<!--                    "@type": "Offer",-->
+<!--                    "url": "http://85.209.9.241{{ service.get_absolute_url }}"-->
+<!--                },-->
+<!--                "serviceType": "{{ service.name|escapejs }}",-->
+<!--                "url": "http://85.209.9.241{{ service.get_absolute_url }}",-->
+<!--                "areaServed": "Россия"-->
+<!--            }{% if not forloop.last %},{% endif %}-->
+<!--            {% endfor %}-->
+<!--        ]-->
+<!--    }-->
+<!--</script>-->
+{% endblock %}
 {% block content %}
   {% include 'partials/service.html' with is_catalog=True %}
     {% if additional_services %}
