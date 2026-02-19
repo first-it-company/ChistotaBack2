@@ -15,9 +15,15 @@ export default function initSmoothScroll() {
         content: "#smooth-content",
         smooth: 1,
         effects: true,
-        smoothTouch: 0.1,
-        normalizeScroll: true,
+        smoothTouch: false,
+        normalizeScroll: false
     });
+
+    // в конце initSmoothScroll или в initReviewsScroll
+    const reviewsMain = document.querySelector('.reviews__main');
+    if (reviewsMain) {
+        reviewsMain.style.touchAction = 'pan-x';
+    }
 
     return smoother;
 }

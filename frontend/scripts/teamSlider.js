@@ -12,10 +12,10 @@ export function initTeamSlider() {
     gap: "24rem",
     arrows: false,
     pagination: false,
-    trimSpace: false,
+    trimSpace:false,
     autoWidth: true,
-
-    breakpoints: {
+    dragMinThreshold: '70rem',
+      breakpoints: {
       1440: {
           perPage: 1,
           padding: { right: '50%' },

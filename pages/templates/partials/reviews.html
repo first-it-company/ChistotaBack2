@@ -76,7 +76,7 @@
             </div>
         </div>
         <div class="reviews__body">
-            <div class="reviews__main scroll-reveal-left">
+            <div class="reviews__main">
                 <div class="reviews__column">
                     {% for review in reviews %}
                     {% if review.provider == 'vlru' %}
@@ -190,7 +190,7 @@
                     </button>
                 </div>
             </div>
-            <div class="reviews__image scroll-reveal-right">
+            <div class="reviews__image">
                 <img
                     src="{% static 'pages/images/reviews/phones.webp' %}"
                     alt="Телефон" loading="lazy" class="hidden-tablet"

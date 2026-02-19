@@ -12,12 +12,12 @@
     color: var(--color-gray-200);
     font-family: var(--font-family-accent);
 
-    @include tablet {
-      font-size: 14rem;
+    @include mobile{
+      font-size: 20rem;
     }
 
-    @include mobile{
-      font-size: 12rem;
+    @include mobile-m {
+      font-size: 18rem;
     }
 
     a{

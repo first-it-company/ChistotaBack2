@@ -63,9 +63,6 @@
     a .footer__logo {
       width: 230rem;
 
-      @include tablet {
-        width: 170rem;
-      }
     }
   }
 
@@ -76,10 +73,6 @@
 
     @include laptop {
       font-size: 20rem;
-    }
-
-    @include mobile {
-      font-size: 16rem;
     }
   }
 
@@ -111,8 +104,12 @@
   &__inst-text {
     color: rgb(128, 128, 128);
     font-family: var(--font-family-accent);
-    font-size: 12rem;
+    font-size: 14rem;
     font-weight: 400;
+
+    @include mobile-m{
+      font-size: 16rem;
+    }
   }
 
   &__list-wrapper {
@@ -164,6 +161,7 @@
       @media (max-width: 1130px) {
         padding: 10rem 14rem;
         gap: 6rem;
+
       }
 
       svg {
@@ -181,7 +179,7 @@
         font-weight: 500;
 
         @include mobile {
-          font-size: 14rem;
+          font-size: 18rem;
         }
       }
 
@@ -325,7 +323,6 @@
         align-items: flex-start;
         flex-direction: column;
         gap: 24rem;
-        font-size: 14rem;
       }
     }
   }

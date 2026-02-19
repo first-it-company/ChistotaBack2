@@ -65,10 +65,6 @@
       &-content {
         font-size: 20rem;
         font-weight: 500;
-
-        @include tablet {
-          font-size: 16rem;
-        }
       }
 
       &-label {
@@ -77,7 +73,6 @@
         font-size: 16rem;
 
         @include tablet {
-          font-size: 14rem;
           margin-bottom: 20rem;
         }
       }
@@ -118,7 +113,7 @@
     background: #eeeeee;
 
     @include tablet {
-      min-height: 358rem;
+      height: 400rem;
       border-radius: 20rem;
     }
   }

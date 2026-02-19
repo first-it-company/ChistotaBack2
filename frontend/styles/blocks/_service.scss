@@ -1,6 +1,7 @@
 @use "../helpers" as *;
 
 .service {
+  overflow-x: hidden;
   @include mobile {
     display: contents;
   }
@@ -10,13 +11,16 @@
     padding-inline: 40rem;
 
     @include tablet {
-      padding-block: 30rem;
+      padding-top: 30rem;
+      padding-bottom: 0;
       padding-inline: 20rem;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
     }
 
     @include mobile {
       padding-inline: 16rem;
-      padding-bottom: 45rem;
     }
   }
 
@@ -26,6 +30,10 @@
     &--catalog {
       text-align: left;
       margin-bottom: 70rem;
+
+      @include mobile-m{
+        margin-bottom: 0;
+      }
 
       .service__header {
         text-align: left;
@@ -48,6 +56,7 @@
     @include tablet {
       margin-bottom: 20rem
     }
+
   }
 
   &__subheader {
@@ -63,12 +72,22 @@
     @include mobile {
       margin-bottom: 0;
     }
+
+    @include mobile-m{
+      font-size: 24rem;
+    }
   }
 
 
   &__cards-wrapper {
-    @include tablet {
-      padding-inline: 1rem;
+    @include tablet{
+      display: flex;
+      flex-direction: column;
+      gap: 20rem;
+    }
+
+    @include mobile {
+      gap: 16rem;
     }
   }
 
@@ -104,16 +123,19 @@
     overflow: hidden;
 
     @include tablet {
-      height: auto;
-      min-height: 400rem;
-      padding: 30rem;
+      height: 350rem;
+      padding: 10rem;
       border-radius: 30rem;
     }
 
     @include mobile {
       padding: 8rem;
-      height: 100%;
+      height: 380rem;
       border-radius: 24rem;
+    }
+
+    @include mobile-m{
+      height: auto;
     }
 
     &-body {
@@ -162,7 +184,7 @@
       line-height: normal;
 
       @include tablet {
-        margin-bottom: 24rem;
+        margin-bottom: 0;
         font-size: 36rem;
       }
 
@@ -186,8 +208,14 @@
         margin-bottom: 24rem;
       }
 
+      @include mobile-m{
+        font-size: 24rem;
+      }
+
       @include tablet {
         flex: 0 0 auto;
+        margin-bottom: 0;
+
         &.collapsed {
           display: -webkit-box;
           -webkit-line-clamp: 3;
@@ -218,6 +246,10 @@
           padding: 8rem 12rem 8rem 8rem;
         }
 
+        @include mobile-m {
+          font-size: 16rem;
+        }
+
         svg{
           width: 20rem;
           height: 20rem;
@@ -225,7 +257,7 @@
       }
 
       @include tablet {
-        margin-bottom: 32rem;
+        margin-bottom: 0;
       }
 
       @include mobile {
@@ -262,7 +294,7 @@
     }
 
     @include tablet {
-      margin-bottom: 16rem;
+      margin-bottom: 0;
       gap: 20rem;
       justify-content: center;
     }
@@ -353,7 +385,8 @@
     width: 100%;
     height: 100%;
 
-    @include tablet {
+
+    @include mobile-m {
       grid-template-columns: 1fr;
     }
   }
@@ -365,7 +398,11 @@
     overflow: hidden;
     box-sizing: border-box;
 
-    @include mobile {
+    @include tablet {
+      height: auto;
+    }
+
+    @include mobile-m {
       height: 300rem;
     }
 

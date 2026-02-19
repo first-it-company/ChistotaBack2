@@ -1,6 +1,7 @@
 @use "../helpers" as *;
 
 .cases {
+  overflow-x: hidden;
   &__inner {
     padding-bottom: 140rem;
     padding-inline: 40rem;

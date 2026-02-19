@@ -9,11 +9,42 @@
              height="100%"
         >
       </a>
-      <button class="burger-button header__burger-button" aria-label="Открыть меню">
-        <span class="burger-button__line"></span>
-        <span class="burger-button__line"></span>
-        <span class="burger-button__line"></span>
-      </button>
+        <div class="header__right">
+            <div class="header__contacts visible-tablet">
+                <div class="header__contacts-wrapper">
+                    {% if instagram_url %}
+                    <a href="{{ instagram_url }}"
+                       class="header__contacts-logo"
+                       target="_blank">
+                        <img src="{% static 'pages/icons/instagram.svg' %}"
+                             alt="Instagram"
+                             class=""
+                             width="100%"
+                             height="100%"
+                        >
+                    </a>
+                    {% endif %}
+                    {% if whatsapp_url %}
+                    <a href="{{ whatsapp_url }}"
+                       class="header__contacts-logo"
+                       target="_blank">
+                        <img src="{% static 'pages/icons/whatsapp.svg' %}"
+                             alt="WhatsApp"
+                             class=""
+                             width="100%"
+                             height="100%" loading="lazy"
+                        >
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+            <button class="burger-button header__burger-button" aria-label="Открыть меню">
+                <span class="burger-button__line"></span>
+                <span class="burger-button__line"></span>
+                <span class="burger-button__line"></span>
+            </button>
+        </div>
+
       <div class="header__overlay">
         <nav class="header__menu">
           <ul class="header__menu-list">

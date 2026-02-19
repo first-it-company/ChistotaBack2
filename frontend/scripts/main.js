@@ -23,10 +23,17 @@ import { initStackingCards } from './stackingCards.js';
 import initFaqAccordion from "@/scripts/accordion.js";
 import {initScrollReveal} from "@/scripts/fadeAnimations.js";
 
+const BREAKPOINT = 990;
+const isDesktop = () => window.innerWidth >= BREAKPOINT;
+
 document.addEventListener('DOMContentLoaded', async () => {
-    initSmoothScroll();
+    if (isDesktop()) {
+        initSmoothScroll();
+        initStackingCards();
+        initScrollReveal();
+    }
+
     initTypewriterHero();
-    initStackingCards();
     initTypewriterCta();
     initBrandsCarousel();
     initScrollWordAnimation();
@@ -41,7 +48,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     initCasesToggle();
     initCaseFancybox();
     initFaqAccordion();
-    initScrollReveal();
 
     if (document.querySelector('[data-service-splide-left]')) {
         import('./serviceCarousel.js').then(({ initServiceCarouselLeft }) => initServiceCarouselLeft());

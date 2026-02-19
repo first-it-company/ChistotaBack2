@@ -2,7 +2,7 @@
 
 .cta {
   background: url("/static/pages/images/cta/background.webp") 0 0 / cover no-repeat;
-
+  overflow-x: hidden;
   @include tablet {
     background: none;
     background-color: rgb(242, 246, 250);
@@ -52,7 +52,7 @@
     gap: 67rem;
 
     @include tablet {
-      background: url("/static/pages/images/cta/background-m.png") 0 0 / cover no-repeat;
+      background: url("/static/pages/images/cta/background-m.webp") 0 0 / cover no-repeat;
       width: 100%;
       padding-inline: 20rem;
       row-gap: 40rem;
@@ -99,8 +99,11 @@
     @include tablet {
       font-size: 20rem;
     }
-  }
 
+    @include mobile-m {
+      font-size: 22rem;
+    }
+  }
 
   &__socials {
     &-title {
@@ -115,6 +118,10 @@
         max-width: 100%;
         font-size: 20rem;
         margin-bottom: 20rem;
+      }
+
+      @include mobile-m {
+        font-size: 22rem;
       }
     }
 

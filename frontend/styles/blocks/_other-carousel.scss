@@ -3,6 +3,7 @@
 .other-carousel {
   padding-top: 50rem;
   padding-bottom: 120rem;
+  overflow-x: hidden;
 
   @include tablet {
     padding-bottom: 80rem;

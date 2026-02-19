@@ -48,10 +48,6 @@
       margin: 0;
     }
 
-    @include tablet {
-      font-size: 16rem;
-    }
-
     @include mobile-m{
       order: 1;
     }

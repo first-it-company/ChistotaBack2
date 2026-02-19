@@ -3,6 +3,7 @@
 .reviews{
   position: relative;
   width: 100%;
+  overflow: visible;
 
   &__inner{
     padding-top: 60rem;
@@ -12,6 +13,7 @@
     display: flex;
     flex-direction: column;
     gap: 32rem;
+
 
     @include tablet{
       padding-top: 60rem;
@@ -24,9 +26,11 @@
     display: flex;
     position: relative;
     justify-content: space-between;
+    overflow-y: hidden;
 
     @include tablet{
       flex-direction: column-reverse;
+      overflow-x: auto;
     }
   }
 
@@ -34,12 +38,18 @@
     display: flex;
     gap: 16rem;
     height: 700rem;
-    overflow-y: hidden;
     position: relative;
-    flex-shrink: 0;
+
     z-index: 10;
     scrollbar-width: none;
     -ms-overflow-style: none;
+
+    min-width: 0;
+    flex: 1 1 auto;
+
+    touch-action: auto !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
 
     &:after{
       content: "";
@@ -48,6 +58,7 @@
       bottom: 0;
       width: 100%;
       height: 200rem;
+      pointer-events: none;
     }
 
     @include tablet{
@@ -146,11 +157,7 @@
       height: 32rem;
       border-radius: 28rem;
       overflow: hidden;
-
-      @include mobile{
-        width: 28rem;
-        height: 18rem;
-      }
+      flex-shrink: 0;
 
       img{
         width: 100%;
@@ -178,9 +185,6 @@
       font-size: 20rem;
       font-weight: 400;
 
-      @include mobile{
-        font-size: 16rem;
-      }
     }
 
     &-service{
@@ -188,15 +192,17 @@
       font-weight: 400;
       color: var(--color-gray-200);
 
-      @include mobile{
-        font-size: 14rem;
-      }
+
     }
 
     &-text{
       font-size: 13rem;
       font-weight: 400;
       word-break: break-word;
+
+      @include tablet{
+        font-size: 18rem;
+      }
     }
 
     &-img{
@@ -276,6 +282,3 @@
     }
   }
 }
-
-
-

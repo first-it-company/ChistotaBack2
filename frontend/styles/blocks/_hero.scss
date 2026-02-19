@@ -46,6 +46,10 @@
       border-radius: 36rem 36rem 0 0;
     }
 
+    @include mobile-m{
+      margin-top: -30rem;
+    }
+
     &-subtitle{
       font-size: 42rem;
       color: var(--color-black);
@@ -68,20 +72,25 @@
 
     @include mobile{
       max-width: 500rem !important;
-    }
-
-    @include mobile{
       right: -30rem;
     }
 
     @include mobile-m {
       position: relative;
       bottom: 0;
+      max-width: max-content !important;
+      width: 110% !important;
       right: auto;
+    }
+
+    @include mobile-s{
+      right: -5%;
+      width: 130% !important;
     }
 
     img{
       width: 100%;
+
     }
   }
 
@@ -177,10 +186,13 @@
         }
 
         span{
-          font-size: 16rem;
+          font-size: 18rem;
           font-weight: 400;
           color: rgba(42, 42, 42, 0.6);
 
+          @include mobile-m{
+            font-size: 14rem;
+          }
         }
       }
 
@@ -203,8 +215,8 @@
           margin-bottom: 0;
           font-weight: 400;
 
-          @include mobile{
-            font-size: 14rem;
+          @include mobile-m{
+            font-size: 18rem;
           }
         }
 
@@ -225,7 +237,7 @@
           }
 
           @include mobile{
-            font-size: 10rem;
+            font-size: 13rem;
           }
 
         }
@@ -247,10 +259,15 @@
     }
 
     @include mobile{
-      font-size: 36rem;
+      font-size: 38rem;
     }
+
+    @include mobile-m{
+      font-size: 58rem;
+    }
+
     @include mobile-s {
-      font-size: 36rem;
+      font-size: 40rem;
     }
 
      &-print {
@@ -271,12 +288,9 @@
     margin-bottom: 16rem;
 
     @include tablet {
-      font-size: 16rem;
+      font-size: 20rem;
     }
 
-    @include mobile {
-      font-size: 14rem;
-    }
   }
 
   &__subheader {
@@ -290,7 +304,11 @@
     }
 
     @include tablet{
-      font-size: 20rem;
+      font-size: 28rem;
+    }
+
+    @include mobile-m{
+      font-size: 28rem;
     }
   }
 

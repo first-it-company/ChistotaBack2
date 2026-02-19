@@ -3,6 +3,7 @@
 .about{
   width: 100%;
   padding-top: 80rem;
+  overflow-x: hidden;
 
   @include tablet{
     padding-block: 40rem;
@@ -63,9 +64,13 @@
     }
 
     @include mobile{
-      font-size: 60rem;
+      font-size: 80rem;
       line-height: normal;
       margin-bottom:32rem;
+    }
+
+    @include mobile-s{
+      font-size: 60rem;
     }
 
     &-inner{
@@ -90,6 +95,10 @@
       max-width: 100%;
       width: 97%;
       margin-bottom: 30rem;
+    }
+
+    @include mobile-m{
+      font-size: 22rem;
     }
 
     span{

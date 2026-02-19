@@ -248,7 +248,7 @@
     color: var(--color-black);
 
     @include tablet {
-      font-size: 18rem
+      font-size: 24rem
     }
   }
 
@@ -258,7 +258,7 @@
     color: var(--color-gray-200);
 
     @include tablet {
-      font-size: 16rem
+      font-size: 20rem
     }
   }
 }

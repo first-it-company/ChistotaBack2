@@ -20,7 +20,7 @@
   }
 
   @include mobile {
-    font-size: 14rem;
+    font-size: 20rem;
     padding: 10rem 14rem;
     column-gap: 12rem;
   }
@@ -28,6 +28,10 @@
   @include hover{
     background-color: var(--color-blue-hover);
     color: var(--color-white);
+  }
+
+  span{
+    font-size: 20rem;
   }
 
   svg{

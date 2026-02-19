@@ -50,10 +50,6 @@
       font-size: 20rem;
       color: var(--color-black);
 
-      @media (max-width: rem(768)) {
-        font-size: 16rem;
-      }
-
       @include mobile{
         order: 3;
       }

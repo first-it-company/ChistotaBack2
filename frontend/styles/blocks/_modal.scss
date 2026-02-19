@@ -17,6 +17,9 @@
       max-width: 100%;
       width: 90%;
     }
+    @include mobile {
+      width: 100%;
+    }
   }
 
   &__close-button {
@@ -98,7 +101,7 @@
     color: var(--color-black);
 
     @include mobile {
-      font-size: 20rem;
+      font-size: 30rem;
     }
   }
 
@@ -111,7 +114,7 @@
     }
 
     @include mobile {
-      font-size: 12rem;
+      font-size: 20rem;
     }
   }
 
