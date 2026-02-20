@@ -48,8 +48,16 @@
       margin: 0;
     }
 
+    @include mobile{
+      font-size: 24rem;
+    }
+
     @include mobile-m{
       order: 1;
+    }
+
+    @include mobile-s{
+      font-size: 18rem;
     }
 
     span{

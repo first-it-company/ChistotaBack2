@@ -32,6 +32,13 @@
 
   span{
     font-size: 20rem;
+
+    @include mobile-m {
+      font-size: 28rem;
+    }
+    @include mobile-s {
+      font-size: 24rem;
+    }
   }
 
   svg{

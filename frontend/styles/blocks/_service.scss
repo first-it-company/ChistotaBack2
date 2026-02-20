@@ -71,9 +71,10 @@
 
     @include mobile {
       margin-bottom: 0;
+      font-size: 28rem;
     }
 
-    @include mobile-m{
+    @include mobile-s{
       font-size: 24rem;
     }
   }
@@ -208,7 +209,11 @@
         margin-bottom: 24rem;
       }
 
-      @include mobile-m{
+      @include mobile{
+        font-size: 26rem;
+      }
+
+      @include mobile-s{
         font-size: 24rem;
       }
 

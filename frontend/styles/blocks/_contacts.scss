@@ -113,8 +113,13 @@
     background: #eeeeee;
 
     @include tablet {
+      flex-basis: auto;
       height: 400rem;
       border-radius: 20rem;
+    }
+
+    @include mobile-m {
+      height: 300rem;
     }
   }
 }

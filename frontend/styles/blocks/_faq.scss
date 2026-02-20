@@ -186,7 +186,11 @@
       padding: 8rem 12rem;
     }
 
-    @include mobile {
+    @include mobile{
+      font-size: 20rem;
+    }
+
+    @include mobile-s {
       font-size: 16rem;
     }
 
@@ -208,8 +212,12 @@
       font-size: 18rem;
       color: var(--color-gray-250);
 
-      @include mobile-m {
-        font-size: 17rem;
+      @include mobile{
+        font-size: 20rem;
+      }
+
+      @include mobile-s {
+        font-size: 16rem;
       }
     }
 

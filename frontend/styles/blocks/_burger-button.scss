@@ -24,14 +24,14 @@
       &:first-child{
         rotate: 45deg;
         transform-origin: 0;
-        translate: 0 6rem;
+        translate: -1rem 5rem;
       }
       &:nth-child(2){
         width: 0;
       }
       &:last-child{
         rotate: -45deg;
-        translate: -2rem -9rem;
+        translate: -3rem -11rem;
       }
     }
   }

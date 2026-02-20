@@ -95,9 +95,10 @@
       max-width: 100%;
       width: 97%;
       margin-bottom: 30rem;
+      font-size: 26rem;
     }
 
-    @include mobile-m{
+    @include mobile-s{
       font-size: 22rem;
     }
 

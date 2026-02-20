@@ -28,6 +28,9 @@
       align-items: center;
       gap: 0;
       margin-bottom: 0;
+      height: 95vh;
+      min-height: 680rem;
+      max-height: 920rem;
     }
   }
 
@@ -190,7 +193,11 @@
           font-weight: 400;
           color: rgba(42, 42, 42, 0.6);
 
-          @include mobile-m{
+          @include mobile{
+            font-size: 18rem;
+          }
+
+          @include mobile-s{
             font-size: 14rem;
           }
         }
@@ -236,7 +243,11 @@
             font-size: 14rem;
           }
 
-          @include mobile{
+          @include mobile-m{
+            font-size: 18rem;
+          }
+
+          @include mobile-s{
             font-size: 13rem;
           }
 
@@ -291,6 +302,13 @@
       font-size: 20rem;
     }
 
+    @include mobile-m {
+      font-size: 26rem;
+    }
+
+    @include mobile-s{
+      font-size: 24rem;
+    }
   }
 
   &__subheader {
@@ -308,6 +326,9 @@
     }
 
     @include mobile-m{
+      font-size: 32rem;
+    }
+    @include mobile-s{
       font-size: 28rem;
     }
   }

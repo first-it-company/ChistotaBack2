@@ -76,7 +76,11 @@
       font-size: 22rem;
     }
 
-    @include mobile-m{
+    @include mobile{
+      font-size: 26rem;
+    }
+
+    @include mobile-s{
       font-size: 20rem;
     }
 
