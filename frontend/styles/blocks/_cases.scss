@@ -157,6 +157,12 @@
       width: 100%;
       height: 200rem;
     }
+
+    &.is-expanded{
+      &:after{
+        display: none;
+      }
+    }
   }
 
   &__button{
@@ -255,7 +261,7 @@
       }
 
       .cases__item:nth-child(2) .cases__img img{
-        object-position: center;
+        object-position: bottom;
       }
     }
 

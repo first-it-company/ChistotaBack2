@@ -54,7 +54,7 @@ def fetch_reviews_data():
                 "rating": int(rating_value),
                 "rating_display": "{:.1f}".format(rating_value),
                 "review_text": review["content"],
-                "photo": review["avatar"] or "/static/pages/images/reviews/avatar.png",
+                "photo": review["avatar"] or "/static/pages/icons/avatar.svg",
                 "service": "Уборка",
                 "link": {
                     "url": review["review_url"],

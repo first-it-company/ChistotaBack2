@@ -119,6 +119,10 @@
     display: flex;
     align-items: center;
     gap: 20rem;
+
+    @include mobile-m{
+      gap: 10rem;
+    }
   }
 
   &__contacts {
@@ -148,7 +152,7 @@
 
 
       @include mobile-s {
-        gap: 18rem;
+        gap: 5rem;
       }
     }
 

@@ -64,6 +64,17 @@
               >
           </a>
             {% endif %}
+            {% if max_url %}
+            <a href="{{ max_url }}"
+               class="cta-request__contacts-item"
+               target="_blank">
+                <img src="{% static 'pages/icons/max.png' %}"
+                     alt="Max"
+                     width="100%"
+                     height="100%" loading="lazy"
+                >
+            </a>
+            {% endif %}
         </div>
       </div>
     </div>

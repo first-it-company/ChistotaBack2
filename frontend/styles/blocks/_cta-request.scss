@@ -3,6 +3,7 @@
 .cta-request {
   padding: 60rem 0;
   overflow-x: hidden;
+
   @include tablet {
     padding: 40rem 0;
   }
@@ -10,8 +11,6 @@
   &__wrapper {
     border-radius: 40rem;
     background: rgb(42, 42, 42);
-    background-size: cover;
-    background-repeat: no-repeat;
     overflow: hidden;
 
     @include tablet {}
@@ -23,8 +22,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: url("/static/pages/images/cta-request/background.webp") 0 0 / cover no-repeat;
-
+    background: url("/static/pages/images/cta-request/background.webp") center center / cover no-repeat;
     @include tablet {
       padding: 60rem;
       align-items: flex-start;
@@ -100,7 +98,7 @@
 
     @include mobile {
       justify-content: flex-start;
-      column-gap: 32rem;
+      column-gap: 20rem;
     }
 
     &-item {

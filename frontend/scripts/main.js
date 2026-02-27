@@ -22,6 +22,8 @@ import { initCaseFancybox } from './caseLightBox.js';
 import { initStackingCards } from './stackingCards.js';
 import initFaqAccordion from "@/scripts/accordion.js";
 import {initScrollReveal} from "@/scripts/fadeAnimations.js";
+import { initOdometer } from "./odometer.js";
+import {initReviewsSliderMobile} from "@/scripts/reviewsSliderMobile.js";
 
 const BREAKPOINT = 990;
 const isDesktop = () => window.innerWidth >= BREAKPOINT;
@@ -31,6 +33,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         initSmoothScroll();
         initStackingCards();
         initScrollReveal();
+        initReviewsScroll();
     }
 
     initTypewriterHero();
@@ -44,10 +47,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     initFormFeedback();
     initModalSuccess();
     initFooterReviewSlider();
-    initReviewsScroll();
     initCasesToggle();
     initCaseFancybox();
     initFaqAccordion();
+    initOdometer();
+    initReviewsSliderMobile();
 
     if (document.querySelector('[data-service-splide-left]')) {
         import('./serviceCarousel.js').then(({ initServiceCarouselLeft }) => initServiceCarouselLeft());

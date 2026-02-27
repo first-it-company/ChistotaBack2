@@ -66,7 +66,6 @@ class AboutMain(models.Model):
     def __str__(self):
         return f"{self.cnt_people} | {self.cnt_year} | {self.cnt_square} | {self.cnt_reviews}"
 
-
 class ScopeServices(models.Model):
     name = models.CharField(
         max_length=250,
@@ -79,7 +78,6 @@ class ScopeServices(models.Model):
 
     def __str__(self):
         return self.name
-
 
 class Services(models.Model):
     name = models.CharField(

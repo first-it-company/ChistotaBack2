@@ -89,7 +89,7 @@
                                          alt="Фото пользователя" loading="lazy"
                                     >
                                     {% else %}
-                                    <img src="{% static 'pages/icons/profile.svg' %}"
+                                    <img src="{% static 'pages/icons/avatar.svg' %}"
                                         alt="Фото пользователя" class="reviews__card-user-dummy" loading="lazy"
                                     >
                                     {% endif %}
@@ -133,12 +133,12 @@
                         <div class="reviews__card-header">
                             <div class="reviews__card-left">
                                 <div class="reviews__card-user-img">
-                                    {% if review.photo%}
+                                    {% if review.photo %}
                                     <img src="{{ review.photo }}"
                                          alt="Фото пользователя" loading="lazy"
                                     >
                                     {% else %}
-                                    <img src="{% static 'pages/icons/profile.svg' %}"
+                                    <img src="{% static 'pages/icons/avatar.svg' %}"
                                          alt="Фото пользователя" class="reviews__card-user-dummy" loading="lazy"
                                     >
                                     {% endif %}

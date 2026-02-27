@@ -8,10 +8,9 @@
             src="{% static 'pages/icons/logo2.svg' %}"
             alt="Чистота ДВ"
             class="footer__logo"
-            width="auto" height="auto" loading="lazy"
+            width="300" height="72" loading="lazy"
           >
         </a>
-        <p class="p1 footer__title">Ясность нашей позиции очевидна: высокое качество позиционных исследований играет определяющее значение для системы массового участия</p>
         <div class="footer__socials-wrapper hidden-tablet ">
           {% if whatsapp_url %}
             <a href="{{ whatsapp_url }}" target="_blank" class="footer__socials-logo">
@@ -43,6 +42,17 @@
               >
             </a>
           {% endif %}
+            {% if max_url %}
+            <a href="{{ max_url }}"
+               class="footer__socials-logo"
+               target="_blank">
+                <img src="{% static 'pages/icons/max.png' %}"
+                     alt="Max"
+                     width="100%"
+                     height="100%" loading="lazy"
+                >
+            </a>
+            {% endif %}
           {% if instagram_url %}
             <a href="{{ instagram_url }}" target="_blank" class="footer__socials-logo">
               <img
@@ -128,6 +138,17 @@
               >
             </a>
           {% endif %}
+            {% if max_url %}
+            <a href="{{ max_url }}"
+               class="footer__socials-logo"
+               target="_blank">
+                <img src="{% static 'pages/icons/max.png' %}"
+                     alt="Max"
+                     width="100%"
+                     height="100%" loading="lazy"
+                >
+            </a>
+            {% endif %}
           {% if instagram_url %}
             <a href="{{ instagram_url }}" target="_blank" class="footer__socials-logo">
               <img

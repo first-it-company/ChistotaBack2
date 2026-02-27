@@ -39,10 +39,10 @@
   }
 
   &__splide {
-    height: 480rem;
+    height: 550rem;
 
     @include laptop{
-      height: 430rem;
+      height: 400rem;
     }
   }
 
@@ -138,6 +138,10 @@
       @include tablet{
         font-size: 16rem;
       }
+
+      @include mobile-s{
+        font-size: 14rem;
+      }
     }
 
     &-bottom{
@@ -199,8 +203,12 @@
     border-radius: 20rem;
     overflow: hidden;
 
+    @include laptop{
+      height: 450rem;
+    }
+
     @include tablet {
-      height: 260px;
+      height: 300px;
       border-radius: 16px;
     }
   }

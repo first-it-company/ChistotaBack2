@@ -150,6 +150,21 @@
       grid-template-columns: repeat(1, 1fr);
     }
 
+    &-number{
+     flex-shrink: 0;
+    }
+
+    &-number span{
+      font-size: 80rem !important;
+      color: var(--color-black) !important;
+      font-weight: 600 !important;
+      line-height: 100%;
+
+      @include tablet{
+        font-size: 60rem !important;
+      }
+    }
+
     &-card{
       padding: 40rem;
       background-color: var(--color-white-bg);
@@ -173,19 +188,15 @@
         flex-direction: row;
       }
 
+
+
       &-left{
         display: flex;
         align-items: flex-end;
+        overflow: hidden;
 
         h2{
-          font-size: 80rem;
-          color: var(--color-black);
-          font-weight: 600;
-          line-height: 1;
 
-          @include tablet{
-            font-size: 60rem;
-          }
         }
 
         span{
@@ -387,4 +398,17 @@
       width: 100%;
     }
   }
+}
+
+.odometer {
+  font-family: inherit !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+  color: inherit !important;
+  background: none !important;
+
+}
+
+.odometer-digit-inner{
+  overflow: visible !important;
 }

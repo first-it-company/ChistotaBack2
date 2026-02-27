@@ -61,6 +61,11 @@ def home(request):
             if SocialNetwork.objects.filter(name="whatsapp").exists()
             else ""
         ),
+        "max_url": (
+            SocialNetwork.objects.filter(name="max").first().url
+            if SocialNetwork.objects.filter(name="max").exists()
+            else ""
+        ),
     }
 
 
@@ -129,6 +134,11 @@ def catalog(request):
             if SocialNetwork.objects.filter(name="whatsapp").exists()
             else ""
         ),
+        "max_url": (
+            SocialNetwork.objects.filter(name="max").first().url
+            if SocialNetwork.objects.filter(name="max").exists()
+            else ""
+        ),
     }
 
     # Получаем отзывы и рейтинги
@@ -193,6 +203,11 @@ def service_detail(request, slug: str):
             if SocialNetwork.objects.filter(name="whatsapp").exists()
             else ""
         ),
+        "max_url": (
+            SocialNetwork.objects.filter(name="max").first().url
+            if SocialNetwork.objects.filter(name="max").exists()
+            else ""
+        ),
     }
 
     # Получаем отзывы и рейтинги
@@ -254,6 +269,11 @@ def contacts(request):
         "whatsapp_url": (
             SocialNetwork.objects.filter(name="whatsapp").first().url
             if SocialNetwork.objects.filter(name="whatsapp").exists()
+            else ""
+        ),
+        "max_url": (
+            SocialNetwork.objects.filter(name="max").first().url
+            if SocialNetwork.objects.filter(name="max").exists()
             else ""
         ),
     }
@@ -320,6 +340,11 @@ def about_us(request):
         "whatsapp_url": (
             SocialNetwork.objects.filter(name="whatsapp").first().url
             if SocialNetwork.objects.filter(name="whatsapp").exists()
+            else ""
+        ),
+        "max_url": (
+            SocialNetwork.objects.filter(name="max").first().url
+            if SocialNetwork.objects.filter(name="max").exists()
             else ""
         ),
     }

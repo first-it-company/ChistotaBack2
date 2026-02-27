@@ -1,6 +1,7 @@
 export const initCasesToggle = () => {
     const button = document.querySelector('[data-cases-button]');
     const rows = document.querySelectorAll('.cases__row');
+    const grid = document.querySelector('.cases__grid');
 
     if (!button || !rows.length) {
         return;
@@ -47,9 +48,11 @@ export const initCasesToggle = () => {
 
         if (isExpanded) {
             show();
-            button.textContent = 'Скрыть все';
+            button.style.display = 'none';
+            grid.classList.add('is-expanded');
         } else {
             hide();
+            grid.classList.remove('is-expanded');
             button.textContent = 'Показать ещё';
         }
     });
