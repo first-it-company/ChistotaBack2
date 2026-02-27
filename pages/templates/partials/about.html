@@ -76,7 +76,7 @@
         <div class="splide carousel__wrapper" data-brands-carousel>
             <div class="splide__track">
                 <ul class="splide__list carousel__track">
-                    {% for log in logo %}
+                    {% for log in logo_first %}
                     <li class="splide__slide">
                         <img src="{{ log.photo.url }}"
                              loading="lazy"
@@ -86,7 +86,7 @@
                         >
                     </li>
                     {% endfor %}
-                    {% for log in logo %}
+                    {% for log in logo_first %}
                     <li class="splide__slide">
                         <img
                             src="{{ log.photo.url }}"
@@ -96,13 +96,29 @@
                         >
                     </li>
                     {% endfor %}
-                    {% for log in logo %}
+                </ul>
+            </div>
+        </div>
+        <div class="splide carousel__wrapper" data-brands-carousel-2>
+            <div class="splide__track">
+                <ul class="splide__list carousel__track">
+                    {% for log in logo_second %}
+                    <li class="splide__slide">
+                        <img src="{{ log.photo.url }}"
+                             loading="lazy"
+                             width="{{ log.photo.width }}rem"
+                             height="{{ log.photo.height }}rem"
+                             alt="Логотип клиента"
+                        >
+                    </li>
+                    {% endfor %}
+                    {% for log in logo_second %}
                     <li class="splide__slide">
                         <img
-                            src="{{ log.photo.url }}"
-                            loading="lazy"
-                            width="{{ log.photo.width }}rem" height="{{ log.photo.height }}rem"
-                            alt="Логотип клиента"
+                                src="{{ log.photo.url }}"
+                                loading="lazy"
+                                width="{{ log.photo.width }}rem" height="{{ log.photo.height }}rem"
+                                alt="Логотип клиента"
                         >
                     </li>
                     {% endfor %}

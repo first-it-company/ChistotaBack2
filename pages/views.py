@@ -39,6 +39,7 @@ def home(request):
     contact = Contact.objects.first()
     employee = Employee.objects.all().order_by('order')
     logo = Logo.objects.all()
+    half = len(logo) // 2
 
     social_networks = {
         "instagram_url": (
@@ -98,7 +99,8 @@ def home(request):
                 "count": counts["yandex"],
             },
             "employee": employee,
-            "logo": logo,
+            'logo_first': logo[:half],
+            'logo_second': logo[half:],
             "reviews": reviews_for_slider,
             **social_networks,
         },
@@ -319,6 +321,7 @@ def about_us(request):
     company_details = CompanyDetails.objects.first()
     employee = Employee.objects.all().order_by('order')
     logo = Logo.objects.all()
+    half = len(logo) // 2
     about_main = AboutMain.objects.first()
 
     social_networks = {
@@ -379,7 +382,8 @@ def about_us(request):
             },
             "reviews": reviews_for_slider,
             "employee": employee,
-            "logo": logo,
+            'logo_first': logo[:half],
+            'logo_second': logo[half:],
             **social_networks,
         },
     )

@@ -30,3 +30,32 @@ export default function initBrandsCarousel() {
     splide.mount({ AutoScroll });
     return splide;
 }
+
+export function initBrandsCarouselSecond() {
+    const carouselElement = document.querySelector('[data-brands-carousel-2]');
+
+    if (!carouselElement) {
+        return null;
+    }
+
+    const splide = new Splide('[data-brands-carousel-2]', {
+        type: 'loop',
+        drag: 'free',
+        focus: 'center',
+        pagination: false,
+        arrows: false,
+        gap: 40,
+        autoWidth: true,
+        autoScroll: {
+            speed: -0.8,
+            pauseOnHover: false,
+            pauseOnFocus: false,
+        },
+        breakpoints: {
+
+        }
+    });
+
+    splide.mount({ AutoScroll });
+    return splide;
+}

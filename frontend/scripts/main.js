@@ -24,6 +24,7 @@ import initFaqAccordion from "@/scripts/accordion.js";
 import {initScrollReveal} from "@/scripts/fadeAnimations.js";
 import { initOdometer } from "./odometer.js";
 import {initReviewsSliderMobile} from "@/scripts/reviewsSliderMobile.js";
+import { initBrandsCarouselSecond } from "./brandsCarousel.js";
 
 const BREAKPOINT = 990;
 const isDesktop = () => window.innerWidth >= BREAKPOINT;
@@ -52,6 +53,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     initFaqAccordion();
     initOdometer();
     initReviewsSliderMobile();
+    initBrandsCarouselSecond();
 
     if (document.querySelector('[data-service-splide-left]')) {
         import('./serviceCarousel.js').then(({ initServiceCarouselLeft }) => initServiceCarouselLeft());
