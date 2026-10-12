@@ -32,3 +32,5 @@ ssl/
 /frontend/node_modules/
 
 /pages/static/
+!.env.example
+*.pyc
