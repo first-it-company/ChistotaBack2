@@ -46,3 +46,9 @@ python manage.py createsuperuser
 ```bash
 python manage.py runserver
 ```
+
+## Изменения 14.10.2026 — SECRET_KEY только из окружения (Weeek 31942)
+- `chistota/settings.py` читает `SECRET_KEY` из переменной окружения, без значения по умолчанию в коде (старый ключ был в публичном репозитории).
+- Переменная: `SECRET_KEY` в `.env` (сгенерировать: `openssl rand -base64 48`).
+- Живой сайт Чистоты сейчас — репозиторий ChistotaDV на 92.63.177.25 (`/home/ChistotaDV`), там ключ тоже из `.env` и сменён 14.10.2026. Этот репозиторий на проде не развёрнут.
+- Как проверить: без `SECRET_KEY` приложение не стартует; `grep -rn django-insecure chistota/` ничего не находит.
